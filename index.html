@@ -3,13 +3,14 @@
 <head>
 
 	<meta charset="utf-8">
+	<meta name="description" content="Future Symphony International Music Composition Competition For Symphony Orchestra">
 
 	<title>Future Symphony</title>
 
 	<!-- main css -->
 	<link href="css/bootstrap.min.css" rel="stylesheet">
-	<link href="css/main.min.css" rel="stylesheet">
-	<link href="css/media.min.css" rel="stylesheet">
+	<link href="css/main.css" rel="stylesheet">
+	<link href="css/media.css" rel="stylesheet">
 	<!-- fonts -->
 	<link href="css/fonts.min.css" rel="stylesheet">
 	<!-- favicon -->
@@ -27,13 +28,14 @@
 
 <body class="preload">
 
+	<div class="cover-picture"></div>
+
 	<div class="site-wrapper">
 
 		<div class="site-wrapper-inner">
 			<noscript class="noscript">For full functionality of this site it is necessary to enable JavaScript.<br> <a href="https://www.enable-javascript.com/" target="_blank">Here are the instructions how to enable JavaScript in your web browser</a>.</noscript>
 			
 			<div class="start" id="start">
-				<div class="coverpicture"></div>
 				<span class="headline">FUTURE SYMPHONY<br><span class="headline2">INTERNATIONAL MUSIC COMPOSITION COMPETITION<br>FOR SYMPHONY ORCHESTRA</span></span>
 			</div>
 
@@ -43,10 +45,10 @@
 
 					<nav>
 						<ul class="nav masthead-nav">
-							<li id="homelink"><a href="#home">HOME</a></li>
+							<li id="aboutlink"><a href="#about">ABOUT</a></li>
 							<li id="newslink"><a href="#news">NEWS</a></li>
-							<li id="aboutlink"><a href="#about">REGULATIONS</a></li>
-							<li id="applylink"><a href="#apply">APPLY TO COMPETITION</a></li>
+							<li id="participantslink"><a href="#participants">FOR PARTICIPANTS</a></li>
+							<li id="sponsorslink"><a href="#sponsors">SPONSORS & FRIENDS</a></li>
 							<li id="contactslink"><a href="#contacts">CONTACTS</a></li>
 						</ul>
 					</nav>
@@ -59,44 +61,47 @@
 			</div>
 
 			<div class="cover-container">
+				<div class="tab" id="about">
+					<h1 class="cover-heading"><b>Welcome!</b></h1>
+					<div style="line-height: 1.65;">
+						For more information please see <a href="#participants" class="link">For Participants</a>.
+					</div>
+				</div>
 
-				<div class="inner cover" style="text-align: ;">
-					<div class="tab" id="home">
-						<h1 class="cover-heading"><b>Welcome!</b></h1>
-						<div style="line-height: 1.65;">We are happy to announce the first international music composition competition for symphony orchestra “Future Symphony”. The goal of the competition is to expand our cultural heritage and to foster symphonic music tradition. We encourage young composers to try out their luck by creating a short orchestral composition (5-12 min.). Authors from all over the world (age: 16-30) are welcome to apply.<br><br>
-							<b>Main information:</b>
-							<ul>
-								<li>Entry fees must be paid by <b>July 15th, 2018</b>, all scores must be submitted by <b>August 15th, 2018</b>;</li>
-								<li>Pieces that will be selected for the final concert will be performed by an orchestra which is brought together for this competition. <b>The competition provides a great opportunity for composers to hear their own compositions for symphony orchestra performed live and get professional recordings of them</b>;</li>
-								<li>All composers stay anonymous until the final results;</li>
-								<li>Application fee is 50 euros;</li>
-								<li>The Prize pool contains 1000 euros and professional recordings of the scores.</li>
-							</ul>
-							For more information please see the <a href="#about" class="link">Regulations</a>.
+				<div class="tab" id="news" style="overflow-y: scroll;">
+					<h1 class="cover-heading"><b>News</b></h1>
+
+					<a href="images/xiaoran_jiang.jpg" target="_blank"><img class="news-img" src="images/xiaoran_jiang_small.jpg" alt="xiaoran_jiang_small.jpg"></a>
+					<div class="news-item">
+						<span style="color: rgba(100, 100, 100, 0.5);"><i>October 8th, 2018 - 08:00 pm</i></span><br>
+						<div style="line-height: 1.55;">
+							<b>Results of the 1st competition final round</b><br>
+							We are excited to announce the winners of the 1st international music composition competition "Future Symphony"!
+							<span class="noshow" id="fourth"><br>
+								<b>1st place:</b> 🇨🇳️ Xiaoran Jiang ("Befall")<br> 
+								<b>2nd place:</b> 🇰🇷️ SiHyun Uhm ("Apex of Longing"), 🇺🇸️ Robert Ge ("Night Run")<br> 
+								<b>3rd place:</b> 🇨🇳️ Pengyi Li ("Polymorphism")<br> 
+								<b>Audience Sympathy prize:</b> 🇱🇹️ Matas Drukteinis ("Late Night at the City")<br> 
+								Biggest congratulations to the composers!<br><br>
+								Compositions were evaluated by the jury:<br>
+								Marius Baranauskas (chairman)<br>
+								Gediminas Gelgotas<br>
+								Ayal Adler<br>
+								Rasa Murauskaitė<br>
+								Modestas Barkauskas.<br>
+								The competition featured composers from Lithuania, Estonia, Georgia, France, USA, Canada, China, Taiwan, Australia and South Korea.<br>
+							</span>
+							<a class="link" id="fourthbutton" onClick="readmore('#fourth');">Read more</a>
 						</div>
 					</div>
 
-					<div class="tab" id="news" style="overflow-y: scroll;">
-						<h1 class="cover-heading"><b>News</b></h1>
-
-						<a href="images/xiaoran_jiang.jpg" target="_blank"><img class="news-img" src="images/xiaoran_jiang_small.jpg" alt="xiaoran_jiang_small.jpg"></a>
-						<div class="news-item">
-							<span style="color: rgba(100, 100, 100, 0.5);"><i>October 8th, 2018 - 08:00 pm</i></span><br>
-							<div style="line-height: 1.55;">
-								<b>Results of the final round</b><br>
-								We are excited to announce the winners of the 1st international music composition competition "Future Symphony"!
-								<span class="noshow" id="fourth"><br><b>1st place:</b> 🇨🇳️ Xiaoran Jiang (Befall)<br> <b>2nd place:</b> 🇰🇷️ SiHyun Uhm (Apex of Longing), 🇺🇸️ Robert Ge (Night Run)<br> <b>3rd place:</b> 🇨🇳️ Pengyi Li (Polymorphim)<br> <b>Audience Sympathy prize:</b> 🇱🇹️ Matas Drukteinis (Late Night at the City)<br> Biggest congratulations to the composers!<br></span>
-								<a class="link" id="fourthbutton" onClick="readmore('#fourth');">Read more</a>
-							</div>
-						</div>
-
-						<a href="images/concert.jpg" target="_blank"><img class="news-img" src="images/concert_small.jpg" alt="concert_small.jpg"></a>
-						<div class="news-item">
-							<span style="color: rgba(100, 100, 100, 0.5);"><i>September 1st, 2018 - 06:00 pm</i></span><br>
-							<div style="line-height: 1.55;">
-								<b>Results of the Ist round</b><br>
-								Our jury did an outstanding job at choosing the scores for the final round in the most professional way. We are happy to announce 7 participants whose works have been selected: 
-								<span class="noshow" id="third">🇱🇹 Matas Drukteinis, 🇺🇸️ Robert Ge, 🇨🇳 Xiaoran Jiang, 🇱🇹 Aleksej Kalinin, 🇨🇳 Pengyi Li, 🇬🇪 Giorgi Papiashvili, 🇰🇷️ SiHyun Uhm.<br>
+					<a href="images/concert.jpg" target="_blank"><img class="news-img" src="images/concert_small.jpg" alt="concert_small.jpg"></a>
+					<div class="news-item">
+						<span style="color: rgba(100, 100, 100, 0.5);"><i>September 1st, 2018 - 06:00 pm</i></span><br>
+						<div style="line-height: 1.55;">
+							<b>Results of the Ist round</b><br>
+							Our jury did an outstanding job at choosing the scores for the final round in the most professional way. We are happy to announce 7 participants whose works have been selected: 
+							<span class="noshow" id="third">🇱🇹 Matas Drukteinis, 🇺🇸️ Robert Ge, 🇨🇳 Xiaoran Jiang, 🇱🇹 Aleksej Kalinin, 🇨🇳 Pengyi Li, 🇬🇪 Giorgi Papiashvili, 🇰🇷️ SiHyun Uhm.<br>
 								Congratulations to the composers! Their symphonic pieces will be performed live on the 7th of October in the St. Catherine's church, Vilnius.<br></span>
 								<a class="link" id="thirdbutton" onClick="readmore('#third');">Read more</a>
 							</div>
@@ -111,7 +116,7 @@
 								<a class="link" id="secondbutton" onClick="readmore('#second');">Read more</a>
 							</div>
 						</div>
-							
+
 						<a href="images/poster_en.jpg" target="_blank"><img class="news-img" src="images/poster_en_small.jpg" alt="poster_en_small.jpg"></a>
 						<div class="news-item">
 							<span style="color: rgba(100, 100, 100, 0.5);"><i>April 14th, 2018 - 03:00 pm</i></span><br>
@@ -131,75 +136,76 @@
 								Finally, the registration to the competition “Future Symphony” has been closed. The first round begins on August 16th and our jury will have 15 days to pick out the best symphonic pieces for the final concert. The results will be published on the 1st of September.
 							</div>											
 						</div>
-						-->
-					</div>
+					-->
+				</div>
 
-					<div class="tab" id="about">        
-						<h1 class="cover-heading"><b>Regulations</b></h1>
-						<div class="textarea"></div>
-					</div>
+				<div class="tab" id="participants">        
+					<h1 class="cover-heading"><b>For Participants</b></h1>
+					<div style="line-height: 1.65;">
+						<b>Registration</b><br>
+						Composers who are willing to participate in the competition must submit:<br>
+						<b>By June 5th 23:59 (EET), 2020:</b><br>
+						<ul>
+							<li>the application form</li>
+							<li>a copy of passport / ID card</li>
+							<li>a good quality (at least the size of 1 MB) photo of the participant</li>
+							<li>a copy of payment confirmation.</li>
+						</ul>
+						Composers who register <b>before April 5th 23:59 (EET), 2020</b> have to pay an entry fee of <b>40 Eur</b>.<br>
+						Those who apply to the competition after this deadline must pay a fee of <b>70 Eur</b>.<br>
+						The registration fee is returned to the composer only in the case of competition being cancelled.<br>
+						You will find the application form by clicking <a href="#1" class="link">here</a>. By sending the application you agree with the <a href="#1" class="link">Regulations of the competition</a>.<br><br>
 
-					<div class="tab" id="apply">
-						<h1 class="cover-heading"><b>Apply to competition</b></h1>
-						<div style="line-height: 1.75;">
-							Composers who are willing to participate in the competition must submit:<br>
-							<b>by July 15th 2018</b>:
-							<ul>
-								<li>the application form;</li>
-								<li>a copy of payment confirmation.</li>
-							</ul>
-							<b>by August 15th 2018</b>:
-							<ul>
-								<li>a composition score in PDF format;</li>
-								<li>MP3 audio file (created with a music notation software);</li>
-								<li>a photo of the participant.</li>
-							</ul>
-							Everything has to be sent by e-mail to <b>futuresymphonycompetition@gmail.com</b>.<br>
-
-							You will find the application form by clicking <a href="Anketa.docx" class="link">here</a>.<br><br>
-
-							By sending the application you agree with the <a href="#about" class="link">Regulations of the competition</a>.
-						</div>
-					</div>
-
-					<div class="tab" id="contacts" style="margin-bottom: 30px;">
-						<h1 class="cover-heading"><b>Contacts</b></h1>
-						<div style="line-height: 1.75;">
-							<b>Event organizers:</b>
-							<div style="padding-left: 30px;">
-								Public institution „Pirmoji Kava“ &ndash; <a href="http://jmr.lt" class="contactlink" target="_blank">www.jmr.lt</a>
-							</div>
-							<b>Project managers:</b>
-							<div style="padding-left: 30px;">
-								Adomas Morkūnas-Budrys<br>
-								Danielius Tuita<br>
-								Džiugas Sabonis
-							</div>							
-							<b>Orchestra manager:</b>
-							<div style="padding-left: 30px;">
-								Džiugas Daugirda
-							</div>
-							<b>E-mail:</b> 
-							<div style="padding-left: 30px;">
-								<a href="mailto:futuresymphonycompetition@gmail.com" class="contactlink">futuresymphonycompetition@gmail.com</a>
-							</div>
-							<b>Facebook:</b>
-							<div style="padding-left: 30px;">
-								<a href="https://www.facebook.com/Future-Symphony-Competition-1832551767045287/" class="contactlink" target="_blank">Future Symphony Competition</a>
-							</div>
-							<b>Web design:</b>
-							<div style="padding-left: 30px;">
-								Cornelius Kummer &ndash; <a href="https://corny.me" class="contactlink" target="_blank">www.corny.me</a>
-							</div>
-						</div> 
+						<b>Score deadline</b><br>
+						<b>By July 5th 23:59 (EET), 2020</b> participants must submit:<br>
+						<ul>
+							<li>a composition score in PDF format (requirements of the score can be found <a href="#1" class="link">here</a>)</li>
+							<li>a MIDI or an MP3 audio file (created with a music notation software).</li>
+						</ul>
 					</div>
 				</div>
 
+				<div class="tab" id="sponsors">
+					<h1 class="cover-heading"><b>Sponsors & Friends</b></h1>
+					<div style="line-height: 1.75;"></div>
+				</div>
+
+				<div class="tab" id="contacts" style="margin-bottom: 30px;">
+					<h1 class="cover-heading"><b>Contacts</b></h1>
+					<div style="line-height: 1.75;">
+						<b>Event organizers:</b>
+						<div style="padding-left: 30px;">
+							Public institution „Muzikinis pirštas“
+						</div>
+						<b>Project managers:</b>
+						<div style="padding-left: 30px;">
+							Adomas Morkūnas-Budrys &ndash; <a href="mailto:adomas@futuresymphony.lt" class="contactlink">adomas@futuresymphony.lt</a><br>
+							Danielius Tuita &ndash; <a href="mailto:danielius@futuresymphony.lt" class="contactlink">danielius@futuresymphony.lt</a><br>
+							Jurgis Kubilius &ndash; <a href="mailto:jurgis@futuresymphony.lt" class="contactlink">jurgis@futuresymphony.lt</a><br>
+							Džiugas Daugirda &ndash; <a href="mailto:dziugas@futuresymphony.lt" class="contactlink">dziugas@futuresymphony.lt</a><br>
+						</div>						
+						<b>Orchestra manager:</b>
+						<div style="padding-left: 30px;">
+							Džiugas Daugirda
+						</div>
+						<b>E-mail:</b> 
+						<div style="padding-left: 30px;">
+							<a href="mailto:info@futuresymphony.lt" class="contactlink">info@futuresymphony.lt</a>
+						</div>
+						<b>Facebook:</b>
+						<div style="padding-left: 30px;">
+							<a href="https://www.facebook.com/Future-Symphony-Competition-1832551767045287/" class="contactlink" target="_blank">Future Symphony Competition</a>
+						</div>
+						<b>Web design:</b>
+						<div style="padding-left: 30px;">
+							Cornelius Kummer &ndash; <a href="https://corny.me" class="contactlink" target="_blank">www.corny.me</a>
+						</div>
+					</div> 
+				</div>
 			</div>
 
-			<div class="mastfoot"><a href="mailto:futuresymphonycompetition@gmail.com">futuresymphonycompetition@gmail.com</a> &nbsp; • &nbsp; <a href="https://www.facebook.com/Future-Symphony-Competition-1832551767045287/" class="social" target="_blank"><img src="images/fb_icon.svg" alt="fb_icon.svg"></a> &nbsp; • &nbsp; <a href="">&copy; 2018 - <script> document.write(new Date().getFullYear());</script> Future Symphony Competition</a></div>
+			<div class="mastfoot"><a href="mailto:info@futuresymphony.lt">info@futuresymphony.lt</a> &nbsp; • &nbsp; <a href="https://www.facebook.com/Future-Symphony-Competition-1832551767045287/" class="social" target="_blank"><img src="images/fb_icon.svg" alt="fb_icon.svg"></a> &nbsp; • &nbsp; <a href="">&copy; 2018 - <script> document.write(new Date().getFullYear());</script> Future Symphony Competition</a></div>
 			<div class="mastfoot2"></div>
-
 
 		</div>
 
@@ -208,6 +214,6 @@
 </body>
 
 <script src="js/jquery.min.js"></script>
-<script src="js/main.min.js"></script>
+<script src="js/main.js"></script>
 
 </html>

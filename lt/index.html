@@ -3,13 +3,14 @@
 <head>
 
 	<meta charset="utf-8">
+	<meta name="description" content="Future Symphony International Music Composition Competition For Symphony Orchestra">
 
 	<title>Future Symphony</title>
 
 	<!-- main css -->
 	<link href="../css/bootstrap.min.css" rel="stylesheet">
-	<link href="../css/main.min.css" rel="stylesheet">
-	<link href="../css/media.min.css" rel="stylesheet">
+	<link href="../css/main.css" rel="stylesheet">
+	<link href="../css/media.css" rel="stylesheet">
 	<!-- fonts -->
 	<link href="../css/fonts.min.css" rel="stylesheet">
 	<!-- favicon -->
@@ -26,6 +27,8 @@
 </head>
 
 <body class="preload">
+	
+	<div class="cover-picture"></div>
 
 	<div class="site-wrapper">
 
@@ -33,7 +36,6 @@
 			<noscript class="noscript">For full functionality of this site it is necessary to enable JavaScript.<br> <a href="https://www.enable-javascript.com/" target="_blank">Here are the instructions how to enable JavaScript in your web browser</a>.</noscript>
 
 			<div class="start" id="start">
-				<div class="coverpicture"></div>
 				<span class="headline">FUTURE SYMPHONY<br><span class="headline2">TARPTAUTINIS KOMPOZICIJŲ SIMFONINIAM ORKESTRUI KONKURSAS</span></span>
 			</div>
 
@@ -43,10 +45,10 @@
 
 					<nav>
 						<ul class="nav masthead-nav">
-							<li id="homelink"><a href="#home">PAGRINDINIS</a></li>
+							<li id="aboutlink"><a href="#about">APIE</a></li>
 							<li id="newslink"><a href="#news">NAUJIENOS</a></li>
-							<li id="aboutlink"><a href="#about">NUOSTATAI</a></li>
-							<li id="applylink"><a href="#apply">PARAIŠKA Į KONKURSĄ</a></li>
+							<li id="participantslink"><a href="#participants">DALYVIAMS</a></li>
+							<li id="sponsorslink"><a href="#sponsors">RĖMĖJAI & DRAUGAI</a></li>
 							<li id="contactslink"><a href="#contacts">KONTAKTAI</a></li>
 						</ul>
 					</nav>
@@ -58,121 +60,139 @@
 			</div>
 
 			<div class="cover-container">
-
-				<div class="inner cover" style="text-align: ;">
-					<div class="tab" id="home">
-						<h1 class="cover-heading"><b>Sveiki atvykę!</b></h1>
-						<div style="line-height: 1.65;">Mes džiaugiamės galėdami paskelbti I-ąjį tarptautinį kompozicijų simfoniniam orkestrui konkursą „Future Symphony“. Šiuo konkursu siekiame paskatinti jaunąją kompozitorių kartą kurti orkestrinę muziką ir įleisti gaivaus oro gūsio į mūsų muzikinį kultūrinį gyvenimą. Mes kviečiame jaunus kompozitorius išbandyti savo jėgas konkurse, parašant trumpą (5-12 min.) kūrinį simfoniniam orkestrui. Konkurse kviečiami dalyvauti įvairių šalių kompozitoriai (nuo 16 iki 30 m.).<br><br>
-							<b>Pagrindinė informacija:</b>
-							<ul>
-								<li>Dalyvio mokestis privalo būti sumokėtas iki <b>2018 m. liepos 15 d.</b>, kūrinių partitūros priimamos iki <b>2018 m. rugpjūčio 15 d.</b>;</li>
-								<li>Partitūros, patekusios į finalinį konkurso etapą, bus atliktos specialiai suburto konkursui simfoninio orkestro. <b>Konkursas suteikia kompozitoriams išskirtinę galimybę išgirsti savo kūrinius, parašytus simfoniniam orkestrui, ir gauti jų profesionalius įrašus</b>;</li>
-								<li>Konkurse kompozitoriai išlieka anonimiški iki rezultatų paskelbimo;</li>
-								<li>Registracijos mokestis – 50 eur;</li>
-								<li>Prizinis fondas – 1000 eur ir profesionalūs konkurso kūrinių įrašai.</li>
-							</ul>
-						</div>
-					</div>
-
-					<div class="tab" id="news">
-						<h1 class="cover-heading"><b>Naujienos</b></h1>
-
-						<a href="../images/concert.jpg" target="_blank"><img class="news-img" src="../images/concert_small.jpg" alt="concert_small.jpg"></a>
-						<div class="news-item">
-							<span style="color: rgba(100, 100, 100, 0.5);"><i>2018 m. rugsėjo 1 d. - 18:00</i></span><br>
-							<div style="line-height: 1.55;">
-								<b>I-ojo turo rezultatai</b><br>
-								Konkurso žiuri komisija atliko savo darbą puikiai ir atrinko 7 konkurso dalyvius, patenkančius į II-ąjį finalinį konkurso etapą: 
-								<span class="noshow" id="third">🇱🇹 Matas Drukteinis, 🇺🇸️ Robert Ge, 🇨🇳 Xiaoran Jiang, 🇱🇹 Aleksej Kalinin, 🇨🇳 Pengyi Li, 🇬🇪 Giorgi Papiashvili, 🇰🇷️ SiHyun Uhm. Didžiausi sveikinimai kompozitoriams! Jų simfoniniai kūriniai bus atlikti gyvia spalio 7 d. šv. Kotrynos bažnyčioje, Vilniuje.<br></span>
-								<a class="link" id="thirdbutton" onClick="readmore('#third');">Skaityti daugiau</a>
-							</div>
-						</div>
-
-						<a href="../images/logo_news.jpg" target="_blank"><img class="news-img" src="../images/logo_news_small.jpg" alt="logo_news_small.jpg"></a>
-						<div class="news-item">
-							<span style="color: rgba(100, 100, 100, 0.5);"><i>2018 m. rugpjūčio 16 d. - 15:00</i></span><br>
-							<div style="line-height: 1.55;">
-								<b>Konkurso “Future Symphony“ I-ojo turo pradžia</b><br>
-								Registracija į konkursą "Future Symphony" yra uždaroma. Mes džiaugiamės sulaukę 14 talentingų kompozitorių anketų iš Lietuvos ir užsienio šalių. I-asis turas prasideda rugpjūčio 16 d.<span class="noshow" id="second">, kurio metu konkurso žiuri per 15 dienų atrinks pačias geriausias simfonines partitūras finaliniam koncertui. Rezultatai bus paskelbti rugsėjo 1 d.<br></span>
-								<a class="link" id="secondbutton" onClick="readmore('#second');">Skaityti daugiau</a>
-							</div>
-						</div>
-							
-						<a href="../images/poster_lt.jpg" target="_blank"><img class="news-img" src="../images/poster_lt_small.jpg" alt="poster_lt_small.jpg"></a>
-						<div class="news-item">
-							<span style="color: rgba(100, 100, 100, 0.5);"><i>2018 m. balandzio 14. d - 15:00</i></span><br>
-							<div style="line-height: 1.55;">
-								<b>2018 m. balandžio 15 d. skelbiama registracija į konkursą “Future Symphony“</b><br>
-								Mes džiaugiamės galėdami paskelbti registraciją į I-ąjį tarptautinį kompozicijų simfoniniam orkestrui konkursą “Future Symphony“. Kūrinių partitūros yra priimamos 2018 m. nuo balandžio 15 d. iki rugpjūčio 15 d. <span class="noshow" id="first">Dalyvio mokestis privalo būti sumokėtas iki liepos 15 d.</span>
-								<a class="link" id="firstbutton" onClick="readmore('#first');">Skaityti daugiau</a>
-							</div>
-						</div>
-					</div>
-
-					<div class="tab" id="about">        
-						<h1 class="cover-heading"><b>Nuostatai</b></h1>
-						<div class="textarea"></div>
-					</div>
-
-					<div class="tab" id="apply">
-						<h1 class="cover-heading"><b>Paraiška į konkursą</b></h1>
-						<div style="line-height: 1.75;">
-							Kompozitoriai, norintys dalyvauti konkurse, turi atsiųsti el. paštu:<br>
-							<div style="height: 10px;"></div>
-							<b>iki 2018 m. liepos 15 d.</b>:
-							<ul>
-								<li>užpildytą anketą;</li>
-								<li>dalyvio mokesčio pavedimo kopiją.</li>
-							</ul>
-							<b>iki 2018 m. rugpjūčio 15 d.</b>:
-							<ul>
-								<li>kūrinio partitūra PDF formatu;</li>
-								<li>kūrinio audio įrašas mp3 formatu (padarytas iš notografinių programų);</li>
-								<li>dalyvio nuotrauka.</li>
-							</ul><br>
-
-							Anketą rasite <a href="../Anketa.docx" class="link">čia</a>.<br><br>
-
-							Siųsdami paraiška į konkursą jūs sutinkate su <a href="#about" class="link">konkurso nuostatais</a>.<br>
-						</div>
-					</div>
-
-					<div class="tab" id="contacts" style="margin-bottom: 30px;">
-						<h1 class="cover-heading"><b>Kontaktai</b></h1>
-						<div style="line-height: 1.75;">
-							<b>Renginio organizatoriai:</b>
-							<div style="padding-left: 30px;">
-								Všį „Pirmoji Kava“ &ndash; <a href="http://jmr.lt" class="contactlink" target="_blank">www.jmr.lt</a>
-							</div>
-							<b>Projekto vadovai:</b>
-							<div style="padding-left: 30px;">
-								Adomas Morkūnas-Budrys<br>
-								Danielius Tuita<br>
-								Džiugas Sabonis
-							</div>
-							<b>Orkestro vadybininkas:</b>
-							<div style="padding-left: 30px;">
-								Džiugas Daugirda
-							</div>
-							<b>El. paštas:</b> 
-							<div style="padding-left: 30px;">
-								<a href="mailto:futuresymphonycompetition@gmail.com" class="contactlink">futuresymphonycompetition@gmail.com</a>
-							</div>
-							<b>Facebook:</b>
-							<div style="padding-left: 30px;">
-								<a href="https://www.facebook.com/Future-Symphony-Competition-1832551767045287/" class="contactlink" target="_blank">Future Symphony Competition</a>
-							</div>
-							<b>Internetinio puslapio dizainas:</b>
-							<div style="padding-left: 30px;">
-								Cornelius Kummer &ndash; <a href="https://corny.me" class="contactlink" target="_blank">www.corny.me</a>
-							</div>
-						</div> 
+				<div class="tab" id="about">
+					<h1 class="cover-heading"><b>Sveiki atvykę!</b></h1>
+					<div style="line-height: 1.65;">
+						Daugiau informacijos: <a href="#participants" class="link">Dalyviams</a>.
 					</div>
 				</div>
 
+				<div class="tab" id="news" style="overflow-y: scroll;">
+					<h1 class="cover-heading"><b>Naujienos</b></h1>
+
+					<a href="../images/xiaoran_jiang.jpg" target="_blank"><img class="news-img" src="../images/xiaoran_jiang_small.jpg" alt="concert_small.jpg"></a>
+					<div class="news-item">
+						<span style="color: rgba(100, 100, 100, 0.5);"><i>2018 m. spalio 8 d. - 20:00</i></span><br>
+						<div style="line-height: 1.55;">
+							<b>1-ojo konkurso finalinio turo rezultatai</b><br>
+							Džiaugsmingai pranešame 1-ojo tarptautinio kompozicijų simfoniniam orkestrui konkurso rezultatus!<br>
+							<span class="noshow" id="fourth">
+								<b>I vieta:</b> 🇨🇳️ Xiaoran Jiang ("Befall")<br>
+								<b>II vieta:</b> 🇰🇷️ SiHyun Uhm ("Apex of Longing"), 🇺🇸️ Robert Ge ("Night Run")<br>
+								<b>III vieta:</b> 🇨🇳️ Pengyi Li ("Polymorphism")<br>
+								<b>Publikos simpatijos prizas:</b> 🇱🇹️ Matas Drukteinis ("Late Night at the City")<br>
+								Didžiausi sveikinimai kompozitoriams!<br><br>
+								Kūrinius vertino žiuri nariai:<br>
+								Marius Baranauskas (pirmininkas)<br>
+								Gediminas Gelgotas<br>
+								Ayal Adler<br>
+								Rasa Murauskaitė<br>
+								Modestas Barkauskas.<br>
+								Konkurse dalyvavo kompozitoriai iš Lietuvos, Estijos, Gruzijos, Prancūzijos, JAV, Kanados, Kinijos, Taivano, Australijos ir Pietų Korėjos.<br>
+							</span>
+							<a class="link" id="fourthbutton" onClick="readmore('#fourth');">Skaityti daugiau</a>
+						</div>
+					</div>
+
+					<a href="../images/concert.jpg" target="_blank"><img class="news-img" src="../images/concert_small.jpg" alt="concert_small.jpg"></a>
+					<div class="news-item">
+						<span style="color: rgba(100, 100, 100, 0.5);"><i>2018 m. rugsėjo 1 d. - 18:00</i></span><br>
+						<div style="line-height: 1.55;">
+							<b>I-ojo turo rezultatai</b><br>
+							Konkurso žiuri komisija atliko savo darbą puikiai ir atrinko 7 konkurso dalyvius, patenkančius į II-ąjį finalinį konkurso etapą: 
+							<span class="noshow" id="third">🇱🇹 Matas Drukteinis, 🇺🇸️ Robert Ge, 🇨🇳 Xiaoran Jiang, 🇱🇹 Aleksej Kalinin, 🇨🇳 Pengyi Li, 🇬🇪 Giorgi Papiashvili, 🇰🇷️ SiHyun Uhm. Didžiausi sveikinimai kompozitoriams! Jų simfoniniai kūriniai bus atlikti gyvia spalio 7 d. šv. Kotrynos bažnyčioje, Vilniuje.<br></span>
+							<a class="link" id="thirdbutton" onClick="readmore('#third');">Skaityti daugiau</a>
+						</div>
+					</div>
+
+					<a href="../images/logo_news.jpg" target="_blank"><img class="news-img" src="../images/logo_news_small.jpg" alt="logo_news_small.jpg"></a>
+					<div class="news-item">
+						<span style="color: rgba(100, 100, 100, 0.5);"><i>2018 m. rugpjūčio 16 d. - 15:00</i></span><br>
+						<div style="line-height: 1.55;">
+							<b>Konkurso “Future Symphony“ I-ojo turo pradžia</b><br>
+							Registracija į konkursą "Future Symphony" yra uždaroma. Mes džiaugiamės sulaukę 14 talentingų kompozitorių anketų iš Lietuvos ir užsienio šalių. I-asis turas prasideda rugpjūčio 16 d.<span class="noshow" id="second">, kurio metu konkurso žiuri per 15 dienų atrinks pačias geriausias simfonines partitūras finaliniam koncertui. Rezultatai bus paskelbti rugsėjo 1 d.<br></span>
+							<a class="link" id="secondbutton" onClick="readmore('#second');">Skaityti daugiau</a>
+						</div>
+					</div>
+
+					<a href="../images/poster_lt.jpg" target="_blank"><img class="news-img" src="../images/poster_lt_small.jpg" alt="poster_lt_small.jpg"></a>
+					<div class="news-item">
+						<span style="color: rgba(100, 100, 100, 0.5);"><i>2018 m. balandzio 14. d - 15:00</i></span><br>
+						<div style="line-height: 1.55;">
+							<b>2018 m. balandžio 15 d. skelbiama registracija į konkursą “Future Symphony“</b><br>
+							Mes džiaugiamės galėdami paskelbti registraciją į I-ąjį tarptautinį kompozicijų simfoniniam orkestrui konkursą “Future Symphony“. Kūrinių partitūros yra priimamos 2018 m. nuo balandžio 15 d. iki rugpjūčio 15 d. <span class="noshow" id="first">Dalyvio mokestis privalo būti sumokėtas iki liepos 15 d.</span>
+							<a class="link" id="firstbutton" onClick="readmore('#first');">Skaityti daugiau</a>
+						</div>
+					</div>
+				</div>
+
+				<div class="tab" id="participants">        
+					<h1 class="cover-heading"><b>Dalyviams</b></h1>
+					<div style="line-height: 1.65;">
+						<b>Registracija</b><br>
+						Kompozitoriai, norintys dalyvauti konkurse, turi atsiųsti el. paštu:<br>
+						<b>iki 2020 m. birželio 5 d. 23:59 Lietuvos laiku (EET):</b><br>
+						<ul>
+							<li>užpildytą dalyvio anketą</li>
+							<li>paso / ID kortelės kopiją</li>
+							<li>geros kokybės dalyvio nuotrauką (mažiausiai 1 MB apimties)</li>
+							<li>dalyvio mokesčio pavedimo kopiją.</li>
+						</ul>
+						Kompozitoriams, užsiregistravusiems <b>iki 2020 m. balandžio 5 d.</b> 23:59 Lietuvos laiku (EET),
+						dalyvio mokestis – <b>40 Eur</b>.<br>
+						<b>Nuo 2020 m. balandžio 6 d.</b> dalyvio mokestis – <b>70 Eur</b>.<br>
+						Sumokėti pinigai dalyviams grąžinami tik konkurso atšaukimo atveju.<br>
+						Anketą rasite <a href="#1" class="link">čia</a>. Siųsdami paraiška į konkursą jūs sutinkate su <a href="#1" class="link">konkurso nuostatais</a>.<br><br>
+
+						<b>Kūrinio atsiuntimas</b><br>
+						<b>iki 2020 m. liepos 5 d.</b> 23:59 Lietuvos laiku (EET):<br>
+						<ul>
+							<li>kūrinio partitūrą PDF formatu (partitūros reikalavimus rasite <a href="#1" class="link">čia</a>)</li>
+							<li>kūrinio audio įrašą MIDI arba mp3 formatu (padarytą iš notografinių programų).</li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="tab" id="sponsors">
+					<h1 class="cover-heading"><b>Rėmėjai ir draugai</b></h1>
+					<div style="line-height: 1.75;"></div>
+				</div>
+
+				<div class="tab" id="contacts" style="margin-bottom: 30px;">
+					<h1 class="cover-heading"><b>Kontaktai</b></h1>
+					<div style="line-height: 1.75;">
+						<b>Projekto organizatorius:</b>
+						<div style="padding-left: 30px;">
+							VšĮ „Muzikinis pirštas“
+						</div>
+						<b>Projekto vadybininkai:</b>
+						<div style="padding-left: 30px;">
+							Adomas Morkūnas-Budrys &ndash; <a href="mailto:adomas@futuresymphony.lt" class="contactlink">adomas@futuresymphony.lt</a><br>
+							Danielius Tuita &ndash; <a href="mailto:danielius@futuresymphony.lt" class="contactlink">danielius@futuresymphony.lt</a><br>
+							Jurgis Kubilius &ndash; <a href="mailto:jurgis@futuresymphony.lt" class="contactlink">jurgis@futuresymphony.lt</a><br>
+							Džiugas Daugirda &ndash; <a href="mailto:dziugas@futuresymphony.lt" class="contactlink">dziugas@futuresymphony.lt</a><br>
+						</div>
+						<b>Orkestro vadybininkas:</b>
+						<div style="padding-left: 30px;">
+							Džiugas Daugirda
+						</div>
+						<b>El. paštas:</b> 
+						<div style="padding-left: 30px;">
+							<a href="mailto:info@futuresymphony.lt" class="contactlink">info@futuresymphony.lt</a>
+						</div>
+						<b>Facebook:</b>
+						<div style="padding-left: 30px;">
+							<a href="https://www.facebook.com/Future-Symphony-Competition-1832551767045287/" class="contactlink" target="_blank">Future Symphony Competition</a>
+						</div>
+						<b>Internetinio puslapio dizainas:</b>
+						<div style="padding-left: 30px;">
+							Cornelius Kummer &ndash; <a href="https://corny.me" class="contactlink" target="_blank">www.corny.me</a>
+						</div>
+					</div> 
+				</div>
 			</div>
 
-			<div class="mastfoot"><a href="mailto:futuresymphonycompetition@gmail.com">futuresymphonycompetition@gmail.com</a> &nbsp; • &nbsp; <a href="https://www.facebook.com/Future-Symphony-Competition-1832551767045287/" class="social" target="_blank"><img src="../images/fb_icon.svg" alt="fb_icon.svg"></a> &nbsp; • &nbsp; <a href="">&copy; 2018 - <script> document.write(new Date().getFullYear());</script> Future Symphony Competition</a></div>
+			<div class="mastfoot"><a href="mailto:info@futuresymphony.lt">info@futuresymphony.lt</a> &nbsp; • &nbsp; <a href="https://www.facebook.com/Future-Symphony-Competition-1832551767045287/" class="social" target="_blank"><img src="../images/fb_icon.svg" alt="fb_icon.svg"></a> &nbsp; • &nbsp; <a href="">&copy; 2018 - <script> document.write(new Date().getFullYear());</script> Future Symphony Competition</a></div>
 			<div class="mastfoot2"></div>
 
 
@@ -183,6 +203,6 @@
 </body>
 
 <script src="../js/jquery.min.js"></script>
-<script src="../js/main.min.js"></script>
+<script src="../js/main.js"></script>
 
 </html>
