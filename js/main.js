@@ -1,23 +1,33 @@
+let browser = navigator.userAgent.toLowerCase().indexOf('chrome') > -1 ? 'chrome' : 'other';
+if (browser === 'chrome') {
+  $('.masthead-nav > li > a').css('font-weight', '300');
+}
+
 //set height of start cover, push header up and set variables for relevant object positions
-$('.start').height($(window).height());
-$('.masthead').css('margin-top', -$('.masthead').height() - 2);
-const loc = (window.location.pathname == '/') ? '/lt' : '/';
-const hashpos = ($(window.location.hash).offset()) ? $(window.location.hash).offset().top : $('#start').offset().top; 
-const lang = $('#lang');
-const headerpos = Math.floor($('.masthead').offset().top);
-const headerheight = $('.masthead').height();
-const homepos = Math.floor($('#home').offset().top - 150)
-const newspos = Math.floor($('#news').offset().top - 150);
-const aboutpos = Math.floor($('#about').offset().top - 150);
-const applypos = Math.floor($('#apply').offset().top - 150);
-const contactpos = Math.floor($('#contacts').offset().top - 150);
-const scrollBottom = $(document).height() - $(window).height();
+let lang = $('#lang');
+let loc, hashpos, headerheight, startbottom, aboutpos, newspos, participantspos, sponsorspos, contactpos, scrollBottom;
+function init() {
+  $('.start').height($(window).height());
+  $('.masthead').css('margin-top', -$('.masthead').height() - 2);
+  loc = (window.location.pathname == '/') ? '/lt' : '/';
+  hashpos = ($(window.location.hash).offset()) ? $(window.location.hash).offset().top : $('#start').offset().top; 
+  headerheight = $('.masthead').height();
+  startbottom = Math.floor($('.start').height() - $('.masthead').height());
+  aboutpos = Math.floor($('#about').offset().top - 150)
+  newspos = Math.floor($('#news').offset().top - 150);
+  participantspos = Math.floor($('#participants').offset().top - 150);
+  sponsorspos = Math.floor($('#sponsors').offset().top - 150);
+  contactpos = Math.floor($('#contacts').offset().top - 150);
+  scrollBottom = $(document).height() - $(window).height();
+  setHeader();
+}
+init();
 
 //prevent animations on pageload
 window.setTimeout(() => $('body').removeClass('preload'), 150);
 
 //fire setHeader on pageload and on every scroll event
-setHeader();
+$(window).resize(init);
 $(window).scroll(setHeader);
 $(window).scrollTop(hashpos - headerheight);
 
@@ -25,7 +35,7 @@ $(window).scrollTop(hashpos - headerheight);
 
 //change Header appearance according to position
 function setHeader() {
-  if ($(window).scrollTop() > headerpos) {
+  if ($(window).scrollTop() >= startbottom) {
     $('.masthead').addClass('active');  
     $('.masthead').css('top', $('.masthead').height() + 2);
     $('.back').addClass('active');     
@@ -53,10 +63,10 @@ function setHeader() {
 
 //remove active from all nav links and reset language link
 function removeActive() {
-  $('#homelink').removeClass('active');
-  $('#newslink').removeClass('active');
   $('#aboutlink').removeClass('active');
-  $('#applylink').removeClass('active');
+  $('#newslink').removeClass('active');
+  $('#participantslink').removeClass('active');
+  $('#sponsorslink').removeClass('active');
   $('#contactslink').removeClass('active');
   lang.attr('href', loc);
 }
@@ -64,18 +74,18 @@ function removeActive() {
 //add active to the correct nav link and set language link
 function setActive() {
   removeActive();
-  if (homepos <= $(window).scrollTop() && $(window).scrollTop() < newspos) {
-    $('#homelink').addClass('active');
-    lang.attr('href', loc + '#home');
-  } else if (newspos <= $(window).scrollTop() && $(window).scrollTop() < aboutpos) {
-    $('#newslink').addClass('active');
-    lang.attr('href', loc + '#news');
-  } else if (aboutpos <= $(window).scrollTop() && $(window).scrollTop() < applypos) {
+  if (aboutpos <= $(window).scrollTop() && $(window).scrollTop() < newspos) {
     $('#aboutlink').addClass('active');
     lang.attr('href', loc + '#about');
-  } else if (applypos <= $(window).scrollTop() && $(window).scrollTop() < contactpos) {
-    $('#applylink').addClass('active');
-    lang.attr('href', loc + '#apply');
+  } else if (newspos <= $(window).scrollTop() && $(window).scrollTop() < participantspos) {
+    $('#newslink').addClass('active');
+    lang.attr('href', loc + '#news');
+  } else if (participantspos <= $(window).scrollTop() && $(window).scrollTop() < sponsorspos) {
+    $('#participantslink').addClass('active');
+    lang.attr('href', loc + '#participants');
+  } else if (sponsorspos <= $(window).scrollTop() && $(window).scrollTop() < contactpos) {
+    $('#sponsorslink').addClass('active');
+    lang.attr('href', loc + '#sponsors');
   } else if (contactpos <= $(window).scrollTop()) {
     $('#contactslink').addClass('active');
     lang.attr('href', loc + '#contacts');
@@ -113,18 +123,6 @@ $('a[href*="#"]')
   history.pushState(null, null, this.hash == '#start' ? ' ' : this.hash);
 }
 });
-
-//include about text
-function textarea() {
-  var xmlhttp, text;
-  xmlhttp = new XMLHttpRequest();
-  xmlhttp.open('GET', 'about.html?1', false);
-  xmlhttp.send();
-  text = xmlhttp.responseText;
-  $('.textarea').html(text);
-}
-
-textarea();
 
 function readmore(arg) {
   var button = $(arg + 'button');
