@@ -1,9 +1,4 @@
-let browser = navigator.userAgent.toLowerCase().indexOf('chrome') > -1 ? 'chrome' : 'other';
-if (browser === 'chrome') {
-  $('.masthead-nav > li > a').css('font-weight', '300');
-}
-
-//set height of start cover, push header up and set variables for relevant object positions
+// Set height of start cover, push header up and set variables for relevant object positions
 let lang = $('#lang');
 let loc, hashpos, headerheight, startbottom, aboutpos, newspos, participantspos, sponsorspos, contactpos, scrollBottom;
 function init() {
@@ -23,17 +18,27 @@ function init() {
 }
 init();
 
-//prevent animations on pageload
-window.setTimeout(() => $('body').removeClass('preload'), 150);
+// Prevent animations on pageload - no arrow function because IE 11 doesn't support that
+window.setTimeout(function () {$('body').removeClass('preload'), 150});
 
-//fire setHeader on pageload and on every scroll event
+// Fire setHeader on pageload and on every scroll event
 $(window).resize(init);
 $(window).scroll(setHeader);
 $(window).scrollTop(hashpos - headerheight);
 
-//helper functions
+// Make header links regular font-weight on Chrome
+if (!!window.chrome && (!!window.chrome.webstore || !!window.chrome.runtime)) {
+  $('.masthead-nav > li > a').css('font-weight', '300');
+}
 
-//change Header appearance according to position
+// Use Web Font Loader if IE 11
+if (!!window.document.documentMode) {
+  document.write('<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script><script>WebFont.load({google: {families: ["Audiowide", "Open Sans"]}});</script>');
+}
+
+// Helper functions
+
+// Change Header appearance according to position
 function setHeader() {
   if ($(window).scrollTop() >= startbottom) {
     $('.masthead').addClass('active');  
@@ -61,7 +66,7 @@ function setHeader() {
   removeActive();
 }
 
-//remove active from all nav links and reset language link
+// Remove active from all nav links and reset language link
 function removeActive() {
   $('#aboutlink').removeClass('active');
   $('#newslink').removeClass('active');
@@ -71,7 +76,7 @@ function removeActive() {
   lang.attr('href', loc);
 }
 
-//add active to the correct nav link and set language link
+// Add active to the correct nav link and set language link
 function setActive() {
   removeActive();
   if (aboutpos <= $(window).scrollTop() && $(window).scrollTop() < newspos) {
