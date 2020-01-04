@@ -7,7 +7,7 @@ function init() {
   loc = (window.location.pathname == '/') ? '/lt' : '/';
   hashpos = ($(window.location.hash).offset()) ? $(window.location.hash).offset().top : $('#start').offset().top; 
   headerheight = $('.masthead').height();
-  startbottom = Math.floor($('.start').height() - $('.masthead').height());
+  startbottom = Math.floor($('.start').height() - $('.masthead').height() - 1);
   aboutpos = Math.floor($('#about').offset().top - 150)
   newspos = Math.floor($('#news').offset().top - 150);
   participantspos = Math.floor($('#participants').offset().top - 150);
@@ -98,47 +98,40 @@ function setActive() {
 }
 
 // Smooth scrolling script from https://css-tricks.com/snippets/jquery/smooth-scrolling/
-$('a[href*="#"]')
-.not('[href="#"]')
-.not('[href="#0"]')
-.click(function(event) {
-  if (
-    location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') 
-    && 
-    location.hostname == this.hostname
-    ) {
+$('a[href*="#"]').not('[href="#"]').not('[href="#0"]').click(function(event) {
+  if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
     let target = $(this.hash);
-  target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-  if (target.length) {
-    event.preventDefault();
-    scroll = target.offset().top - headerheight;
-    $('html, body').animate({
-      scrollTop: scroll
-    }, 1000, function() {
-      let $target = $(target);
-      $target.focus();
-      if ($target.is(':focus')) {
-        return false;
-      } else {
-        $target.attr('tabindex','-1');
+    target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+    if (target.length) {
+      event.preventDefault();
+      scroll = target.offset().top - headerheight;
+      $('html, body').animate({
+        scrollTop: scroll
+      }, 1000, function() {
+        let $target = $(target);
         $target.focus();
-      };
-    });
+        if ($target.is(':focus')) {
+          return false;
+        } else {
+          $target.attr('tabindex','-1');
+          $target.focus();
+        };
+      });
+    }
+    history.pushState(null, null, this.hash == '#start' ? ' ' : this.hash);
   }
-  history.pushState(null, null, this.hash == '#start' ? ' ' : this.hash);
-}
 });
 
 function readmore(arg) {
   var button = $(arg + 'button');
-  if (button.text() == 'Read more' || button.text() == 'Skaityti daugiau') {
+  if ($(arg).css('display') == 'none') {
     $(arg).show();
     if (button.text() == 'Read more') {
       button.text('Read less');
     } else {
       button.text('Skaityti maziau');
     }
-  } else if (button.text() == 'Read less' || button.text() == 'Skaityti maziau') {
+  } else {
     $(arg).hide();
     if (button.text() == 'Read less') {
       button.text('Read more');
