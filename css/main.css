@@ -143,6 +143,12 @@ h3 {
   outline: none;
 }
 
+.oversize {
+  height: auto; 
+  overflow: visible; 
+  display: inline-block;
+}
+
 .contactlink {
   color: inherit;
 }
