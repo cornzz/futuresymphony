@@ -15,18 +15,6 @@
   text-decoration: underline;
 }
 
-/*
-#ifr { 
-  max-height: 0; 
-  overflow: hidden; 
-  transition: max-height 500ms;
-}
-
-#ifr.active {
-  max-height: 1000px;
-}
-*/
-
 .noshow {
   display: none;
 }
@@ -36,6 +24,14 @@
   -moz-transition: none !important;
   -ms-transition: none !important;
   -o-transition: none !important;
+}
+
+.mail:after {
+  content: attr(data-user) "@" attr(data-domain); 
+}
+
+.mail:hover {
+  cursor: pointer;
 }
 
 html,
@@ -116,12 +112,6 @@ h3 {
 
 .site-wrapper-inner {
   display: table-cell;
-}
-
-.anchor {
-  margin-bottom: 4vh;
-  height: 10px;
-  outline: none;
 }
 
 .cover-heading {
