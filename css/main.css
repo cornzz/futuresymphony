@@ -143,12 +143,17 @@ h3 {
   color: inherit;
 }
 
-.link {
-  color: rgb(24, 76, 133);
+.link,
+.link:focus {
+  text-decoration: none;
+  border-bottom: 1px solid #184c85;
+  color: #184c85;
 }
 
 .link:hover {
-  color: rgba(8, 9, 29, 0.85);
+  text-decoration: none;
+  border-bottom: none;
+  color: #171e26;
   cursor: pointer;
 }
 
