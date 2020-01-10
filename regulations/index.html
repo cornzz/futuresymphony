@@ -138,7 +138,7 @@
 				</div>
 			</div>
 
-			<div class="mastfoot active"><a href="mailto:info@futuresymphony.lt">info@futuresymphony.lt</a> &nbsp; • &nbsp; <a href="https://www.facebook.com/Future-Symphony-Competition-1832551767045287/" class="social" target="_blank"><img src="../images/fb_icon.svg" alt="fb_icon.svg" width="20"></a> &nbsp; • &nbsp; <a href="">&copy; 2018 - <script> document.write(new Date().getFullYear());</script> Future Symphony Competition</a></div>
+			<div class="mastfoot active"><a onclick="mail(this)" class="mail" data-user="info" data-domain="futuresymphony.lt"></a> &nbsp; • &nbsp; <a href="https://www.facebook.com/Future-Symphony-Competition-1832551767045287/" class="social" target="_blank"><img src="../images/fb_icon.svg" alt="fb_icon.svg" width="20"></a> &nbsp; • &nbsp; <a href="">&copy; 2018 - <script> document.write(new Date().getFullYear());</script> Future Symphony Competition</a></div>
 			<div class="mastfoot2"></div>
 
 		</div>
@@ -153,7 +153,11 @@
 	$('#spacer').height(headerheight);
 	let hashpos = ($(window.location.hash).offset()) ? $(window.location.hash).offset().top : 0; 
 	$(window).scrollTop(hashpos - headerheight);
-	$('#lang').attr('href', '/lt/regulations' + window.location.hash);;
+	$('#lang').attr('href', '/lt/regulations' + window.location.hash);
+	
+	function mail(arg) {
+ 		return window.location.href = 'mailto:' + arg.dataset.user + '@' + arg.dataset.domain;
+	}
 </script>
 
 </html>

@@ -140,3 +140,7 @@ function readmore(arg) {
     }
   }
 }
+
+function mail(arg) {
+  return window.location.href = 'mailto:' + arg.dataset.user + '@' + arg.dataset.domain;
+}
