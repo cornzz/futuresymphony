@@ -217,6 +217,7 @@
   }
   .masthead-nav > li > a {
     font-size: 22px;
+    padding: 15px 0;
   }
   .mastfoot {
     font-size: 120%;
@@ -229,6 +230,15 @@
   }
   .tab {
     font-size: 1.76vh;
+  }
+  .cover-heading {
+  margin-bottom: 30px;
+  }
+  .flex-item {
+    margin-bottom: 100px;
+  }
+  .flex-item > a > img {
+    height: 150px;
   }
 }
 
