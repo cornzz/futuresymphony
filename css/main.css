@@ -203,7 +203,7 @@ h3 {
 
 .flex-item > a > img {
   height: 100px;
-  filter: contrast(0%) blur(1px);
+  filter: contrast(0%);
   z-index: 0;
   transition: filter 0.1s ease-in-out; 
 }
