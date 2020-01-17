@@ -55,7 +55,7 @@
 
 			<div id="spacer"></div>
 			<div class="cover-container">
-				<div class="tab oversize" id="about">
+				<div class="tab oversize">
 					<h1 class="cover-heading"><b>Konkurso nuostatai</b></h1>
 					<div style="line-height: 1.65;">
 						<b>I. Bendra konkurso informacija</b>
@@ -88,7 +88,7 @@
 						Ayal Adler<br>
 						Lina Navickaitė-Martinelli<br>
 						Andris Dzenītis<br>
-						Gediminas Gelgotas<br>
+						Gediminas Gelgotas<br></b>
 						Visų komisijų ir žiuri vertinimas yra galutinis ir neginčijamas. 2-ojo turo žiuri sudėtis gali kisti.</p>
 
 						<b>VI. Vertinimo kriterijai</b><br>
@@ -146,16 +146,6 @@
 </body>
 
 <script src="../../js/jquery.min.js"></script>
-<script>
-	let headerheight = $('.masthead').height();
-	$('#spacer').height(headerheight);
-	let hashpos = ($(window.location.hash).offset()) ? $(window.location.hash).offset().top : 0; 
-	$(window).scrollTop(hashpos - headerheight);
-	$('#lang').attr('href', '/regulations' + window.location.hash);
-
-	function mail(arg) {
- 		return window.location.href = 'mailto:' + arg.dataset.user + '@' + arg.dataset.domain;
-	}
-</script>
+<script src="../../js/regulations.js"></script>
 
 </html>
