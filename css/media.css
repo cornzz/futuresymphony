@@ -249,6 +249,10 @@
   .flex-item > a > img {
     height: 150px;
   }
+  .news-img-big {
+    height: 350px;
+    float: none;
+  }
 }
 
 @media screen and (max-device-width: 640px) and (orientation:landscape) {
