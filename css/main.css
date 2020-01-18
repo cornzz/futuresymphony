@@ -198,6 +198,9 @@ h3 {
   /*border: 1px solid black;*/
 }
 
+/* Fix for Edge */
+@supports (-ms-ime-align:auto) { .flex-container { justify-content: space-around; } }
+
 .flex-item {
   margin-bottom: 35px;
   overflow: hidden;
