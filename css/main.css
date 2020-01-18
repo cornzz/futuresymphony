@@ -194,7 +194,7 @@ h3 {
 .flex-container {
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-around;
+  justify-content: space-evenly;
   /*border: 1px solid black;*/
 }
 
@@ -205,7 +205,7 @@ h3 {
 }
 
 .flex-item > a > img {
-  height: 70px;
+  max-height: 100%;
   filter: contrast(0%);
   z-index: 0;
   transition: filter 0.1s ease-in-out; 
