@@ -226,6 +226,14 @@ h3 {
 
 /* ------------------------------------------------------------ header */
 
+.icon {
+  padding-right: 30px;
+}
+
+.icon:first-of-type {
+  padding-right: 50px;
+}
+
 .icon > img {
   position: absolute;
   width: 32px;

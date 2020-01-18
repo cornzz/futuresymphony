@@ -1,13 +1,13 @@
 // Set height of start cover, push header up and set variables for relevant object positions
 let lang = $('#lang');
-let loc, hashpos, headerheight, startbottom, aboutpos, newspos, participantspos, sponsorspos, contactpos, scrollBottom;
+let loc, hashpos, headerheight, startBottom, aboutpos, newspos, participantspos, sponsorspos, contactpos, scrollBottom;
 function init() {
   $('.start').height($(window).height());
   $('.masthead').css('margin-top', -$('.masthead').height() - 2);
   loc = (window.location.pathname == '/') ? '/lt' : '/';
   hashpos = ($(window.location.hash).offset()) ? $(window.location.hash).offset().top : $('#start').offset().top; 
   headerheight = $('.masthead').height();
-  startbottom = Math.floor($('.start').height() - $('.masthead').height() - 1);
+  startBottom = Math.floor($('.start').height() - $('.masthead').height() - 1);
   aboutpos = Math.floor($('#about').offset().top - 150)
   newspos = Math.floor($('#news').offset().top - 150);
   participantspos = Math.floor($('#participants').offset().top - 150);
@@ -40,29 +40,18 @@ if (!!window.document.documentMode) {
 
 // Change Header appearance according to position
 function setHeader() {
-  if ($(window).scrollTop() >= startbottom) {
+  if ($(window).scrollTop() >= startBottom) {
     $('.masthead').addClass('active');  
     $('.masthead').css('top', $('.masthead').height() + 2);
     $('.back').addClass('active');     
-    
     $('.mastfoot').addClass('active');    
-    if ($(window).scrollTop() >= (scrollBottom - 20)) {
-      $('.mastfoot').addClass('active2');
-      $('.mastfoot2').addClass('active');
-    } else {
-      $('.mastfoot').removeClass('active2');
-      $('.mastfoot2').removeClass('active');
-    }
     setActive();
     return;
   } 
   $('.masthead').removeClass('active');
   $('.masthead').css('top', '');
   $('.back').removeClass('active');     
-
-  $('.mastfoot').removeClass('active');         
-  $('.mastfoot').removeClass('active2'); 
-  $('.mastfoot2').removeClass('active');
+  $('.mastfoot').removeClass('active');
   removeActive();
 }
 
