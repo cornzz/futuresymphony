@@ -18,7 +18,7 @@ function init() {
 }
 init();
 
-// Prevent animations on pageload - no arrow function because IE 11 doesn't support that
+// Prevent animations on pageload
 window.setTimeout(function () {$('body').removeClass('preload'), 150});
 
 // Fire setHeader on pageload and on every scroll event

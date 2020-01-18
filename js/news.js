@@ -1,5 +1,12 @@
-let headerheight = $('.masthead').height();
-$('#spacer').height(headerheight);
+// Adapt spacer on pageload and window resize
+function init() {
+	let headerheight = $('.masthead').height();
+	$('#spacer').height(headerheight);
+}
+init();
+$(window).resize(init);
+
+// Prevent animations on pageload
 window.setTimeout(function () {$('body').removeClass('preload'), 150});
 
 function imagesource(src){
