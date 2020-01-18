@@ -1,6 +1,7 @@
+let headerheight;
 // Adapt spacer on pageload and window resize
 function init() {
-	let headerheight = $('.masthead').height();
+	headerheight = $('.masthead').height();
 	$('#spacer').height(headerheight);
 }
 init();
