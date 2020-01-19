@@ -1,3 +1,7 @@
+if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
+
 // Set height of start cover, push header up and set variables for relevant object positions
 let lang = $('#lang');
 let loc, hashpos, headerheight, startBottom, aboutpos, newspos, participantspos, sponsorspos, contactpos, scrollBottom;
