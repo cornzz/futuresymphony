@@ -16,7 +16,6 @@ if (!!window.chrome && (!!window.chrome.webstore || !!window.chrome.runtime)) {
 // Prevent animations on pageload
 window.setTimeout(function () {$('body').removeClass('preload'), 150});
 
-
 function imagesource(src){
 	location.replace("#show");
 	document.getElementById("imgsrc").setAttribute("src", src);

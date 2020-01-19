@@ -33,6 +33,7 @@ $(window).scrollTop(hashpos - headerheight);
 // Make header links regular font-weight on Chrome
 if (!!window.chrome && (!!window.chrome.webstore || !!window.chrome.runtime)) {
   $('.masthead-nav > li > a').css('font-weight', '300');
+  $('.mastfoot').css('font-weight', '300');
 }
 
 // Use Web Font Loader if IE 11
