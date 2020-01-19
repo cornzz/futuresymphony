@@ -1,13 +1,21 @@
+let headerheight;
+
 // Adapt spacer on pageload and window resize
 function init() {
-	let headerheight = $('.masthead').height();
+	headerheight = $('.masthead').height();
 	$('#spacer').height(headerheight);
 }
 init();
 $(window).resize(init);
 
+// Make header links regular font-weight on Chrome
+if (!!window.chrome && (!!window.chrome.webstore || !!window.chrome.runtime)) {
+  $('.masthead-nav > li > a').css('font-weight', '300');
+}
+
 // Prevent animations on pageload
 window.setTimeout(function () {$('body').removeClass('preload'), 150});
+
 
 function imagesource(src){
 	location.replace("#show");
