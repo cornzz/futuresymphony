@@ -21,14 +21,12 @@ function init() {
   setHeader();
 }
 init();
-
-// Prevent animations on pageload
-window.setTimeout(function () {$('body').removeClass('preload'), 150});
-
-// Fire setHeader on pageload and on every scroll event
 $(window).resize(init);
 $(window).scroll(setHeader);
 $(window).scrollTop(hashpos - headerheight);
+
+// Prevent animations on pageload
+window.setTimeout(function () {$('body').removeClass('preload'), 150});
 
 // Make header links regular font-weight on Chrome
 if (!!window.chrome && (!!window.chrome.webstore || !!window.chrome.runtime)) {
@@ -39,6 +37,15 @@ if (!!window.chrome && (!!window.chrome.webstore || !!window.chrome.runtime)) {
 // Use Web Font Loader if IE 11
 if (!!window.document.documentMode) {
   document.write('<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script><script>WebFont.load({google: {families: ["Audiowide", "Open Sans"]}});</script>');
+}
+
+// Dark favicon for light mode
+if (window.matchMedia("(prefers-color-scheme: light)").matches) {
+  var link = document.createElement('link');
+  link.type = 'image/x-icon';
+  link.rel = 'shortcut icon';
+  link.href = 'favicon-dark-32x32.png';
+  document.getElementsByTagName('head')[0].appendChild(link)
 }
 
 // Helper functions
