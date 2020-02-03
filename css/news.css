@@ -8,9 +8,6 @@
   background-color: rgba(0, 0, 0, .7);
   opacity: 0;
   transition: .3s linear;
-  -webkit-transition: opacity .3s linear;
-  -moz-transition: opacity .3s linear;
-  -o-transition: opacity .3s linear;
   z-index: 10
 }
 
@@ -39,7 +36,6 @@
   text-align: center;
   line-height: 6500%;
   -ms-user-select: none;
-  -moz-user-select: none;
   -webkit-user-select: none;
   user-select: none
 }
@@ -69,9 +65,6 @@
   position: absolute;
   top: -80px;
   right: 0;
-  -webkit-transition: .1s ease-in-out;
-  -moz-transition: .1s ease-in-out;
-  -o-transition: .1s ease-in-out;
   transition: .1s ease-in-out
 }
 
@@ -91,16 +84,10 @@
 }
 
 .picture-close:before {
-  -webkit-transform: rotate(45deg);
-  -moz-transform: rotate(45deg);
-  -o-transform: rotate(45deg);
   transform: rotate(45deg)
 }
 
 .picture-close:after {
-  -webkit-transform: rotate(-45deg);
-  -moz-transform: rotate(-45deg);
-  -o-transform: rotate(-45deg);
   transform: rotate(-45deg)
 }
 
