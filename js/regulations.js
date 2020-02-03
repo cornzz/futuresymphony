@@ -14,7 +14,8 @@ $(window).resize(init);
 // Jump to requested location
 let hashpos = ($(window.location.hash).offset()) ? $(window.location.hash).offset().top : 0; 
 $(window).scrollTop(hashpos - headerheight);
-$('#lang').attr('href', '/regulations' + window.location.hash);
+loc = (window.location.pathname == '/regulations/') ? '/lt/regulations' : '/regulations';
+$('#lang').attr('href', loc + window.location.hash);
 
 // Make header links regular font-weight on Chrome
 if (!!window.chrome && (!!window.chrome.webstore || !!window.chrome.runtime)) {
