@@ -147,3 +147,8 @@ function readmore(arg) {
 function mail(arg) {
   return window.location.href = 'mailto:' + arg.dataset.user + '@' + arg.dataset.domain;
 }
+
+function focusElement(arg) {
+  document.getElementById(arg).focus(); 
+  window.setTimeout(function () {document.getElementById(arg).blur()}, 1000);
+}
