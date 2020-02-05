@@ -31,6 +31,34 @@
   cursor: pointer;
 }
 
+.button {
+  width: 200px;
+  box-sizing: border-box;
+  font-size: 0.7em;
+  transition: background-color .1s,
+              box-shadow .1s,
+              color .1s,
+              transform .1s;
+  background-color: #092749;
+  border-radius: 2px;
+  border: 2px solid #092749;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 700;
+  padding: 5px 20px;
+  text-decoration: none !important;
+  outline: none;
+}
+
+.button:hover,
+.button:focus {
+  transform: translate(-2px,-2px);
+  background-color: #fff;
+  box-shadow: 4px 4px 0 0 #092749;
+  color: #092749;
+}
+
 html,
 body {
   height: 100%;
@@ -87,8 +115,8 @@ h3 {
   line-height: 1.1;
   text-decoration: none;    
   -webkit-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .headline2 {
@@ -266,10 +294,10 @@ h3 {
   position: absolute;
   display: -ms-flexbox;
   display: flex;
-    -ms-flex-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
   -ms-flex-align: center;
-     align-items: center;
+  align-items: center;
   margin-right: 20px;
   border-bottom: 2px solid black;
   border-bottom-color: #adadad;
@@ -293,7 +321,7 @@ h3 {
 .masthead-nav > li > a {
   padding: 10px 0;
   font-size: 22px;
-  font-weight: bold;
+  font-weight: 700;
   color: rgba(255,255,255,.6);
   text-shadow: 1px 1px 1px rgba(0,0,0,.9);
   transition: color 0.15s linear;
@@ -338,7 +366,7 @@ h3 {
   font-size: 1.464vh;
   text-align: center;
   color: rgba(255,255,255,.6); 
-  font-weight: bold;
+  font-weight: 700;
   background-color: #092749;
   margin-bottom: -70px;
   border-top: 1px solid;
