@@ -105,7 +105,6 @@ $('a[href*="#"]').not('[href="#"]').not('[href="#0"]').click(function(event) {
     target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
     if (target.length) {
       event.preventDefault();
-      $('.clicked').removeClass('clicked');
       $(this.hash + 'link').addClass('clicked');
       scroll = target.offset().top - headerheight;
       $('html, body').animate({
@@ -120,6 +119,7 @@ $('a[href*="#"]').not('[href="#"]').not('[href="#0"]').click(function(event) {
           $target.focus();
         }
       });
+    	window.setTimeout(function () {$('.clicked').removeClass('clicked')}, 1000);
     }
     history.pushState(null, null, this.hash == '#start' ? ' ' : this.hash);
   }
