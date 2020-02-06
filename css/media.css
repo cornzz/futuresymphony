@@ -267,6 +267,9 @@
   .flex-item {
     height: 135px;
   }
+  .news-img {
+    height: 17%;
+  }
   .news-img-big {
     height: 350px;
     float: none;
