@@ -34,7 +34,6 @@
 .center-element {
   width: 100%; 
   text-align: center; 
-  margin: 25px 0;
 }
 
 .button {
@@ -55,6 +54,7 @@
   padding: 5px 20px;
   text-decoration: none !important;
   outline: none;
+  margin: 25px 0;
 }
 
 .button:hover,
