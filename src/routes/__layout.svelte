@@ -25,17 +25,6 @@
 
         document.body.classList.remove('preload')
         initSmoothScrolling()
-        
-        // Dark favicon for light mode
-        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-            darkicon = document.createElement('link');
-            darkicon.type = 'image/x-icon';
-            darkicon.rel = 'shortcut icon';
-            darkicon.href = '/favicon-32x32.png';
-            document.head.appendChild(darkicon)
-            darkicon.href = '/favicon-16x16.png';
-            document.head.appendChild(darkicon)
-        }
     })
 </script>
 
