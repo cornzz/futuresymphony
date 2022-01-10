@@ -2,7 +2,6 @@
     import { focusElement } from '../helpers'
 </script>
 
-<h1 class="cover-heading"><b>For Participants</b></h1>
 <div style="line-height: 1.65;">
     <b>Registration</b><br>
     Composers who are willing to participate in the competition must <span on:click="{() => focusElement('register')}" class="link">submit the application form</span> <b>by June 5<sup>th</sup> 2020, 23:59 (EEST).</b><br>

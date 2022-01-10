@@ -2,7 +2,6 @@
 
 </script>
 
-<h1 class="cover-heading"><b>Sponsors and Partners</b></h1>
 <h2 class="cover-subheading">Sponsors:</h2>
 <div class="flex-container">
     <div class="flex-item"><a href="https://www.ltkt.lt/" target="_blank"><img src="/images/sponsors/logo_kt.png" alt="logo_kt.png"></a></div>

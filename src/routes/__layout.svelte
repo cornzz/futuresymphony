@@ -6,8 +6,6 @@
     import lt from '../locales/lt.json'
     import { initSmoothScrolling } from '../helpers'
 
-    let darkicon
-
     addMessages('en', en)
     addMessages('lt', lt)
     init_i18n({
@@ -23,7 +21,8 @@
             history.scrollRestoration = 'manual';
         }
 
-        document.body.classList.remove('preload')
+        /* TODO: timeout needed? */
+        setTimeout(() => document.body.classList.remove('preload'), 150)
         initSmoothScrolling()
     })
 </script>
