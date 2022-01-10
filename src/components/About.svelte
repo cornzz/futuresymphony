@@ -2,7 +2,6 @@
     import { readmore } from '../helpers'
 </script>
 
-<h1 class="cover-heading"><b>Welcome!</b></h1>
 <div style="line-height: 1.65;">
     <p>
         <span class="quote">

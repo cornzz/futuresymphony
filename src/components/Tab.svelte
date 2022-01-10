@@ -13,7 +13,7 @@
         width 100%
         padding 0vh 15px 0
         overflow hidden
-        font-size 3vmin
+        font-size 2.8vmin
         margin-right auto
         margin-left auto
         margin-bottom 20.5vh
@@ -24,11 +24,12 @@
         min-height 95vh
         height auto
         overflow visible
+        overflow-y scroll
         display inline-block
 
     @media (min-width: 1200px)
         .tab
-            font-size 1.4vw
+            font-size 1.6vw
             padding 0vh 150px 0vh
 
     @media (min-width: 1200px) and (min-height: 800px)
@@ -38,7 +39,7 @@
 
     @media (min-width: 1300px)
         .tab
-            font-size 3vh
+            font-size 2.8vh
             padding 0vh 200px 0vh
 
     @media (min-width: 1400px) 

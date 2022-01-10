@@ -4,7 +4,7 @@
     import { mail } from '../helpers'
     import { showLanding, sections } from '../helpers/stores'
 
-    let landing, header, back, footer,
+    let landing, header, content, back, footer,
         aboutlink, newslink, participantslink, sponsorslink, contactslink,
         aboutpos, newspos, participantspos, sponsorspos, contactspos,
         landingBottom
@@ -62,24 +62,27 @@
 
     // Set height of landning cover, push header up and set variables for relevant object positions
     function init() {
-        landing.style.height = window.innerHeight + 'px'
-        header.style['margin-top'] = - header.clientHeight - 2 + 'px'
-        landingBottom = Math.floor(landing.clientHeight - header.clientHeight - 1)
-
-        const getPos = (top) => Math.floor(top - 150)
-        aboutpos = getPos($sections['#about'].offsetTop)
-        newspos = getPos($sections['#news'].offsetTop)
-        participantspos = getPos($sections['#participants'].offsetTop)
-        sponsorspos = getPos($sections['#sponsors'].offsetTop)
-        contactspos = getPos($sections['#contacts'].offsetTop)
-        setHeader()
-        jumpToHash()
+        if ($showLanding) {
+            header.style['margin-top'] = - header.clientHeight - 2 + 'px'
+            landingBottom = Math.floor(landing.clientHeight - header.clientHeight - 1)
+    
+            const getPos = (top) => Math.floor(top - 150)
+            aboutpos = getPos($sections['#about'].offsetTop)
+            newspos = getPos($sections['#news'].offsetTop)
+            participantspos = getPos($sections['#participants'].offsetTop)
+            sponsorspos = getPos($sections['#sponsors'].offsetTop)
+            contactspos = getPos($sections['#contacts'].offsetTop)
+            setHeader()
+            jumpToHash()
+        } else {
+            content.style['margin-top'] = header.scrollHeight + 'px'
+        }
     }
 
     onMount(() => {
+        init()
+        window.addEventListener('resize', init)
         if ($showLanding) {
-            init()
-            window.addEventListener('resize', init)
             window.addEventListener('scroll', setHeader)
         } else {
             footer.classList.add('active')
@@ -121,7 +124,10 @@
     </div>
 </div>
 
-<slot></slot>
+<!-- Page content -->
+<div bind:this={content}>
+    <slot></slot>
+</div>
 
 {#if $showLanding}
     <a href="/#start" class="icon back" title="Start" bind:this={back}>

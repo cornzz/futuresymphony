@@ -2,7 +2,6 @@
     import { mail } from '../helpers'
 </script>
 
-<h1 class="cover-heading"><b>Contacts</b></h1>
 <div style="line-height: 1.65;">
     <b>Event organizers:</b>
     <div style="padding: 0 0 5px 30px;">

@@ -23,32 +23,41 @@
     })
 </script>
 
+<svelte:head>
+    <title>Future Symphony Competition</title>
+</svelte:head>
+
 <div bind:this={about} id="about">
     <Tab oversize>
+        <h1 class="cover-heading"><b>Welcome!</b></h1>
         <About/>
     </Tab>
 </div>
 
 <div bind:this={news} id="news">
     <Tab>
-        <News/>
+        <h1 class="cover-heading"><b>News</b></h1>
+        <News top3/>
     </Tab>
 </div>
 
 <div bind:this={participants} id="participants">        
     <Tab>
+        <h1 class="cover-heading"><b>For Participants</b></h1>
         <Participants/>
     </Tab>
 </div>
 
 <div bind:this={sponsors} id="sponsors">
     <Tab oversize>
+        <h1 class="cover-heading"><b>Sponsors and Partners</b></h1>
         <Sponsors/>
     </Tab>
 </div>
 
 <div bind:this={contacts} id ="contacts" style="margin-bottom: 30px">
     <Tab oversize>
+        <h1 class="cover-heading"><b>Contacts</b></h1>
         <Contact/>
     </Tab>
 </div>
