@@ -109,8 +109,11 @@ ul
     color #e55952
     text-decoration underline
 
-.preload > *
-    transition none !important
+.preload
+    *
+    :before
+    :after
+        transition none !important
 
 .mail:after
     content attr(data-user) "@futuresymphony.lt"

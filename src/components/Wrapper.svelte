@@ -32,12 +32,12 @@
         }
     }
 
-    // Remove active from all nav links and reset language link
+    // Remove .active from all nav links and reset language link
     function removeActive() {
         [aboutlink, newslink, participantslink, sponsorslink, contactslink].forEach(l => l.classList.remove('active'))
     }
 
-    // Add active to the correct nav link and set language link
+    // Add .active to the correct nav link and set language link
     function setActive() {
         removeActive();
         if (aboutpos <= windowPos() && windowPos() < newspos) {
@@ -53,6 +53,13 @@
         }
     }
 
+    function jumpToHash() {
+        let hash = window.location.hash
+        let hashpos = hash ? $sections[hash].offsetTop : 0
+        let headerheight = document.querySelector('.masthead').clientHeight
+        window.scrollTo(0, hashpos - headerheight)
+    }
+
     // Set height of landning cover, push header up and set variables for relevant object positions
     function init() {
         landing.style.height = window.innerHeight + 'px'
@@ -66,6 +73,7 @@
         sponsorspos = getPos($sections['#sponsors'].offsetTop)
         contactspos = getPos($sections['#contacts'].offsetTop)
         setHeader()
+        jumpToHash()
     }
 
     onMount(() => {
@@ -73,10 +81,8 @@
             init()
             window.addEventListener('resize', init)
             window.addEventListener('scroll', setHeader)
-            let hash = window.location.hash
-            let hashpos = hash ? $sections[hash].offsetTop : 0
-            let headerheight = document.querySelector('.masthead').clientHeight
-            window.scrollTo(0, hashpos - headerheight)
+        } else {
+            footer.classList.add('active')
         }
     })
 </script>
@@ -119,9 +125,9 @@
 <slot></slot>
 
 {#if $showLanding}
-<a href="/#start" class="icon back" title="Start" bind:this={back}>
-    <img src="/images/arr.svg" alt="arr.svg">
-</a>
+    <a href="/#start" class="icon back" title="Start" bind:this={back}>
+        <img src="/images/arr.svg" alt="arr.svg">
+    </a>
 {/if}
 <div class="mastfoot" bind:this={footer}>
     <span on:click="{mail}" class="mail" data-user="info"></span>
