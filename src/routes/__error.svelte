@@ -1,23 +1,23 @@
 <script lang="ts">
+    import Tab from '../components/Tab.svelte'
     import { showLanding } from '../helpers/stores'
 
     showLanding.set(false)
 </script>
 
-<div class="error">
-    Page not found.
-    <a href="/" class="link">Go back</a>
-</div>
+<Tab>
+    <div class="error">
+        Page not found.
+        <a href="/" class="link">Go back</a>
+    </div>
+</Tab>
 
 <style lang="stylus">
     .error
-        font-size 20px
-        width 100%
-        height 90vh
+        height 100%
         display flex
         gap 10px
         flex-direction column
         align-items center
         justify-content center
-        background-color var(--color-background)
 </style>

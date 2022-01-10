@@ -27,11 +27,11 @@ export function initSmoothScrolling() {
             ) {
                 let target = document.querySelector(anchor.hash)
                 event.preventDefault();
-                document.querySelector(anchor.hash + 'link').classList.add('clicked');
+                anchor.parentElement.classList.add('clicked');
                 let scroll = target.offsetTop - document.querySelector('.masthead').clientHeight
                 scrollToY(scroll, 1000)
                 window.setTimeout(function () {
-                    document.querySelector('.clicked').classList.remove('clicked')
+                    anchor.parentElement.classList.remove('clicked')
                 }, 1000);
                 history.pushState(null, null, anchor.hash == '#start' ? ' ' : anchor.hash);
             }

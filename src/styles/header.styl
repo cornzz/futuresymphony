@@ -29,6 +29,15 @@
         width 32px
         height 16px
 
+        &:hover
+        &:focus
+            box-shadow 0 0 2px 0 #BBBBBB
+            cursor pointer
+
+        &:hover > img:nth-child(2)
+        &:focus > img:nth-child(2)
+            opacity 1
+
     .flag:first-of-type
         margin-right 20px
 
@@ -42,24 +51,30 @@
     img:nth-child(2)
         opacity 0
 
-    .flag:hover
-    .flag:focus
-        box-shadow 0 0 2px 0 #BBBBBB
-        cursor pointer
-    
-    .flag:hover > img:nth-child(2)
-    .flag:focus > img:nth-child(2)
-        opacity 1
-    
     .active
         opacity 1 !important
 
 .back
     display none
-    margin-left -60px
+    background-color: rgba(0, 0, 0, 0.3)
+    border-radius 2px
+    position: fixed
+    width 32px
+    height 32px
+    bottom 70px
+    right 30px
+
+    &:hover
+    &:focus
+        cursor pointer
+        filter brightness(150%)
+
+    img
+        pointer-events none
 
 .back.active
     display inline-block
+
 
 .masthead
     width 100% 
@@ -92,12 +107,17 @@
     transition color 0.15s linear
     outline none
 
-.masthead-nav > li > a:hover
+.masthead-nav > li:hover > a
 .masthead-nav > li > a:focus
-    color rgba(255,255,255,1)  
+.masthead-nav > li.clicked > a
+    color rgba(255,255,255,1)
+
+.masthead-nav > .active > a
+.masthead-nav > .active > a:focus
+    color rgba(255, 255, 255, 0.9)
 
 .masthead-nav > li:after
-    display:block
+    display block
     content ''
     border-bottom solid 2px #fff  
     transform scaleX(0)  
@@ -113,10 +133,6 @@
 .masthead-nav > .active:after 
 .masthead-nav > .clicked:after
     transition none
-
-.masthead-nav > .active > a
-.masthead-nav > .active > a:focus
-    color rgba(255, 255, 255, 0.9)
 
 @media (min-width: 768px)
     .masthead
