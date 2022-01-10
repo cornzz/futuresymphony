@@ -89,10 +89,9 @@
 
 {#if $showLanding}
     <div id="start" class="landing" bind:this={landing}>
-        <span class="headline">FUTURE SYMPHONY<br>
-            <span class="headline2">
-                {@html $_('headline2')}
-            </span>
+        <span>FUTURE<br>SYMPHONY</span>
+        <span class="sub">
+            {@html $_('headline2')}
         </span>
     </div>
 {/if}
