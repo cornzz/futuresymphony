@@ -19,7 +19,7 @@
     function setHeader() {
         if (windowPos() >= landingBottom) {
             header.classList.add('active')
-            header.style.top = header.clientHeight + 2
+            header.style.top = header.clientHeight + 2 + 'px'
             footer.classList.add('active')
             back.classList.add('active')
             setActive()
@@ -82,7 +82,7 @@
 </script>
 
 {#if $showLanding}
-    <div class="landing" bind:this={landing}>
+    <div id="start" class="landing" bind:this={landing}>
         <span class="headline">FUTURE SYMPHONY<br>
             <span class="headline2">
                 {@html $_('headline2')}
@@ -93,13 +93,6 @@
 
 <div class="masthead active" bind:this={header}>
     <div>
-        {#if $showLanding}
-            <a href="#start" class="icon back" title="Start" bind:this={back}>
-                <img style="background-color: rgba(0, 0, 0, 0.2);" src="/images/arr.svg" alt="arr.svg">
-                <img style="background-color: rgba(0, 0, 0, 0.03);" src="/images/arr_o.svg" alt="arr_o.svg">
-            </a>
-        {/if}
-
         <nav>
             <ul class="nav masthead-nav">
                 <li bind:this={aboutlink} id="aboutlink"><a href="/#about">ABOUT</a></li>
@@ -125,6 +118,11 @@
 
 <slot></slot>
 
+{#if $showLanding}
+<a href="/#start" class="icon back" title="Start" bind:this={back}>
+    <img src="/images/arr.svg" alt="arr.svg">
+</a>
+{/if}
 <div class="mastfoot" bind:this={footer}>
     <span on:click="{mail}" class="mail" data-user="info"></span>
     &nbsp; • &nbsp;
@@ -141,4 +139,3 @@
     @require '../styles/header.styl'
     @require '../styles/footer.styl'
 </style>
-

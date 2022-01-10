@@ -3,9 +3,9 @@
 </script>
 
 <h1 class="cover-heading"><b>News</b></h1>
-        <div on:click="{() => location.href='/news/final_round/'}" class="dropshadow">
-            <img class="news-img" src="images/charles_torres_small.jpg" alt="charles_torres_small.jpg">
-            <div class="news-item">
+        <div on:click="{() => location.href='/news/final_round/'}" class="news-item dropshadow">
+            <img class="news-img" src="/images/charles_torres_small.jpg" alt="charles_torres_small.jpg">
+            <div>
                 <span style="color: rgba(100, 100, 100, 0.5);"><i>September 18<sup>th</sup>, 2020 - 07:00 pm</i></span><br>
                 <div style="line-height: 1.55;">
                     <b>Results of the final round</b><br>
@@ -14,9 +14,9 @@
                 </div>
             </div>
         </div>
-        <div on:click="{() => location.href='/news/1st_round/'}" class="dropshadow">
-            <img class="news-img" src="images/news_1st_round_small.jpg" alt="news_1st_round_small.jpg">
-            <div class="news-item">
+        <div on:click="{() => location.href='/news/1st_round/'}" class="news-item dropshadow">
+            <img class="news-img" src="/images/news_1st_round_small.jpg" alt="news_1st_round_small.jpg">
+            <div>
                 <span style="color: rgba(100, 100, 100, 0.5);"><i>July 20<sup>th</sup>, 2020 - 10:00 pm</i></span><br>
                 <div style="line-height: 1.55;">
                     <b>Results of the 1<sup>st</sup> Round</b><br>
@@ -25,9 +25,9 @@
                 </div>
             </div>
         </div>
-        <div on:click="{() => location.href='/news/karoso/'}" class="dropshadow">
-            <img class="news-img" src="images/news_karoso.png" alt="news_karoso.png">
-            <div class="news-item">
+        <div on:click="{() => location.href='/news/karoso/'}" class="news-item dropshadow">
+            <img class="news-img" src="/images/news_karoso.png" alt="news_karoso.png">
+            <div>
                 <span style="color: rgba(100, 100, 100, 0.5);"><i>July 11<sup>th</sup>, 2020 - 4:00 pm</i></span><br>
                 <div style="line-height: 1.55;">
                     <b>Special prize for the best Lithuanian composition</b><br>
