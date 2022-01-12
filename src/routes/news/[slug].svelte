@@ -40,7 +40,7 @@
 
 <style lang="stylus">
     .date
-        color: rgba(100, 100, 100, 0.5)
+        color rgba(100, 100, 100, 0.5)
         line-height 2.5
 
     .news-image
