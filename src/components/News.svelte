@@ -14,12 +14,11 @@
     <a href={`/news/${article.slug}`} class="news-link">
         <div class="news-item dropshadow">
             <img class="news-image-small" src={`/images/${article.images.small}`} alt={article.images.small}>
-            <div class="news-text">
-                <span style="color: rgba(100, 100, 100, 0.5);"><i>{@html article.date[$locale]}</i></span><br>
-                <div style="line-height: 1.55;">
-                    <b>{@html article.title[$locale]}</b><br>
+            <div class="news-content">
+                <div class="date"><i>{@html article.date[$locale]}</i></div>
+                <span class="title"><b>{@html article.title[$locale]}</b></span>
+                <div class="text">
                     {@html article.content.short[$locale]}
-                    <span class="link">Read more</span>
                 </div>
             </div>
         </div>
@@ -42,19 +41,57 @@
             box-shadow 0px 0px 4px 1px var(--color-boxshadow)
 
     .news-item
+        display flex
         height 26%
         margin-bottom 1.3%
         border 1px solid #CCC
         border-radius 2px
 
         img
-            float left 
             height 100%
 
-        .news-text
-            height 100%
+        .news-content
+            display grid
+            grid-template-rows 1fr 1fr 3fr
             padding 5px 10px 10px
-            overflow-y hidden
+            
+            & > *
+                overflow hidden
+                text-overflow ellipsis
+
+            .date
+                font-size 0.85em
+                color rgba(100, 100, 100, 0.5)
+
+            .title
+                white-space nowrap
+                overflow hidden
+
+            .text
+                line-height: 1.55
+                /*position relative
+
+                &:before
+                    content ''
+                    top 0
+                    bottom 0
+                    left 0
+                    right 0
+                    position absolute
+                    background linear-gradient(transparent 15%, var(--color-background))
+
+                &:after
+                    content 'Read more'
+                    position absolute
+                    bottom -2px
+                    left 0
+                    right 0
+                    text-align center
+                    color var(--color-link)
+                    transition all 0.2s ease
+                
+                &:hover:after
+                    bottom 0*/
 
     .center
         width 100%

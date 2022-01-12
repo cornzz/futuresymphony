@@ -55,7 +55,7 @@
     </Tab>
 </div>
 
-<div bind:this={contacts} id ="contacts" style="margin-bottom: 30px">
+<div bind:this={contacts} id ="contacts">
     <Tab oversize>
         <h1 class="cover-heading"><b>Contacts</b></h1>
         <Contact/>

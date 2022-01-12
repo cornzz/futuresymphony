@@ -10,7 +10,7 @@
     .tab
         background-color var(--color-background)
         height 95vh
-        width 100%
+        width 100vw
         padding 0vh 15px 0
         overflow hidden
         font-size 2.8vmin
