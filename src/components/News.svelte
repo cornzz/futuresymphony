@@ -1,25 +1,31 @@
 <script lang="ts">
-    export let top3 = false
+    import { locale } from 'svelte-i18n'
 
-    let articles
+    export let latest = false
 
-    const imports = import.meta.globEager('./articles/*.json')
-    articles = Object.values(imports)
+    const imports = import.meta.globEager('../routes/news/articles/*.json')
+    let articles = Object.values(imports)
+    if (latest) {
+        articles = articles.slice(-3)
+    }  
 </script>
-<a href="/news/final_round/" class="news-link">
-    <div class="news-item dropshadow">
-        <img class="news-img-small" src="/images/charles_torres_small.jpg" alt="charles_torres_small.jpg">
-        <div class="news-text">
-            <span style="color: rgba(100, 100, 100, 0.5);"><i>September 18<sup>th</sup>, 2020 - 07:00 pm</i></span><br>
-            <div style="line-height: 1.55;">
-                <b>Results of the final round</b><br>
-                We are excited to announce the winners of the 2<sup>nd</sup> international music composition competition "Future Symphony"!
-                <span class="link">Read more</span>
+
+{#each articles as article}
+    <a href={`/news/${article.slug}`} class="news-link">
+        <div class="news-item dropshadow">
+            <img class="news-image-small" src={`/images/${article.images.small}`} alt={article.images.small}>
+            <div class="news-text">
+                <span style="color: rgba(100, 100, 100, 0.5);"><i>{@html article.date[$locale]}</i></span><br>
+                <div style="line-height: 1.55;">
+                    <b>{@html article.title[$locale]}</b><br>
+                    {@html article.content.short[$locale]}
+                    <span class="link">Read more</span>
+                </div>
             </div>
         </div>
-    </div>
-</a>
-{#if top3}
+    </a>
+{/each}
+{#if latest}
     <div class="center"><a href="/news" class="link">Older news</a></div>
 {/if}
 
@@ -53,5 +59,10 @@
     .center
         width 100%
         text-align center
+
+    @media screen and (max-device-width: 600px)
+        /* TODO !! */
+        .news-image-small
+            height 17%
 </style>
 

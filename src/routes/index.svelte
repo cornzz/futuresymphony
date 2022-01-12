@@ -37,7 +37,7 @@
 <div bind:this={news} id="news">
     <Tab>
         <h1 class="cover-heading"><b>News</b></h1>
-        <News top3/>
+        <News latest/>
     </Tab>
 </div>
 

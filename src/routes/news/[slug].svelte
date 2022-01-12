@@ -4,7 +4,7 @@
     import { locale } from 'svelte-i18n'
     import { page } from '$app/stores'
 
-    let article, imageFrame
+    let imageFrame
 
     showLanding.set(false)
 
@@ -13,7 +13,7 @@
     }
 
     const imports = import.meta.globEager('./articles/*.json')
-    article = Object.values(imports).find(article => article.slug === $page.params.slug)
+    let article = Object.values(imports).find(article => article.slug === $page.params.slug)
 </script>
 
 <svelte:head>
@@ -21,7 +21,7 @@
 </svelte:head>
 
 <div class="image-frame" bind:this={imageFrame}  on:click={toggleImage}>
-    <img id="imgsrc" src={`/images/${article.images.regular}`} alt="News subject">
+    <img src={`/images/${article.images.regular}`} alt="News subject">
     <span class="image-frame-close"></span>
 </div>
 
@@ -39,7 +39,9 @@
 </Tab>
 
 <style lang="stylus">
-    @import "../../styles/news.styl"
+    .date
+        color: rgba(100, 100, 100, 0.5)
+        line-height 2.5
 
     .news-image
         float left
@@ -125,4 +127,9 @@
 
         &:after
             transform rotate(-45deg)
+
+    @media screen and (max-device-width: 600px)
+        .news-image
+            height 350px
+            float none
 </style>
