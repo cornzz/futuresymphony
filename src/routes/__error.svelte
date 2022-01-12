@@ -8,7 +8,7 @@
 <Tab>
     <div class="error">
         Page not found.
-        <a href="/" class="link">Go back</a>
+        <span on:click={() => history.back()} class="link">Go back</span>
     </div>
 </Tab>
 
