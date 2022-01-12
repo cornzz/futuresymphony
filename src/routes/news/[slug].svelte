@@ -4,43 +4,33 @@
     import { locale } from 'svelte-i18n'
     import { page } from '$app/stores'
 
-    let article
+    let article, imageFrame
 
     showLanding.set(false)
 
-    function imagesource(src){
-        location.replace("#show");
-        document.getElementById("imgsrc").setAttribute("src", src);
-        // document.getElementById("imgsrc").setAttribute("alt", "Image");
-    }
-
-    function hideimg(){
-        location.replace("#/");
-        setTimeout(() => document.getElementById("imgsrc").setAttribute("src", ""), 100);
-        // document.getElementById("imgsrc").setAttribute("alt", "");
+    function toggleImage(){
+        imageFrame.classList.toggle('active')
     }
 
     const imports = import.meta.globEager('./articles/*.json')
-    article = imports[`./articles/${$page.params.slug}.json`]
+    article = Object.values(imports).find(article => article.slug === $page.params.slug)
 </script>
 
 <svelte:head>
     <title>News - Future Symphony Competition</title>
 </svelte:head>
 
-<div class="picture" id="show">
-    <div on:click={hideimg}>
-        <img id="imgsrc" alt="News subject">
-    </div>
-    <span class="picture-close" on:click={hideimg}></span>
+<div class="image-frame" bind:this={imageFrame}  on:click={toggleImage}>
+    <img id="imgsrc" src={`/images/${article.images.regular}`} alt="News subject">
+    <span class="image-frame-close"></span>
 </div>
 
 <Tab oversize>
     {#if article}
         <h1 class="cover-heading"><b>{@html article.title[$locale]}</b></h1>
-        <span style="color: rgba(100, 100, 100, 0.5);"><i>{@html article.date[$locale]}</i></span><br>
-        <div on:click={() => imagesource(article.images.regular)}>
-            <img class="news-img" src={article.images.small} alt={article.images.small.split('/').pop()}>
+        <span class="date"><i>{@html article.date[$locale]}</i></span><br>
+        <div on:click={toggleImage}>
+            <img class="news-image" src={`/images/${article.images.small}`} alt={article.images.small}>
         </div>
         <div style="line-height: 1.65; overflow: hidden;">
             {@html article.content.full[$locale]}
@@ -50,4 +40,89 @@
 
 <style lang="stylus">
     @import "../../styles/news.styl"
+
+    .news-image
+        float left
+        max-height 50vh
+        margin 10px 20px 10px 0
+
+    .news-image:hover
+        cursor pointer
+
+    .image-frame
+        width 100%
+        height 100%
+        top -100%
+        position fixed
+        background-color rgba(0, 0, 0, .7)
+        opacity 0
+        transition opacity .3s linear
+        z-index 10
+
+        img
+            position fixed
+            top 0
+            left 0
+            bottom 0
+            right 0
+            margin auto
+            border 3px solid #fff
+            border-radius 3px
+            box-shadow 0 0 20px rgba(0, 0, 0, .7)
+            max-height 0%
+            max-width 0
+            text-align center
+            line-height 6500%
+            -ms-user-select none
+            -webkit-user-select none
+            user-select none
+
+            &:hover
+                cursor pointer
+
+        :global(&.active)
+            opacity 1 !important
+            top 0 !important
+            bottom 0 !important
+
+            img
+                max-height 100%
+                max-width 100%
+
+            .image-frame-close
+                top 0
+
+    .image-frame-close
+        text-decoration none
+        cursor pointer
+        display block
+        width 50px
+        height 50px
+        box-sizing border-box
+        background #fff
+        color #000
+        position absolute
+        top -80px
+        right 0
+        transition .2s ease-in-out
+
+        &:hover
+            background rgba(255, 255, 255, .8)
+
+        &:after
+        &:before
+            content ""
+            display block
+            height 30px
+            width 1px
+            background #000
+            position absolute
+            left 26px
+            top 10px
+
+        &:before
+            transform rotate(45deg)
+
+        &:after
+            transform rotate(-45deg)
 </style>

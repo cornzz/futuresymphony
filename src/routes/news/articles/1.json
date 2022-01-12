@@ -19,7 +19,7 @@
         }
     },
     "images": {
-        "regular": "../../images/xiaoran_jiang.jpg",
-        "small": "../../images/xiaoran_jiang_small.jpg"
+        "regular": "xiaoran_jiang.jpg",
+        "small": "xiaoran_jiang_small.jpg"
     }
 }
