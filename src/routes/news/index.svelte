@@ -12,7 +12,7 @@
     </title>
 </svelte:head>
 
-<Tab>
+<Tab oversize>
     <h1 class="cover-heading"><b>News archive</b></h1>
     <News/>
 </Tab>
