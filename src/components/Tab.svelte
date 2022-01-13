@@ -2,7 +2,7 @@
     export let oversize = false
 </script>
 
-<div class="tab" class:oversize={oversize}>
+<div class="tab" class:oversize>
     <slot></slot>
 </div>
 
@@ -23,9 +23,6 @@
     .oversize
         min-height 95vh
         height auto
-        overflow visible
-        overflow-y scroll
-        display inline-block
 
     @media (min-width: 1200px)
         .tab
