@@ -4,13 +4,16 @@
     export let latest = false
 
     const imports = import.meta.globEager('../routes/news/articles/*.json')
-    let articles = Object.values(imports)
+    let articles = Object.entries(imports).map(([path, article]) => {
+        return { id: path.match(/\d+/)[0], article }
+    })
+    articles.sort((a, b) => Number(b.id) - Number(a.id))
     if (latest) {
-        articles = articles.slice(-3)
+        articles = articles.slice(0, 3)
     }  
 </script>
 
-{#each articles as article}
+{#each articles as { article }}
     <a href={`/news/${article.slug}`} class="news-link">
         <div class="news-item dropshadow" class:fixed={!latest}>
             <img class="news-image-small" src={`/images/news/${article.images.small}`} alt={article.images.small}>
