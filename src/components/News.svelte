@@ -13,7 +13,7 @@
 {#each articles as article}
     <a href={`/news/${article.slug}`} class="news-link">
         <div class="news-item dropshadow" class:fixed={!latest}>
-            <img class="news-image-small" src={`/images/${article.images.small}`} alt={article.images.small}>
+            <img class="news-image-small" src={`/images/news/${article.images.small}`} alt={article.images.small}>
             <div class="news-content">
                 <div class="date"><i>{@html article.date[$locale]}</i></div>
                 <span class="title"><b>{@html article.title[$locale]}</b></span>

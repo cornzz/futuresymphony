@@ -9,7 +9,8 @@
     showLanding.set(false)
 
     function toggleImage(){
-        imageFrame.classList.toggle('active')
+        if (article.images.regular)
+            imageFrame.classList.toggle('active')
     }
 
     const imports = import.meta.globEager('./articles/*.json')
@@ -21,7 +22,7 @@
 </svelte:head>
 
 <div class="image-frame" bind:this={imageFrame}  on:click={toggleImage}>
-    <img src={`/images/${article.images.regular}`} alt="News subject">
+    <img src={`/images/news/${article.images.regular}`} alt="News subject">
     <span class="image-frame-close"></span>
 </div>
 
@@ -30,7 +31,7 @@
         <h1 class="cover-heading"><b>{@html article.title[$locale]}</b></h1>
         <span class="date"><i>{@html article.date[$locale]}</i></span><br>
         <div on:click={toggleImage}>
-            <img class="news-image" src={`/images/${article.images.small}`} alt={article.images.small}>
+            <img class="news-image" src={`/images/news/${article.images.small}`} alt={article.images.small}>
         </div>
         <div style="line-height: 1.65; overflow: hidden;">
             {@html article.content.full[$locale]}
