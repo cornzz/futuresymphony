@@ -1,0 +1,25 @@
+{
+    "slug": "registration_end",
+    "date": {
+        "en": "June 6<sup>th</sup>, 2020 - 9:30 pm",
+        "lt": "2020 m. birželio 6 d. 21:30"
+    },
+    "title": {
+        "en": "End of registration",
+        "lt": "Registracijos pabaiga"
+    },
+    "content": {
+        "short": {
+            "en": "Registration to the 2<sup>nd</sup> Future Symphony Competition has finished. We are very excited that the competition has gathered composers from even 20 different countries!",
+            "lt": "Baigėsi registracija į II-ąjį „Future Symphony“ konkursą. Labai džiaugiamės sulaukę paraiškų net iš 20 skirtingų šalių!"
+        },
+        "full": {
+            "en": "<p>Registration to the 2nd Future Symphony Competition has finished. We are very excited that the competition has gathered composers from even 20 different countries!</p><p>🇦🇷 🇦🇺 🇨🇳 🇩🇰 🇫🇷 🇩🇪 🇬🇷 🇭🇰 🇭🇺 🇮🇷 🇮🇹 🇯🇵 🇱🇹 🇲🇹 🇲🇽 🇵🇪 🇵🇱 🇪🇸 🇬🇧 🇺🇸</p><p>Contestants who have already received confirmation emails will have to submit their scores to the registration platform by the 5th of July. The deadline will be followed by the 1st round of the competition. Its results will be announced by the 20th of July.</p><br><br>",
+            "lt": "<p>Baigėsi registracija į II-ąjį „Future Symphony“ konkursą. Labai džiaugiamės sulaukę paraiškų net iš 20 skirtingų šalių!</p><p>🇦🇷 🇦🇺 🇨🇳 🇩🇰 🇫🇷 🇩🇪 🇬🇷 🇭🇰 🇭🇺 🇮🇷 🇮🇹 🇯🇵 🇱🇹 🇲🇹 🇲🇽 🇵🇪 🇵🇱 🇪🇸 🇬🇧 🇺🇸</p><p>Konkurso dalyviai turės pateikti savo kūrinių partitūras registracijos platformoje iki liepos 5 d. Iškart po to vyks 1-asis konkurso turas. Jo rezultatai bus paskelbti liepos 20 d.</p><br><br>"
+        }
+    },
+    "images": {
+        "regular": "logo_news.png",
+        "small": "logo_news_small.png"
+    }
+}
