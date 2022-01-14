@@ -21,10 +21,12 @@
     <title>News - Future Symphony Competition</title>
 </svelte:head>
 
-<div class="image-frame" bind:this={imageFrame}  on:click={toggleImage}>
-    <img src={`/images/news/${article.images.regular}`} alt="News subject">
-    <span class="image-frame-close"></span>
-</div>
+{#if article.images.regular}
+    <div class="image-frame" bind:this={imageFrame}  on:click={toggleImage}>
+        <img src={`/images/news/${article.images.regular}`} alt="News subject">
+        <span class="image-frame-close"></span>
+    </div>
+{/if} 
 
 <Tab oversize>
     {#if article}
