@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { readmore } from '../helpers'
+    let showFSO = false
 </script>
 
 <div style="line-height: 1.65;">
@@ -26,11 +26,13 @@
         Composers from all around the world at the age of 18&ndash;35 can apply to the competition.
     </p>
     <p>
-        <span class="link" onClick="{() => readmore('FSO')}">Future Symphony Orchestra</span>  
-        <span class="noshow" id="FSO"><br>
-            <b>Future Symphony Orchestra (FSO)</b> – is an orchestra brought together specifically for this competition and made up of young professional Lithuanian musicians. During the 1<sup>st</sup> „Future Symphony“ competition in 2018, FSO performed 7 scores created by young composers and received praise from the jury as well as international professional musicians.<br>
-            The goal of FSO is to prepare and perform the scores of the young composers. The orchestra also strives to educate young musicians with the subtleties of contemporary music and to introduce new trends of symphonic music to the people of Lithuania.<br><br>
-        </span>
+        <span class="link" on:click="{() => showFSO = !showFSO}">Future Symphony Orchestra</span>
+        {#if showFSO}
+            <hr>
+                <b>Future Symphony Orchestra (FSO)</b> – is an orchestra brought together specifically for this competition and made up of young professional Lithuanian musicians. During the 1<sup>st</sup> „Future Symphony“ competition in 2018, FSO performed 7 scores created by young composers and received praise from the jury as well as international professional musicians.<br>
+                The goal of FSO is to prepare and perform the scores of the young composers. The orchestra also strives to educate young musicians with the subtleties of contemporary music and to introduce new trends of symphonic music to the people of Lithuania.
+            <hr>
+        {/if}
         will perform up to 10 best scores at the final concert. <b>The concert will be held on September 17<sup>th</sup> 2020, 7:00 PM in the Lithuanian National Philharmonic hall.</b>
     </p>
     <p>
@@ -56,7 +58,7 @@
         padding 5px 0 0 35px
         font-style italic
 
-    .noshow
-        display none
+    hr
+        color var(--color-primary)
 </style>
 

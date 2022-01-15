@@ -8,15 +8,6 @@ export function focusElement(el) {
     window.setTimeout(function () { target.classList.remove('focus') }, 1000);
 }
 
-export function readmore(el) {
-    let target = document.getElementById(el)
-    if (target.style.display == 'none') {
-        target.style.display = 'inline'
-    } else {
-        target.style.display = 'none'
-    }
-}
-
 export function initSmoothScrolling() {
     document.querySelectorAll('a[href*="#"]')
         .forEach(el => el.addEventListener('click', (event: any) => {
