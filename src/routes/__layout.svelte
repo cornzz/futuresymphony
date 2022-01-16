@@ -28,7 +28,7 @@
 </script>
 
 <div class="cover-picture"></div>
-<div class="site-wrapper">
+<div class="site-wrapper" id="start">
     <div class="site-wrapper-inner">
         <noscript class="noscript">For full functionality of this site it is necessary to enable JavaScript.<br> <a href="https://www.enable-javascript.com/" target="_blank">Here are the instructions how to enable JavaScript in your web browser</a>.</noscript>
 

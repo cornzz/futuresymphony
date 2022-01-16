@@ -6,11 +6,12 @@
     import Sponsors from '../components/Sponsors.svelte'
     import Contact from '../components/Contact.svelte'
     import { onMount } from 'svelte'
-    import { showLanding, sections } from '../helpers/stores'
+    import { showLanding, showBack, sections } from '../helpers/stores'
 
     let about, news, participants, sponsors, contacts
     
     showLanding.set(true)
+    showBack.set(true)
 
     onMount(() => {
         sections.set({

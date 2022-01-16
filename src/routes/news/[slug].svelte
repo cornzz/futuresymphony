@@ -1,12 +1,13 @@
 <script lang="ts">
     import Tab from '../../components/Tab.svelte';
-    import { showLanding } from '../../helpers/stores'
+    import { showLanding, showBack } from '../../helpers/stores'
     import { locale } from 'svelte-i18n'
     import { page } from '$app/stores'
 
     let imageFrame
 
     showLanding.set(false)
+    showBack.set(false)
 
     function toggleImage(){
         if (article.images.regular)
