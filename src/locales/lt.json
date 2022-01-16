@@ -58,5 +58,10 @@
             "title": "Nuostatai - Future Symphony Konkursas",
             "description": "Nuostatai III-am \"Future Symphony\" tarptautiniam kompozicijų simfoniniam orkestrui konkursui"
         }
+    },
+    "error": {
+        "title": "Klaida - Future Symphony Konkursas",
+        "pageNotFound": "Puslapis nerastas",
+        "goBack": "Grįžti"
     }
 }

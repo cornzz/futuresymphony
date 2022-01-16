@@ -58,5 +58,10 @@
             "title": "Regulations - Future Symphony Competition",
             "description": "Regulations for the 3rd \"Future Symphony\" international composition competition for symphony orchestra"
         }
+    },
+    "error": {
+        "title": "Error - Future Symphony Competition",
+        "pageNotFound": "Page not found",
+        "goBack": "Go back"
     }
 }
