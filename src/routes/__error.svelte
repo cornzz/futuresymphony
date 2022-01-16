@@ -1,14 +1,19 @@
 <script lang="ts">
     import Tab from '../components/Tab.svelte'
     import { showLanding } from '../helpers/stores'
+    import { _ } from 'svelte-i18n';
 
     showLanding.set(false)
 </script>
 
+<svelte:head>
+    <title>{$_('error.title')}</title>
+</svelte:head>
+
 <Tab>
     <div class="error">
-        Page not found.
-        <span on:click={() => history.back()} class="link">Go back</span>
+        {$_('error.pageNotFound')}.
+        <span on:click={() => history.back()} class="link">{$_('error.goBack')}</span>
     </div>
 </Tab>
 

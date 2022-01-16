@@ -1,7 +1,7 @@
 <script lang="ts">
     import Wrapper from '../components/Wrapper.svelte'
     import { onMount } from 'svelte'
-    import { addMessages, init as init_i18n, locale } from 'svelte-i18n'
+    import { addMessages, init as init_i18n, _, locale } from 'svelte-i18n'
     import en from '../locales/en.json'
     import lt from '../locales/lt.json'
     import { initSmoothScrolling } from '../helpers'
@@ -26,6 +26,10 @@
         initSmoothScrolling()
     })
 </script>
+
+<svelte:head>
+    <title>{$_('index.meta.title')}</title>
+</svelte:head>
 
 <div class="cover-picture"></div>
 <div class="site-wrapper" id="start">
