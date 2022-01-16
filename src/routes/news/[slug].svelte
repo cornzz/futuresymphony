@@ -21,7 +21,7 @@
 
 <MetaTags
     title={$_('news.slug.meta.title')}
-    description={$_('news.slug.meta.description')}
+    description={article && article.meta ? article.meta[$locale] : ''}
 />
 
 {#if article.images.regular}

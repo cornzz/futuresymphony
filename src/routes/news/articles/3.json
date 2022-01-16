@@ -1,5 +1,9 @@
 {
     "slug": "registration-open",
+    "meta": {
+        "en": "Registration starts now, final instrumentation is announced!",
+        "lt": "Skelbiama registracijos pradžia ir galutinė instrumentuotė!"
+    },
     "date": {
         "en": "February 5<sup>th</sup>, 2020 - 5:00 pm",
         "lt": "2020 m. vasario 5 d. 17:00"
