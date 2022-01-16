@@ -2,12 +2,6 @@ export function mail() {
     window.location.href = `mailto:${this.dataset.user}@futuresymphony.lt`;
 }
 
-export function focusElement(el) {
-    let target = document.getElementById(el)
-    target.classList.add('focus')
-    window.setTimeout(function () { target.classList.remove('focus') }, 1000);
-}
-
 export function initSmoothScrolling() {
     document.querySelectorAll('a[href*="#"]')
         .forEach(el => el.addEventListener('click', (event: any) => {

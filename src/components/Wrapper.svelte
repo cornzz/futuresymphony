@@ -1,5 +1,7 @@
 <script lang="ts">
-    import { onMount } from 'svelte'
+    // Disclaimer: this code was written with static site generation in mind, therefore is error prone when running as a SPA.
+
+    import { onMount, tick } from 'svelte'
     import { _, locale } from 'svelte-i18n'
     import { mail } from '../helpers'
     import { showLanding, showBack, sections } from '../helpers/stores'
@@ -59,7 +61,17 @@
         }
     }
 
+    function setPositions() {
+        const getPos = (top) => Math.floor(top - 150)
+        aboutpos = getPos($sections['#about'].offsetTop)
+        newspos = getPos($sections['#news'].offsetTop)
+        participantspos = getPos($sections['#participants'].offsetTop)
+        sponsorspos = getPos($sections['#sponsors'].offsetTop)
+        contactspos = getPos($sections['#contacts'].offsetTop)
+    }
+
     function jumpToHash() {
+        // TODO fix this on window resize
         let hash = window.location.hash
         let hashpos = hash ? (document.querySelector(hash) as any).offsetTop : 0
         window.scrollTo(0, hashpos)
@@ -70,13 +82,8 @@
         if ($showLanding) {
             landing.style['margin-bottom'] = - header.clientHeight - 1 + 'px'
             landingBottom = Math.floor(landing.clientHeight - header.clientHeight - 1)
-    
-            const getPos = (top) => Math.floor(top - 150)
-            aboutpos = getPos($sections['#about'].offsetTop)
-            newspos = getPos($sections['#news'].offsetTop)
-            participantspos = getPos($sections['#participants'].offsetTop)
-            sponsorspos = getPos($sections['#sponsors'].offsetTop)
-            contactspos = getPos($sections['#contacts'].offsetTop)
+
+            setPositions()
         }
         jumpToHash()
         content.style['margin-top'] = header.scrollHeight + 'px'
@@ -87,6 +94,10 @@
         init()
         window.addEventListener('resize', init)
         window.addEventListener('scroll', setHeader)
+
+        if ($showLanding) {      
+            locale.subscribe(async () => { await tick(); setPositions(); setHeader() })
+        }
     })
 </script>
 
@@ -94,7 +105,7 @@
     <div class="landing" bind:this={landing}>
         <span>FUTURE<br>SYMPHONY</span>
         <span class="sub">
-            {@html $_('headline2')}
+            {@html $_('index.headline2')}
         </span>
     </div>
 {/if}
@@ -103,11 +114,11 @@
     <div>
         <nav>
             <ul class="nav masthead-nav">
-                <li bind:this={aboutlink} id="aboutlink"><a href="/#about">ABOUT</a></li>
-                <li bind:this={newslink} id="newslink"><a href="/#news">NEWS</a></li>
-                <li bind:this={participantslink} id="participantslink"><a href="/#participants">FOR PARTICIPANTS</a></li>
-                <li bind:this={sponsorslink} id="sponsorslink"><a href="/#sponsors">SPONSORS & PARTNERS</a></li>
-                <li bind:this={contactslink} id="contactslink"><a href="/#contacts">CONTACTS</a></li>
+                <li bind:this={aboutlink} id="aboutlink"><a href="/#about">{$_('nav.about')}</a></li>
+                <li bind:this={newslink} id="newslink"><a href="/#news">{$_('nav.news')}</a></li>
+                <li bind:this={participantslink} id="participantslink"><a href="/#participants">{$_('nav.participants')}</a></li>
+                <li bind:this={sponsorslink} id="sponsorslink"><a href="/#sponsors">{$_('nav.sponsors')}</a></li>
+                <li bind:this={contactslink} id="contactslink"><a href="/#contacts">{$_('nav.contacts')}</a></li>
             </ul>
         </nav>
     </div>
@@ -130,7 +141,7 @@
 </div>
 
 {#if $showBack}
-    <a href="#start" class="icon back" title="Start" bind:this={back}>
+    <a href="#start" class="icon back" title="{$_('nav.back')}" bind:this={back}>
         <img src="/images/arr.svg" alt="arr.svg">
     </a>
 {/if}

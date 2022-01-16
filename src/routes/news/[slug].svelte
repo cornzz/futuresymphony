@@ -1,7 +1,8 @@
 <script lang="ts">
-    import Tab from '../../components/Tab.svelte';
+    import Tab from '../../components/Tab.svelte'
+    import { MetaTags } from 'svelte-meta-tags'
     import { showLanding, showBack } from '../../helpers/stores'
-    import { locale } from 'svelte-i18n'
+    import { _, locale } from 'svelte-i18n'
     import { page } from '$app/stores'
 
     let imageFrame
@@ -18,9 +19,10 @@
     let article = Object.values(imports).find(article => article.slug === $page.params.slug)
 </script>
 
-<svelte:head>
-    <title>News - Future Symphony Competition</title>
-</svelte:head>
+<MetaTags
+    title={$_('news.slug.meta.title')}
+    description={$_('news.slug.meta.description')}
+/>
 
 {#if article.images.regular}
     <div class="image-frame" bind:this={imageFrame}  on:click={toggleImage}>
