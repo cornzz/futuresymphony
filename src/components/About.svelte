@@ -1,5 +1,6 @@
 <script lang="ts">
-    import { locale } from 'svelte-i18n' 
+    import { locale } from 'svelte-i18n'
+    import { fadeHeight } from '../helpers'
 
     let showFSO = false
 </script>
@@ -23,14 +24,15 @@
         <p>The main objective of the competition is to encourage young composers all around the globe to write symphonic music and provide an opportunity to hear their compositions live. The competition seeks to discover new talents as well as to educate the new generation of musicians and develop an international bond between different cultures.</p>
         <p>Composers from all around the world at the <b>age of 18&ndash;35</b> can apply to the competition.</p>
         <p>
-            <span class="link" on:click="{() => showFSO = !showFSO}">Future Symphony Orchestra</span>
+            <span class="link" on:click="{() => showFSO = !showFSO}">Future Symphony Orchestra</span> will perform 5 to 7 best scores in the final concert in the Lithuanian National Philharmonic Hall <b>on September 9<sup>th</sup>ich 2022</b>.
             {#if showFSO}
-                <hr>
-                    <b>Future Symphony Orchestra (FSO)</b> is an orchestra brought together specifically for this competition and made up of young professional Lithuanian musicians. During the 1<sup>st</sup> „Future Symphony“ competition in 2018, FSO performed 7 scores created by young composers and received praise from the jury as well as international professional musicians.<br>
-                    The goal of FSO is to prepare and perform the scores of the young composers. The orchestra also strives to educate young musicians with the subtleties of contemporary music and to introduce new trends of symphonic music to the people of Lithuania.
-                <hr>
+                <div transition:fadeHeight style="overflow: hidden">
+                    <hr>
+                        <b>Future Symphony Orchestra (FSO)</b> is an orchestra brought together specifically for this competition and made up of young professional Lithuanian musicians. FSO has already performed 14 worldwide symphonic premiers and received acclaim from previous Competition’s finalists, jury members and Lithuanian music lovers for its versatility, high professionalism and youthful charisma.<br>
+                        The goal of FSO is to prepare and perform the scores of the young composers. The orchestra also strives to educate young musicians with the subtleties of contemporary music and to introduce new trends of symphonic music to the people of Lithuania.
+                    <hr>
+                </div>
             {/if}
-            will perform 5 to 7 best scores in the final concert in the Lithuanian National Philharmonic Hall <b>on September 9<sup>th</sup>ich 2022</b>.
         </p>
         <p>
             Scores will be judged by international professional composers, conductors and musicologists:<br>
@@ -65,10 +67,12 @@
         <p>
             <b>2022 m. rugsėjo 9 d.</b> Lietuvos nacionalinėje filharmonijoje <b>5-7 geriausias pateiktas partitūras</b> atliks specialiai <i>„Future Symphony“</i> konkursams suburiamas <span class="link" on:click="{() => showFSO = !showFSO}">Future Symphony Orchestra</span>
             {#if showFSO}
-                <hr>
-                    <b>Future Symphony Orchestra  (FSO)</b> – tai lanksčios sudėties simfoninis orkestras, specialiai konkursui suburiamas iš jaunųjų Lietuvos atlikėjų. I-ojo „Future Symphony“ konkurso metu 2018 m. rudenį FSO parengė 7-ias jaunųjų kompozitorių premjeras ir susilaukė puikių Lietuvos ir pasaulio muzikos profesionalų įvertinimų.<br>
-                    FSO tikslas – rengti ir atlikti jaunųjų kompozitorių simfoninę kūrybą. Orkestras taip pat siekia supažindinti jaunosios kartos atlikėjus su šiuolaikinės muzikos ypatumais, ir Lietuvos klausytojams pristatyti aktualiosios simfoninės muzikos tendencijas.
-                <hr>
+                <div transition:fadeHeight style="overflow: hidden">
+                    <hr>
+                        <b>Future Symphony Orchestra  (FSO)</b> – tai lanksčios sudėties simfoninis orkestras, specialiai konkursui suburiamas iš jaunųjų Lietuvos atlikėjų. FSO jau dovanojo net 14 simfoninių kūrinių premjerų Lietuvos klausytojams. Orkestras sulaukė puikaus praeitų konkurso finalininkų, žiuri narių ir šalies meninės muzikos gerbėjų įvertinimo už profesionalumą, lankstumą ir jaunatvišką energiją.<br>
+                        FSO tikslas – rengti ir atlikti jaunųjų kompozitorių simfoninę kūrybą. Orkestras taip pat siekia supažindinti jaunosios kartos atlikėjus su šiuolaikinės muzikos ypatumais, ir Lietuvos klausytojams pristatyti aktualiosios simfoninės muzikos tendencijas.
+                    <hr>
+                </div>
             {/if}
         </p>
         <p>
