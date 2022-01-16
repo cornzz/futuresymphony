@@ -1,9 +1,10 @@
 <script lang="ts">
     import Tab from '../../components/Tab.svelte'
     import News from '../../components/News.svelte'
-    import { showLanding } from '../../helpers/stores'
+    import { showLanding, showBack } from '../../helpers/stores'
 
     showLanding.set(false)
+    showBack.set(false)
 </script>
 
 <svelte:head>

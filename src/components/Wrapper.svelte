@@ -2,12 +2,12 @@
     import { onMount } from 'svelte'
     import { _, locale } from 'svelte-i18n'
     import { mail } from '../helpers'
-    import { showLanding, sections } from '../helpers/stores'
+    import { showLanding, showBack, sections } from '../helpers/stores'
 
     let landing, header, content, back, footer,
         aboutlink, newslink, participantslink, sponsorslink, contactslink,
         aboutpos, newspos, participantspos, sponsorspos, contactspos,
-        landingBottom
+        landingBottom = 0
 
     function changeLanguage(lang) {
         locale.set(lang)
@@ -19,15 +19,15 @@
     function setHeader() {
         if (windowPos() >= landingBottom) {
             header.classList.add('active')
-            header.style.top = header.clientHeight + 2 + 'px'
+            header.style.top = 0
             footer.classList.add('active')
-            back.classList.add('active')
+            back?.classList.add('active')
             setActive()
         } else {
             header.classList.remove('active')
             header.style.top = ''
             footer.classList.remove('active')
-            back.classList.remove('active')
+            back?.classList.remove('active')
             removeActive()
         }
     }
@@ -39,31 +39,36 @@
 
     // Add .active to the correct nav link and set language link
     function setActive() {
-        removeActive();
-        if (aboutpos <= windowPos() && windowPos() < newspos) {
-            aboutlink.classList.add('active')
-        } else if (newspos <= windowPos() && windowPos() < participantspos) {
-            newslink.classList.add('active');
-        } else if (participantspos <= windowPos() && windowPos() < sponsorspos) {
-            participantslink.classList.add('active');
-        } else if (sponsorspos <= windowPos() && windowPos() < contactspos) {
-            sponsorslink.classList.add('active');
-        } else if (contactspos <= windowPos()) {
-            contactslink.classList.add('active');
+        removeActive()
+        if ($showLanding)  {
+            if (aboutpos <= windowPos() && windowPos() < newspos) {
+                aboutlink.classList.add('active')
+            } else if (newspos <= windowPos() && windowPos() < participantspos) {
+                newslink.classList.add('active')
+            } else if (participantspos <= windowPos() && windowPos() < sponsorspos) {
+                participantslink.classList.add('active')
+            } else if (sponsorspos <= windowPos() && windowPos() < contactspos) {
+                sponsorslink.classList.add('active')
+            } else if (contactspos <= windowPos()) {
+                contactslink.classList.add('active')
+            }
+        } else if (window.location.pathname.startsWith('/news')) {
+            newslink.classList.add('active')
+        } else if (window.location.pathname.startsWith('/regulations')) {
+            participantslink.classList.add('active')
         }
     }
 
     function jumpToHash() {
         let hash = window.location.hash
-        let hashpos = hash ? $sections[hash].offsetTop : 0
-        let headerheight = document.querySelector('.masthead').clientHeight
-        window.scrollTo(0, hashpos - headerheight)
+        let hashpos = hash ? (document.querySelector(hash) as any).offsetTop : 0
+        window.scrollTo(0, hashpos)
     }
 
     // Set height of landning cover, push header up and set variables for relevant object positions
     function init() {
         if ($showLanding) {
-            header.style['margin-top'] = - header.clientHeight - 2 + 'px'
+            landing.style['margin-bottom'] = - header.clientHeight - 1 + 'px'
             landingBottom = Math.floor(landing.clientHeight - header.clientHeight - 1)
     
             const getPos = (top) => Math.floor(top - 150)
@@ -72,26 +77,21 @@
             participantspos = getPos($sections['#participants'].offsetTop)
             sponsorspos = getPos($sections['#sponsors'].offsetTop)
             contactspos = getPos($sections['#contacts'].offsetTop)
-            setHeader()
-            jumpToHash()
-        } else {
-            content.style['margin-top'] = header.scrollHeight + 'px'
         }
+        jumpToHash()
+        content.style['margin-top'] = header.scrollHeight + 'px'
+        setHeader()
     }
 
     onMount(() => {
         init()
         window.addEventListener('resize', init)
-        if ($showLanding) {
-            window.addEventListener('scroll', setHeader)
-        } else {
-            footer.classList.add('active')
-        }
+        window.addEventListener('scroll', setHeader)
     })
 </script>
 
 {#if $showLanding}
-    <div id="start" class="landing" bind:this={landing}>
+    <div class="landing" bind:this={landing}>
         <span>FUTURE<br>SYMPHONY</span>
         <span class="sub">
             {@html $_('headline2')}
@@ -129,8 +129,8 @@
     <slot></slot>
 </div>
 
-{#if $showLanding}
-    <a href="/#start" class="icon back" title="Start" bind:this={back}>
+{#if $showBack}
+    <a href="#start" class="icon back" title="Start" bind:this={back}>
         <img src="/images/arr.svg" alt="arr.svg">
     </a>
 {/if}
