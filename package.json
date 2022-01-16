@@ -3,7 +3,9 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "svelte-kit dev",
+    "prebuild": "cp src/routes/__error.svelte src/routes/404.svelte",
     "build": "svelte-kit build",
+    "postbuild": "mv build/404/index.html build/404.html; rm -r src/routes/404.svelte build/404/",
     "package": "svelte-kit package",
     "preview": "svelte-kit preview",
     "check": "svelte-check --tsconfig ./tsconfig.json",
