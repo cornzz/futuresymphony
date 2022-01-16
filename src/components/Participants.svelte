@@ -37,7 +37,7 @@
         Kompozitoriams, užsiregistravusiems iki 2020 m. balandžio 5 d. 23:59 Lietuvos laiku (EEST), dalyvio mokestis – <b>50 Eur</b>.
         Nuo 2020 m. balandžio 6 d. dalyvio mokestis – <b>80 Eur</b>.<br>
         Sumokėti pinigai dalyviams grąžinami tik konkurso atšaukimo atveju.<br>
-        Siųsdami paraiška į konkursą jūs sutinkate su <a href="/lt/regulations" class="link">Konkurso nuostatais</a>.
+        Siųsdami paraiška į konkursą jūs sutinkate su <a href="/regulations" class="link">Konkurso nuostatais</a>.
 
         <div class="center">
             <a class="button" tabindex="0" href="https://artistdb.eu/lt/nousr/contests" target="_blank" bind:this={button}>
@@ -48,7 +48,7 @@
         <b>Kūrinio atsiuntimas</b><br>
         Su kiekvienu užsiregistravusiu dalyviu bus susisiekta ir paprašyta <b>nuo birželio 6 d. iki 2020 m. liepos 5 d.</b> 23:59 Lietuvos laiku (EEST) atsiųsti:<br>
         <ul>
-            <li>kūrinio partitūrą PDF formatu (partitūros reikalavimus rasite <a href="/lt/regulations/#score" class="link">čia</a>)</li>
+            <li>kūrinio partitūrą PDF formatu (partitūros reikalavimus rasite <a href="/regulations/#score" class="link">čia</a>)</li>
             <li>kūrinio audio įrašą mp3 formatu (padarytą iš notografinių programų).</li>
         </ul>
 
