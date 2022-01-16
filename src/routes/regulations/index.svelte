@@ -14,7 +14,7 @@
 />
 
 <Tab oversize>
-    <h1 class="cover-heading"><b>{$_('regulations')}</b></h1>
+    <h1 class="cover-heading"><b>{$_('regulations.title')}</b></h1>
     <div class="regulations">
         {#if $locale === 'en'}
             <b>I. General information</b>
