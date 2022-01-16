@@ -1,5 +1,21 @@
+import { cubicOut } from 'svelte/easing'
+
 export function mail() {
     window.location.href = `mailto:${this.dataset.user}@futuresymphony.lt`;
+}
+
+export function fadeHeight(node, {
+    delay = 0
+}) {
+    const height = parseInt(getComputedStyle(node).height)
+    const calcDuration = (h) => h < 300 ? 500 : h < 500 ? 750 : 1000
+
+    return {
+        delay,
+        duration: calcDuration(height),
+        easing: cubicOut,
+        css: t => `height: ${t * height}px`
+    }
 }
 
 export function initSmoothScrolling() {
