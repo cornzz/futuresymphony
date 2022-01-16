@@ -24,6 +24,8 @@
         min-height 95vh
         height auto
 
+    /* TODO: rework this mess... */
+
     @media (min-width: 1200px)
         .tab
             font-size 1.6vw
@@ -36,7 +38,7 @@
 
     @media (min-width: 1300px)
         .tab
-            font-size 2.8vh
+            font-size 2.3vh
             padding 0vh 200px 0vh
 
     @media (min-width: 1400px) 
@@ -61,7 +63,7 @@
 
     @media (min-width: 1700px) 
         .tab 
-            font-size 2.8vh
+            font-size 2.3vh
             padding 0vh 320px
 
     @media screen and (max-device-width: 600px) 

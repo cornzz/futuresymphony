@@ -12,47 +12,38 @@
 <div style="line-height: 1.65;">
     {#if $locale === 'en'}
         <b>Registration</b><br>
-        Composers who are willing to participate in the competition must <span on:click={focusButton} class="link">submit the application form</span> <b>by June 5<sup>th</sup> 2020, 23:59 (EEST)</b>.<br>
-        The participation fee until April 5th 2020 23:59 (EEST) is <b>50 EUR</b>. The participation fee from April 6th 2020 onwards is <b>80 EUR</b>.<br>
-        The registration fee is returned to the composer only in the case of competition being cancelled.<br>
-        By sending the application you agree with the <a href="/regulations" class="link">Regulations of the Competition</a>.
+        <p>Composers who are willing to participate in the competition must submit the application form <b>by June 30<sup>th</sup> 2020</b>.</p>
+        <p>Early application fee (till March 31<sup>st</sup> 2022) – <b>60€</b><br>
+        Regular application fee (from April 1<sup>st</sup> 2022) – <b>80€</b></p>
+        <p>Before applying, please carefully read the <b>Regulations of the Competition</b>.</p>
         
-        <div class="center">
+        <!-- <div class="center">
             <a class="button" tabindex="0" href="https://artistdb.eu/en/nousr/contests" target="_blank" bind:this={button}>
                 Register
             </a>
-        </div>
+        </div> -->
 
-        <b>Score deadline</b><br>
-        Every registered participant will be contacted and asked to submit <b>by July 5<sup>th</sup> 23:59 (EEST), 2020</b>:<br>
-        <ul>
-            <li>a composition score in PDF format (requirements of the score can be found <a href="/regulations/#score" class="link">here</a>)</li>
-            <li>an MP3 audio file (created with a music notation software).</li>
-        </ul>
-
-        For more information please see <a href="/regulations" class="link">Regulations of the Competition</a>.
+        <p>
+            <a href="/regulations_en.pdf" class="link">Regulations of the Competition</a><br>
+            <span class="link">Proceed to the Registration Platform</span> (opens up on the 1st of March 2022)
+        </p>
     {:else if $locale === 'lt'}
         <b>Registracija</b><br>
-        Kompozitoriai, norintys dalyvauti konkurse, privalo <span on:click={focusButton} class="link">užsiregistruoti</span> <b>iki 2020 m. birželio 5 d. 23:59 Lietuvos laiku (EEST)</b>.<br>
-        Kompozitoriams, užsiregistravusiems iki 2020 m. balandžio 5 d. 23:59 Lietuvos laiku (EEST), dalyvio mokestis – <b>50 Eur</b>.
-        Nuo 2020 m. balandžio 6 d. dalyvio mokestis – <b>80 Eur</b>.<br>
-        Sumokėti pinigai dalyviams grąžinami tik konkurso atšaukimo atveju.<br>
-        Siųsdami paraiška į konkursą jūs sutinkate su <a href="/regulations" class="link">Konkurso nuostatais</a>.
-
-        <div class="center">
-            <a class="button" tabindex="0" href="https://artistdb.eu/lt/nousr/contests" target="_blank" bind:this={button}>
-                Registruotis
-            </a>
-        </div>
+        <p>Kompozitoriai, norintys dalyvauti konkurse, privalo užsiregistruoti <b>iki 2022 m. birželio 30 d.</b></p>
+        <p>Ankstyvas apmokėjimas (iki 2022 m. kovo 31 d.) – <b>60€</b><br>
+        Įprastas apmokėjimas (nuo 2022 m. balandžio 1 d.) – <b>80€</b></p>
+        <p>Siųsdami paraiška į konkursą Jūs sutinkate su <b>Konkurso nuostatais</b>.</p>
         
-        <b>Kūrinio atsiuntimas</b><br>
-        Su kiekvienu užsiregistravusiu dalyviu bus susisiekta ir paprašyta <b>nuo birželio 6 d. iki 2020 m. liepos 5 d.</b> 23:59 Lietuvos laiku (EEST) atsiųsti:<br>
-        <ul>
-            <li>kūrinio partitūrą PDF formatu (partitūros reikalavimus rasite <a href="/regulations/#score" class="link">čia</a>)</li>
-            <li>kūrinio audio įrašą mp3 formatu (padarytą iš notografinių programų).</li>
-        </ul>
+        <!-- <div class="center">
+            <a class="button" tabindex="0" href="https://artistdb.eu/en/nousr/contests" target="_blank" bind:this={button}>
+                Register
+            </a>
+        </div> -->
 
-        Daugiau informacijos rasite <a href="/regulations" class="link">Konkurso nuostatuose</a>.
+        <p>
+            <a href="/regulations_lt.pdf" class="link">Konkurso nuostatai</a><br>
+            <span class="link">Pradėti registraciją</span> (platforma atsidaro 2022 m. kovo 1 d.)
+        </p>
     {/if}
 </div>
 
