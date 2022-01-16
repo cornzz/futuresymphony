@@ -24,7 +24,7 @@
         </div> -->
 
         <p>
-            <a href="/regulations_en.pdf" class="link">Regulations of the Competition</a><br>
+            <span class="link">Regulations of the Competition</span><br>
             <span class="link">Proceed to the Registration Platform</span> (opens up on the 1st of March 2022)
         </p>
     {:else if $locale === 'lt'}
@@ -41,7 +41,7 @@
         </div> -->
 
         <p>
-            <a href="/regulations_lt.pdf" class="link">Konkurso nuostatai</a><br>
+            <span class="link">Konkurso nuostatai</span><br>
             <span class="link">Pradėti registraciją</span> (platforma atsidaro 2022 m. kovo 1 d.)
         </p>
     {/if}
