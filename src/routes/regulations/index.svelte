@@ -1,11 +1,17 @@
 <script lang="ts">
     import Tab from '../../components/Tab.svelte'
+    import { MetaTags } from 'svelte-meta-tags'
     import { showLanding, showBack } from '../../helpers/stores'
     import { _, locale } from 'svelte-i18n'
 
     showLanding.set(false)
     showBack.set(true)
 </script>
+
+<MetaTags 
+    title={$_('regulations.meta.title')}
+    description={$_('regulations.meta.description')}
+/>
 
 <Tab oversize>
     <h1 class="cover-heading"><b>{$_('regulations')}</b></h1>

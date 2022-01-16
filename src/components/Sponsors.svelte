@@ -1,14 +1,14 @@
 <script lang="ts">
-
+    import { _ } from 'svelte-i18n'
 </script>
 
-<h2 class="cover-subheading">Sponsors:</h2>
+<h2 class="cover-subheading">{$_('sponsors.sponsors')}:</h2>
 <div class="flex-container">
     <div class="flex-item"><a href="https://www.ltkt.lt/" target="_blank"><img src="/images/sponsors/logo_kt.png" alt="logo_kt.png"></a></div>
     <div class="flex-item"><a href="http://www.euron.lt/" target="_blank"><img src="/images/sponsors/logo_euron_cg.png" alt="logo_euron_cg.png"></a></div>
     <div class="flex-item"><a href="https://skfoundation.com/" target="_blank"><img src="/images/sponsors/logo_kf.png" alt="logo_kf.png"></a></div>
 </div>
-<h2 class="cover-subheading">Partners:</h2>
+<h2 class="cover-subheading">{$_('sponsors.partners')}:</h2>
 <div class="flex-container">
     <div class="flex-item"><a href="https://www.lrt.lt/" target="_blank"><img src="/images/sponsors/logo_lrt.png" alt="logo_lrt.png"></a></div>
     <div class="flex-item"><a href="https://www.filharmonija.lt/" target="_blank"><img src="/images/sponsors/logo_lnf.png" alt="logo_lnf.png"></a></div>

@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { locale } from 'svelte-i18n'
+    import { _, locale } from 'svelte-i18n'
 
     export let latest = false
 
@@ -17,7 +17,7 @@
     <a href={`/news/${article.slug}`} class="news-link">
         <div class="news-item dropshadow" class:fixed={!latest}>
             <img class="news-image-small" src={`/images/news/${article.images.small}`} alt={article.images.small}>
-            <div class="news-content">
+            <div class="news-content" data-readmore="{$_('news.readmore')}">
                 <div class="date"><i>{@html article.date[$locale]}</i></div>
                 <span class="title"><b>{@html article.title[$locale]}</b></span>
                 <div class="text">
@@ -28,7 +28,7 @@
     </a>
 {/each}
 {#if latest}
-    <div class="center"><a href="/news" class="link">Older news</a></div>
+    <div class="center"><a href="/news" class="link">{$_('news.older')}</a></div>
 {/if}
 
 <style lang="stylus">
@@ -54,6 +54,7 @@
             height 100%
 
         .news-content
+            position relative
             display grid
             grid-template-rows 1fr 1fr 3fr
             padding 5px 10px 10px
@@ -72,29 +73,36 @@
 
             .text
                 line-height: 1.55
-                /*position relative
 
-                &:before
-                    content ''
-                    top 0
-                    bottom 0
-                    left 0
-                    right 0
-                    position absolute
-                    background linear-gradient(transparent 15%, var(--color-background))
+            &:before
+                content ''
+                position absolute
+                top 0
+                bottom 0
+                left 0
+                right 0
+                opacity 0
+                background-color #092749FA
+                border-top-right-radius 2px
+                border-bottom-right-radius 2px
+                transition all 0.3s ease
+            
+            &:after
+                content attr(data-readmore)
+                position absolute
+                top 50%
+                left 0
+                right 0
+                transform translateY(-50%)
+                font-size 0.85em
+                opacity 0
+                text-align center
+                color var(--color-background)
+                transition all 0.2s ease
 
-                &:after
-                    content 'Read more'
-                    position absolute
-                    bottom -2px
-                    left 0
-                    right 0
-                    text-align center
-                    color var(--color-link)
-                    transition all 0.2s ease
-                
-                &:hover:after
-                    bottom 0*/
+        &:hover .news-content:before
+        &:hover .news-content:after
+            opacity 1
     
     .fixed
         height 25vh

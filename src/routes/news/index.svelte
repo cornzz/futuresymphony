@@ -1,20 +1,21 @@
 <script lang="ts">
     import Tab from '../../components/Tab.svelte'
     import News from '../../components/News.svelte'
+    import { MetaTags } from 'svelte-meta-tags'
     import { showLanding, showBack } from '../../helpers/stores'
+    import { _ } from 'svelte-i18n';
 
     showLanding.set(false)
     showBack.set(false)
 </script>
 
-<svelte:head>
-    <title>
-        News archive - Future Symphony Competition
-    </title>
-</svelte:head>
+<MetaTags 
+    title={$_('news.archive.meta.title')}
+    description={$_('news.archive.meta.description')}
+/>
 
 <Tab oversize>
-    <h1 class="cover-heading"><b>News archive</b></h1>
+    <h1 class="cover-heading"><b>{$_('news.archive.title')}</b></h1>
     <News/>
 </Tab>
 

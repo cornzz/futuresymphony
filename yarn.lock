@@ -1342,6 +1342,11 @@ sax@~1.2.4:
   resolved "https://registry.yarnpkg.com/sax/-/sax-1.2.4.tgz#2816234e2378bddc4e5354fab5caa895df7100d9"
   integrity sha512-NqVDv9TpANUjFm0N8uM5GxL36UgKi9/atZw+x7YFnQ8ckwFGKrl4xX4yWtrey3UJm5nP1kUbnYgLopqWNSRhWw==
 
+schema-dts@1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/schema-dts/-/schema-dts-1.0.0.tgz#60e8a0f2cef5e644c44c843b03d35b37a4423c01"
+  integrity sha512-9t8gnY3RW2CbpuvA0pIpcaHFXkJTeNnWR4uaWI+PiYSfpuEeMw+2Q0Gac6YTnQb1B8TR6/+G71gQWuSE7dq6Zw==
+
 semver@^7.2.1, semver@^7.3.5:
   version "7.3.5"
   resolved "https://registry.yarnpkg.com/semver/-/semver-7.3.5.tgz#0b621c879348d8998e4b0e4be94b3f12e6018ef7"
@@ -1507,6 +1512,13 @@ svelte-i18n@^3.3.13:
     intl-messageformat "^9.3.15"
     sade "^1.7.4"
     tiny-glob "^0.2.6"
+
+svelte-meta-tags@^2.2.3:
+  version "2.2.3"
+  resolved "https://registry.yarnpkg.com/svelte-meta-tags/-/svelte-meta-tags-2.2.3.tgz#7016d77ce2348481dc2c27db2881c5e879643a08"
+  integrity sha512-P1xcjek5vyDOyQsxlch8iL8U3dBVJhq+jUgJ7B+0U1YLLA8bK9I6X3VEXvm0tQUWgxOzoQElypHk6NSPoYbbvg==
+  dependencies:
+    schema-dts "1.0.0"
 
 svelte-preprocess@^4.0.0, svelte-preprocess@^4.9.4:
   version "4.10.1"
