@@ -1,5 +1,9 @@
 {
     "slug": "winners",
+    "meta": {
+        "en": "Results of the 1st competition final round",
+        "lt": "I-ojo konkurso finalinio turo rezultatai"
+    },
     "date": {
         "en": "October 8<sup>th</sup>, 2018 - 08:00 pm",
         "lt": "2018 m. spalio 8 d. 20:00"
