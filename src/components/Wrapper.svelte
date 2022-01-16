@@ -80,6 +80,7 @@
     // Set height of landning cover, push header up and set variables for relevant object positions
     function init() {
         if ($showLanding) {
+            landing.style.height = window.innerHeight + 'px'
             landing.style['margin-bottom'] = - header.clientHeight - 1 + 'px'
             landingBottom = Math.floor(landing.clientHeight - header.clientHeight - 1)
 

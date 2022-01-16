@@ -138,4 +138,9 @@
         .news-image
             height 350px
             float none
+            margin 25px 0
+
+        .date
+            line-height 2
+            font-size 1.3vh
 </style>

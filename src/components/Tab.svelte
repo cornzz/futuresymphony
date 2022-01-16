@@ -66,9 +66,9 @@
 
     @media screen and (max-device-width: 600px) 
         .tab 
-            font-size: 1.76vh
+            font-size: 1.5vh
 
-    @media screen and (max-device-width: 640px) and (orientation:landscape) 
+    @media screen and (max-device-width: 640px) and (orientation:landscape)
         .tab 
             font-size 3vh
             padding-top 30px
