@@ -1,11 +1,16 @@
 <script lang="ts">
     import { locale } from 'svelte-i18n'
 
-    let button
+    let button, date
 
     function focusButton() {
         button.classList.toggle('focus')
         setTimeout(() => button.classList.toggle('focus'), 1000)
+    }
+
+    function highlightStartDate() {
+        date.classList.toggle('highlight')
+        setTimeout(() => date.classList.toggle('highlight'), 1000)
     }
 </script>
 
@@ -24,8 +29,9 @@
         </div> -->
 
         <p>
-            <span class="link">Regulations of the Competition</span><br>
-            <span class="link">Proceed to the Registration Platform</span> (opens up on the 1st of March 2022)
+            <a href="/files/fsc_regulations_EN_2022-01-17.pdf" class="link" target="_blank">Regulations of the Competition</a><br>
+            <span on:click={highlightStartDate} class="link">Proceed to the Registration Platform</span>
+            <span class="startDate" bind:this={date}>(opens up on the 1st of March 2022)</span>
         </p>
     {:else if $locale === 'lt'}
         <b>Registracija</b><br>
@@ -41,8 +47,9 @@
         </div> -->
 
         <p>
-            <span class="link">Konkurso nuostatai</span><br>
-            <span class="link">Pradėti registraciją</span> (platforma atsidaro 2022 m. kovo 1 d.)
+            <a href="/files/fsc_regulations_LT_2022-01-17.pdf" class="link" target="_blank">Konkurso nuostatai</a><br>
+            <span on:click={highlightStartDate} class="link">Pradėti registraciją</span>
+            <span class="startDate" bind:this={date}>(platforma atsidaro 2022 m. kovo 1 d.)</span>
         </p>
     {/if}
 </div>
@@ -78,5 +85,12 @@
             background-color #fff
             box-shadow 4px 4px 0 0 var(--color-primary)
             color var(--color-primary)
+
+    .startDate
+        transition all 0.2s ease
+        border-radius 3px
+
+        &:global(.highlight)
+            background-color yellow
 </style>
 
