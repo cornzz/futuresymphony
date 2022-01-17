@@ -47,6 +47,8 @@
 </Tab>
 
 <style lang="stylus">
+    @require '../../styles/image-frame.styl'
+
     .date
         color rgba(100, 100, 100, 0.5)
         line-height 2.5
@@ -62,84 +64,7 @@
     .news-image:hover
         cursor pointer
 
-    .image-frame
-        width 100%
-        height 100%
-        top -100%
-        position fixed
-        background-color rgba(0, 0, 0, .7)
-        opacity 0
-        transition opacity .3s linear
-        z-index 10
-
-        img
-            position fixed
-            top 0
-            left 0
-            bottom 0
-            right 0
-            margin auto
-            border 3px solid #fff
-            border-radius 3px
-            box-shadow 0 0 20px rgba(0, 0, 0, .7)
-            max-height 0%
-            max-width 0
-            text-align center
-            line-height 6500%
-            -ms-user-select none
-            -webkit-user-select none
-            user-select none
-
-            &:hover
-                cursor pointer
-
-        :global(&.active)
-            opacity 1 !important
-            top 0 !important
-            bottom 0 !important
-
-            img
-                max-height 100%
-                max-width 100%
-
-            .image-frame-close
-                top 0
-
-    .image-frame-close
-        text-decoration none
-        cursor pointer
-        display block
-        width 50px
-        height 50px
-        box-sizing border-box
-        background #fff
-        color #000
-        position absolute
-        top -80px
-        right 0
-        transition .2s ease-in-out
-
-        &:hover
-            background rgba(255, 255, 255, .8)
-
-        &:after
-        &:before
-            content ""
-            display block
-            height 30px
-            width 1px
-            background #000
-            position absolute
-            left 26px
-            top 10px
-
-        &:before
-            transform rotate(45deg)
-
-        &:after
-            transform rotate(-45deg)
-
-    @media screen and (max-device-width: 600px)
+   @media screen and (max-device-width: 600px)
         .news-image
             height 450px
             float none
