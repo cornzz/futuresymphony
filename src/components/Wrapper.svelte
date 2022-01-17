@@ -86,7 +86,7 @@
             setPositions()
         }
         jumpToHash()
-        content.style['margin-top'] = header.scrollHeight + 'px'
+        content.style['margin-top'] = header.scrollHeight - 1 + 'px'
         setHeader()
     }
 
