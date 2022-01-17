@@ -4,7 +4,7 @@ import { _ } from 'svelte-i18n';
     import { mail } from '../helpers'
 </script>
 
-<div style="line-height: 1.65;">
+<div class="content">
     <b>{$_('contacts.organizer')}:</b>
     <div style="padding: 0 0 5px 30px;">
         {$_('contacts.vsi')} „Muzikinis pirštas“
@@ -34,10 +34,14 @@ import { _ } from 'svelte-i18n';
 </div> 
 
 <style lang="stylus">
-    .contactlink
-        color inherit
+    .content
+        line-height: 1.65
+        height 100%
 
-        &:hover
-            text-decoration underline
+        .contactlink
+            color inherit
+
+            &:hover
+                text-decoration underline
 </style>
 

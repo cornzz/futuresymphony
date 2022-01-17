@@ -14,7 +14,7 @@
     }
 </script>
 
-<div style="line-height: 1.65;">
+<div class="content">
     {#if $locale === 'en'}
         <b>Registration</b><br>
         <p>Composers who are willing to participate in the competition must submit the application form <b>by June 30<sup>th</sup> 2020</b>.</p>
@@ -55,42 +55,46 @@
 </div>
 
 <style lang="stylus">
-    .center
-        width 100%
-        text-align center
+    .content
+        line-height: 1.65
+        height 100%
 
-    .button
-        width 200px
-        box-sizing border-box
-        font-size 0.7em
-        transition background-color .1s,
-                    box-shadow .1s,
-                    color .1s,
-                    transform .1s
-        background-color var(--color-primary)
-        border-radius 2px
-        border 2px solid var(--color-primary)
-        color #fff
-        cursor pointer
-        display inline-block
-        font-weight 700
-        padding 5px 20px
-        text-decoration none !important
-        outline none
-        margin 25px 0
+        .center
+            width 100%
+            text-align center
 
-        &:hover
-        &:global(.focus)
-            transform translate(-2px,-2px)
-            background-color #fff
-            box-shadow 4px 4px 0 0 var(--color-primary)
-            color var(--color-primary)
+        .button
+            width 200px
+            box-sizing border-box
+            font-size 0.7em
+            transition background-color .1s,
+                        box-shadow .1s,
+                        color .1s,
+                        transform .1s
+            background-color var(--color-primary)
+            border-radius 2px
+            border 2px solid var(--color-primary)
+            color #fff
+            cursor pointer
+            display inline-block
+            font-weight 700
+            padding 5px 20px
+            text-decoration none !important
+            outline none
+            margin 25px 0
 
-    .startDate
-        transition all 0.2s ease
-        border-radius 3px
+            &:hover
+            &:global(.focus)
+                transform translate(-2px,-2px)
+                background-color #fff
+                box-shadow 4px 4px 0 0 var(--color-primary)
+                color var(--color-primary)
 
-        &:global(.highlight)
-            background-color yellow
+        .startDate
+            transition all 0.2s ease
+            border-radius 3px
+
+            &:global(.highlight)
+                background-color yellow
 </style>
 

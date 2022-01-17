@@ -11,14 +11,17 @@
         background-color var(--color-background)
         height 95vh
         width 100vw
-        padding 0vh 15px 0
+        padding 0 15px 3%
         overflow hidden
-        font-size 2.8vmin
+        font-size 2.5vmin
         margin-right auto
         margin-left auto
         margin-bottom 20.5vh
         box-shadow 0 0 6px 4px rgba(0,0,0,0.3)
         outline none
+        display flex
+        flex-direction column
+        justify-content space-between
 
     .oversize
         min-height 95vh
@@ -29,42 +32,42 @@
     @media (min-width: 1200px)
         .tab
             font-size 1.6vw
-            padding 0vh 150px 0vh
+            padding 0 150px 3%
 
     @media (min-width: 1200px) and (min-height: 800px)
         .tab
             font-size 1.7vw
-            padding 0vh 160px 0vh
+            padding 0 160px 3%
 
     @media (min-width: 1300px)
         .tab
             font-size 2.3vh
-            padding 0vh 200px 0vh
+            padding 0 200px 3%
 
     @media (min-width: 1400px) 
         .tab 
             font-size 1.8vw
-            padding 0vh 200px 0vh
+            padding 0 200px 3%
 
     @media (min-width: 1400px) and (max-height: 900px)
         .tab 
             font-size 1.5vw
-            padding 0vh 200px 0vh
+            padding 0 200px 3%
 
     @media (min-width: 1500px) and (max-height: 890px) 
         .tab 
-            font-size 2.9vh
-            padding 0vh 240px 0vh
+            font-size 2.5vh
+            padding 0 240px 3%
 
     @media (min-width: 1600px) and (min-height: 900px)
         .tab 
             font-size 2.5vh
-            padding 0vh 250px
+            padding 0 250px 3%
 
     @media (min-width: 1700px) 
         .tab 
             font-size 2.3vh
-            padding 0vh 320px
+            padding 0 320px 3%
 
     @media screen and (max-device-width: 600px) 
         .tab 
@@ -72,6 +75,5 @@
 
     @media screen and (max-device-width: 640px) and (orientation:landscape)
         .tab 
-            font-size 3vh
-            padding-top 30px
+            font-size 2.5vh
 </style>

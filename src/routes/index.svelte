@@ -4,7 +4,7 @@
     import News from '../components/News.svelte'
     import Participants from '../components/Participants.svelte'
     import Sponsors from '../components/Sponsors.svelte'
-    import Contact from '../components/Contact.svelte'
+    import Contacts from '../components/Contacts.svelte'
     import { MetaTags } from 'svelte-meta-tags'
     import { onMount } from 'svelte'
     import { showLanding, showBack, sections } from '../helpers/stores'
@@ -53,15 +53,15 @@
 </div>
 
 <div bind:this={sponsors} id="sponsors">
-    <Tab oversize>
+    <Tab>
         <h1 class="cover-heading"><b>{$_('sponsors.title')}</b></h1>
         <Sponsors/>
     </Tab>
 </div>
 
 <div bind:this={contacts} id ="contacts">
-    <Tab oversize>
+    <Tab>
         <h1 class="cover-heading"><b>{$_('contacts.title')}</b></h1>
-        <Contact/>
+        <Contacts/>
     </Tab>
 </div>
