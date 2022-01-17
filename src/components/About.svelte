@@ -24,7 +24,7 @@
         <p>The main objective of the competition is to encourage young composers all around the globe to write symphonic music and provide an opportunity to hear their compositions live. The competition seeks to discover new talents as well as to educate the new generation of musicians and develop an international bond between different cultures.</p>
         <p>Composers from all around the world at the <b>age of 18&ndash;35</b> can apply to the competition.</p>
         <p>
-            <span class="link" on:click="{() => showFSO = !showFSO}">Future Symphony Orchestra</span> will perform 5 to 7 best scores in the final concert in the Lithuanian National Philharmonic Hall <b>on September 9<sup>th</sup>ich 2022</b>.
+            <span class="link" on:click="{() => showFSO = !showFSO}">Future Symphony Orchestra</span> will perform 5 to 7 best scores in the final concert in the Lithuanian National Philharmonic Hall <b>on September 9<sup>th</sup> 2022</b>.
             {#if showFSO}
                 <div transition:fadeHeight style="overflow: hidden">
                     <hr>
@@ -37,15 +37,15 @@
         <p>
             Scores will be judged by international professional composers, conductors and musicologists:<br>
             <a href="https://www.lmic.lv/en/composers/martins-vilums-488#work" class="link" target="_blank">Mārtiņš Viļums</a> (Latvia/Lithuania)<br>
+            <a href="https://www.kyriakides.com/" class="link" target="_blank">Yannis Kyriakides</a> (Cyprus/The Netherlands)<br>
             <!-- <a href="https://lmta.academia.edu/RutaStaneviciute" class="link" target="_blank">Rūta Stanevičiūtė</a> (Lithuania)<br> -->
             <!-- <a href="https://zibuokle.com/" class="link" target="_blank">Žibuoklė Martinaitytė</a> (Lithuania)<br> -->
             <a href="https://www.filharmonija.lt/en/performers/modestas-pitrenas-artistic-director-and-principal-conductor-of-the-lnso18.html" class="link" target="_blank">Modestas Pitrėnas</a> (Lithuania)<br>
             <a href="http://www.gediminasgelgotas.com/" class="link" target="_blank">Gediminas Gelgotas</a> (Lithuania)<br>
             <a href="https://ayaladler.com/" class="link" target="_blank">Ayal Adler</a> (Israel)<br>
             <!-- <a href="https://www.emic.ee/helena-tulve" class="link" target="_blank">Helena Tulve</a> (Estonia)<br> -->
-            <a href="https://www.kyriakides.com/" class="link" target="_blank">Yannis Kyriakides</a> (Cyprus/The Netherlands)<br>
         </p>
-        <p>The <b>Grand Prix</b> will be awarded a <b>1500€ cash prize</b> and an opportunity to work with Lithuania‘s best orchestras and music festivals. The other 2–3 best composers will be awarded the <i>Laureate diploma</i> and <b>will share a 1500€ prize fund</b> in equal parts.</p>
+        <p>The <b>Grand Prix</b> will be awarded a <b>1500 € cash prize</b> and an opportunity to work with Lithuania‘s best orchestras and music festivals. The other 2–3 best composers will be awarded the <i>Laureate diploma</i> and <b>will share a 1500 € prize fund</b> in equal parts.</p>
         <p>The authors of the pieces performed in the final concert will receive professional recordings of their pieces.</p><br><br>
     {:else if $locale === 'lt'}
         <p>
@@ -78,15 +78,15 @@
         <p>
             Koncerto metu kūrinius vertins profesionali tarptautinė kompozitorių, dirigentų ir muzikologų žiuri:<br>
             <a href="https://www.lmic.lv/en/composers/martins-vilums-488#work" class="link" target="_blank">Mārtiņš Viļums</a> (Latvija/Lietuva)<br>
+            <a href="https://www.kyriakides.com/" class="link" target="_blank">Yannis Kyriakides</a> (Kipras/Olandija)<br>
             <!-- <a href="https://lmta.academia.edu/RutaStaneviciute" class="link" target="_blank">Rūta Stanevičiūtė</a> (Lietuva)<br> -->
             <!-- <a href="https://zibuokle.com/" class="link" target="_blank">Žibuoklė Martinaitytė</a> (Lietuva)<br> -->
             <a href="https://www.filharmonija.lt/en/performers/modestas-pitrenas-artistic-director-and-principal-conductor-of-the-lnso18.html" class="link" target="_blank">Modestas Pitrėnas</a> (Lietuva)<br>
             <a href="http://www.gediminasgelgotas.com/" class="link" target="_blank">Gediminas Gelgotas</a> (Lietuva)<br>
             <a href="https://ayaladler.com/" class="link" target="_blank">Ayal Adler</a> (Izraelis)<br>
             <!-- <a href="https://www.emic.ee/helena-tulve" class="link" target="_blank">Helena Tulve</a> (Estija)<br> -->
-            <a href="https://www.kyriakides.com/" class="link" target="_blank">Yannis Kyriakides</a> (Kipras/Olandija)<br>
         </p>
-        <p><b>Grand Prix</b> bus apdovanotas <b>1500€ piniginiu prizu</b> bei bendradarbiavimo galimybę su geriausiais Lietuvos kolektyvais ir festivaliais. Kiti 2–3 geriausi kompozitoriai bus apdovanoti <i>Laureato diplomu</i> ir <b>pasidalins 1500€ prizinį fondą</b> lygiomis dalimis.</p>
+        <p><b>Grand Prix</b> bus apdovanotas <b>1500 € piniginiu prizu</b> bei bendradarbiavimo galimybę su geriausiais Lietuvos kolektyvais ir festivaliais. Kiti 2–3 geriausi kompozitoriai bus apdovanoti <i>Laureato diplomu</i> ir <b>pasidalins 1500 € prizinį fondą</b> lygiomis dalimis.</p>
         <p>Visi baigiamajame koncerte skambėsiančių kūrinių autoriai taip pat gaus savo premjeros įrašus.</p><br><br>
     {/if}
 </div>
