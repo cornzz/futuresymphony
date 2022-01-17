@@ -82,7 +82,7 @@
                 left 0
                 right 0
                 opacity 0
-                background-color #092749FA
+                background-color #F5F5F5EF
                 border-top-right-radius 2px
                 border-bottom-right-radius 2px
                 transition all 0.3s ease
@@ -93,16 +93,19 @@
                 top 50%
                 left 0
                 right 0
-                transform translateY(-50%)
-                font-size 0.85em
+                transform translateY(-70%)
+                font-weight 700
                 opacity 0
                 text-align center
-                color var(--color-background)
-                transition all 0.2s ease
+                color var(--color-link)
+                transition all 0.3s ease
 
         &:hover .news-content:before
         &:hover .news-content:after
             opacity 1
+        
+        &:hover .news-content:after
+            transform translateY(-50%)
     
     .fixed
         height 25vh
