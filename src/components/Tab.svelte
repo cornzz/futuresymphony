@@ -71,7 +71,7 @@
 
     @media screen and (max-device-width: 600px) 
         .tab 
-            font-size: 1.5vh
+            font-size: 1.2vh
 
     @media screen and (max-device-width: 640px) and (orientation:landscape)
         .tab 
