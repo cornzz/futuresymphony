@@ -34,7 +34,7 @@
 <Tab oversize>
     {#if article}
         <h1 class="cover-heading"><b>{@html article.title[$locale]}</b></h1>
-        <span class="date"><i>{@html article.date[$locale]}</i></span><br>
+        <span class="date"><i>{@html article.date[$locale]}</i></span>
         <div>
             <div on:click={toggleImage}>
                 <img class="news-image" src={`/images/news/${article.images.small}`} alt={article.images.small}>
@@ -138,7 +138,7 @@
 
     @media screen and (max-device-width: 600px)
         .news-image
-            height 350px
+            height 450px
             float none
             margin 25px 0
 
