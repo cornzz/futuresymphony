@@ -35,7 +35,7 @@
     {#if article}
         <h1 class="cover-heading"><b>{@html article.title[$locale]}</b></h1>
         <span class="date"><i>{@html article.date[$locale]}</i></span>
-        <div>
+        <div class="content">
             <div on:click={toggleImage}>
                 <img class="news-image" src={`/images/news/${article.images.small}`} alt={article.images.small}>
             </div>
@@ -50,6 +50,9 @@
     .date
         color rgba(100, 100, 100, 0.5)
         line-height 2.5
+
+    .content
+        flex-grow 1
 
     .news-image
         float left

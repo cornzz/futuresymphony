@@ -57,7 +57,7 @@
 <style lang="stylus">
     .content
         line-height: 1.65
-        height 100%
+        flex-grow 1
 
         .center
             width 100%
