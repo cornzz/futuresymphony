@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<!-- fonts -->
+		<link href="/css/fonts.min.css" rel="stylesheet">
+		<!-- favicon -->
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+		<link rel="manifest" href="/site.webmanifest">
+		<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#092749">
+		<meta name="apple-mobile-web-app-title" content="Future Symphony">
+		<meta name="application-name" content="Future Symphony">
+		<meta name="msapplication-TileColor" content="#092749">
+		<meta name="theme-color" content="#092749">
+		%svelte.head%
+	</head>
+	<body class="preload">
+		<div id="svelte">%svelte.body%</div>
+	</body>
+	<script>
+		// Light favicon for dark mode
+		if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+            darkicon = document.createElement('link')
+            darkicon.type = 'image/x-icon'
+            darkicon.rel = 'icon'
+            darkicon.href = '/favicon-light-32x32.png'
+            document.head.appendChild(darkicon)
+        }
+	</script>
+</html>

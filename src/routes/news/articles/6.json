@@ -1,0 +1,29 @@
+{
+    "slug": "karoso",
+    "meta": {
+        "en": "Best Lithuanian composer this year will be awarded with a special prize!",
+        "lt": "Geriausias 2020 m. konkurso kompozitorius iš Lietuvos bus apdovanotas specialiu prizu!"
+    },
+    "date": {
+        "en": "July 11<sup>th</sup>, 2020 - 4:00 pm",
+        "lt": "2020 m. liepos 11 d. 16:00"
+    },
+    "title": {
+        "en": "Special prize for the best Lithuanian composition",
+        "lt": "Sauliaus Karoso fondo įsteigtas specialius prizas"
+    },
+    "content": {
+        "short": {
+            "en": "The best Lithuanian composer this year will be awarded with a special prize founded by the competition’s main sponsor Saulius Karosas Foundation!",
+            "lt": "Geriausias 2020 m. konkurso kompozitorius iš Lietuvos bus apdovanotas pagrindinio konkurso rėmėjo Sauliaus Karoso fondo įsteigtu specialiu prizu „už geriausią lietuvių autoriaus kūrinį“!"
+        },
+        "full": {
+            "en": "<p>Future Symphony Competition supports young Lithuanian composers. Therefore, the best Lithuanian composer this year will be awarded with a special prize founded by the competition’s main sponsor Saulius Karosas Foundation! 🇱🇹</p><br><br>",
+            "lt": "<p>„Future Symphony” konkursas – jaunuosius lietuvių kūrėjus palaikanti iniciatyva. Todėl geriausias 2020 m. konkurso kompozitorius iš Lietuvos bus apdovanotas pagrindinio konkurso rėmėjo Sauliaus Karoso fondo įsteigtu specialiu prizu „už geriausią lietuvių autoriaus kūrinį“! 🇱🇹</p><br><br>"
+        }
+    },
+    "images": {
+        "regular": "",
+        "small": "news_karoso.png"
+    }
+}

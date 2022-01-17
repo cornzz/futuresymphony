@@ -1,0 +1,82 @@
+<script lang="ts">
+    import { locale } from 'svelte-i18n'
+
+    let button
+
+    function focusButton() {
+        button.classList.toggle('focus')
+        setTimeout(() => button.classList.toggle('focus'), 1000)
+    }
+</script>
+
+<div style="line-height: 1.65;">
+    {#if $locale === 'en'}
+        <b>Registration</b><br>
+        <p>Composers who are willing to participate in the competition must submit the application form <b>by June 30<sup>th</sup> 2020</b>.</p>
+        <p>Early application fee (till March 31<sup>st</sup> 2022) – <b>60€</b><br>
+        Regular application fee (from April 1<sup>st</sup> 2022) – <b>80€</b></p>
+        <p>Before applying, please carefully read the <b>Regulations of the Competition</b>.</p>
+        
+        <!-- <div class="center">
+            <a class="button" tabindex="0" href="https://artistdb.eu/en/nousr/contests" target="_blank" bind:this={button}>
+                Register
+            </a>
+        </div> -->
+
+        <p>
+            <span class="link">Regulations of the Competition</span><br>
+            <span class="link">Proceed to the Registration Platform</span> (opens up on the 1st of March 2022)
+        </p>
+    {:else if $locale === 'lt'}
+        <b>Registracija</b><br>
+        <p>Kompozitoriai, norintys dalyvauti konkurse, privalo užsiregistruoti <b>iki 2022 m. birželio 30 d.</b></p>
+        <p>Ankstyvas apmokėjimas (iki 2022 m. kovo 31 d.) – <b>60€</b><br>
+        Įprastas apmokėjimas (nuo 2022 m. balandžio 1 d.) – <b>80€</b></p>
+        <p>Siųsdami paraiška į konkursą Jūs sutinkate su <b>Konkurso nuostatais</b>.</p>
+        
+        <!-- <div class="center">
+            <a class="button" tabindex="0" href="https://artistdb.eu/en/nousr/contests" target="_blank" bind:this={button}>
+                Register
+            </a>
+        </div> -->
+
+        <p>
+            <span class="link">Konkurso nuostatai</span><br>
+            <span class="link">Pradėti registraciją</span> (platforma atsidaro 2022 m. kovo 1 d.)
+        </p>
+    {/if}
+</div>
+
+<style lang="stylus">
+    .center
+        width 100%
+        text-align center
+
+    .button
+        width 200px
+        box-sizing border-box
+        font-size 0.7em
+        transition background-color .1s,
+                    box-shadow .1s,
+                    color .1s,
+                    transform .1s
+        background-color var(--color-primary)
+        border-radius 2px
+        border 2px solid var(--color-primary)
+        color #fff
+        cursor pointer
+        display inline-block
+        font-weight 700
+        padding 5px 20px
+        text-decoration none !important
+        outline none
+        margin 25px 0
+
+        &:hover
+        &:global(.focus)
+            transform translate(-2px,-2px)
+            background-color #fff
+            box-shadow 4px 4px 0 0 var(--color-primary)
+            color var(--color-primary)
+</style>
+

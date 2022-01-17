@@ -1,0 +1,67 @@
+{
+    "index": {
+        "meta": {
+            "title": "Future Symphony Competition",
+            "description": "3rd \"Future Symphony\" international composition competition for symphony orchestra"
+        },
+        "headline2": "3<sup>RD</sup> INTERNATIONAL MUSIC COMPOSITION COMPETITION<br>FOR SYMPHONY ORCHESTRA"
+    },
+    "nav": {
+        "about": "ABOUT",
+        "news": "NEWS",
+        "participants": "FOR PARTICIPANTS",
+        "sponsors": "SPONSORS & PARTNERS",
+        "contacts": "CONTACTS",
+        "back": "Back to top"
+    },
+    "about": {
+        "title": "Welcome!"
+    },
+    "news": {
+        "title": "News",
+        "older": "Older news",
+        "readmore": "Read more",
+        "slug": {
+            "meta": {
+                "title": "News - Future Symphony Competition"
+            }
+        },
+        "archive": {
+            "title": "News archive",
+            "meta": {
+                "title": "News Archive - Future Symphony Competition",
+                "description": "News archive of the \"Future Symphony\" international composition competition for symphony orchestra"
+            }
+        }
+    },
+    "participants": {
+        "title": "For Participants"
+    },
+    "sponsors": {
+        "title": "Sponsors and Partners",
+        "sponsors": "Sponsors",
+        "partners": "Partners"
+    },
+    "contacts": {
+        "title": "Contacts",
+        "organizer": "Event organizer",
+        "vsi": "PI",
+        "projectManagers": "Project managers",
+        "orchestraManager": "Orchestra manager",
+        "email": "E-mail",
+        "facebook": "Facebook",
+        "webdesign": "Web design"
+    },
+    "regulations": {
+        "title": "Competition regulations",
+        "meta": {
+            "title": "Regulations - Future Symphony Competition",
+            "description": "Regulations for the 3rd \"Future Symphony\" international composition competition for symphony orchestra"
+        }
+    },
+    "error": {
+        "title": "Error - Future Symphony Competition",
+        "pageNotFound": "Page not found",
+        "goBack": "Go back"
+    }
+}
