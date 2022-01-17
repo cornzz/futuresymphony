@@ -36,7 +36,8 @@
 
     // Remove .active from all nav links and reset language link
     function removeActive() {
-        [aboutlink, newslink, participantslink, sponsorslink, contactslink].forEach(l => l.classList.remove('active'))
+        [aboutlink, newslink, participantslink, sponsorslink, contactslink].forEach(l => l.classList.remove('active'));
+        (document.activeElement as HTMLElement).blur()
     }
 
     // Add .active to the correct nav link and set language link
