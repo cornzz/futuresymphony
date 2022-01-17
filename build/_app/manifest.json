@@ -1,6 +1,6 @@
 {
   ".svelte-kit/build/runtime/internal/start.js": {
-    "file": "start-29d5b6c2.js",
+    "file": "start-ab5be79a.js",
     "src": ".svelte-kit/build/runtime/internal/start.js",
     "isEntry": true,
     "imports": [
@@ -43,11 +43,11 @@
       "_stores-37973b72.js"
     ],
     "css": [
-      "assets/pages/404.svelte-bfd357f2.css"
+      "assets/pages/__error.svelte-76caa9f2.css"
     ]
   },
   "src/routes/index.svelte": {
-    "file": "pages/index.svelte-4f162c24.js",
+    "file": "pages/index.svelte-1460fbd4.js",
     "src": "src/routes/index.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
@@ -55,34 +55,34 @@
       "_vendor-cc5ddd86.js",
       "_Tab-0a64ee46.js",
       "_index-12a6085c.js",
-      "_News-29b73854.js",
+      "_News-7864a68a.js",
       "_stores-37973b72.js",
-      "_8-f82e9346.js"
+      "_8-2f1e7ec7.js"
     ],
     "css": [
       "assets/pages/index.svelte-d4ee57c2.css"
     ]
   },
   "src/routes/news/index.svelte": {
-    "file": "pages/news/index.svelte-52656656.js",
+    "file": "pages/news/index.svelte-6d7dfc74.js",
     "src": "src/routes/news/index.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
       "_vendor-cc5ddd86.js",
       "_Tab-0a64ee46.js",
-      "_News-29b73854.js",
+      "_News-7864a68a.js",
       "_stores-37973b72.js",
-      "_8-f82e9346.js"
+      "_8-2f1e7ec7.js"
     ]
   },
   "src/routes/news/[slug].svelte": {
-    "file": "pages/news/_slug_.svelte-5b885e56.js",
+    "file": "pages/news/_slug_.svelte-0ed6728f.js",
     "src": "src/routes/news/[slug].svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_8-f82e9346.js",
+      "_8-2f1e7ec7.js",
       "_vendor-cc5ddd86.js",
       "_Tab-0a64ee46.js",
       "_stores-37973b72.js"
@@ -102,7 +102,7 @@
       "_stores-37973b72.js"
     ],
     "css": [
-      "assets/pages/404.svelte-bfd357f2.css"
+      "assets/pages/__error.svelte-76caa9f2.css"
     ]
   },
   "_vendor-cc5ddd86.js": {
@@ -129,17 +129,17 @@
       "assets/Tab-3c16e4c4.css"
     ]
   },
-  "_News-29b73854.js": {
-    "file": "chunks/News-29b73854.js",
+  "_News-7864a68a.js": {
+    "file": "chunks/News-7864a68a.js",
     "imports": [
-      "_8-f82e9346.js",
+      "_8-2f1e7ec7.js",
       "_vendor-cc5ddd86.js"
     ],
     "css": [
       "assets/News-0f2fe369.css"
     ]
   },
-  "_8-f82e9346.js": {
-    "file": "chunks/8-f82e9346.js"
+  "_8-2f1e7ec7.js": {
+    "file": "chunks/8-2f1e7ec7.js"
   }
 }

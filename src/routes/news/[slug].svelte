@@ -35,11 +35,13 @@
     {#if article}
         <h1 class="cover-heading"><b>{@html article.title[$locale]}</b></h1>
         <span class="date"><i>{@html article.date[$locale]}</i></span><br>
-        <div on:click={toggleImage}>
-            <img class="news-image" src={`/images/news/${article.images.small}`} alt={article.images.small}>
-        </div>
-        <div style="line-height: 1.65; overflow: hidden;">
-            {@html article.content.full[$locale]}
+        <div>
+            <div on:click={toggleImage}>
+                <img class="news-image" src={`/images/news/${article.images.small}`} alt={article.images.small}>
+            </div>
+            <div style="line-height: 1.65; overflow: hidden;">
+                {@html article.content.full[$locale]}
+            </div>
         </div>
     {/if}
 </Tab>
