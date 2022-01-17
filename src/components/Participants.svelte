@@ -18,8 +18,8 @@
     {#if $locale === 'en'}
         <b>Registration</b><br>
         <p>Composers who are willing to participate in the competition must submit the application form <b>by June 30<sup>th</sup> 2020</b>.</p>
-        <p>Early application fee (till March 31<sup>st</sup> 2022) – <b>60€</b><br>
-        Regular application fee (from April 1<sup>st</sup> 2022) – <b>80€</b></p>
+        <p>Early application fee (till March 31<sup>st</sup> 2022) – <b>60 €</b><br>
+        Regular application fee (from April 1<sup>st</sup> 2022) – <b>80 €</b></p>
         <p>Before applying, please carefully read the <b>Regulations of the Competition</b>.</p>
         
         <!-- <div class="center">
@@ -36,8 +36,8 @@
     {:else if $locale === 'lt'}
         <b>Registracija</b><br>
         <p>Kompozitoriai, norintys dalyvauti konkurse, privalo užsiregistruoti <b>iki 2022 m. birželio 30 d.</b></p>
-        <p>Ankstyvas apmokėjimas (iki 2022 m. kovo 31 d.) – <b>60€</b><br>
-        Įprastas apmokėjimas (nuo 2022 m. balandžio 1 d.) – <b>80€</b></p>
+        <p>Ankstyvas apmokėjimas (iki 2022 m. kovo 31 d.) – <b>60 €</b><br>
+        Įprastas apmokėjimas (nuo 2022 m. balandžio 1 d.) – <b>80 €</b></p>
         <p>Siųsdami paraiška į konkursą Jūs sutinkate su <b>Konkurso nuostatais</b>.</p>
         
         <!-- <div class="center">
