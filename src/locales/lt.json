@@ -1,0 +1,67 @@
+{
+    "index": {
+        "meta": {
+            "title": "Future Symphony Konkursas",
+            "description": "III \"Future Symphony\" tarptautinis kompozicijų simfoniniam orkestrui konkursas"
+        },
+        "headline2": "III TARPTAUTINIS KOMPOZICIJŲ SIMFONINIAM<br>ORKESTRUI KONKURSAS"
+    },
+    "nav": {
+        "about": "APIE",
+        "news": "NAUJIENOS",
+        "participants": "DALYVIAMS",
+        "sponsors": "RĖMĖJAI & PARTNERIAI",
+        "contacts": "KONTAKTAI",
+        "back": "Į pradžią"
+    },
+    "about": {
+        "title": "Sveiki atvykę!"
+    },
+    "news": {
+        "title": "Naujienos",
+        "older": "Senesnės naujienos",
+        "readmore": "Skaityti daugiau",
+        "slug": {
+            "meta": {
+                "title": "Naujienos - Future Symphony Konkursas"
+            }
+        },
+        "archive": {
+            "title": "Naujienų archyvas",
+            "meta": {
+                "title": "Naujienų archyvas - Future Symphony Competition",
+                "description": "Naujienų archyvas \"Future Symphony\" tarptautiniam kompozicijų simfoniniam orkestrui konkursui"
+            }
+        }
+    },
+    "participants": {
+        "title": "Dalyviams"
+    },
+    "sponsors": {
+        "title": "Rėmėjai ir partneriai",
+        "sponsors": "Rėmėjai",
+        "partners": "Partneriai"
+    },
+    "contacts": {
+        "title": "Kontaktai",
+        "organizer": "Projekto organizatorius",
+        "vsi": "VšĮ",
+        "projectManagers": "Projekto vadybininkai",
+        "orchestraManager": "Orkestro vadybininkas",
+        "email": "El. paštas",
+        "facebook": "Facebook",
+        "webdesign": "Internetinio puslapio dizainas"
+    },
+    "regulations": {
+        "title": "Konkurso nuostatai",
+        "meta": {
+            "title": "Nuostatai - Future Symphony Konkursas",
+            "description": "Nuostatai III-am \"Future Symphony\" tarptautiniam kompozicijų simfoniniam orkestrui konkursui"
+        }
+    },
+    "error": {
+        "title": "Klaida - Future Symphony Konkursas",
+        "pageNotFound": "Puslapis nerastas",
+        "goBack": "Grįžti"
+    }
+}

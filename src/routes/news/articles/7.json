@@ -1,0 +1,29 @@
+{
+    "slug": "first_round",
+    "meta": {
+        "en": "We are excited to announce 7 finalists of the 2nd Future Symphony Competition!",
+        "lt": "Skelbiame II-ojo „Future Symphony“ finalininkų sąrašą!"
+    },
+    "date": {
+        "en": "July 20<sup>th</sup>, 2020 - 10:00 pm",
+        "lt": "2020 m. liepos 20 d. 22:00"
+    },
+    "title": {
+        "en": "Results of the 1<sup>st</sup> Round",
+        "lt": "I-ojo turo rezultatai"
+    },
+    "content": {
+        "short": {
+            "en": "We are excited to announce 7 finalists of the 2<sup>nd</sup> Future Symphony Competition! Participants listed below proceed to the 2<sup>nd</sup> round of the competition:",
+            "lt": "Skelbiame II-ojo „Future Symphony“ finalininkų sąrašą! Šie dalyviai patenka į 2-ąjį konkurso turą:"
+        },
+        "full": {
+            "en": "<p>We are excited to announce 7 finalists of the 2<sup>nd</sup> Future Symphony Competition! Participants listed below proceed to the 2<sup>nd</sup> round of the competition:</p><p>🇵🇱🇩🇪 Roman Czura<br>🇲🇽 Charles Philip Daniels Torres<br>🇱🇹 Jievaras Jasinskis<br>🇱🇹 Andrius Maslekovas<br>🇭🇺 Apor Szüts<br>🇮🇹 Daniele Testa<br>🇬🇷 Miran Tsalikian</p><p>Congratulations to the composers! Their compositions will be performed in a concert on the 17<sup>th</sup> of September at Lithuanian National Philharmonic Hall in Vilnius.</p><p>1<sup>st</sup> round’s jury members were:</p><p>Žibuoklė Martinaitytė<br>Mykolas Natalevičius<br>Karolis Variakojis</p><p>30 applications from even 20 different countries have been received for the 1<sup>st</sup> round.</p><br><br>",
+            "lt": "<p>Skelbiame II-ojo „Future Symphony“ finalininkų sąrašą! Šie dalyviai patenka į 2-ąjį konkurso turą:</p><p>🇵🇱🇩🇪 Roman Czura<br>🇲🇽 Charles Philip Daniels Torres<br>🇱🇹 Jievaras Jasinskis<br>🇱🇹 Andrius Maslekovas<br>🇭🇺 Apor Szüts<br>🇮🇹 Daniele Testa<br>🇬🇷 Miran Tsalikian</p><p>Sveikiname kompozitorius! Jų kūriniai bus atlikti baigiamojo konkurso koncerto metu rugsėjo 17 d. Lietuvos nacionalinėje filharmonijoje.</p><p>1-ojo turo žiuri nariai:</p><p>Žibuoklė Martinaitytė<br>Mykolas Natalevičius<br>Karolis Variakojis</p><p>1-ojo turo metu paraiškas pateikė net 30 kompozitorių iš 20 skirtingų šalių.</p><br><br>"
+        }
+    },
+    "images": {
+        "regular": "news_first_round.jpg",
+        "small": "news_first_round_small.jpg"
+    }
+}
