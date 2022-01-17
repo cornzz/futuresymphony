@@ -36,7 +36,7 @@ import { _ } from 'svelte-i18n';
 <style lang="stylus">
     .content
         line-height: 1.65
-        height 100%
+        flex-grow 1
 
         .contactlink
             color inherit
