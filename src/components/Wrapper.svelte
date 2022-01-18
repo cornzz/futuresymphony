@@ -73,7 +73,7 @@
         // TODO fix this on window resize
         let hash = window.location.hash
         let hashpos = hash ? (document.querySelector(hash) as any).offsetTop : 0
-        window.scrollTo(0, hashpos)
+        window.scrollTo(0, hashpos - header.scrollHeight + 1)
     }
 
     // Set height of landning cover, push header up and set variables for relevant object positions
@@ -85,8 +85,8 @@
 
             setPositions()
         }
-        jumpToHash()
         content.style['margin-top'] = header.scrollHeight - 1 + 'px'
+        jumpToHash()
         setHeader()
     }
 
