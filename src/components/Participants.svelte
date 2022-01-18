@@ -17,7 +17,7 @@
 <div class="content">
     {#if $locale === 'en'}
         <b>Registration</b><br>
-        <p>Composers who are willing to participate in the competition must submit the application form <b>by June 30<sup>th</sup> 2020</b>.</p>
+        <p>Composers who are willing to participate in the competition must submit the application form <b>by June 30<sup>th</sup> 2022</b>.</p>
         <p>Early application fee (till March 31<sup>st</sup> 2022) – <b>60 €</b><br>
         Regular application fee (from April 1<sup>st</sup> 2022) – <b>80 €</b></p>
         <p>Before applying, please carefully read the <b>Regulations of the Competition</b>.</p>
