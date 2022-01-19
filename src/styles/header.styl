@@ -57,11 +57,12 @@
 
 .back
     display none
-    background-color: rgba(0, 0, 0, 0.3)
+    background-color: rgba(0, 0, 0, 0.35)
+    transition all 0.02s
     border-radius 2px
     position: fixed
-    width 32px
-    height 32px
+    width 35px
+    height 35px
     bottom 70px
     right 30px
 
@@ -69,6 +70,7 @@
     &:focus
         cursor pointer
         filter brightness(150%)
+        background-color: rgba(0, 0, 0, 0.55)
 
     img
         pointer-events none
@@ -274,15 +276,13 @@
         .sub
             font-size 15px
 
-    /* TODO !! */
-    .GB
-    .LT
-        width 50px
-        height 25px
-
     .masthead-nav > li > a
         font-size 22px
         padding 15px 0
+
+    .back
+        width 45px
+        height 45px
 
 @media screen and (max-device-width: 640px) and (orientation:landscape)
     .landing
