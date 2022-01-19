@@ -9,6 +9,9 @@
             <a href="https://www.ltkt.lt/" target="_blank"><img src="/images/sponsors/logo_ltkt.png" alt="logo_ltkt.png"></a>
             <a href="https://skfoundation.com/" target="_blank"><img src="/images/sponsors/logo_kf.png" alt="logo_kf.png"></a>
         </div>
+        <div class="section-row">
+            <a href="https://www.latga.lt/" target="_blank"><img src="/images/sponsors/logo_latga.png" alt="logo_latga.png" class="oversize"></a>
+        </div>
     </div>
     <div class="section partners">
         <h2 class="cover-subheading">{$_('sponsors.partners')}:</h2>
@@ -17,10 +20,9 @@
             <a href="https://www.filharmonija.lt/" target="_blank"><img src="/images/sponsors/logo_lnf.png" alt="logo_lnf.png"></a>
             <a href="https://vilnius.lt/en/" target="_blank"><img src="/images/sponsors/logo_v.png" alt="logo_v.png"></a>
         </div>
-        <div class="section-row">
+        <!-- <div class="section-row">
             <a href="http://www.triplenode.com/" target="_blank"><img src="/images/sponsors/logo_tn.png" alt="logo_tn.png" class="oversize"></a>
-            <a href="https://www.latga.lt/" target="_blank"><img src="/images/sponsors/logo_latga.png" alt="logo_latga.png" class="oversize"></a>
-        </div>
+        </div> -->
         <div class="section-row">
             <a href="http://bmkkc.lt/" target="_blank"><img src="/images/sponsors/logo_bmkkc.png" alt="logo_bmkkc.png" style=" max-height: 80%"></a>
             <a href="https://domusmaria.com/" target="_blank" class="undersize"><img src="/images/sponsors/logo_dm.png" alt="logo_dm.png"></a>
@@ -38,9 +40,10 @@
         .section
             display flex
             flex-direction column
+            flex-grow 1
 
             &.partners
-                flex-grow 1
+                flex-grow 5
 
             .section-row
                 display flex
