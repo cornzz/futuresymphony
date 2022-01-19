@@ -18,8 +18,8 @@
             <a href="https://vilnius.lt/en/" target="_blank"><img src="/images/sponsors/logo_v.png" alt="logo_v.png"></a>
         </div>
         <div class="section-row">
-            <a href="http://www.triplenode.com/" target="_blank" class="oversize"><img src="/images/sponsors/logo_tn.png" alt="logo_tn.png"></a>
-            <a href="https://www.latga.lt/" target="_blank"class="oversize"><img src="/images/sponsors/logo_latga.png" alt="logo_latga.png"></a>
+            <a href="http://www.triplenode.com/" target="_blank"><img src="/images/sponsors/logo_tn.png" alt="logo_tn.png" class="oversize"></a>
+            <a href="https://www.latga.lt/" target="_blank"><img src="/images/sponsors/logo_latga.png" alt="logo_latga.png" class="oversize"></a>
         </div>
         <div class="section-row">
             <a href="http://bmkkc.lt/" target="_blank"><img src="/images/sponsors/logo_bmkkc.png" alt="logo_bmkkc.png" style=" max-height: 80%"></a>
@@ -56,8 +56,8 @@
                     justify-content center
                     /*border 1px solid #aaa*/
 
-                    &.oversize
-                        height 4.8vmin
+                    .oversize
+                        height 48%
 
                     &.undersize
                         height 13vmin
@@ -69,5 +69,13 @@
 
                     img:hover
                         opacity 1
+
+    @media screen and (max-device-width: 600px)
+        .content .section .section-row
+            a
+                height 13vmin
+
+                &.undersize
+                    height 16vmin
 </style>
 
