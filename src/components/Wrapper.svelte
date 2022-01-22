@@ -1,7 +1,7 @@
 <script lang="ts">
     // Disclaimer: this code was written with static site generation in mind, therefore is error prone when running as a SPA.
 
-    import { onMount, tick } from 'svelte'
+    import { afterUpdate, onMount, tick } from 'svelte'
     import { _, locale } from 'svelte-i18n'
     import { mail } from '../helpers'
     import { showLanding, showBack, sections } from '../helpers/stores'
@@ -9,7 +9,7 @@
     let landing, header, content, back, footer,
         aboutlink, newslink, participantslink, sponsorslink, contactslink,
         aboutpos, newspos, participantspos, sponsorspos, contactspos,
-        landingBottom = 0
+        landingBottom = 0, windowWidth
 
     function changeLanguage(lang) {
         locale.set(lang)
@@ -70,7 +70,6 @@
     }
 
     function jumpToHash() {
-        // TODO fix this on window resize
         let hash = window.location.hash
         let hashpos = hash ? (document.querySelector(hash) as any).offsetTop : 0
         window.scrollTo(0, hashpos - header.scrollHeight + 1)
@@ -80,13 +79,16 @@
     function init() {
         if ($showLanding) {
             landing.style.height = window.innerHeight + 'px'
-            landing.style['margin-bottom'] = - header.clientHeight - 1 + 'px'
+            landing.style['margin-bottom'] = -header.clientHeight - 1 + 'px'
             landingBottom = Math.floor(landing.clientHeight - header.clientHeight - 1)
 
             setPositions()
         }
         content.style['margin-top'] = header.scrollHeight - 1 + 'px'
-        jumpToHash()
+        if (windowWidth !== window.innerWidth) {
+            jumpToHash()
+            windowWidth = window.innerWidth
+        }
         setHeader()
     }
 
@@ -98,6 +100,11 @@
         if ($showLanding) {      
             locale.subscribe(async () => { await tick(); setPositions(); setHeader() })
         }
+
+        return () => {
+            window.removeEventListener('resize', init)
+            window.removeEventListener('scroll', setHeader)
+        } 
     })
 </script>
 

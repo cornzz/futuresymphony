@@ -59,7 +59,7 @@
     </Tab>
 </div>
 
-<div bind:this={contacts} id ="contacts">
+<div bind:this={contacts} id="contacts">
     <Tab>
         <h1 class="cover-heading"><b>{$_('contacts.title')}</b></h1>
         <Contacts/>

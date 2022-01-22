@@ -36,12 +36,13 @@
         <h1 class="cover-heading"><b>{@html article.title[$locale]}</b></h1>
         <span class="date"><i>{@html article.date[$locale]}</i></span>
         <div class="content">
-            <div on:click={toggleImage}>
-                <img class="news-image" src={`/images/news/${article.images.small}`} alt={article.images.small}>
-            </div>
-            <div style="line-height: 1.65; overflow: hidden;">
-                {@html article.content.full[$locale]}
-            </div>
+            <img
+                class="news-image"
+                src={`/images/news/${article.images.small}`}
+                alt={article.images.small}
+                on:click={toggleImage}
+            >
+            {@html article.content.full[$locale]}
         </div>
     {/if}
 </Tab>
@@ -55,11 +56,12 @@
 
     .content
         flex-grow 1
+        line-height 1.65
 
     .news-image
-        float left
-        max-height 50vh
-        margin 10px 20px 10px 0
+        float right
+        height 40vh
+        margin 10px 0 10px 20px
 
     .news-image:hover
         cursor pointer

@@ -6,7 +6,7 @@
     <div class="section">
         <h2 class="cover-subheading">{$_('sponsors.sponsors')}:</h2>
         <div class="section-row">
-            <a href="https://www.ltkt.lt/" target="_blank"><img src="/images/sponsors/logo_ltkt.png" alt="logo_ltkt.png"></a>
+            <span>Gediminas<br>Kuprevičius</span>
             <a href="https://skfoundation.com/" target="_blank"><img src="/images/sponsors/logo_kf.png" alt="logo_kf.png"></a>
         </div>
         <div class="section-row">
@@ -52,7 +52,19 @@
                 align-items center
                 /*border 1px solid black*/
 
+                span
+                    font-family 'Audiowide', "Courier New"
+                    font-size 2.5vmin
+                    text-align center
+                    text-shadow none
+                    user-select none
+                    transition all 0.1s ease-in-out
+                
+                    &:hover
+                        text-shadow inherit
+
                 a
+                span
                     height 10vmin
                     display flex
                     flex-direction column
@@ -70,8 +82,8 @@
                         opacity 0.55
                         transition all 0.15s ease-in-out
 
-                    img:hover
-                        opacity 1
+                        &:hover
+                            opacity 1
 
     @media screen and (max-device-width: 600px)
         .content .section .section-row
