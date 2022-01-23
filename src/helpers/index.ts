@@ -29,7 +29,7 @@ export function initSmoothScrolling() {
                 let target = document.querySelector(anchor.hash)
                 event.preventDefault();
                 anchor.parentElement.classList.add('clicked');
-                let scroll = target.offsetTop - document.querySelector('.masthead').clientHeight
+                let scroll = target.offsetTop - document.querySelector('.masthead').clientHeight + 1
                 scrollToY(scroll, 1000)
                 window.setTimeout(function () {
                     anchor.parentElement.classList.remove('clicked')

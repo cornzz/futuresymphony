@@ -1,19 +1,17 @@
 <script lang="ts">
     // Disclaimer: this code was written with static site generation in mind, therefore is error prone when running as a SPA.
-
-    import { afterUpdate, onMount, tick } from 'svelte'
+    
+    import { onMount, tick } from 'svelte'
     import { _, locale } from 'svelte-i18n'
     import { mail } from '../helpers'
     import { showLanding, showBack, sections } from '../helpers/stores'
+    import LanguageSelector from './LanguageSelector.svelte';
 
     let landing, header, content, back, footer,
         aboutlink, newslink, participantslink, sponsorslink, contactslink,
         aboutpos, newspos, participantspos, sponsorspos, contactspos,
         landingBottom = 0, windowWidth
-
-    function changeLanguage(lang) {
-        locale.set(lang)
-    }
+    let navOpen = false
 
     const windowPos = () => window.scrollY
 
@@ -118,7 +116,32 @@
 {/if}
 
 <div class="masthead active" bind:this={header}>
-    <div>
+    <div class="mobile-nav">
+        <div></div>
+        <div class="title">
+            FUTURE SYMPHONY
+        </div>
+        <div class="menu-icon" class:open={navOpen} on:click={() => navOpen = !navOpen}>
+            <span class="line"></span>
+            <span class="line"></span>
+            <span class="line"></span>
+        </div>
+        <div class="menu" class:active={navOpen} on:touchmove={(e) => e.preventDefault()}>
+            <div class="links" on:click={() => navOpen = !navOpen}>
+                <a href="/#about">{$_('nav.about')}</a>
+                <a href="/#news">{$_('nav.news')}</a>
+                <a href="/#participants">{$_('nav.participants')}</a>
+                <a href="/#sponsors">{$_('nav.sponsors')}</a>
+                <a href="/#contacts">{$_('nav.contacts')}</a>
+            </div>
+            <hr>
+            <div class="language">
+                <LanguageSelector bigger/>
+            </div>
+        </div>
+    </div>
+
+    <div class="desktop-nav">
         <nav>
             <ul class="nav masthead-nav">
                 <li bind:this={aboutlink} id="aboutlink"><a href="/#about">{$_('nav.about')}</a></li>
@@ -128,17 +151,7 @@
                 <li bind:this={contactslink} id="contactslink"><a href="/#contacts">{$_('nav.contacts')}</a></li>
             </ul>
         </nav>
-    </div>
-
-    <div class="flags">
-        <div on:click={() => changeLanguage('en')} class="flag" title="English">
-            <img src="/images/gb.svg" alt="gb.svg">
-            <img src="/images/gb_o.svg" alt="gb_o.svg" class:active={$locale === 'en'}>
-        </div> 
-        <div on:click={() => changeLanguage('lt')} class="flag" title="Lietuvių">
-            <img src="/images/lt.svg" alt="lt.svg">
-            <img src="/images/lt_o.svg" alt="lt_o.svg" class:active={$locale === 'lt'}>
-        </div>
+        <LanguageSelector/>
     </div>
 </div>
 
@@ -153,12 +166,14 @@
     </a>
 {/if}
 <div class="mastfoot" bind:this={footer}>
-    <span on:click="{mail}" class="mail" data-user="info"></span>
-    &nbsp; • &nbsp;
-    <a href="https://www.facebook.com/Future-Symphony-Competition-1832551767045287/" class="social" target="_blank">
-        <img src="/images/fb_icon.svg" alt="fb_icon.svg" width="20">
-    </a>
-    &nbsp; • &nbsp;
+    <div class="desktop-only">
+        <span on:click="{mail}" class="mail" data-user="info"></span>
+        &nbsp; • &nbsp;
+        <a href="https://www.facebook.com/Future-Symphony-Competition-1832551767045287/" class="social" target="_blank">
+            <img src="/images/fb_icon.svg" alt="fb_icon.svg" width="20">
+        </a>
+        &nbsp; • &nbsp;
+    </div>
     <a href="https://futuresymphony.lt">
         &copy; 2018 - {new Date().getFullYear()} Future Symphony Competition
     </a>

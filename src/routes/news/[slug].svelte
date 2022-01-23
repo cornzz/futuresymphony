@@ -57,22 +57,21 @@
     .content
         flex-grow 1
         line-height 1.65
+        margin-top 10px
 
     .news-image
         float right
         height 40vh
-        margin 10px 0 10px 20px
+        margin 5px 0 10px 20px
 
     .news-image:hover
         cursor pointer
 
    @media screen and (max-device-width: 600px)
-        .news-image
-            height 450px
-            float none
-            margin 25px 0
-
         .date
             line-height 2
             font-size 1.3vh
+
+        .news-image
+            height 30vh
 </style>

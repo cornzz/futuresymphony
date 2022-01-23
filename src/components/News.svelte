@@ -49,8 +49,9 @@
 
             .news-content
                 position relative
+                font-size 0.9em
                 display grid
-                grid-template-rows 1fr 1fr 3fr
+                grid-template-rows 1fr 1fr 5fr
                 padding 5px 10px 10px
                 
                 & > *
@@ -109,15 +110,17 @@
             box-shadow 0px 0px 4px 1px var(--color-boxshadow)
     
     .fixed
-        height 25vh
+        height 25vh !important
 
     .center
         width 100%
         text-align center
 
     @media screen and (max-device-width: 600px)
-        /* TODO !! */
-        .news-image-small
-            height 17%
+        .news-link
+            margin-bottom 15px
+
+        .news-link
+            height 28%
 </style>
 

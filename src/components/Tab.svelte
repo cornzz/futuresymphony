@@ -31,49 +31,46 @@
 
     @media (min-width: 1200px)
         .tab
-            font-size 1.6vw
             padding 0 150px 3%
 
     @media (min-width: 1200px) and (min-height: 800px)
         .tab
-            font-size 1.7vw
             padding 0 160px 3%
 
     @media (min-width: 1300px)
         .tab
-            font-size 2.3vh
             padding 0 200px 3%
 
     @media (min-width: 1400px) 
-        .tab 
-            font-size 1.8vw
+        .tab
             padding 0 200px 3%
 
     @media (min-width: 1400px) and (max-height: 900px)
-        .tab 
-            font-size 1.5vw
+        .tab
             padding 0 200px 3%
 
     @media (min-width: 1500px) and (max-height: 890px) 
-        .tab 
-            font-size 2.5vh
+        .tab
             padding 0 240px 3%
 
     @media (min-width: 1600px) and (min-height: 900px)
-        .tab 
-            font-size 2.5vh
+        .tab
             padding 0 250px 3%
 
     @media (min-width: 1700px) 
-        .tab 
-            font-size 2.3vh
+        .tab
             padding 0 320px 3%
 
     @media screen and (max-device-width: 600px) 
-        .tab 
-            font-size: 1.2vh
+        .tab
+            height 90vh
+            font-size: 3.4vmin
+
+        .oversize
+            min-height 90vh
+            height auto
 
     @media screen and (max-device-width: 640px) and (orientation:landscape)
-        .tab 
-            font-size 2.5vh
+        .tab
+            font-size 2.5vmin
 </style>
