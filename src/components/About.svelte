@@ -45,7 +45,7 @@
             <a href="https://ayaladler.com/" class="link" target="_blank">Ayal Adler</a> (Israel)<br>
             <!-- <a href="https://www.emic.ee/helena-tulve" class="link" target="_blank">Helena Tulve</a> (Estonia)<br> -->
         </p>
-        <p>The <b>Grand Prix</b> will be awarded a <b>1500 € cash prize</b> and an opportunity to work with Lithuania‘s best orchestras and music festivals. The other 2–3 best composers will be awarded the <i>Laureate diploma</i> and <b>will share a 1500 € prize fund</b> in equal parts.</p>
+        <p>The <b>Grand Prix</b> will be awarded a <b>1500 € cash prize</b>. The other 2–3 best composers will be awarded the <i>Laureate diploma</i> and <b>will share a 1500 € prize fund</b> in equal parts.</p>
         <p>The authors of the pieces performed in the final concert will receive professional recordings of their pieces.</p>
     {:else if $locale === 'lt'}
         <p>
@@ -86,7 +86,7 @@
             <a href="https://ayaladler.com/" class="link" target="_blank">Ayal Adler</a> (Izraelis)<br>
             <!-- <a href="https://www.emic.ee/helena-tulve" class="link" target="_blank">Helena Tulve</a> (Estija)<br> -->
         </p>
-        <p><b>Grand Prix</b> bus apdovanotas <b>1500 € piniginiu prizu</b> bei bendradarbiavimo galimybę su geriausiais Lietuvos kolektyvais ir festivaliais. Kiti 2–3 geriausi kompozitoriai bus apdovanoti <i>Laureato diplomu</i> ir <b>pasidalins 1500 € prizinį fondą</b> lygiomis dalimis.</p>
+        <p><b>Grand Prix</b> bus apdovanotas <b>1500 € piniginiu prizu</b>. Kiti 2–3 geriausi kompozitoriai bus apdovanoti <i>Laureato diplomu</i> ir <b>pasidalins 1500 € prizinį fondą</b> lygiomis dalimis.</p>
         <p>Visi baigiamajame koncerte skambėsiančių kūrinių autoriai taip pat gaus savo premjeros įrašus.</p>
     {/if}
 </div>
