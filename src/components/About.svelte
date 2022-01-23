@@ -38,6 +38,7 @@
             Scores will be judged by international professional composers, conductors and musicologists:<br>
             <a href="https://www.lmic.lv/en/composers/martins-vilums-488#work" class="link" target="_blank">Mārtiņš Viļums</a> (Latvia/Lithuania)<br>
             <a href="https://www.kyriakides.com/" class="link" target="_blank">Yannis Kyriakides</a> (Cyprus/The Netherlands)<br>
+            <a href="https://www.justejanulyte.com/en/about/" class="link" target="_blank">Justė Janulytė</a> (Lithuania)<br>
             <!-- <a href="https://lmta.academia.edu/RutaStaneviciute" class="link" target="_blank">Rūta Stanevičiūtė</a> (Lithuania)<br> -->
             <!-- <a href="https://zibuokle.com/" class="link" target="_blank">Žibuoklė Martinaitytė</a> (Lithuania)<br> -->
             <a href="https://www.filharmonija.lt/en/performers/modestas-pitrenas-artistic-director-and-principal-conductor-of-the-lnso18.html" class="link" target="_blank">Modestas Pitrėnas</a> (Lithuania)<br>
@@ -79,6 +80,7 @@
             Koncerto metu kūrinius vertins profesionali tarptautinė kompozitorių, dirigentų ir muzikologų žiuri:<br>
             <a href="https://www.lmic.lv/en/composers/martins-vilums-488#work" class="link" target="_blank">Mārtiņš Viļums</a> (Latvija/Lietuva)<br>
             <a href="https://www.kyriakides.com/" class="link" target="_blank">Yannis Kyriakides</a> (Kipras/Olandija)<br>
+            <a href="https://www.justejanulyte.com/en/about/" class="link" target="_blank">Justė Janulytė</a> (Lietuva)<br>
             <!-- <a href="https://lmta.academia.edu/RutaStaneviciute" class="link" target="_blank">Rūta Stanevičiūtė</a> (Lietuva)<br> -->
             <!-- <a href="https://zibuokle.com/" class="link" target="_blank">Žibuoklė Martinaitytė</a> (Lietuva)<br> -->
             <a href="https://www.filharmonija.lt/en/performers/modestas-pitrenas-artistic-director-and-principal-conductor-of-the-lnso18.html" class="link" target="_blank">Modestas Pitrėnas</a> (Lietuva)<br>
