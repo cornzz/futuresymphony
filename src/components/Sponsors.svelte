@@ -3,30 +3,36 @@
 </script>
 
 <div class="content">
-    <div class="section">
-        <h2 class="cover-subheading">{$_('sponsors.sponsors')}:</h2>
-        <div class="section-row">
-            <span>Gediminas<br>Kuprevičius</span>
-            <a href="https://skfoundation.com/" target="_blank"><img src="/images/sponsors/logo_kf.png" alt="logo_kf.png"></a>
-        </div>
-        <div class="section-row">
-            <a href="https://www.latga.lt/" target="_blank"><img src="/images/sponsors/logo_latga.png" alt="logo_latga.png" class="oversize"></a>
+    <div class="flex-column sponsors">
+        <div class="flex-row">
+            <div class="flex-column" style="height: 100%">
+                <h2 class="cover-subheading">{$_('sponsors.patron')}:</h2>
+                <div class="flex-row">
+                    <span class="sponsor text">Gediminas<br>Kuprevičius</span>
+                </div>
+            </div>
+            <div class="flex-column" style="height: 100%">
+                <h2 class="cover-subheading">{$_('sponsors.sponsors')}:</h2>
+                <div class="flex-row">
+                    <a class="sponsor" href="https://skfoundation.com/" target="_blank"><img src="/images/sponsors/logo_kf.png" alt="logo_kf.png"></a>
+                </div>
+                <div class="flex-row">
+                    <a class="sponsor" href="https://www.latga.lt/" target="_blank"><img src="/images/sponsors/logo_latga.png" alt="logo_latga.png" class="oversize"></a>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="section partners">
+    <div class="flex-column partners">
         <h2 class="cover-subheading">{$_('sponsors.partners')}:</h2>
-        <div class="section-row">
-            <a href="https://www.lrt.lt/" target="_blank"><img src="/images/sponsors/logo_lrt.png" alt="logo_lrt.png"></a>
-            <a href="https://www.filharmonija.lt/" target="_blank"><img src="/images/sponsors/logo_lnf.png" alt="logo_lnf.png"></a>
-            <a href="https://vilnius.lt/en/" target="_blank"><img src="/images/sponsors/logo_v.png" alt="logo_v.png"></a>
+        <div class="flex-row">
+            <a class="sponsor" href="https://www.lrt.lt/" target="_blank"><img src="/images/sponsors/logo_lrt.png" alt="logo_lrt.png"></a>
+            <a class="sponsor" href="https://www.filharmonija.lt/" target="_blank"><img src="/images/sponsors/logo_lnf.png" alt="logo_lnf.png"></a>
+            <a class="sponsor" href="https://vilnius.lt/en/" target="_blank"><img src="/images/sponsors/logo_v.png" alt="logo_v.png"></a>
         </div>
-        <!-- <div class="section-row">
-            <a href="http://www.triplenode.com/" target="_blank"><img src="/images/sponsors/logo_tn.png" alt="logo_tn.png" class="oversize"></a>
-        </div> -->
-        <div class="section-row">
-            <a href="http://bmkkc.lt/" target="_blank"><img src="/images/sponsors/logo_bmkkc.png" alt="logo_bmkkc.png" style=" max-height: 80%"></a>
-            <a href="https://domusmaria.com/" target="_blank" class="undersize"><img src="/images/sponsors/logo_dm.png" alt="logo_dm.png"></a>
-            <a href="http://www.cmm.lt/" target="_blank"><img src="/images/sponsors/logo_cmm.png" alt="logo_cmm.png"></a>
+        <div class="flex-row">
+            <a class="sponsor" href="http://bmkkc.lt/" target="_blank"><img src="/images/sponsors/logo_bmkkc.png" alt="logo_bmkkc.png" style=" max-height: 80%"></a>
+            <a class="sponsor undersize" href="https://domusmaria.com/" target="_blank"><img src="/images/sponsors/logo_dm.png" alt="logo_dm.png"></a>
+            <a class="sponsor" href="http://www.cmm.lt/" target="_blank"><img src="/images/sponsors/logo_cmm.png" alt="logo_cmm.png"></a>
         </div>
     </div>
 </div>
@@ -37,60 +43,65 @@
         flex-direction column
         height 100%
 
-        .section
+        .flex-column
             display flex
             flex-direction column
-            flex-grow 1
+
+            &.sponsors
+                flex-grow 1
 
             &.partners
                 flex-grow 5
 
-            .section-row
-                display flex
-                justify-content space-around
-                height 100%
-                align-items center
-                /*border 1px solid black*/
+        .flex-row
+            display flex
+            justify-content space-around
+            height 100%
+            align-items center
+            /*border 1px solid black*/
 
-                span
-                    font-family 'Audiowide', "Courier New"
-                    font-size 2.5vmin
-                    text-align center
-                    text-shadow none
-                    user-select none
-                    transition all 0.1s ease-in-out
-                
-                    &:hover
-                        text-shadow inherit
+        .sponsor
+            height 10vmin
+            display flex
+            flex-direction column
+            justify-content center
+            /*border 1px solid #aaa*/
 
-                a
-                span
-                    height 10vmin
-                    display flex
-                    flex-direction column
-                    justify-content center
-                    /*border 1px solid #aaa*/
+            .oversize
+                height 45%
 
-                    .oversize
-                        height 48%
+            &.undersize
+                height 13vmin
 
-                    &.undersize
-                        height 13vmin
+            img
+                max-height 100%
+                opacity 0.55
+                transition all 0.15s ease-in-out
 
-                    img
-                        max-height 100%
-                        opacity 0.55
-                        transition all 0.15s ease-in-out
+                &:hover
+                    opacity 1
+        
 
-                        &:hover
-                            opacity 1
+        .text
+            font-family 'Audiowide', "Courier New"
+            font-size 3vmin
+            text-align center
+            text-shadow none
+            user-select none
+            transition all 0.1s ease-in-out
+        
+            &:hover
+                text-shadow inherit
 
     @media screen and (max-device-width: 600px)
-        .content .section .section-row
-            a
+        .content
+            .sponsor
                 height 13vmin
 
                 &.undersize
                     height 16vmin
+            
+            .text
+                font-size 4vmin
 </style>
 
