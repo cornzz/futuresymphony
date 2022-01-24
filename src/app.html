@@ -15,10 +15,11 @@
 		<meta name="application-name" content="Future Symphony">
 		<meta name="msapplication-TileColor" content="#092749">
 		<meta name="theme-color" content="#092749">
+		<style>.site-container { overflow: hidden }</style>
 		%svelte.head%
 	</head>
 	<body class="preload">
-		<div id="svelte">%svelte.body%</div>
+		<div id="svelte" class="site-container">%svelte.body%</div>
 	</body>
 	<script>
 		// Light favicon for dark mode
