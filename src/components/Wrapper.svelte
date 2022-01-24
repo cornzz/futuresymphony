@@ -93,9 +93,9 @@
     onMount(() => {
         init()
         window.addEventListener('resize', init)
-        window.addEventListener('scroll', setHeader)
-
+        
         if ($showLanding) {      
+            window.addEventListener('scroll', setHeader)
             locale.subscribe(async () => { await tick(); setPositions(); setHeader() })
         }
 
