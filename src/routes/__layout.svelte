@@ -50,8 +50,7 @@
     .cover-picture
         height 100vh
         width 100%
-        background url(/images/cover.jpg) no-repeat center center fixed
-        background-size cover
+        background url(/images/cover.jpg) center/cover
         position fixed
         z-index -1
 
