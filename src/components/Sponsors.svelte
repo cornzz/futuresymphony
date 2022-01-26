@@ -87,11 +87,13 @@
             font-size 3vmin
             text-align center
             text-shadow none
+            -webkit-user-select none
             user-select none
             transition all 0.1s ease-in-out
         
             &:hover
                 text-shadow inherit
+                cursor default
 
     @media screen and (max-device-width: 600px)
         .content
