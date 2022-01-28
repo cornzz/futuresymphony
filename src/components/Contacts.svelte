@@ -1,6 +1,5 @@
 <script lang="ts">
-import { _ } from 'svelte-i18n';
-
+    import { _ } from 'svelte-i18n';
     import { mail } from '../helpers'
 </script>
 
@@ -25,7 +24,7 @@ import { _ } from 'svelte-i18n';
     </div>
     <b>{$_('contacts.facebook')}:</b>
     <div style="padding: 0 0 5px 30px;">
-        <a href="https://www.facebook.com/Future-Symphony-Competition-1832551767045287/" class="link" target="_blank">Future Symphony Competition</a>
+        <a href="https://www.facebook.com/FScompetition" class="link" target="_blank">Future Symphony Competition</a>
     </div>
     <b>{$_('contacts.webdesign')}:</b>
     <div style="padding: 0 0 5px 30px;">

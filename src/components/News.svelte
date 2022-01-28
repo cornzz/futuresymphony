@@ -8,9 +8,7 @@
         return { id: path.match(/\d+/)[0], article }
     })
     articles.sort((a, b) => Number(b.id) - Number(a.id))
-    if (latest) {
-        articles = articles.slice(0, 3)
-    }  
+    articles = latest ? articles.slice(0, 3) : articles
 </script>
 
 {#each articles as { article }}

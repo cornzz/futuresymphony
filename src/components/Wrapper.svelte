@@ -169,7 +169,7 @@
     <div class="desktop-only">
         <span on:click="{mail}" class="mail" data-user="info"></span>
         &nbsp; • &nbsp;
-        <a href="https://www.facebook.com/Future-Symphony-Competition-1832551767045287/" class="social" target="_blank">
+        <a href="https://www.facebook.com/FScompetition" class="social" target="_blank">
             <img src="/images/fb_icon.svg" alt="fb_icon.svg" width="20">
         </a>
         &nbsp; • &nbsp;
