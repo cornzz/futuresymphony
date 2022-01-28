@@ -86,13 +86,12 @@
             font-family 'Audiowide', "Courier New"
             font-size 3vmin
             text-align center
-            text-shadow none
             -webkit-user-select none
             user-select none
             transition all 0.1s ease-in-out
         
             &:hover
-                text-shadow inherit
+                text-shadow 0 1px 1px rgba(0,0,0,.4)
                 cursor default
 
     @media screen and (max-device-width: 600px)

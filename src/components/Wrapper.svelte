@@ -12,6 +12,7 @@
         aboutpos, newspos, participantspos, sponsorspos, contactspos,
         landingBottom = 0, windowWidth
     let navOpen = false
+    let showMobile = false
 
     const windowPos = () => window.scrollY
 
@@ -90,6 +91,8 @@
         setHeader()
     }
 
+    $: if (typeof window !== 'undefined') showMobile = window.innerWidth <= 700
+    
     onMount(() => {
         init()
         window.addEventListener('resize', init)
@@ -116,43 +119,45 @@
 {/if}
 
 <div class="masthead active" bind:this={header}>
-    <div class="mobile-nav">
-        <div></div>
-        <div class="title">
-            FUTURE SYMPHONY
-        </div>
-        <div class="menu-icon" class:open={navOpen} on:click={() => navOpen = !navOpen}>
-            <span class="line"></span>
-            <span class="line"></span>
-            <span class="line"></span>
-        </div>
-        <div class="menu" class:active={navOpen} on:touchmove={(e) => e.preventDefault()}>
-            <div class="links" on:click={() => navOpen = !navOpen}>
-                <a href="/#about">{$_('nav.about')}</a>
-                <a href="/#news">{$_('nav.news')}</a>
-                <a href="/#participants">{$_('nav.participants')}</a>
-                <a href="/#sponsors">{$_('nav.sponsors')}</a>
-                <a href="/#contacts">{$_('nav.contacts')}</a>
+    {#if showMobile}
+        <div class="mobile-nav">
+            <div></div>
+            <div class="title">
+                FUTURE SYMPHONY
             </div>
-            <hr>
-            <div class="language">
-                <LanguageSelector bigger/>
+            <div class="menu-icon" class:open={navOpen} on:click={() => navOpen = !navOpen}>
+                <span class="line"></span>
+                <span class="line"></span>
+                <span class="line"></span>
+            </div>
+            <div class="menu" class:active={navOpen} on:touchmove={(e) => e.preventDefault()}>
+                <div class="links" on:click={() => navOpen = !navOpen}>
+                    <a bind:this={aboutlink} href="/#about">{$_('nav.about')}</a>
+                    <a bind:this={newslink} href="/#news">{$_('nav.news')}</a>
+                    <a bind:this={participantslink} href="/#participants">{$_('nav.participants')}</a>
+                    <a bind:this={sponsorslink} href="/#sponsors">{$_('nav.sponsors')}</a>
+                    <a bind:this={contactslink} href="/#contacts">{$_('nav.contacts')}</a>
+                </div>
+                <hr>
+                <div class="language">
+                    <LanguageSelector bigger/>
+                </div>
             </div>
         </div>
-    </div>
-
-    <div class="desktop-nav">
-        <nav>
-            <ul class="nav masthead-nav">
-                <li bind:this={aboutlink} id="aboutlink"><a href="/#about">{$_('nav.about')}</a></li>
-                <li bind:this={newslink} id="newslink"><a href="/#news">{$_('nav.news')}</a></li>
-                <li bind:this={participantslink} id="participantslink"><a href="/#participants">{$_('nav.participants')}</a></li>
-                <li bind:this={sponsorslink} id="sponsorslink"><a href="/#sponsors">{$_('nav.sponsors')}</a></li>
-                <li bind:this={contactslink} id="contactslink"><a href="/#contacts">{$_('nav.contacts')}</a></li>
-            </ul>
-        </nav>
-        <LanguageSelector/>
-    </div>
+    {:else}
+        <div class="desktop-nav">
+            <nav>
+                <ul class="nav masthead-nav">
+                    <li bind:this={aboutlink}><a href="/#about">{$_('nav.about')}</a></li>
+                    <li bind:this={newslink}><a href="/#news">{$_('nav.news')}</a></li>
+                    <li bind:this={participantslink}><a href="/#participants">{$_('nav.participants')}</a></li>
+                    <li bind:this={sponsorslink}><a href="/#sponsors">{$_('nav.sponsors')}</a></li>
+                    <li bind:this={contactslink}><a href="/#contacts">{$_('nav.contacts')}</a></li>
+                </ul>
+            </nav>
+            <LanguageSelector/>
+        </div>
+    {/if}
 </div>
 
 <!-- Page content -->
