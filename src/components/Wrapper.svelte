@@ -122,9 +122,9 @@
     {#if showMobile}
         <div class="mobile-nav">
             <div></div>
-            <div class="title">
+            <a class="title" href="/">
                 FUTURE SYMPHONY
-            </div>
+            </a>
             <div class="menu-icon" class:open={navOpen} on:click={() => navOpen = !navOpen}>
                 <span class="line"></span>
                 <span class="line"></span>
