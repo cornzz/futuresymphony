@@ -13,7 +13,7 @@
 <Tab>
     <div class="error">
         {$_('error.pageNotFound')}.
-        <span on:click={() => history.back()} class="link">{$_('error.goBack')}</span>
+        <a href="/" class="link">{$_('error.goBack')}</a>
     </div>
 </Tab>
 
