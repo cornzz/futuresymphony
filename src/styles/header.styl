@@ -139,9 +139,10 @@
 /* -- Desktop nav -- */
 
 .back
-    display none
+    opacity 0
+    pointer-events none
     background-color: rgba(0, 0, 0, 0.35)
-    transition all 0.02s
+    transition all 0.1s
     border-radius 2px
     position: fixed
     width 35px
@@ -159,7 +160,8 @@
         pointer-events none
 
 .back.active
-    display inline-block
+    opacity 1
+    pointer-events auto
 
 .desktop-nav
     display flex
@@ -320,7 +322,7 @@
         bottom 45px
         right 20px
 
-@media screen and (max-device-width: 640px) and (orientation:landscape)
+@media screen and (max-device-width: 640px) and (orientation: landscape)
     .masthead
         padding 5px 10px
         margin 0px
