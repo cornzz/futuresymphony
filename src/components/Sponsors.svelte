@@ -14,10 +14,10 @@
             <div class="flex-column" style="height: 100%">
                 <h2 class="cover-subheading">{$_('sponsors.sponsors')}:</h2>
                 <div class="flex-row">
-                    <a class="sponsor" href="https://skfoundation.com/" target="_blank"><img src="/images/sponsors/logo_kf.png" alt="logo_kf.png"></a>
+                    <a class="sponsor" href="http://skfoundation.com/" target="blank"><img src="/images/sponsors/logo_kf.png" alt="logo_kf.png"></a>
                 </div>
                 <div class="flex-row">
-                    <a class="sponsor" href="https://www.latga.lt/" target="_blank"><img src="/images/sponsors/logo_latga.png" alt="logo_latga.png" class="oversize"></a>
+                    <a class="sponsor" href="https://www.latga.lt/" target="blank"><img src="/images/sponsors/logo_latga.png" alt="logo_latga.png" class="oversize"></a>
                 </div>
             </div>
         </div>
@@ -25,14 +25,14 @@
     <div class="flex-column partners">
         <h2 class="cover-subheading">{$_('sponsors.partners')}:</h2>
         <div class="flex-row">
-            <a class="sponsor" href="https://www.lrt.lt/" target="_blank"><img src="/images/sponsors/logo_lrt.png" alt="logo_lrt.png"></a>
-            <a class="sponsor" href="https://www.filharmonija.lt/" target="_blank"><img src="/images/sponsors/logo_lnf.png" alt="logo_lnf.png"></a>
-            <a class="sponsor" href="https://vilnius.lt/en/" target="_blank"><img src="/images/sponsors/logo_v.png" alt="logo_v.png"></a>
+            <a class="sponsor" href="https://www.lrt.lt/" target="blank"><img src="/images/sponsors/logo_lrt.png" alt="logo_lrt.png"></a>
+            <a class="sponsor" href="https://www.filharmonija.lt/" target="blank"><img src="/images/sponsors/logo_lnf.png" alt="logo_lnf.png"></a>
+            <a class="sponsor" href="https://vilnius.lt/en/" target="blank"><img src="/images/sponsors/logo_v.png" alt="logo_v.png"></a>
         </div>
         <div class="flex-row">
-            <a class="sponsor" href="http://bmkkc.lt/" target="_blank"><img src="/images/sponsors/logo_bmkkc.png" alt="logo_bmkkc.png" style=" max-height: 80%"></a>
-            <a class="sponsor undersize" href="https://domusmaria.com/" target="_blank"><img src="/images/sponsors/logo_dm.png" alt="logo_dm.png"></a>
-            <a class="sponsor" href="http://www.cmm.lt/" target="_blank"><img src="/images/sponsors/logo_cmm.png" alt="logo_cmm.png"></a>
+            <a class="sponsor" href="http://bmkkc.lt/" target="blank"><img src="/images/sponsors/logo_bmkkc.png" alt="logo_bmkkc.png" style=" max-height: 80%"></a>
+            <a class="sponsor undersize" href="https://domusmaria.com/" target="blank"><img src="/images/sponsors/logo_dm.png" alt="logo_dm.png"></a>
+            <a class="sponsor" href="http://www.cmm.lt/" target="blank"><img src="/images/sponsors/logo_cmm.png" alt="logo_cmm.png"></a>
         </div>
     </div>
 </div>
