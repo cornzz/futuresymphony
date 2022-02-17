@@ -1,5 +1,5 @@
 <script lang="ts">
-    export let oversize = false
+    export let oversize: boolean = false
 </script>
 
 <div class="tab" class:oversize>

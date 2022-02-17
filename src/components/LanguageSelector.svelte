@@ -1,7 +1,7 @@
 <script lang="ts">
     import { locale } from 'svelte-i18n'
 
-    export let bigger = false
+    export let big: boolean = false
 
     function changeLanguage(event) {
         locale.set(event.target.dataset.lang)
@@ -21,7 +21,7 @@
     }
 </script>
 
-<div class="flags" class:bigger>
+<div class="flags" class:big>
     <img
         on:click={changeLanguage}
         on:mouseenter={showFlag}
@@ -61,7 +61,7 @@
         .flag:first-of-type
             margin-right 20px
     
-    .bigger
+    .big
         height 22px
 </style>
 

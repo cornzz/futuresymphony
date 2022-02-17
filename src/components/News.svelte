@@ -58,7 +58,7 @@
 
                 .date
                     font-size 0.85em
-                    color rgba(100, 100, 100, 0.5)
+                    color rgba(100, 100, 100, 0.65)
 
                 .title
                     white-space nowrap

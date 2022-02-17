@@ -74,7 +74,7 @@
         window.scrollTo(0, hashpos - header.scrollHeight + 1)
     }
 
-    // Set height of landning cover, push header up and set variables for relevant object positions
+    // Set height of landing cover, push header up and set variables for relevant object positions
     function init() {
         if ($showLanding) {
             landing.style.height = window.innerHeight + 'px'
@@ -140,7 +140,7 @@
                 </div>
                 <hr>
                 <div class="language">
-                    <LanguageSelector bigger/>
+                    <LanguageSelector big/>
                 </div>
             </div>
         </div>
@@ -161,7 +161,7 @@
 </div>
 
 <!-- Page content -->
-<div bind:this={content}>
+<div bind:this={content} class="content">
     <slot></slot>
 </div>
 
@@ -187,4 +187,7 @@
 <style global lang="stylus">
     @require '../styles/header.styl'
     @require '../styles/footer.styl'
+
+    .content
+        margin-top 43px
 </style>
