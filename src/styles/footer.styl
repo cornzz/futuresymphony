@@ -10,20 +10,17 @@
     transition all 0.15s ease-in-out
     z-index 9
 
-.mastfoot > a
-    color inherit 
+    a
+        color inherit
 
-.mastfoot > a:focus
-    text-decoration none
+        &:focus
+            text-decoration none
 
-.mastfoot > a:hover  
-    color rgba(255,255,255,.9) 
+        &:hover
+            color rgba(255,255,255,.9)
 
-.mastfoot.active
-    margin-bottom 0
-
-.mastfoot.active2
-    bottom 30px
+    &:global(.active)
+        margin-bottom 0
 
 .social
     outline 0

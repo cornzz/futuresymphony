@@ -184,7 +184,7 @@
     </a>
 </div>
 
-<style global lang="stylus">
+<style lang="stylus">
     @require '../styles/header.styl'
     @require '../styles/footer.styl'
 
