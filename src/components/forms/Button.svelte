@@ -2,7 +2,7 @@
     export let type: 'outline' | 'primary' = 'outline'
 </script>
 
-<button class={type}>
+<button class={type} on:click>
     <slot></slot>
 </button>
 
@@ -11,7 +11,6 @@
         height 45px
         width 100%
         font-size 16px
-        font-weight bold
         border-radius var(--border-radius)
         transition all 0.1s ease
 
