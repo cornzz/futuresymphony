@@ -55,9 +55,17 @@
     },
     "regulations": {
         "title": "Konkurso nuostatai",
+        "yourRegistration": "Jūsų registration",
         "meta": {
             "title": "Nuostatai - Future Symphony Konkursas",
             "description": "Nuostatai III-am \"Future Symphony\" tarptautiniam kompozicijų simfoniniam orkestrui konkursui"
+        }
+    },
+    "registration": {
+        "title": "Registracija į konkursą",
+        "meta": {
+            "title": "Registracija į III-jį \"Future Symphony\" konkursą",
+            "description": "Registracija į III-jį \"Future Symphony\" konkursą atsidaro 2022 m. kovo 1 d."
         }
     },
     "error": {

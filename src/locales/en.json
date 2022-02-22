@@ -60,6 +60,14 @@
             "description": "Regulations for the 3rd \"Future Symphony\" international composition competition for symphony orchestra"
         }
     },
+    "registration": {
+        "title": "Registration to the competition",
+        "yourRegistration": "Your registration",
+        "meta": {
+            "title": "Registration to the 3rd \"Future Symphony\" Competition",
+            "description": "Registration to the 3rd Future Symphony Competition opens on the 1st of March 2022."
+        }
+    },
     "error": {
         "title": "Error - Future Symphony Competition",
         "pageNotFound": "Page not found",
