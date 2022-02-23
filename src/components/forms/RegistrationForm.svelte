@@ -1,9 +1,11 @@
 <script lang="ts">
     import Input from '../../components/forms/Input.svelte'
+    import Select from '../../components/forms/Select.svelte'
     import Checkbox from '../../components/forms/Checkbox.svelte'
     import FormGroup from '../../components/forms/FormGroup.svelte'
     import { _ } from 'svelte-i18n'
     import { RegistrationDTO } from '../../helpers/RegistrationDTO'
+    import { countries } from '../../helpers/countryCodes'
     import { onMount } from 'svelte'
 
     export let disabled: boolean = false
@@ -15,7 +17,8 @@
     let saveIndicator
 
     export function validateForm() {
-        return Array.from(document.querySelectorAll('input')).every(e => e.reportValidity())
+        let inputElements: Array<HTMLInputElement | HTMLSelectElement> = Array.from(document.querySelectorAll('input, select'))
+        return inputElements.every(e => e.reportValidity())
     }
 
     export function saveForm() {
@@ -36,7 +39,7 @@
 
     onMount(() => {
         if (newRegistration) {
-            document.querySelectorAll('input').forEach(e => e.addEventListener('input', handleInput))
+            document.querySelectorAll('input, select').forEach(e => e.addEventListener('input', handleInput))
             dto = JSON.parse(localStorage.getItem('newRegistrationDto')) ?? new RegistrationDTO()
         }
     })
@@ -75,6 +78,15 @@
             min="1987-09-09"
             max="2004-06-30"
             bind:value={dto.dateOfBirth}
+            {disabled}
+        />
+    </FormGroup>
+    <FormGroup>
+        <Select
+            name="country"
+            label="Country"
+            bind:value={dto.country}
+            options={countries}
             {disabled}
         />
     </FormGroup>

@@ -3,5 +3,5 @@ export class RegistrationDTO {
     lastName: string = ''
     email: string = ''
     dateOfBirth: Date = new Date()
-
+    country: string = ''
 }

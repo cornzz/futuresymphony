@@ -27,7 +27,7 @@
         console.log(`loading registration ${registrationID}`)
         setTimeout(() => {
             if (registrationID === '1') {
-                dto = JSON.parse('{"firstName":"Ernst","lastName":"Haft","email":"ernsthaft@web.de","dateOfBirth":"1990-01-01"}')
+                dto = JSON.parse('{"firstName":"Ernst","lastName":"Haft","email":"ernsthaft@web.de","dateOfBirth":"1990-01-01","country":"DE"}')
             }
             loading = false
         }, 500)

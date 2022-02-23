@@ -1,5 +1,5 @@
 <script lang="ts">
-    export let type: 'text' | 'date' | 'email' | 'select'
+    export let type: 'text' | 'date' | 'email'
     export let name: string
     export let label: string
     export let disabled: boolean = false
@@ -13,11 +13,9 @@
     {#if type === 'text' }
         <input id={name} type="text" bind:value {disabled} required/>
     {:else if type === 'date'}
-        <input id={name} type="date" {min} {max} bind:value {disabled} required/>
+        <input id={name} type="date" bind:value {min} {max} {disabled} required/>
     {:else if type === 'email'}
         <input id={name} type="email" bind:value {disabled} required/>
-    {:else if type === 'select'}
-        <input id={name} type="select" {disabled} />
     {/if}
 </div>
 
