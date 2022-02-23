@@ -51,7 +51,7 @@
     @require '../../styles/image-frame.styl'
 
     .date
-        color rgba(100, 100, 100, 0.65)
+        color var(--color-light-gray)
         line-height 2.5
 
     .content

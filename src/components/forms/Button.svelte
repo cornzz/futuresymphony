@@ -1,8 +1,9 @@
 <script lang="ts">
     export let type: 'outline' | 'primary' = 'outline'
+    export let disabled: boolean = false
 </script>
 
-<button class={type} on:click>
+<button class={type} on:click {disabled}>
     <slot></slot>
 </button>
 
@@ -14,14 +15,17 @@
         border-radius var(--border-radius)
         transition all 0.1s ease
 
-        &:hover
+        &:enabled:hover
             cursor pointer
+
+        &:disabled
+            opacity 0.3
 
     .outline
         background-color #fff
         border solid 1px var(--color-border)
 
-        &:hover
+        &:hover:enabled
             background-color #fafafa
     
     .primary
@@ -29,6 +33,6 @@
         color #fff
         border none
         
-        &:hover
+        &:hover:enabled
             background-color var(--color-primary-hover)
 </style>

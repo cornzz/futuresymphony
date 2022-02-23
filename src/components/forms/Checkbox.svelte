@@ -1,24 +1,17 @@
 <script lang="ts">
-    export let type: 'radio' | 'checkbox'
     export let name: string
     export let label: string
     export let disabled: boolean = false
+    export let checked
 </script>
 
-<div>
-    <label for={name}>
-        <input id={name} {name} {type} {disabled} required/>
-        {label}
-    </label>
-</div>
+<label>
+    <input id={name} type="checkbox" {disabled} bind:checked required/>
+    {@html label}
+</label>
 
 <style lang="stylus">
-    input:checked
-        background-color var(--color-primary)
-        border-color var(--color-primary) !important
-
-    input[type="radio"]
-    input[type="checkbox"]
+    input
         -webkit-appearance none
         appearance none
         min-width 14px
@@ -26,7 +19,9 @@
         margin-left -28px
         margin-right 10px
         border 2px solid #9595a2
-        vertical-align sub
+        vertical-align text-bottom
+        position relative
+        border-radius 3px
 
         &:hover
             border-color #676774
@@ -34,19 +29,14 @@
         &:active
             border-color #484851
 
-        &:checked:hover
-            background-color var(--color-primary-hover)
-            border-color var(--color-primary-hover) !important
+        &:checked
+            background-color var(--color-primary)
+            border-color var(--color-primary)
 
-    input[type="radio"]
-        padding 2px
-        background-clip content-box
-        border-radius 50%
+            &:hover
+                background-color var(--color-primary-hover)
+                border-color transparent
 
-    input[type="checkbox"]
-        position relative
-        border-radius 3px
-    
         &:after
             content ''
             display none
@@ -67,7 +57,6 @@
         padding-left 28px
 
     label
-    input[type='radio']
-    input[type='checkbox']
+    input
         cursor pointer
 </style>

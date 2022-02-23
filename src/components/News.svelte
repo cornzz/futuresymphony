@@ -58,7 +58,7 @@
 
                 .date
                     font-size 0.85em
-                    color rgba(100, 100, 100, 0.65)
+                    color var(--color-light-gray)
 
                 .title
                     white-space nowrap

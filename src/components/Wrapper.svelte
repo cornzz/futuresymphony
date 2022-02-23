@@ -56,7 +56,7 @@
             }
         } else if (window.location.pathname.startsWith('/news')) {
             newslink.classList.add('active')
-        } else if (window.location.pathname.startsWith('/register')) {
+        } else if (window.location.pathname.startsWith('/registration')) {
             participantslink.classList.add('active')
         }
     }
