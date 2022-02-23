@@ -26,11 +26,15 @@
     }
 
     function saveForm() {
-        localStorage.setItem('newRegistrationDto', JSON.stringify(dto))
-        saveIndicator.style.opacity = 1
-        saveIndicator.style.display = 'block'
-        setTimeout(() => saveIndicator.style.opacity = 0, 1000)
-        setTimeout(() => saveIndicator.style.display = 'none', 3000)
+        if (['', 'none'].includes(saveIndicator.style.display)) {
+            console.log('saving')
+            localStorage.setItem('newRegistrationDto', JSON.stringify(dto))
+            saveIndicator.style.opacity = 1
+            saveIndicator.style.display = 'block'
+            setTimeout(() => saveIndicator.style.opacity = 0, 2000)
+            setTimeout(() => saveIndicator.style.display = 'none', 3000)
+            clearTimeout(inputTimeout)
+        }
     }
 
     function handleInput() {
@@ -92,15 +96,19 @@
     </div>
 </div>
 <div class="buttons">
-    {#if !newRegistration && editing}
+    {#if newRegistration || !newRegistration && editing}
         <Button
             type="outline"
             on:click={() => {
-                editing = false
-                disabled = true
+                if (!newRegistration) {
+                    editing = false
+                    disabled = true
+                } else {
+                    saveForm()
+                }
             }}
         >
-            Cancel
+            {newRegistration ? 'Save' : 'Cancel'}
         </Button>
     {:else}
         <div></div>
@@ -141,7 +149,7 @@
             margin-top -15px
             display none
             color var(--color-light-gray)
-            transition all 2s ease
+            transition all 1s ease
 
         .checkboxes
             margin-top 15px
