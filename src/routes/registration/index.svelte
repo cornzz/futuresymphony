@@ -1,15 +1,19 @@
 <script lang="ts">
     import Tab from '../../components/Tab.svelte'
     import RegistrationForm from '../../components/forms/RegistrationForm.svelte'
+    import type { RegistrationDTO } from '../../helpers/RegistrationDTO'
     import { MetaTags } from 'svelte-meta-tags'
     import { showLanding, showBack } from '../../helpers/stores'
     import { _ } from 'svelte-i18n'
 
+    export let dto: RegistrationDTO
+
     showLanding.set(false)
     showBack.set(false)
 
-    function submitForm(event) {
-        console.log('submit', event.detail.dto)
+    function submitForm() {
+        console.log('submit', dto)
+        localStorage.removeItem('newRegistrationForm')
     }
 </script>
 
@@ -23,6 +27,7 @@
     <div class="wrapper">
         <RegistrationForm
             newRegistration
+            bind:dto
             on:submit={submitForm}
         />
     </div>

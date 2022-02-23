@@ -21,12 +21,11 @@
     function submitForm() {
         let formValid = Array.from(document.querySelectorAll('input')).every(e => e.reportValidity())
         if (formValid) {
-            dispatch('submit', { dto })
+            dispatch('submit')
         }
     }
 
     function saveForm() {
-        console.log('saving...')
         localStorage.setItem('newRegistrationDto', JSON.stringify(dto))
         saveIndicator.style.opacity = 1
         saveIndicator.style.display = 'block'
@@ -42,8 +41,8 @@
     onMount(() => {
         if (newRegistration) {
             document.querySelectorAll('input').forEach(e => e.addEventListener('input', handleInput))
+            dto = JSON.parse(localStorage.getItem('newRegistrationDto')) ?? new RegistrationDTO()
         }
-        dto = JSON.parse(localStorage.getItem('newRegistrationDto')) ?? new RegistrationDTO()
     })
 </script>
 
@@ -93,19 +92,26 @@
     </div>
 </div>
 <div class="buttons">
-    <!-- <Button
-        type="outline"
-        on:click={() => {}}
-    >
-        Clear Form
-    </Button> -->
-    <div></div>
+    {#if !newRegistration && editing}
+        <Button
+            type="outline"
+            on:click={() => {
+                editing = false
+                disabled = true
+            }}
+        >
+            Cancel
+        </Button>
+    {:else}
+        <div></div>
+    {/if}
     <Button
         type="primary"
         disabled={!regulationsAccepted}
         on:click={() => {
             if (!newRegistration) {
                 editing = !editing
+                disabled = !editing
             }
             if (!editing) {
                 submitForm()
