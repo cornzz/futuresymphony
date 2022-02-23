@@ -1,19 +1,25 @@
 <script lang="ts">
     import Tab from '../../components/Tab.svelte'
     import RegistrationForm from '../../components/forms/RegistrationForm.svelte'
-    import type { RegistrationDTO } from '../../helpers/RegistrationDTO'
+    import Button from '../../components/forms/Button.svelte'
+    import { RegistrationDTO } from '../../helpers/RegistrationDTO'
     import { MetaTags } from 'svelte-meta-tags'
     import { showLanding, showBack } from '../../helpers/stores'
     import { _ } from 'svelte-i18n'
 
-    export let dto: RegistrationDTO
+    export let dto: RegistrationDTO = new RegistrationDTO()
+
+    let form
+    let regulationsAccepted: boolean = false
 
     showLanding.set(false)
     showBack.set(false)
 
     function submitForm() {
-        console.log('submit', dto)
-        localStorage.removeItem('newRegistrationForm')
+        if (form.validateForm()) {
+            console.log('submit', dto)
+            localStorage.removeItem('newRegistrationDto')
+        }
     }
 </script>
 
@@ -26,10 +32,25 @@
     <h1 class="cover-heading"><b>{$_('registration.title')}</b></h1>
     <div class="wrapper">
         <RegistrationForm
+            bind:this={form}
             newRegistration
             bind:dto
-            on:submit={submitForm}
-        />
+            bind:regulationsAccepted
+        >
+            <Button
+                type="outline"
+                on:click={() => form.saveForm()}
+            >
+                Save
+            </Button>
+            <Button
+                type="primary"
+                disabled={!regulationsAccepted}
+                on:click={() => submitForm()}
+            >
+                Submit
+            </Button>
+        </RegistrationForm>
     </div>
 </Tab>
 

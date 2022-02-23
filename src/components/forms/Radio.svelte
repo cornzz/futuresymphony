@@ -4,9 +4,9 @@
     export let disabled: boolean = false
 </script>
 
-<label>
+<label {disabled}>
     <input id={name} type="radio" {disabled} required/>
-    {label}
+    {@html label}
 </label>
 
 <style lang="stylus">
@@ -18,31 +18,35 @@
         margin-left -28px
         margin-right 10px
         border 2px solid #9595a2
-        vertical-align text-bottom
+        vertical-align sub
         padding 2px
         background-clip content-box
         border-radius 50%
 
-        &:hover
+        &:hover:enabled
             border-color #676774
 
-        &:active
+        &:active:enabled
             border-color #484851
 
         &:checked
             background-color var(--color-primary)
             border-color var(--color-primary)
 
-            &:hover
+            &:hover:enabled
                 background-color var(--color-primary-hover)
                 border-color var(--color-primary-hover)
+
+            &[disabled]
+                background-color gray !important
+                border-color gray !important
 
     label
         font-size 14px
         line-height 24px
         padding-left 28px
 
-    label
-    input
+    label[disabled="false"]
+    input:enabled
         cursor pointer
 </style>

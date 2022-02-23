@@ -1,33 +1,25 @@
 <script lang="ts">
     import Input from '../../components/forms/Input.svelte'
     import Checkbox from '../../components/forms/Checkbox.svelte'
-    import Button from '../../components/forms/Button.svelte'
     import FormGroup from '../../components/forms/FormGroup.svelte'
     import { _ } from 'svelte-i18n'
     import { RegistrationDTO } from '../../helpers/RegistrationDTO'
-    import { createEventDispatcher, onMount } from 'svelte'
+    import { onMount } from 'svelte'
 
     export let disabled: boolean = false
     export let newRegistration: boolean = false
-    export let dto: RegistrationDTO = new RegistrationDTO()
+    export let dto: RegistrationDTO
+    export let regulationsAccepted: boolean = true
 
-    const dispatch = createEventDispatcher()
-
-    let regulationsAccepted: boolean = true
-    let editing: boolean = false
     let inputTimeout = null
     let saveIndicator
 
-    function submitForm() {
-        let formValid = Array.from(document.querySelectorAll('input')).every(e => e.reportValidity())
-        if (formValid) {
-            dispatch('submit')
-        }
+    export function validateForm() {
+        return Array.from(document.querySelectorAll('input')).every(e => e.reportValidity())
     }
 
-    function saveForm() {
+    export function saveForm() {
         if (['', 'none'].includes(saveIndicator.style.display)) {
-            console.log('saving')
             localStorage.setItem('newRegistrationDto', JSON.stringify(dto))
             saveIndicator.style.opacity = 1
             saveIndicator.style.display = 'block'
@@ -91,43 +83,12 @@
             name="agreeRegulations"
             label="I agree with the <a href='/files/fsc_regulations_EN_2022-01-17.pdf' target='_blank' class='link'>regulations</a>."
             bind:checked={regulationsAccepted}
-            {disabled}
+            disabled={disabled || !newRegistration}
         />
     </div>
 </div>
 <div class="buttons">
-    {#if newRegistration || !newRegistration && editing}
-        <Button
-            type="outline"
-            on:click={() => {
-                if (!newRegistration) {
-                    editing = false
-                    disabled = true
-                } else {
-                    saveForm()
-                }
-            }}
-        >
-            {newRegistration ? 'Save' : 'Cancel'}
-        </Button>
-    {:else}
-        <div></div>
-    {/if}
-    <Button
-        type="primary"
-        disabled={!regulationsAccepted}
-        on:click={() => {
-            if (!newRegistration) {
-                editing = !editing
-                disabled = !editing
-            }
-            if (!editing) {
-                submitForm()
-            }
-        }}
-    >
-        {newRegistration ? 'Submit' : editing ? 'Save' : 'Edit'}
-    </Button>
+    <slot></slot>
 </div>
 
 <style lang="stylus">

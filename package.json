@@ -34,6 +34,7 @@
   "type": "module",
   "dependencies": {
     "svelte-i18n": "^3.3.13",
+    "svelte-loading-spinners": "^0.1.7",
     "svelte-meta-tags": "^2.2.3"
   }
 }

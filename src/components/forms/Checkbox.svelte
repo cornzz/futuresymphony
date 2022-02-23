@@ -5,7 +5,7 @@
     export let checked
 </script>
 
-<label>
+<label {disabled}>
     <input id={name} type="checkbox" {disabled} bind:checked required/>
     {@html label}
 </label>
@@ -23,19 +23,21 @@
         position relative
         border-radius 3px
 
-        &:hover
+        &:hover:enabled
             border-color #676774
 
-        &:active
+        &:active:enabled
             border-color #484851
 
         &:checked
             background-color var(--color-primary)
-            border-color var(--color-primary)
+            border-color transparent !important
 
-            &:hover
+            &:hover:enabled
                 background-color var(--color-primary-hover)
-                border-color transparent
+
+            &[disabled]
+                background-color gray !important
 
         &:after
             content ''
@@ -56,7 +58,7 @@
         line-height 24px
         padding-left 28px
 
-    label
-    input
+    label[disabled="false"]
+    input:enabled
         cursor pointer
 </style>

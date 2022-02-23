@@ -1513,6 +1513,11 @@ svelte-i18n@^3.3.13:
     sade "^1.7.4"
     tiny-glob "^0.2.6"
 
+svelte-loading-spinners@^0.1.7:
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/svelte-loading-spinners/-/svelte-loading-spinners-0.1.7.tgz#3fa6fa0ef67ab635773bf20b07d0b071debbadaa"
+  integrity sha512-EKCId1DjVL2RSUVJJsvtNcqQHox03XIgh4xh/4p7r6ST7d8mut6INY9/LqK4A17PFU64+3quZmqiSfOlf480CA==
+
 svelte-meta-tags@^2.2.3:
   version "2.2.3"
   resolved "https://registry.yarnpkg.com/svelte-meta-tags/-/svelte-meta-tags-2.2.3.tgz#7016d77ce2348481dc2c27db2881c5e879643a08"
