@@ -23,13 +23,11 @@
             header.style.top = 0
             footer.classList.add('active')
             back?.classList.add('active')
-            setActive()
         } else {
             header.classList.remove('active')
             header.style.top = ''
             footer.classList.remove('active')
             back?.classList.remove('active')
-            removeActive()
         }
     }
 
@@ -42,22 +40,16 @@
     // Add .active to the correct nav link and set language link
     function setActive() {
         removeActive()
-        if ($showLanding)  {
-            if (aboutpos <= windowPos() && windowPos() < newspos) {
-                aboutlink.classList.add('active')
-            } else if (newspos <= windowPos() && windowPos() < participantspos) {
-                newslink.classList.add('active')
-            } else if (participantspos <= windowPos() && windowPos() < sponsorspos) {
-                participantslink.classList.add('active')
-            } else if (sponsorspos <= windowPos() && windowPos() < contactspos) {
-                sponsorslink.classList.add('active')
-            } else if (contactspos <= windowPos()) {
-                contactslink.classList.add('active')
-            }
-        } else if (window.location.pathname.startsWith('/news')) {
+        if (aboutpos <= windowPos() && windowPos() < newspos) {
+            aboutlink.classList.add('active')
+        } else if (newspos <= windowPos() && windowPos() < participantspos) {
             newslink.classList.add('active')
-        } else if (window.location.pathname.startsWith('/registration')) {
+        } else if (participantspos <= windowPos() && windowPos() < sponsorspos) {
             participantslink.classList.add('active')
+        } else if (sponsorspos <= windowPos() && windowPos() < contactspos) {
+            sponsorslink.classList.add('active')
+        } else if (contactspos <= windowPos()) {
+            contactslink.classList.add('active')
         }
     }
 
@@ -76,7 +68,7 @@
         window.scrollTo(0, hashpos - header.scrollHeight + 1)
     }
 
-    // Set height of landing cover, push header up and set variables for relevant object positions
+    // Set height of landing cover, push header up and set variables for relevant element positions
     function init() {
         if ($showLanding) {
             landing.style.height = window.innerHeight + 'px'
@@ -101,12 +93,18 @@
         
         if ($showLanding) {      
             window.addEventListener('scroll', setHeader)
-            locale.subscribe(async () => { await tick(); setPositions(); setHeader() })
+            window.addEventListener('scroll', setActive)
+            locale.subscribe(async () => { await tick(); setPositions(); setHeader(); setActive() })
+        } else if (window.location.pathname.startsWith('/news')) {
+            newslink.classList.add('active')
+        } else if (window.location.pathname.startsWith('/registration')) {
+            participantslink.classList.add('active')
         }
 
         return () => {
             window.removeEventListener('resize', init)
             window.removeEventListener('scroll', setHeader)
+            window.removeEventListener('scroll', setActive)
         } 
     })
 </script>
