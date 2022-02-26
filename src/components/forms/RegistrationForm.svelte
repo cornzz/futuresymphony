@@ -93,7 +93,7 @@
     <div class="checkboxes">
         <Checkbox
             name="agreeRegulations"
-            label="I agree with the <a href='/files/fsc_regulations_EN_2022-01-17.pdf' target='_blank' class='link'>regulations</a>."
+            label="I agree with the <a href='/files/fsc_regulations_EN_2022-02-24.pdf' target='_blank' class='link'>regulations</a>."
             bind:checked={regulationsAccepted}
             disabled={disabled || !newRegistration}
         />
