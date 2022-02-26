@@ -1,9 +1,9 @@
 /static/files/* filter=lfs diff=lfs merge=lfs -text
 /static/images/*.jpg filter=lfs diff=lfs merge=lfs -text
 /static/images/*.png filter=lfs diff=lfs merge=lfs -text
+/build/files/* filter=lfs diff=lfs merge=lfs -text
 /build/images/*.jpg filter=lfs diff=lfs merge=lfs -text
 /build/images/*.png filter=lfs diff=lfs merge=lfs -text
-/build/files/* filter=lfs diff=lfs merge=lfs -text
 /static/images/**/*.jpg filter=lfs diff=lfs merge=lfs -text
 /static/images/**/*.png filter=lfs diff=lfs merge=lfs -text
 /build/images/**/*.jpg filter=lfs diff=lfs merge=lfs -text
