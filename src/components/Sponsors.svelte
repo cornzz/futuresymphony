@@ -18,21 +18,24 @@
             </div>
         </div>
     </div>
-    <div class="flex-column">
-        <h2 class="sponsor-title">{$_('sponsors.mainSponsors')}:</h2>
-        <div class="flex-row">
-                <a class="sponsor" href="https://vilnius.lt/en/" target="blank"><img src="/images/sponsors/logo_v.png" alt="logo_v.png"></a>
-                <a class="sponsor" href="https://www.filharmonija.lt/" target="blank"><img src="/images/sponsors/logo_lnf.png" alt="logo_lnf.png"></a>
+    <div class="flex-row break">
+        <div class="flex-column">
+            <h2 class="sponsor-title">{$_('sponsors.mainSponsors')}:</h2>
+            <div class="flex-row">
+                    <a class="sponsor" href="https://vilnius.lt/en/" target="blank"><img src="/images/sponsors/logo_v.png" alt="logo_v.png"></a>
+                    <a class="sponsor" href="https://www.filharmonija.lt/" target="blank"><img src="/images/sponsors/logo_lnf.png" alt="logo_lnf.png"></a>
+            </div>
+        </div>
+        <div class="flex-column">
+            <h2 class="sponsor-title">{$_('sponsors.sponsors')}:</h2>
+            <div class="flex-row">
+                <a class="sponsor" href="http://skfoundation.com/" target="blank"><img src="/images/sponsors/logo_kf.png" alt="logo_kf.png"></a>
+                <a class="sponsor" href="https://www.triplenode.com/" target="blank"><img src="/images/sponsors/logo_tn.png" alt="logo_tn.png" class="oversize"></a>
+            </div>
         </div>
     </div>
-    <div class="flex-column">
-        <h2 class="sponsor-title">{$_('sponsors.sponsors')}:</h2>
-        <div class="flex-row">
-            <a class="sponsor" href="http://skfoundation.com/" target="blank"><img src="/images/sponsors/logo_kf.png" alt="logo_kf.png"></a>
-            <a class="sponsor" href="https://www.triplenode.com/" target="blank"><img src="/images/sponsors/logo_tn.png" alt="logo_tn.png" class="oversize"></a>
-        </div>
-    </div>
-    <div class="flex-row">
+    <!-- style="height: auto; flex-grow: 1" -->
+    <div class="flex-row" >
         <div class="flex-column">
             <h2 class="sponsor-title">{$_('sponsors.infSponsor')}:</h2>
             <div class="flex-row">
@@ -54,18 +57,19 @@
     .content
         display flex
         flex-direction column
-        height 100%
+        height 90%
 
         .flex-row
             display flex
             justify-content space-evenly
-            height 100%
+            height auto
+            flex-grow 1
             align-items center
 
         .flex-column
             display flex
             flex-direction column
-            height 100%
+            align-self stretch
             flex-grow 1
 
             .sponsor-title
@@ -89,7 +93,7 @@
 
             img
                 max-height 100%
-                opacity 0.55
+                opacity 0.7
                 transition all 0.15s ease-in-out
 
                 &:hover
@@ -109,8 +113,14 @@
 
     @media screen and (max-device-width: 600px)
         .content
+            height 100%
+
             .flex-row
                 justify-content space-around
+
+                &.break
+                    flex-wrap wrap
+                    flex-grow 2
 
             .flex-column
                 .sponsor-title
