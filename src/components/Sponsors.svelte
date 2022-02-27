@@ -18,15 +18,19 @@
             </div>
         </div>
     </div>
-    <h2 class="sponsor-title">{$_('sponsors.mainSponsors')}:</h2>
-    <div class="flex-row">
-            <a class="sponsor" href="https://vilnius.lt/en/" target="blank"><img src="/images/sponsors/logo_v.png" alt="logo_v.png"></a>
-            <a class="sponsor" href="https://www.filharmonija.lt/" target="blank"><img src="/images/sponsors/logo_lnf.png" alt="logo_lnf.png"></a>
+    <div class="flex-column">
+        <h2 class="sponsor-title">{$_('sponsors.mainSponsors')}:</h2>
+        <div class="flex-row">
+                <a class="sponsor" href="https://vilnius.lt/en/" target="blank"><img src="/images/sponsors/logo_v.png" alt="logo_v.png"></a>
+                <a class="sponsor" href="https://www.filharmonija.lt/" target="blank"><img src="/images/sponsors/logo_lnf.png" alt="logo_lnf.png"></a>
+        </div>
     </div>
-    <h2 class="sponsor-title">{$_('sponsors.sponsors')}:</h2>
-    <div class="flex-row">
-        <a class="sponsor" href="http://skfoundation.com/" target="blank"><img src="/images/sponsors/logo_kf.png" alt="logo_kf.png"></a>
-        <a class="sponsor" href="https://www.triplenode.com/" target="blank"><img src="/images/sponsors/logo_tn.png" alt="logo_tn.png" class="oversize"></a>
+    <div class="flex-column">
+        <h2 class="sponsor-title">{$_('sponsors.sponsors')}:</h2>
+        <div class="flex-row">
+            <a class="sponsor" href="http://skfoundation.com/" target="blank"><img src="/images/sponsors/logo_kf.png" alt="logo_kf.png"></a>
+            <a class="sponsor" href="https://www.triplenode.com/" target="blank"><img src="/images/sponsors/logo_tn.png" alt="logo_tn.png" class="oversize"></a>
+        </div>
     </div>
     <div class="flex-row">
         <div class="flex-column">
@@ -46,17 +50,17 @@
 </div>
 
 <style lang="stylus">
-    .sponsor-title
-        margin 10px 0 5px 0
-        color rgba(70, 70, 70, .7)
-        font-style italic
-        font-size 2vmin
-        text-align center
 
     .content
         display flex
         flex-direction column
         height 100%
+
+        .flex-row
+            display flex
+            justify-content space-evenly
+            height 100%
+            align-items center
 
         .flex-column
             display flex
@@ -64,25 +68,18 @@
             height 100%
             flex-grow 1
 
-            &.sponsors
-                flex-grow 1
-
-            &.partners
-                flex-grow 5
-
-        .flex-row
-            display flex
-            justify-content space-around
-            height 100%
-            align-items center
-            /*border 1px solid black*/
+            .sponsor-title
+                margin 10px 0 5px 0
+                color rgba(70, 70, 70, .85)
+                font-style italic
+                font-size 2.2vmin
+                text-align center
 
         .sponsor
-            height 10vmin
+            height 9.5vmin
             display flex
             flex-direction column
             justify-content center
-            /*border 1px solid #aaa*/
 
             .oversize
                 height 45%
@@ -97,7 +94,6 @@
 
                 &:hover
                     opacity 1
-        
 
         .text
             font-family 'Audiowide', "Courier New"
@@ -113,6 +109,13 @@
 
     @media screen and (max-device-width: 600px)
         .content
+            .flex-row
+                justify-content space-around
+
+            .flex-column
+                .sponsor-title
+                    font-size 2.5vmin
+
             .sponsor
                 height 11.5vmin
 
