@@ -3,41 +3,56 @@
 </script>
 
 <div class="content">
-    <div class="flex-column sponsors">
-        <div class="flex-row">
-            <div class="flex-column" style="height: 100%">
-                <h2 class="cover-subheading">{$_('sponsors.patron')}:</h2>
-                <div class="flex-row">
-                    <span class="sponsor text">Gediminas<br>Kuprevičius</span>
-                </div>
+    <div class="flex-row">
+        <div class="flex-column">
+            <h2 class="sponsor-title">{$_('sponsors.financedBy')}:</h2>
+            <div class="flex-row">
+                <a class="sponsor" href="https://www.ltkt.lt/" target="blank"><img src="/images/sponsors/logo_lkt.png" alt="logo_lkt.png"></a>
+                <a class="sponsor" href="https://www.latga.lt/" target="blank"><img src="/images/sponsors/logo_latga.png" alt="logo_latga.png"></a>
             </div>
-            <div class="flex-column" style="height: 100%">
-                <h2 class="cover-subheading">{$_('sponsors.sponsors')}:</h2>
-                <div class="flex-row">
-                    <a class="sponsor" href="http://skfoundation.com/" target="blank"><img src="/images/sponsors/logo_kf.png" alt="logo_kf.png"></a>
-                </div>
-                <div class="flex-row">
-                    <a class="sponsor" href="https://www.latga.lt/" target="blank"><img src="/images/sponsors/logo_latga.png" alt="logo_latga.png" class="oversize"></a>
-                </div>
+        </div>
+        <div class="flex-column">
+            <h2 class="sponsor-title">{$_('sponsors.patron')}:</h2>
+            <div class="flex-row">
+                <span class="sponsor text">Gediminas<br>Kuprevičius</span>
             </div>
         </div>
     </div>
-    <div class="flex-column partners">
-        <h2 class="cover-subheading">{$_('sponsors.partners')}:</h2>
-        <div class="flex-row">
-            <a class="sponsor" href="https://www.lrt.lt/" target="blank"><img src="/images/sponsors/logo_lrt.png" alt="logo_lrt.png"></a>
-            <a class="sponsor" href="https://www.filharmonija.lt/" target="blank"><img src="/images/sponsors/logo_lnf.png" alt="logo_lnf.png"></a>
+    <h2 class="sponsor-title">{$_('sponsors.mainSponsors')}:</h2>
+    <div class="flex-row">
             <a class="sponsor" href="https://vilnius.lt/en/" target="blank"><img src="/images/sponsors/logo_v.png" alt="logo_v.png"></a>
+            <a class="sponsor" href="https://www.filharmonija.lt/" target="blank"><img src="/images/sponsors/logo_lnf.png" alt="logo_lnf.png"></a>
+    </div>
+    <h2 class="sponsor-title">{$_('sponsors.sponsors')}:</h2>
+    <div class="flex-row">
+        <a class="sponsor" href="http://skfoundation.com/" target="blank"><img src="/images/sponsors/logo_kf.png" alt="logo_kf.png"></a>
+        <a class="sponsor" href="https://www.triplenode.com/" target="blank"><img src="/images/sponsors/logo_tn.png" alt="logo_tn.png" class="oversize"></a>
+    </div>
+    <div class="flex-row">
+        <div class="flex-column">
+            <h2 class="sponsor-title">{$_('sponsors.infSponsor')}:</h2>
+            <div class="flex-row">
+                <a class="sponsor" href="https://www.lrt.lt/" target="blank"><img src="/images/sponsors/logo_lrt.png" alt="logo_lrt.png"></a>
+            </div>
         </div>
-        <div class="flex-row">
-            <a class="sponsor" href="http://bmkkc.lt/" target="blank"><img src="/images/sponsors/logo_bmkkc.png" alt="logo_bmkkc.png" style=" max-height: 80%"></a>
-            <a class="sponsor undersize" href="https://domusmaria.com/" target="blank"><img src="/images/sponsors/logo_dm.png" alt="logo_dm.png"></a>
-            <a class="sponsor" href="http://www.cmm.lt/" target="blank"><img src="/images/sponsors/logo_cmm.png" alt="logo_cmm.png"></a>
+        <div class="flex-column">
+            <h2 class="sponsor-title">{$_('sponsors.partners')}:</h2>
+            <div class="flex-row">
+                <a class="sponsor" href="https://www.jmr.lt/" target="blank"><img src="/images/sponsors/logo_pk.png" alt="logo_pk.png"></a>
+                <a class="sponsor undersize" href="https://domusmaria.com/" target="blank"><img src="/images/sponsors/logo_dm.png" alt="logo_dm.png"></a>
+            </div>
         </div>
     </div>
 </div>
 
 <style lang="stylus">
+    .sponsor-title
+        margin 10px 0 5px 0
+        color rgba(70, 70, 70, .7)
+        font-style italic
+        font-size 2vmin
+        text-align center
+
     .content
         display flex
         flex-direction column
@@ -46,6 +61,8 @@
         .flex-column
             display flex
             flex-direction column
+            height 100%
+            flex-grow 1
 
             &.sponsors
                 flex-grow 1
@@ -97,12 +114,12 @@
     @media screen and (max-device-width: 600px)
         .content
             .sponsor
-                height 13vmin
+                height 11.5vmin
 
                 &.undersize
                     height 16vmin
             
             .text
-                font-size 4vmin
+                font-size 3.5vmin
 </style>
 

@@ -39,8 +39,11 @@
     },
     "sponsors": {
         "title": "Sponsors and Partners",
+        "financedBy": "This project is financed by",
         "patron": "Founding sponsor",
+        "mainSponsors": "Main sponsors",
         "sponsors": "Sponsors",
+        "infSponsor": "Informational sponsor",
         "partners": "Partners"
     },
     "contacts": {

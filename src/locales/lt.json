@@ -39,8 +39,11 @@
     },
     "sponsors": {
         "title": "Rėmėjai ir partneriai",
+        "financedBy": "Projektą finansuoja",
         "patron": "Mecenatas",
+        "mainSponsors": "Pagrindiniai rėmėjai",
         "sponsors": "Rėmėjai",
+        "infSponsor": "Informacinis rėmėjas",
         "partners": "Partneriai"
     },
     "contacts": {
