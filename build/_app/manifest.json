@@ -1,6 +1,6 @@
 {
   ".svelte-kit/build/runtime/internal/start.js": {
-    "file": "start-d7dc7fc2.js",
+    "file": "start-53d0be80.js",
     "src": ".svelte-kit/build/runtime/internal/start.js",
     "isEntry": true,
     "imports": [
@@ -22,7 +22,7 @@
     ]
   },
   "src/routes/__layout.svelte": {
-    "file": "pages/__layout.svelte-01560092.js",
+    "file": "pages/__layout.svelte-7fa8e345.js",
     "src": "src/routes/__layout.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
@@ -32,7 +32,7 @@
       "_stores-af26b35b.js"
     ],
     "css": [
-      "assets/pages/__layout.svelte-b8d8a9e7.css"
+      "assets/pages/__layout.svelte-a963dcc2.css"
     ]
   },
   "src/routes/__error.svelte": {
@@ -46,7 +46,7 @@
       "_stores-af26b35b.js"
     ],
     "css": [
-      "assets/pages/__error.svelte-76caa9f2.css"
+      "assets/pages/404.svelte-bfd357f2.css"
     ]
   },
   "src/routes/index.svelte": {
@@ -67,14 +67,14 @@
     ]
   },
   "src/routes/registration/index.svelte": {
-    "file": "pages/registration/index.svelte-6956175f.js",
+    "file": "pages/registration/index.svelte-ea522e36.js",
     "src": "src/routes/registration/index.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
       "_vendor-da6078aa.js",
       "_Tab-0d996393.js",
-      "_Button-2eff653b.js",
+      "_Button-3c7d3a71.js",
       "_stores-af26b35b.js"
     ],
     "css": [
@@ -82,18 +82,18 @@
     ]
   },
   "src/routes/registration/id.svelte": {
-    "file": "pages/registration/id.svelte-bd8b1fcd.js",
+    "file": "pages/registration/id.svelte-b844c438.js",
     "src": "src/routes/registration/id.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
       "_vendor-da6078aa.js",
       "_Tab-0d996393.js",
-      "_Button-2eff653b.js",
+      "_Button-3c7d3a71.js",
       "_stores-af26b35b.js"
     ],
     "css": [
-      "assets/pages/registration/id.svelte-e86fd8af.css"
+      "assets/pages/registration/id.svelte-97781ddf.css"
     ]
   },
   "src/routes/adomas.svelte": {
@@ -149,7 +149,7 @@
       "_stores-af26b35b.js"
     ],
     "css": [
-      "assets/pages/__error.svelte-76caa9f2.css"
+      "assets/pages/404.svelte-bfd357f2.css"
     ]
   },
   "_vendor-da6078aa.js": {
@@ -192,13 +192,13 @@
   "_8-2f1e7ec7.js": {
     "file": "chunks/8-2f1e7ec7.js"
   },
-  "_Button-2eff653b.js": {
-    "file": "chunks/Button-2eff653b.js",
+  "_Button-3c7d3a71.js": {
+    "file": "chunks/Button-3c7d3a71.js",
     "imports": [
       "_vendor-da6078aa.js"
     ],
     "css": [
-      "assets/Button-e544ce28.css"
+      "assets/Button-bca4237f.css"
     ]
   }
 }
