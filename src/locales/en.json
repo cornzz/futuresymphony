@@ -67,8 +67,15 @@
         "title": "Registration to the competition",
         "yourRegistration": "Your registration",
         "meta": {
-            "title": "Registration to the 3rd \"Future Symphony\" Competition",
-            "description": "Registration to the 3rd Future Symphony Competition opens on the 1st of March 2022."
+            "title": "Registration - Future Symphony Competition",
+            "description": "Registration to the 3rd \"Future Symphony\" Competition opens on the 1st of March 2022."
+        }
+    },
+    "privacy": {
+        "title": "Privacy Policy for PI „Muzikinis pirštas“",
+        "meta": {
+            "title": "Privacy Policy - Future Symphony Competition",
+            "description": "Privacy Policy of the 3rd Future Symphony Competition"
         }
     },
     "error": {

@@ -171,16 +171,18 @@
     </a>
 {/if}
 <div class="mastfoot" bind:this={footer}>
+    <a href="/privacy">
+        Privacy Policy
+    </a>
+    &nbsp; • &nbsp;
     <div class="desktop-only">
-        <span on:click="{mail}" class="mail" data-user="info"></span>
-        &nbsp; • &nbsp;
         <a href="https://www.facebook.com/FScompetition" class="social" target="_blank">
             <img src="/images/fb_icon.svg" alt="fb_icon.svg" width="20">
         </a>
         &nbsp; • &nbsp;
     </div>
     <a href="https://futuresymphony.lt">
-        &copy; 2018 - {new Date().getFullYear()} Future Symphony Competition
+        &copy; 2018 - {new Date().getFullYear()} {showMobile ? 'FSC' : 'Future Symphony Competition'}
     </a>
 </div>
 

@@ -1,8 +1,9 @@
 <script lang="ts">
     export let oversize: boolean = false
+    export let justify: boolean = true
 </script>
 
-<div class="tab" class:oversize>
+<div class="tab" class:oversize class:justify>
     <slot></slot>
 </div>
 
@@ -21,11 +22,13 @@
         outline none
         display flex
         flex-direction column
-        justify-content space-between
 
     .oversize
         min-height 95vh
         height auto
+
+    .justify
+        justify-content space-between
 
     /* TODO: rework this mess... */
 

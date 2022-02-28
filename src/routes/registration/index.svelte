@@ -28,9 +28,10 @@
     description={$_('registration.meta.description')}
 />
 
-<Tab>
+<Tab oversize justify={false}>
     <h1 class="cover-heading"><b>{$_('registration.title')}</b></h1>
     <div class="wrapper">
+        <!-- TODO: insert spinner -->
         <RegistrationForm
             bind:this={form}
             newRegistration

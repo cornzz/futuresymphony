@@ -2,7 +2,7 @@
     "index": {
         "meta": {
             "title": "Future Symphony Konkursas",
-            "description": "III \"Future Symphony\" tarptautinis kompozicijų simfoniniam orkestrui konkursas"
+            "description": "III „Future Symphony“ tarptautinis kompozicijų simfoniniam orkestrui konkursas"
         },
         "headline2": "III TARPTAUTINIS KOMPOZICIJŲ SIMFONINIAM<br>ORKESTRUI KONKURSAS"
     },
@@ -29,8 +29,8 @@
         "archive": {
             "title": "Naujienų archyvas",
             "meta": {
-                "title": "Naujienų archyvas - Future Symphony Competition",
-                "description": "Naujienų archyvas \"Future Symphony\" tarptautiniam kompozicijų simfoniniam orkestrui konkursui"
+                "title": "Naujienų archyvas - Future Symphony Konkursas",
+                "description": "Naujienų archyvas „Future Symphony“ tarptautiniam kompozicijų simfoniniam orkestrui konkursui"
             }
         }
     },
@@ -61,14 +61,21 @@
         "yourRegistration": "Jūsų registration",
         "meta": {
             "title": "Nuostatai - Future Symphony Konkursas",
-            "description": "Nuostatai III-am \"Future Symphony\" tarptautiniam kompozicijų simfoniniam orkestrui konkursui"
+            "description": "Nuostatai III-am „Future Symphony“ tarptautiniam kompozicijų simfoniniam orkestrui konkursui"
         }
     },
     "registration": {
         "title": "Registracija į konkursą",
         "meta": {
-            "title": "Registracija į III-jį \"Future Symphony\" konkursą",
-            "description": "Registracija į III-jį \"Future Symphony\" konkursą atsidaro 2022 m. kovo 1 d."
+            "title": "Registracija - Future Symphony konkursas",
+            "description": "Registracija į III-jį „Future Symphony“ konkursą atsidaro 2022 m. kovo 1 d."
+        }
+    },
+    "privacy": {
+        "title": "VšĮ „Muzikinis pirštas“ privatumo politika",
+        "meta": {
+            "title": "Privatumo politika - Future Symphony Konkursas",
+            "description": "III-ojo „Future Symphony“ konkurso privatumo politika"
         }
     },
     "error": {

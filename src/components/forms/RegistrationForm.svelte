@@ -1,13 +1,13 @@
 <script lang="ts">
     import Input from '../../components/forms/Input.svelte'
     import Select from '../../components/forms/Select.svelte'
+    import FileInput from './FileInput.svelte'
     import Checkbox from '../../components/forms/Checkbox.svelte'
     import FormGroup from '../../components/forms/FormGroup.svelte'
     import { _ } from 'svelte-i18n'
     import { RegistrationDTO } from '../../helpers/RegistrationDTO'
     import { countries } from '../../helpers/countryCodes'
     import { onMount } from 'svelte'
-import FileInput from './FileInput.svelte'
 
     export let disabled: boolean = false
     export let newRegistration: boolean = false
@@ -22,8 +22,22 @@ import FileInput from './FileInput.svelte'
         return inputElements.every(e => e.reportValidity())
     }
 
+    function serializeFileList(files) {
+        for (const file of files) {
+            file.toJSON = () => {
+                return {
+                    'lastModified'     : file.lastModified,
+                    'name'             : file.name,
+                    'size'             : file.size,
+                    'type'             : file.type 
+                }
+            }
+        }
+    }
+
     export function saveForm() {
         if (['', 'none'].includes(saveIndicator.style.display)) {
+            serializeFileList(dto.idCopy.files)
             localStorage.setItem('newRegistrationDto', JSON.stringify(dto))
             saveIndicator.style.opacity = 1
             saveIndicator.style.display = 'block'
@@ -94,14 +108,15 @@ import FileInput from './FileInput.svelte'
             name="idCopy"
             label="Copy of ID document (Max. 2MB)"
             accept="image/*"
-            bind:value={dto.idCopy}
+            bind:value={dto.idCopy.value}
+            bind:files={dto.idCopy.files}
             {disabled}
         />
     </FormGroup>
     <div class="checkboxes">
         <Checkbox
             name="agreeRegulations"
-            label="I agree with the <a href='/files/fsc_regulations_EN_2022-02-24.pdf' target='_blank' class='link'>regulations</a>."
+            label="I agree with the <a href='/files/fsc_regulations_EN_2022-02-24.pdf' target='_blank' class='link'>regulations</a> and the <a href='/privacy' target='_blank' class='link'>privacy policy</a>."
             bind:checked={regulationsAccepted}
             disabled={disabled || !newRegistration}
         />

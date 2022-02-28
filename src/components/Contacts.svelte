@@ -8,6 +8,10 @@
     <div style="padding: 0 0 5px 30px;">
         {$_('contacts.vsi')} „Muzikinis pirštas“
     </div>
+    <b>{$_('contacts.email')}:</b> 
+    <div style="padding: 0 0 5px 30px;">
+        <b><span on:click="{mail}" class="contactlink mail" data-user="info"></span></b>
+    </div>
     <b>{$_('contacts.projectManagers')}:</b>
     <div style="padding: 0 0 5px 30px;">
         Adomas Morkūnas-Budrys &ndash; <span on:click="{mail}" class="contactlink mail" data-user="adomas"></span><br>
@@ -17,10 +21,6 @@
     <b>{$_('contacts.orchestraManager')}:</b>
     <div style="padding: 0 0 5px 30px;">
         Džiugas Daugirda &ndash; <span on:click="{mail}" class="contactlink mail" data-user="dziugas"></span>
-    </div>
-    <b>{$_('contacts.email')}:</b> 
-    <div style="padding: 0 0 5px 30px;">
-        <b><span on:click="{mail}" class="contactlink mail" data-user="info"></span></b>
     </div>
     <b>{$_('contacts.facebook')}:</b>
     <div style="padding: 0 0 5px 30px;">

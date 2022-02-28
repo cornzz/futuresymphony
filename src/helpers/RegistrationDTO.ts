@@ -4,5 +4,5 @@ export class RegistrationDTO {
     email: string = ''
     dateOfBirth: string = ''
     country: string = ''
-    idCopy: string = ''
+    idCopy?: { value: string, files: FileList } = { value: '', files: undefined }
 }

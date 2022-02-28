@@ -3,15 +3,27 @@
     export let label: string
     export let multiple: boolean = false
     export let accept: string
-    export let value: string
-    export let files: FileList = undefined
+    export let value: string = ''
+    export let files: FileList
     export let disabled: boolean = false
+    
+    let inputElement: HTMLInputElement
 </script>
+
 
 <label for={name}>
     {label}
     <div class="preview" data-button-text={'Upload'} data-file-text={value.split('\\').pop()} {disabled}>
-        <input id={name} type="file" bind:value bind:files {multiple} {accept} {disabled} required/>
+        <input
+            id={name}
+            type="file"
+            bind:value
+            bind:files
+            {multiple}
+            {accept}
+            {disabled}
+            required
+        />
     </div>
 </label>
 
