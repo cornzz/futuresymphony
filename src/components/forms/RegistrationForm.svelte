@@ -7,6 +7,7 @@
     import { RegistrationDTO } from '../../helpers/RegistrationDTO'
     import { countries } from '../../helpers/countryCodes'
     import { onMount } from 'svelte'
+import FileInput from './FileInput.svelte'
 
     export let disabled: boolean = false
     export let newRegistration: boolean = false
@@ -87,6 +88,13 @@
             label="Country"
             bind:value={dto.country}
             options={countries}
+            {disabled}
+        />
+        <FileInput
+            name="idCopy"
+            label="Copy of ID document (Max. 2MB)"
+            accept="image/*"
+            bind:value={dto.idCopy}
             {disabled}
         />
     </FormGroup>

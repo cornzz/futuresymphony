@@ -4,4 +4,5 @@ export class RegistrationDTO {
     email: string = ''
     dateOfBirth: string = ''
     country: string = ''
+    idCopy: string = ''
 }

@@ -20,23 +20,5 @@
 </div>
 
 <style lang="stylus">
-    div
-        display flex
-        flex-direction column
-
-    label
-        font-size 14px
-        line-height 24px
-
-    input
-        height 40px
-        width 100%
-        background-color #fff
-        border solid 1px var(--color-border)
-        border-radius var(--border-radius)
-        font-size 16px
-        padding 0 10px
-
-        &[disabled]
-            background-color var(--color-background)
+    @require 'input.styl'
 </style>
