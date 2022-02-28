@@ -5,7 +5,7 @@
     let showFSO = false
 </script>
 
-<div style="line-height: 1.65;">
+<div style="line-height: 1.65">
     {#if $locale === 'en'}
         <p>
             <span class="quote">„This is a competition of international standing, which highlights Lithuania’s forward-looking cultural stature and provides the best environment for cultural exchange on the highest level.“</span>
