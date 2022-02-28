@@ -14,7 +14,7 @@
         width 100vw
         padding 0 15px 3%
         overflow hidden
-        font-size 2.5vmin
+        font-size 2.3vmin
         margin-right auto
         margin-left auto
         margin-bottom 20.5vh

@@ -1,6 +1,6 @@
 {
   ".svelte-kit/build/runtime/internal/start.js": {
-    "file": "start-ac79ccae.js",
+    "file": "start-e48bf837.js",
     "src": ".svelte-kit/build/runtime/internal/start.js",
     "isEntry": true,
     "imports": [
@@ -37,13 +37,13 @@
     ]
   },
   "src/routes/__error.svelte": {
-    "file": "pages/__error.svelte-51346acb.js",
+    "file": "pages/__error.svelte-ac409181.js",
     "src": "src/routes/__error.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
       "_vendor-da6078aa.js",
-      "_Tab-e5870f37.js",
+      "_Tab-da180e46.js",
       "_stores-af26b35b.js"
     ],
     "css": [
@@ -51,13 +51,13 @@
     ]
   },
   "src/routes/index.svelte": {
-    "file": "pages/index.svelte-67f45500.js",
+    "file": "pages/index.svelte-be947661.js",
     "src": "src/routes/index.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
       "_vendor-da6078aa.js",
-      "_Tab-e5870f37.js",
+      "_Tab-da180e46.js",
       "_index-a4c25817.js",
       "_News-132a38f4.js",
       "_stores-af26b35b.js",
@@ -68,13 +68,13 @@
     ]
   },
   "src/routes/registration/index.svelte": {
-    "file": "pages/registration/index.svelte-756f934a.js",
+    "file": "pages/registration/index.svelte-fbbea3a8.js",
     "src": "src/routes/registration/index.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
       "_vendor-da6078aa.js",
-      "_Tab-e5870f37.js",
+      "_Tab-da180e46.js",
       "_Button-e9eb8bb7.js",
       "_stores-af26b35b.js"
     ],
@@ -83,13 +83,13 @@
     ]
   },
   "src/routes/registration/id.svelte": {
-    "file": "pages/registration/id.svelte-bdc08367.js",
+    "file": "pages/registration/id.svelte-03973f71.js",
     "src": "src/routes/registration/id.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
       "_vendor-da6078aa.js",
-      "_Tab-e5870f37.js",
+      "_Tab-da180e46.js",
       "_Button-e9eb8bb7.js",
       "_stores-af26b35b.js"
     ],
@@ -98,24 +98,24 @@
     ]
   },
   "src/routes/privacy.svelte": {
-    "file": "pages/privacy.svelte-fc373a22.js",
+    "file": "pages/privacy.svelte-e15a5d36.js",
     "src": "src/routes/privacy.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
       "_vendor-da6078aa.js",
-      "_Tab-e5870f37.js",
+      "_Tab-da180e46.js",
       "_stores-af26b35b.js"
     ]
   },
   "src/routes/adomas.svelte": {
-    "file": "pages/adomas.svelte-765f3c21.js",
+    "file": "pages/adomas.svelte-cd639c9d.js",
     "src": "src/routes/adomas.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
       "_vendor-da6078aa.js",
-      "_Tab-e5870f37.js",
+      "_Tab-da180e46.js",
       "_stores-af26b35b.js"
     ],
     "css": [
@@ -123,27 +123,27 @@
     ]
   },
   "src/routes/news/index.svelte": {
-    "file": "pages/news/index.svelte-a7e88803.js",
+    "file": "pages/news/index.svelte-73ce346e.js",
     "src": "src/routes/news/index.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
       "_vendor-da6078aa.js",
-      "_Tab-e5870f37.js",
+      "_Tab-da180e46.js",
       "_News-132a38f4.js",
       "_stores-af26b35b.js",
       "_8-2f1e7ec7.js"
     ]
   },
   "src/routes/news/[slug].svelte": {
-    "file": "pages/news/_slug_.svelte-707b2fb9.js",
+    "file": "pages/news/_slug_.svelte-386a104b.js",
     "src": "src/routes/news/[slug].svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
       "_8-2f1e7ec7.js",
       "_vendor-da6078aa.js",
-      "_Tab-e5870f37.js",
+      "_Tab-da180e46.js",
       "_stores-af26b35b.js"
     ],
     "css": [
@@ -151,13 +151,13 @@
     ]
   },
   "src/routes/404.svelte": {
-    "file": "pages/404.svelte-ee9526ee.js",
+    "file": "pages/404.svelte-28713ddc.js",
     "src": "src/routes/404.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
       "_vendor-da6078aa.js",
-      "_Tab-e5870f37.js",
+      "_Tab-da180e46.js",
       "_stores-af26b35b.js"
     ],
     "css": [
@@ -182,13 +182,13 @@
       "_vendor-da6078aa.js"
     ]
   },
-  "_Tab-e5870f37.js": {
-    "file": "chunks/Tab-e5870f37.js",
+  "_Tab-da180e46.js": {
+    "file": "chunks/Tab-da180e46.js",
     "imports": [
       "_vendor-da6078aa.js"
     ],
     "css": [
-      "assets/Tab-9a5c14f3.css"
+      "assets/Tab-ab767d30.css"
     ]
   },
   "_News-132a38f4.js": {
