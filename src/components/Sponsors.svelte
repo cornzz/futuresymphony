@@ -34,7 +34,6 @@
             </div>
         </div>
     </div>
-    <!-- style="height: auto; flex-grow: 1" -->
     <div class="flex-row" >
         <div class="flex-column">
             <h2 class="sponsor-title">{$_('sponsors.infSponsor')}:</h2>
@@ -42,7 +41,7 @@
                 <a class="sponsor" href="https://www.lrt.lt/" target="blank"><img src="/images/sponsors/logo_lrt.png" alt="logo_lrt.png"></a>
             </div>
         </div>
-        <div class="flex-column">
+        <div class="flex-column" style="flex-grow: 2">
             <h2 class="sponsor-title">{$_('sponsors.partners')}:</h2>
             <div class="flex-row">
                 <a class="sponsor" href="https://www.jmr.lt/" target="blank"><img src="/images/sponsors/logo_pk.png" alt="logo_pk.png"></a>
