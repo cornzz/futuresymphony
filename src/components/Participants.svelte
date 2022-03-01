@@ -31,7 +31,7 @@
         <p>
             <a href="/files/fsc_regulations_EN_2022-02-24.pdf" class="link" target="_blank">Regulations of the Competition</a><br>
             <span on:click={highlightStartDate} class="link">Proceed to the Registration Platform</span>
-            <span class="startDate" bind:this={date}>(opens up on the 8th of March 2022)</span>
+            <span class="startDate" bind:this={date}>(will open up until the 10th of March 2022)</span>
         </p>
     {:else if $locale === 'lt'}
         <b>Registracija</b><br>
@@ -49,7 +49,7 @@
         <p>
             <a href="/files/fsc_regulations_LT_2022-02-24.pdf" class="link" target="_blank">Konkurso nuostatai</a><br>
             <span on:click={highlightStartDate} class="link">Pradėti registraciją</span>
-            <span class="startDate" bind:this={date}>(platforma atsidaro 2022 m. kovo 8 d.)</span>
+            <span class="startDate" bind:this={date}>(platforma atsidarys iki 2022 m. kovo 10 d.)</span>
         </p>
     {/if}
 </div>
