@@ -1,6 +1,6 @@
 {
   ".svelte-kit/build/runtime/internal/start.js": {
-    "file": "start-1fb48d02.js",
+    "file": "start-befd21f3.js",
     "src": ".svelte-kit/build/runtime/internal/start.js",
     "isEntry": true,
     "imports": [
@@ -51,7 +51,7 @@
     ]
   },
   "src/routes/index.svelte": {
-    "file": "pages/index.svelte-f4ee3cd6.js",
+    "file": "pages/index.svelte-d92155a7.js",
     "src": "src/routes/index.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
@@ -59,9 +59,9 @@
       "_vendor-da6078aa.js",
       "_Tab-da180e46.js",
       "_index-a4c25817.js",
-      "_News-132a38f4.js",
+      "_News-f38f8212.js",
       "_stores-af26b35b.js",
-      "_8-2f1e7ec7.js"
+      "_9-d4043988.js"
     ],
     "css": [
       "assets/pages/index.svelte-8dc526c8.css"
@@ -123,25 +123,25 @@
     ]
   },
   "src/routes/news/index.svelte": {
-    "file": "pages/news/index.svelte-73ce346e.js",
+    "file": "pages/news/index.svelte-91f75072.js",
     "src": "src/routes/news/index.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
       "_vendor-da6078aa.js",
       "_Tab-da180e46.js",
-      "_News-132a38f4.js",
+      "_News-f38f8212.js",
       "_stores-af26b35b.js",
-      "_8-2f1e7ec7.js"
+      "_9-d4043988.js"
     ]
   },
   "src/routes/news/[slug].svelte": {
-    "file": "pages/news/_slug_.svelte-386a104b.js",
+    "file": "pages/news/_slug_.svelte-f357d6bb.js",
     "src": "src/routes/news/[slug].svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_8-2f1e7ec7.js",
+      "_9-d4043988.js",
       "_vendor-da6078aa.js",
       "_Tab-da180e46.js",
       "_stores-af26b35b.js"
@@ -191,18 +191,18 @@
       "assets/Tab-ab767d30.css"
     ]
   },
-  "_News-132a38f4.js": {
-    "file": "chunks/News-132a38f4.js",
+  "_News-f38f8212.js": {
+    "file": "chunks/News-f38f8212.js",
     "imports": [
-      "_8-2f1e7ec7.js",
+      "_9-d4043988.js",
       "_vendor-da6078aa.js"
     ],
     "css": [
       "assets/News-7f8461eb.css"
     ]
   },
-  "_8-2f1e7ec7.js": {
-    "file": "chunks/8-2f1e7ec7.js"
+  "_9-d4043988.js": {
+    "file": "chunks/9-d4043988.js"
   },
   "_Button-e9eb8bb7.js": {
     "file": "chunks/Button-e9eb8bb7.js",
