@@ -22,22 +22,8 @@
         return inputElements.every(e => e.reportValidity())
     }
 
-    function serializeFileList(files) {
-        for (const file of files) {
-            file.toJSON = () => {
-                return {
-                    'lastModified'     : file.lastModified,
-                    'name'             : file.name,
-                    'size'             : file.size,
-                    'type'             : file.type 
-                }
-            }
-        }
-    }
-
     export function saveForm() {
         if (['', 'none'].includes(saveIndicator.style.display)) {
-            serializeFileList(dto.idCopy.files)
             localStorage.setItem('newRegistrationDto', JSON.stringify(dto))
             saveIndicator.style.opacity = 1
             saveIndicator.style.display = 'block'
@@ -104,14 +90,16 @@
             options={countries}
             {disabled}
         />
-        <FileInput
-            name="idCopy"
-            label="Copy of ID document (Max. 2MB)"
-            accept="image/*"
-            bind:value={dto.idCopy.value}
-            bind:files={dto.idCopy.files}
-            {disabled}
-        />
+        {#if !newRegistration}
+            <FileInput
+                name="idCopy"
+                label="Copy of ID document (Max. 2MB)"
+                accept="image/*"
+                bind:value={dto.idCopy.value}
+                bind:files={dto.idCopy.files}
+                {disabled}
+            />
+        {/if}
     </FormGroup>
     <div class="checkboxes">
         <Checkbox
