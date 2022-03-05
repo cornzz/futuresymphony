@@ -13,34 +13,42 @@
     export let newRegistration: boolean = false
     export let dto: RegistrationDTO
     export let regulationsAccepted: boolean = true
+    export let changed: boolean = false
 
     let inputTimeout = null
     let saveIndicator
 
-    export function validateForm() {
+    export function reportValidity(): boolean {
         let inputElements: Array<HTMLInputElement | HTMLSelectElement> = Array.from(document.querySelectorAll('input, select'))
         return inputElements.every(e => e.reportValidity())
     }
 
-    export function saveForm() {
-        if (['', 'none'].includes(saveIndicator.style.display)) {
+    export function getInvalid(): string[] {
+        let inputElements: Array<HTMLInputElement | HTMLSelectElement> = Array.from(document.querySelectorAll('input, select'))
+        return inputElements.filter(e => e.validationMessage).map(e => e.labels[0].textContent.split('(')[0].trim())
+    }
+
+    export function saveForm(): void {
+        if (newRegistration && saveIndicator.style.display === '') {
             localStorage.setItem('newRegistrationDto', JSON.stringify(dto))
             saveIndicator.style.opacity = 1
             saveIndicator.style.display = 'block'
             setTimeout(() => saveIndicator.style.opacity = 0, 2000)
-            setTimeout(() => saveIndicator.style.display = 'none', 3000)
+            setTimeout(() => saveIndicator.style.display = '', 3000)
             clearTimeout(inputTimeout)
         }
     }
 
-    function handleInput() {
-        clearTimeout(inputTimeout)
-        inputTimeout = setTimeout(saveForm, 5000)
+    function handleInput(): void {
+        if (newRegistration) {
+            clearTimeout(inputTimeout)
+            inputTimeout = setTimeout(saveForm, 5000)
+        }
+        changed = true
     }
 
     onMount(() => {
         if (newRegistration) {
-            document.querySelectorAll('input, select').forEach(e => e.addEventListener('input', handleInput))
             dto = JSON.parse(localStorage.getItem('newRegistrationDto')) ?? new RegistrationDTO()
         }
     })
@@ -54,6 +62,7 @@
             name="firstName"
             label="First Name"
             bind:value={dto.firstName}
+            on:input={handleInput}
             {disabled}
         />
         <Input
@@ -61,6 +70,7 @@
             name="lastName"
             label="Last Name"
             bind:value={dto.lastName}
+            on:input={handleInput}
             {disabled}
         />
     </FormGroup>
@@ -70,6 +80,7 @@
             name="email"
             label="Email Address"
             bind:value={dto.email}
+            on:input={handleInput}
             {disabled}
         />
         <Input
@@ -79,6 +90,7 @@
             min="1987-09-09"
             max="2004-06-30"
             bind:value={dto.dateOfBirth}
+            on:input={handleInput}
             {disabled}
         />
     </FormGroup>
@@ -87,16 +99,19 @@
             name="country"
             label="Country"
             bind:value={dto.country}
+            on:input={handleInput}
             options={countries}
             {disabled}
         />
         {#if !newRegistration}
             <FileInput
                 name="idCopy"
-                label="Copy of ID document (Max. 2MB)"
+                label="Copy of ID document"
+                maxSize={2097152}
                 accept="image/*"
                 bind:value={dto.idCopy.value}
                 bind:files={dto.idCopy.files}
+                on:input={handleInput}
                 {disabled}
             />
         {/if}
@@ -105,6 +120,7 @@
         <Checkbox
             name="agreeRegulations"
             label="I agree with the <a href='/files/fsc_regulations_EN_2022-02-24.pdf' target='_blank' class='link'>regulations</a> and the <a href='/privacy' target='_blank' class='link'>privacy policy</a>."
+            required
             bind:checked={regulationsAccepted}
             disabled={disabled || !newRegistration}
         />

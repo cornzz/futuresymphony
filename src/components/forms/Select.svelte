@@ -9,7 +9,7 @@
 <div>
     <label for={name}>{label}</label>
     <div class="background" {disabled}>
-        <select id={name} type="select" bind:value {disabled} required>
+        <select id={name} type="select" bind:value on:input {disabled} required>
             {#each options as option}
                 <option value={option[0]}>
                     {option[1]}

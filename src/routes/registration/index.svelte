@@ -1,4 +1,5 @@
 <script lang="ts">
+    import InfoBox from '../../components/forms/InfoBox.svelte'
     import RegistrationForm from '../../components/forms/RegistrationForm.svelte'
     import Button from '../../components/forms/Button.svelte'
     import { RegistrationDTO } from '../../helpers/RegistrationDTO'
@@ -11,14 +12,15 @@
     let form
     let regulationsAccepted: boolean = false
 
-    function submitForm() {
-        if (form.validateForm()) {
+    async function submitForm() {
+        if (form.reportValidity()) {
             // localStorage.removeItem('newRegistrationDto')
             $loading = true
-            fetch(new URL('/api/new-registration.php', $baseURL).toString(), {
+            await fetch(new URL('/api/new-registration.php', $baseURL).toString(), {
                 method: 'POST',
                 body: JSON.stringify(dto)
             })
+            $loading = false
         }
     }
 </script>
@@ -28,7 +30,9 @@
     description={$_('registration.meta.description')}
 />
 
-As a first step, please submit the following information. You will receive an email from <tt>registration@futuresymphony.lt</tt> with further instructions.
+<InfoBox type="warning">
+    As a first step, please submit the following information. You will receive an email from <tt>registration@futuresymphony.lt</tt> with further instructions.
+</InfoBox>
 <RegistrationForm
     bind:this={form}
     newRegistration

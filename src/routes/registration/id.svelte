@@ -1,20 +1,38 @@
 <script lang="ts">
+    import InfoBox from '../../components/forms/InfoBox.svelte'
     import RegistrationForm from '../../components/forms/RegistrationForm.svelte'
     import Button from '../../components/forms/Button.svelte'
     import type { RegistrationDTO } from '../../helpers/RegistrationDTO'
-    import { loading } from '../../helpers/stores'
+    import { loading, baseURL } from '../../helpers/stores'
     import { _ } from 'svelte-i18n'
     import { onMount } from 'svelte'
 
-    export let dto: RegistrationDTO
+    export let dto: RegistrationDTO = null
 
+    let form
     let registrationID: string
     let initialLoad: boolean = false
     let editing: boolean = false
-    let disabled: boolean = true
+    let disabled: boolean = false
+    let errors: string[] = []
+    let formChanged: boolean = false
 
-    function saveForm() {
+    async function saveForm() {
+        errors = form.getInvalid()
         console.log(`saving registration ${registrationID}`)
+        $loading = true
+        await fetch(new URL('/api/registration.php', $baseURL).toString(), {
+            method: 'POST',
+            body: JSON.stringify(dto)
+        })
+        // TODO: Fileupload
+        $loading = false
+        formChanged = false
+    }
+
+    $: if (form) {
+        errors = form.getInvalid()
+        disabled = true
     }
 
     onMount(() => {
@@ -27,14 +45,30 @@
             }
             $loading = false
             initialLoad = true
-        }, 750)
+        }, 0)
     })
 </script>
 
-{#if dto && !$loading}
+{#if initialLoad && errors.length === 0}
+    <InfoBox type="success">
+        Your registration is complete! 
+    </InfoBox>
+{:else if initialLoad}
+    <InfoBox type="warning">
+        Following fields are missing for your registration to be complete:
+        <ul>
+            {#each errors as error}
+                <li>{error}</li>
+            {/each}
+        </ul>
+    </InfoBox>
+{/if}
+{#if dto}
     <RegistrationForm
+        bind:this={form}
         {disabled}
         bind:dto
+        bind:changed={formChanged}
     >
         {#if editing}
             <Button
@@ -54,7 +88,7 @@
             on:click={() => {
                 editing = !editing
                 disabled = !editing
-                if (!editing) {
+                if (!editing && formChanged) {
                     saveForm()
                 }
             }}

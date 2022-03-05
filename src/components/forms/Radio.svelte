@@ -2,10 +2,17 @@
     export let name: string
     export let label: string
     export let disabled: boolean = false
+    export let required: boolean = false
 </script>
 
 <label {disabled}>
-    <input id={name} type="radio" {disabled} required/>
+    <input
+        id={name}
+        type="radio"
+        on:input
+        {disabled}
+        {required}
+    />
     {@html label}
 </label>
 

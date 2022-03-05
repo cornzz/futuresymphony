@@ -8,7 +8,7 @@
     showBack.set(false)
 </script>
 
-<Tab>
+<Tab oversize justify={false}>
     <h1 class="cover-heading"><b>{$_('registration.yourRegistration')}</b></h1>
     <div class="wrapper">
         {#if $loading}
@@ -24,7 +24,7 @@
 
 <style lang="stylus">
     .wrapper
-        height 100%
+        min-height 90vh
         position relative
 
     .spinner

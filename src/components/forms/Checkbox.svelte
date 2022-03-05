@@ -2,11 +2,19 @@
     export let name: string
     export let label: string
     export let disabled: boolean = false
+    export let required: boolean = false
     export let checked
 </script>
 
 <label {disabled}>
-    <input id={name} type="checkbox" {disabled} bind:checked required/>
+    <input
+        id={name}
+        type="checkbox"
+        bind:checked
+        on:input
+        {disabled}
+        {required}
+    />
     {@html label}
 </label>
 

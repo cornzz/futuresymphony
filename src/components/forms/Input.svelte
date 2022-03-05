@@ -11,11 +11,34 @@
 <div>
     <label for={name}>{label}</label>
     {#if type === 'text' }
-        <input id={name} type="text" bind:value {disabled} required/>
+        <input
+            id={name}
+            type="text"
+            bind:value
+            on:input
+            {disabled}
+            required
+        />
     {:else if type === 'date'}
-        <input id={name} type="date" bind:value {min} {max} {disabled} required/>
+        <input
+            id={name}
+            type="date"
+            {min}
+            {max}
+            bind:value
+            on:input
+            {disabled}
+            required
+        />
     {:else if type === 'email'}
-        <input id={name} type="email" bind:value {disabled} required/>
+        <input
+            id={name}
+            type="email"
+            bind:value
+            on:input
+            {disabled}
+            required
+        />
     {/if}
 </div>
 
