@@ -31,8 +31,8 @@
         position absolute
         z-index 1000
         display flex
-        gap 10px
         flex-direction column
+        gap 10px
         align-items center
         justify-content center
         height 85px

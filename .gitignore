@@ -1,5 +1,5 @@
 .DS_Store
 .htaccess
-poster/
 node_modules
 .svelte-kit
+**/.env

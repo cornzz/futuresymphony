@@ -8,17 +8,25 @@
 
 <style lang="stylus">
     div
-        font-size 0.75em
+        font-size 0.8em
+        line-height 1.75em
         border solid 1px var(--color-border)
         border-radius var(--border-radius)
         background-color #fff
-        padding 10px 20px
+        padding 5px 15px
 
     .info
         border-color var(--color-primary)
     
     .success
         border-color #289501
+        padding-right 30px
+
+        &:after
+            content '✔'
+            position absolute
+            right 15px
+            color #289501
 
     .warning
         border-color #ffbf00

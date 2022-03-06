@@ -49,21 +49,21 @@
     })
 </script>
 
-{#if initialLoad && errors.length === 0}
-    <InfoBox type="success">
-        Your registration is complete! 
-    </InfoBox>
-{:else if initialLoad}
-    <InfoBox type="warning">
-        Following fields are missing for your registration to be complete:
-        <ul>
-            {#each errors as error}
-                <li>{error}</li>
-            {/each}
-        </ul>
-    </InfoBox>
-{/if}
 {#if dto}
+    {#if errors.length === 0}
+        <InfoBox type="success">
+            Your registration is complete! 
+        </InfoBox>
+    {:else}
+        <InfoBox type="warning">
+            Following fields are missing for your registration to be complete:
+            <ul>
+                {#each errors as error}
+                    <li>{error}</li>
+                {/each}
+            </ul>
+        </InfoBox>
+    {/if}
     <RegistrationForm
         bind:this={form}
         {disabled}
@@ -104,5 +104,11 @@
 {/if}
 
 <style lang="stylus">
-
+    .center
+        height 80vh
+        display flex
+        gap 10px
+        flex-direction column
+        align-items center
+        justify-content center
 </style>

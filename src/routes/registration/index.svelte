@@ -6,17 +6,18 @@
     import { MetaTags } from 'svelte-meta-tags'
     import { baseURL, loading } from '../../helpers/stores'
     import { _ } from 'svelte-i18n'
+    import { dev } from '$app/env'
 
     export let dto: RegistrationDTO = new RegistrationDTO()
 
     let form
-    let regulationsAccepted: boolean = false
+    let regulationsAccepted: boolean = false || dev
 
     async function submitForm() {
         if (form.reportValidity()) {
             // localStorage.removeItem('newRegistrationDto')
             $loading = true
-            await fetch(new URL('/api/new-registration.php', $baseURL).toString(), {
+            await fetch(new URL('/new_registration.php', $baseURL).toString(), {
                 method: 'POST',
                 body: JSON.stringify(dto)
             })
@@ -30,7 +31,7 @@
     description={$_('registration.meta.description')}
 />
 
-<InfoBox type="warning">
+<InfoBox type="info">
     As a first step, please submit the following information. You will receive an email from <tt>registration@futuresymphony.lt</tt> with further instructions.
 </InfoBox>
 <RegistrationForm
