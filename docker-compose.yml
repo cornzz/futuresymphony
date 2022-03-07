@@ -8,7 +8,7 @@ services:
         depends_on:
             - db
         volumes:
-            - ./src/api:/var/www/html
+            - ./static/api:/var/www/html
         ports:
             - 8080:80
     db:
