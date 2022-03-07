@@ -16,17 +16,13 @@
         $value = trim($value);
 
         if (!array_key_exists($name, $_SERVER) && !array_key_exists($name, $_ENV)) {
-            putenv(sprintf('%s=%s', $name, $value));
+            DEFINE($name, $value);
         }
     }
 
     function OpenCon()
     {
-        $dbhost = getenv('DB_HOST');
-        $dbuser = getenv('DB_USER');
-        $dbpass = getenv('DB_PASS');
-        $db = getenv('DB_NAME');
-        $conn = new mysqli($dbhost, $dbuser, $dbpass,$db) or die('Connection failed: %s\n'. $conn->error);
+        $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME) or die('Connection failed: %s\n'. $conn->error);
 
         return $conn;
     }
