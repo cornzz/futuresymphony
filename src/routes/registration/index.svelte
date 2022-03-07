@@ -17,7 +17,7 @@
         if (form.reportValidity()) {
             // localStorage.removeItem('newRegistrationDto')
             $loading = true
-            await fetch(new URL('/new_registration.php', $baseURL).toString(), {
+            await fetch(new URL('new_registration.php', $baseURL).toString(), {
                 method: 'POST',
                 body: JSON.stringify(dto)
             })
