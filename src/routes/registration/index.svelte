@@ -39,6 +39,7 @@
     description={$_('registration.meta.description')}
 />
 
+<h1 class="cover-heading"><b>{$_('registration.title')}</b></h1>
 {#if success}
 <InfoBox type="success">
     Your registration has been submitted. Please follow the instructions that have been sent to your email address, <tt>{dto.email}</tt>.

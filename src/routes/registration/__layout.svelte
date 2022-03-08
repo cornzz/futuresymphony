@@ -9,7 +9,6 @@
 </script>
 
 <Tab oversize justify={false}>
-    <h1 class="cover-heading"><b>{$_('registration.yourRegistration')}</b></h1>
     <div class="wrapper">
         {#if $loading}
             <div class="spinner">
@@ -26,6 +25,9 @@
     .wrapper
         min-height 90vh
         position relative
+
+        :global(.cover-heading)
+            margin 20px 0 30px
 
         :global(& > *)
             margin-top 15px

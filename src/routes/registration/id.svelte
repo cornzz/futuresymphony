@@ -49,6 +49,7 @@
     })
 </script>
 
+<h1 class="cover-heading"><b>{$_('registration.yourRegistration')}</b></h1>
 {#if dto}
     {#if errors.length === 0}
         <InfoBox type="success">
