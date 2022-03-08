@@ -12,15 +12,23 @@
 
     let form
     let regulationsAccepted: boolean = false || dev
+    let error: string = ''
+    let success: boolean = false
 
     async function submitForm() {
         if (form.reportValidity()) {
-            // localStorage.removeItem('newRegistrationDto')
             $loading = true
-            await fetch(new URL('new_registration.php', $baseURL).toString(), {
+            const response = await fetch(new URL('new_registration.php', $baseURL).toString(), {
                 method: 'POST',
                 body: JSON.stringify(dto)
             })
+            if (response.status === 200) {
+                error = ''
+                success = true
+                !dev && localStorage.removeItem('newRegistrationDto')
+            } else {
+                error = await response.text()
+            }
             $loading = false
         }
     }
@@ -31,30 +39,47 @@
     description={$_('registration.meta.description')}
 />
 
-<InfoBox type="info">
-    As a first step, please submit the following information. You will receive an email from <tt>registration@futuresymphony.lt</tt> with further instructions.
+{#if success}
+<InfoBox type="success">
+    Your registration has been submitted. Please follow the instructions that have been sent to your email address, <tt>{dto.email}</tt>.
 </InfoBox>
-<RegistrationForm
-    bind:this={form}
-    newRegistration
-    bind:dto
-    bind:regulationsAccepted
->
-    <Button
-        type="outline"
-        on:click={() => form.saveForm()}
+{:else}
+    <InfoBox type="info">
+        As a first step, please submit the following information. You will receive an email from <tt>registration@futuresymphony.lt</tt> with further instructions.
+    </InfoBox>
+    {#if error}
+        <InfoBox type="error">
+            {
+                error === 'Email already used.' ?
+                'This email address has already been used. Please choose a different one.' :
+                error === 'Invalid form.' ?
+                'An error has occured. Please check your input.' :
+                'An error has occured. Please try again later, or contact us.'
+            }
+        </InfoBox>
+    {/if}
+    <RegistrationForm
+        bind:this={form}
+        newRegistration
+        bind:dto
+        bind:regulationsAccepted
     >
-        Save
-    </Button>
-    <!-- <div></div> -->
-    <Button
-        type="primary"
-        disabled={!regulationsAccepted}
-        on:click={() => submitForm()}
-    >
-        Submit
-    </Button>
-</RegistrationForm>
+        <Button
+            type="outline"
+            on:click={() => form.saveForm()}
+        >
+            Save
+        </Button>
+        <!-- <div></div> -->
+        <Button
+            type="primary"
+            disabled={!regulationsAccepted}
+            on:click={() => submitForm()}
+        >
+            Submit
+        </Button>
+    </RegistrationForm>
+{/if}
 
 <style lang="stylus">
 

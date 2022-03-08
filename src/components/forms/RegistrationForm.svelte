@@ -33,8 +33,8 @@
             localStorage.setItem('newRegistrationDto', JSON.stringify(dto))
             saveIndicator.style.opacity = 1
             saveIndicator.style.display = 'block'
-            setTimeout(() => saveIndicator.style.opacity = 0, 2000)
-            setTimeout(() => saveIndicator.style.display = '', 3000)
+            setTimeout(() => saveIndicator && (saveIndicator.style.opacity = 0), 2000)
+            setTimeout(() => saveIndicator && (saveIndicator.style.display = ''), 3000)
             clearTimeout(inputTimeout)
         }
     }
@@ -51,6 +51,8 @@
         if (newRegistration) {
             dto = JSON.parse(localStorage.getItem('newRegistrationDto')) ?? new RegistrationDTO()
         }
+
+        return () => clearTimeout(inputTimeout)
     })
 </script>
 
@@ -133,7 +135,6 @@
 <style lang="stylus">
     .form
         position relative
-        margin-top 15px
         background-color #fff
         border solid 1px var(--color-border)
         border-radius var(--border-radius)

@@ -27,6 +27,9 @@
         min-height 90vh
         position relative
 
+        :global(& > *)
+            margin-top 15px
+
     .spinner
         position absolute
         z-index 1000

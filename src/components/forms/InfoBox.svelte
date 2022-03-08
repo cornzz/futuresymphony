@@ -19,13 +19,18 @@
         border-color var(--color-primary)
     
     .success
+        position relative
         border-color #289501
         padding-right 30px
 
         &:after
             content '✔'
             position absolute
+            display flex
+            align-items center
+            top 0
             right 15px
+            height 100%
             color #289501
 
     .warning
