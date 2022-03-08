@@ -10,5 +10,5 @@
     $conn = OpenCon();
 
     $delay = time() - 60 * 5;
-    $conn->query("DELETE FROM request_addr WHERE timestamp < $delay");
+    $conn->query("DELETE FROM request_addr WHERE timestamp < '{$delay}'");
 ?>
