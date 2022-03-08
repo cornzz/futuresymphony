@@ -55,6 +55,8 @@
                 'This email address has already been used. Please choose a different one.' :
                 error === 'Invalid form.' ?
                 'An error has occured. Please check your input.' :
+                error === 'Too many requests.' ?
+                'Please wait before submitting another form.' :
                 'An error has occured. Please try again later, or contact us.'
             }
         </InfoBox>
