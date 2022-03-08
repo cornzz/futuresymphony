@@ -6,15 +6,17 @@
 
     // Prevent spam
     $client_addr = $_SERVER['REMOTE_ADDR'];
-    $stmt = $conn->prepare("SELECT * FROM request_addr WHERE address=?");
-    $stmt->bind_param("s", $client_addr);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    while ($row = $result->fetch_assoc()) {
-        if ($row["timestamp"] > time() - 60 * 5) {
-            http_response_code(400);
-            echo "Too many requests.";
-            return;
+    if (APP_ENV != "dev") {
+        $stmt = $conn->prepare("SELECT * FROM request_addr WHERE address=?");
+        $stmt->bind_param("s", $client_addr);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        while ($row = $result->fetch_assoc()) {
+            if ($row["timestamp"] > time() - 60 * 5) {
+                http_response_code(400);
+                echo "Too many requests.";
+                return;
+            }
         }
     }
     
@@ -39,7 +41,7 @@
     // Generate reg key
     do {
         $reg_key = join("-", str_split(strtoupper(bin2hex(random_bytes(10))), 5));
-    } while (mysqli_num_rows($conn->query("SELECT * FROM new_registrations WHERE reg_key='{$reg_key}'")));
+    } while (mysqli_num_rows($conn->query("SELECT * FROM new_registrations WHERE reg_key=$reg_key")));
 
     // Insert data into new_registrations
     $stmt = $conn->prepare("INSERT INTO new_registrations(reg_key, email, firstName, lastName, dateOfBirth, country) VALUES (?, ?, ?, ?, ?, ?)");
