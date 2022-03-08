@@ -5,7 +5,7 @@
     import { RegistrationDTO } from '../../helpers/RegistrationDTO'
     import { MetaTags } from 'svelte-meta-tags'
     import { baseURL, loading } from '../../helpers/stores'
-    import { _ } from 'svelte-i18n'
+    import { _, locale } from 'svelte-i18n'
     import { dev } from '$app/env'
 
     export let dto: RegistrationDTO = new RegistrationDTO()
@@ -18,6 +18,7 @@
     async function submitForm() {
         if (form.reportValidity()) {
             $loading = true
+            dto.lang = $locale
             const response = await fetch(new URL('new_registration.php', $baseURL).toString(), {
                 method: 'POST',
                 body: JSON.stringify(dto)

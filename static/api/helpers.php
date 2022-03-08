@@ -12,14 +12,17 @@
         if ($form == null)
             return FALSE;
 
-        $formKeysNewRegistration = array("firstName", "lastName", "email", "dateOfBirth", "country");
+        $formKeysNewRegistration = array("firstName", "lastName", "email", "dateOfBirth", "country", "lang");
         $formKeysRest = array();
         foreach ($formKeysNewRegistration as $key) {
             if (!array_key_exists($key, $form) || $form[$key] == "")
                 return FALSE;
         }
 
-        if (!filter_var($form['email'], FILTER_VALIDATE_EMAIL))
+        if ($new && $form["lang"] != "en" && $form["lang"] != "lt")
+            return FALSE;
+
+        if (!filter_var($form["email"], FILTER_VALIDATE_EMAIL))
             return FALSE;
 
         if (!validateDate($form["dateOfBirth"]))

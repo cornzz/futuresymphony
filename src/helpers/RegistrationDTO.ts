@@ -5,4 +5,5 @@ export class RegistrationDTO {
     dateOfBirth: string = ''
     country: string = ''
     idCopy?: { value: string, files: FileList } = { value: '', files: undefined }
+    lang: string = ''
 }

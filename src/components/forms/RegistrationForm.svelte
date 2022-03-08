@@ -17,6 +17,8 @@
 
     let inputTimeout = null
     let saveIndicator
+    let saveIndicatorTimeout1 = null
+    let saveIndicatorTimeout2 = null
 
     export function reportValidity(): boolean {
         let inputElements: Array<HTMLInputElement | HTMLSelectElement> = Array.from(document.querySelectorAll('input, select'))
@@ -29,12 +31,15 @@
     }
 
     export function saveForm(): void {
-        if (newRegistration && saveIndicator.style.display === '') {
+        if (newRegistration) {
+            console.log('saving...')
+            clearTimeout(saveIndicatorTimeout1)
+            clearTimeout(saveIndicatorTimeout2)
             localStorage.setItem('newRegistrationDto', JSON.stringify(dto))
             saveIndicator.style.opacity = 1
             saveIndicator.style.display = 'block'
-            setTimeout(() => saveIndicator && (saveIndicator.style.opacity = 0), 2000)
-            setTimeout(() => saveIndicator && (saveIndicator.style.display = ''), 3000)
+            saveIndicatorTimeout1 = setTimeout(() => saveIndicator && (saveIndicator.style.opacity = 0), 2000)
+            saveIndicatorTimeout2 = setTimeout(() => saveIndicator && (saveIndicator.style.display = ''), 3000)
             clearTimeout(inputTimeout)
         }
     }
