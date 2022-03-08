@@ -12,6 +12,7 @@
 
     let form
     let regulationsAccepted: boolean = false || dev
+    let warning: string = ''
     let error: string = ''
     let success: boolean = false
 
@@ -25,10 +26,22 @@
             })
             if (response.status === 200) {
                 error = ''
+                warning = ''
                 success = true
                 !dev && localStorage.removeItem('newRegistrationDto')
             } else {
-                error = await response.text()
+                let responseText = await response.text()
+                if (responseText !== '') {
+                    if (responseText === 'Email already used.') {
+                        warning = 'This email address has already been used. Please choose a different one.'
+                    } else if (responseText === 'Invalid form.') {
+                        error = 'An error has occured. Please check your input.'
+                    } else if (responseText === 'Too many requests.') {
+                        error = 'Please wait before submitting another registration.'
+                    } else {
+                        error = 'An error has occured. Please try again later, or contact us.'
+                    }
+                }
             }
             $loading = false
         }
@@ -49,17 +62,14 @@
     <InfoBox type="info">
         As a first step, please submit the following information. You will receive an email from <tt>registration@futuresymphony.lt</tt> with further instructions.
     </InfoBox>
+    {#if warning}
+        <InfoBox type="warning">
+            {warning}
+        </InfoBox>
+    {/if}
     {#if error}
         <InfoBox type="error">
-            {
-                error === 'Email already used.' ?
-                'This email address has already been used. Please choose a different one.' :
-                error === 'Invalid form.' ?
-                'An error has occured. Please check your input.' :
-                error === 'Too many requests.' ?
-                'Please wait before submitting another form.' :
-                'An error has occured. Please try again later, or contact us.'
-            }
+            {error}
         </InfoBox>
     {/if}
     <RegistrationForm
