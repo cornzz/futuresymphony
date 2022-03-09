@@ -65,4 +65,6 @@
     $timestamp = strval(time());
     $stmt->bind_param("ss", $client_addr, $timestamp);
     $stmt->execute();
+
+    CloseCon($conn);
 ?>
