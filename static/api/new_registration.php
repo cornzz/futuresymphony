@@ -45,11 +45,11 @@
         $reg_key = join("-", str_split(strtoupper(bin2hex(random_bytes(10))), 5));
     } while (mysqli_num_rows($conn->query("SELECT * FROM new_registrations WHERE reg_key='{$reg_key}'")));
 
-    // if (!sendNewRegMail($form["email"], $form["firstName"], $form["lastName"], $reg_key, $form["lang"])) {
-    //     http_response_code(500);
-    //     echo "Error sending confirmation email.";
-    //     return;
-    // }
+    if (!sendNewRegMail($form["email"], $form["firstName"], $form["lastName"], $reg_key, $form["lang"])) {
+        http_response_code(500);
+        echo "Error sending confirmation email.";
+        return;
+    }
 
     // Insert data into new_registrations
     $stmt = $conn->prepare("INSERT INTO new_registrations(reg_key, email, firstName, lastName, dateOfBirth, country) VALUES (?, ?, ?, ?, ?, ?)");
