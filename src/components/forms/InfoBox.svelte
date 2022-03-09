@@ -9,7 +9,6 @@
 <style lang="stylus">
     div
         font-size 0.8em
-        line-height 1.75em
         border solid 1px var(--color-border)
         border-radius var(--border-radius)
         background-color #fff
@@ -38,4 +37,9 @@
 
     .error
         border-color #ff6d26
+
+    @media screen and (max-width 525px)
+        div
+            font-size 0.9em
+            padding 5px 10px
 </style>

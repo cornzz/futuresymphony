@@ -1,9 +1,9 @@
 <script lang="ts">
     export let name: string
     export let label: string
-    export let disabled: boolean = false
     export let value: string
     export let options: string[][]
+    export let disabled: boolean = false
 </script>
 
 <div>

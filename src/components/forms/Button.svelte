@@ -35,4 +35,7 @@
         
         &:hover:enabled
             background-color var(--color-primary-hover)
+    
+    @media screen and (max-width 525px)
+        height 40px
 </style>

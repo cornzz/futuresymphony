@@ -18,16 +18,20 @@
     let formChanged: boolean = false
 
     async function saveForm() {
-        errors = form.getInvalid()
-        console.log(`saving registration ${registrationID}`)
-        $loading = true
-        await fetch(new URL('/api/registration.php', $baseURL).toString(), {
-            method: 'POST',
-            body: JSON.stringify(dto)
-        })
-        // TODO: Fileupload
-        $loading = false
-        formChanged = false
+        if (form.reportValidity('#firstName, #lastName, #email, #dateOfBirth, #country')) {
+            errors = form.getInvalid()
+            console.log(`saving registration ${registrationID}: ${JSON.stringify(dto)}`)
+            $loading = true
+            await fetch(new URL('registration.php', $baseURL).toString(), {
+                method: 'POST',
+                body: JSON.stringify(dto)
+            })
+            // TODO: Fileupload
+            $loading = false
+            formChanged = false
+            return true
+        }
+        return false
     }
 
     $: if (form) {
@@ -41,7 +45,7 @@
         console.log(`loading registration ${registrationID}`)
         setTimeout(() => {
             if (registrationID === '1') {
-                dto = JSON.parse('{"firstName":"Ernst","lastName":"Haft","email":"ernsthaft@web.de","dateOfBirth":"1990-01-01","country":"DE","idCopy":{"value":"","files": "undefined"}}')
+                dto = JSON.parse('{"firstName":"Ernst","lastName":"Haft","email":"ernsthaft@web.de","dateOfBirth":"1990-01-01","country":"DE","idCopy":{"value":"","files": "null"},"pieceTitle":"","annotation":"","pieceScore":{"value":"","files":"null"},"pieceDemo":{"value":"","files":"null"},"instrumentation":"","remarks":""}')
             }
             $loading = false
             initialLoad = true
@@ -86,12 +90,10 @@
         {/if}
         <Button
             type="primary"
-            on:click={() => {
-                editing = !editing
-                disabled = !editing
-                if (!editing && formChanged) {
-                    saveForm()
-                }
+            on:click={async () => {
+                let disable = editing && (!formChanged || await saveForm())
+                editing = !disable
+                disabled = disable
             }}
         >
             {editing ? 'Save' : 'Edit'}
@@ -112,4 +114,7 @@
         flex-direction column
         align-items center
         justify-content center
+    
+    li
+        margin-top 5px
 </style>

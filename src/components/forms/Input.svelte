@@ -2,10 +2,10 @@
     export let type: 'text' | 'date' | 'email'
     export let name: string
     export let label: string
-    export let disabled: boolean = false
-    export let value: string | Date
     export let min: string = ''
     export let max: string = ''
+    export let value: string | Date
+    export let disabled: boolean = false
 </script>
 
 <div>

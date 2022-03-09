@@ -4,6 +4,14 @@ export class RegistrationDTO {
     email: string = ''
     dateOfBirth: string = ''
     country: string = ''
-    idCopy?: { value: string, files: FileList } = { value: '', files: undefined }
+    idCopy?: { value: string, files: FileList } = { value: '', files: undefined}
+
+    pieceTitle?: string
+    annotation?: string
+    pieceScore?: { value: string, files: FileList } = { value: '', files: undefined}
+    pieceDemo?: { value: string, files: FileList } = { value: '', files: undefined}
+    instrumentation?: string
+    remarks?: string
+
     lang: string = ''
 }

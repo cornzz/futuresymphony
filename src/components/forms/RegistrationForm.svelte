@@ -1,9 +1,10 @@
 <script lang="ts">
-    import Input from '../../components/forms/Input.svelte'
-    import Select from '../../components/forms/Select.svelte'
+    import Input from './Input.svelte'
+    import Textarea from './Textarea.svelte'
+    import Select from './Select.svelte'
     import FileInput from './FileInput.svelte'
-    import Checkbox from '../../components/forms/Checkbox.svelte'
-    import FormGroup from '../../components/forms/FormGroup.svelte'
+    import Checkbox from './Checkbox.svelte'
+    import Payment from './Payment.svelte'
     import { _ } from 'svelte-i18n'
     import { RegistrationDTO } from '../../helpers/RegistrationDTO'
     import { countries } from '../../helpers/countryCodes'
@@ -20,8 +21,8 @@
     let saveIndicatorTimeout1 = null
     let saveIndicatorTimeout2 = null
 
-    export function reportValidity(): boolean {
-        let inputElements: Array<HTMLInputElement | HTMLSelectElement> = Array.from(document.querySelectorAll('input, select'))
+    export function reportValidity(queryString?: string): boolean {
+        let inputElements: Array<HTMLInputElement | HTMLSelectElement> = Array.from(document.querySelectorAll(queryString ?? 'input, select'))
         return inputElements.every(e => e.reportValidity())
     }
 
@@ -52,6 +53,15 @@
         changed = true
     }
 
+    function toggleSubsection(event: MouseEvent): void {
+        const subsection: HTMLElement = (event.target as HTMLElement).nextElementSibling as HTMLElement
+        if (subsection.clientHeight === 0) {
+            subsection.style.height = subsection.scrollHeight + 'px'
+        } else {
+            subsection.style.height = '0px'
+        }
+    }
+
     onMount(() => {
         if (newRegistration) {
             dto = JSON.parse(localStorage.getItem('newRegistrationDto')) ?? new RegistrationDTO()
@@ -63,11 +73,11 @@
 
 <div class="form">
     <span class="saveIndicator" bind:this={saveIndicator}>Input saved.</span>
-    <FormGroup>
+    <div class="form-row">
         <Input
             type="text"
             name="firstName"
-            label="First Name"
+            label="First name"
             bind:value={dto.firstName}
             on:input={handleInput}
             {disabled}
@@ -75,17 +85,17 @@
         <Input
             type="text"
             name="lastName"
-            label="Last Name"
+            label="Last name"
             bind:value={dto.lastName}
             on:input={handleInput}
             {disabled}
         />
-    </FormGroup>
-    <FormGroup>
+    </div>
+    <div class="form-row">
         <Input
             type="email"
             name="email"
-            label="Email Address"
+            label="Email address"
             bind:value={dto.email}
             on:input={handleInput}
             {disabled}
@@ -93,15 +103,15 @@
         <Input
             type="date"
             name="dateOfBirth"
-            label="Date of Birth"
+            label="Date of birth"
             min="1987-09-09"
             max="2004-06-30"
             bind:value={dto.dateOfBirth}
             on:input={handleInput}
             {disabled}
         />
-    </FormGroup>
-    <FormGroup>
+    </div>
+    <div class="form-row">
         <Select
             name="country"
             label="Country"
@@ -113,7 +123,7 @@
         {#if !newRegistration}
             <FileInput
                 name="idCopy"
-                label="Copy of ID document"
+                label="ID document"
                 maxSize={2097152}
                 accept="image/*"
                 bind:value={dto.idCopy.value}
@@ -122,7 +132,62 @@
                 {disabled}
             />
         {/if}
-    </FormGroup>
+    </div>
+    {#if !newRegistration}
+    <hr>
+    <div class="subsection-title" on:click={toggleSubsection}>Score submission</div>
+    <div class="subsection">
+        <Input
+            type="text"
+            name="pieceTitle"
+            label="Piece title"
+            bind:value={dto.pieceTitle}
+            on:input={handleInput}
+            {disabled}
+        />
+        <Textarea
+            name="annotation"
+            label="Annotation"
+            maxlength={200}
+            bind:value={dto.annotation}
+            on:input={handleInput}
+            {disabled}
+        />
+        <div class="form-row">
+            <FileInput
+                name="pieceScore"
+                label="Score"
+                maxSize={10485760}
+                type=".pdf"
+                accept="application/pdf"
+                bind:value={dto.pieceScore.value}
+                bind:files={dto.pieceScore.files}
+                on:input={handleInput}
+                {disabled}
+            />
+            <FileInput
+                name="pieceDemo"
+                label="Demo file"
+                maxSize={10485760}
+                type=".mp3"
+                accept="audio/mpeg"
+                bind:value={dto.pieceDemo.value}
+                bind:files={dto.pieceDemo.files}
+                on:input={handleInput}
+                {disabled}
+            />
+        </div>
+    </div>
+    <hr>
+    <div class="subsection-title" on:click={toggleSubsection}>Payment</div>
+    <div class="subsection">
+        <Payment
+            firstName={dto.firstName}
+            lastName={dto.lastName}
+        />
+    </div>
+    <hr>
+    {/if}
     <div class="checkboxes">
         <Checkbox
             name="agreeRegulations"
@@ -157,6 +222,12 @@
             color var(--color-light-gray)
             transition all 1s ease
 
+        .form-row
+            display grid
+            grid-template-columns 1fr 1fr
+            column-gap 40px
+            row-gap 15px
+
         .checkboxes
             margin-top 15px
 
@@ -167,11 +238,60 @@
         display grid
         grid-template-columns 1fr 1fr
         column-gap 15px
+    
+    hr
+        color var(--color-primary)
+        border-radius 1px
+    
+    .subsection-title
+        font-size 0.9em
+        position relative
+
+        &:hover
+            cursor pointer
+
+        &:after
+            content ''
+            position absolute
+            top 35%
+            right 5px
+            width 10px
+            height 10px
+            border-bottom solid 3px grey
+            border-left solid 3px grey
+            border-radius 1px
+            transform translateY(-5px) rotate(-45deg)
+            transition transform 0.2s ease
+
+        &:global(.active:after)
+            transform translateY(0px) rotate(135deg)
+    
+    .subsection
+        height 0px
+        margin 0 -3px
+        padding 0 3px
+        transition height 0.4s ease
+        overflow hidden
+        
+        & > :global(*)
+            margin-top 15px
 
     @media screen and (max-width 525px)
         .form
-            padding 30px
+            padding 20px
+
+            .form-row
+                grid-template-columns 1fr
 
         .buttons
             width 100%
+
+        .subsection-title
+            font-size 1.2em
+
+            &:after
+                top 40%
+                width 7px
+                height 7px
+                border-width 2px
 </style>

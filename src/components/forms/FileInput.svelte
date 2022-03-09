@@ -3,6 +3,7 @@
     export let label: string
     export let multiple: boolean = false
     export let maxSize: number
+    export let type: string = ''
     export let accept: string
     export let value: string = ''
     export let files: FileList
@@ -23,7 +24,7 @@
 
 
 <label for={name}>
-    {label} (Max. {formatBytes(maxSize)})
+    {label} (Max. {formatBytes(maxSize)}{type ? `, ${type}` : ''})
     <div class="preview" data-button-text={'Upload'} data-file-text={value.split('\\').pop()} {disabled}>
         <input
             id={name}
@@ -66,14 +67,14 @@
             content attr(data-button-text)
             left 5px
             height 30px
-            background-color var(--color-light-gray)
+            background-color var(--color-primary)
             padding 0 5px
             border-radius var(--border-radius)
             transition all 0.05s ease
             color #fff
         
         &[disabled="false"]:hover:before
-            background-color var(--color-primary-hover)
+                background-color var(--color-primary-hover)
 
         &:after
             content attr(data-file-text)
@@ -81,4 +82,7 @@
         
         &[disabled="true"]
             background-color var(--color-background)
+
+            &:before
+                background-color var(--color-light-gray)
 </style>

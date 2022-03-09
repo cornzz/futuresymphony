@@ -71,6 +71,38 @@
             "description": "Registracija į III-jį „Future Symphony“ konkursą atsidaro 2022 m. kovo 1 d."
         }
     },
+    "orchestra": {
+        "firstFlute": "1 Fleita",
+        "secondFlute": "2 Fleita / piccolo / altine fleita",
+        "firstOboe": "1 Obojus",
+        "secondOboe": "2 Obojus / anglų ragas",
+        "firstClarinet": "1 Klarnetas",
+        "secondClarinet": "2 Klarnetas / bosinis klarnetas",
+        "saxophone": "Saksofonas",
+        "bassoon": "Fagotas {number}",
+        "frechHorn": "Valtorna {number}",
+        "trumpet": "Timitas",
+        "trombone": "Trombonas",
+        "timpani": "Timpanu atlikejas",
+        "pitchedPercussion": "Tonine perkusija",
+        "unpitchedPercussion": "Netonine perkusija",
+        "pianoCelesta": "Fortepijonas / čelesta",
+        "harp": "Arfa",
+        "accordion": "Akordeonas",
+        "electricGuitar": "Elektrinė gitara",
+        "femaleNarrator": "Naratorės moters balsas",
+        "maleNarrator": "Naratoriaus vyro balsas",
+        "iViolin": "I smuikas {number}",
+        "iiViolin": "II smuikas {number}",
+        "viola": "Altas {number}",
+        "violoncello": "Violončelė {number}",
+        "doublebass": "Kontrabosas {number}"
+    },
+    "payment": {
+        "recipient": "Gavėjas",
+        "purpose": "Mokėjimo paskirtis",
+        "regToFSC": "registracija FSC"
+    },
     "privacy": {
         "title": "VšĮ „Muzikinis pirštas“ privatumo politika",
         "meta": {

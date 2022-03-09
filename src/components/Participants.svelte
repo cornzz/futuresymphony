@@ -16,7 +16,7 @@
 
 <div class="content">
     {#if $locale === 'en'}
-        <b>Registration</b><br>
+        <!-- <b>Registration</b><br> -->
         <p>Composers who are willing to participate in the competition must submit the application form <b>by June 30<sup>th</sup> 2022</b>.</p>
         <p>Application fee – <b>50 €</b></p>
         <p>Before applying, please carefully read the <b>Regulations of the Competition</b>.</p>
@@ -33,7 +33,7 @@
             <span class="startDate" bind:this={date}>(will open up by 10th of March 2022)</span>
         </p>
     {:else if $locale === 'lt'}
-        <b>Registracija</b><br>
+        <!-- <b>Registracija</b><br> -->
         <p>Kompozitoriai, norintys dalyvauti konkurse, privalo užsiregistruoti <b>iki 2022 m. birželio 30 d.</b></p>
         <p>Registracijos mokestis – <b>50 €</b></p>
         <p>Siųsdami paraiška į konkursą Jūs sutinkate su <b>Konkurso nuostatais</b>.</p>

@@ -69,4 +69,8 @@
     label[disabled="false"]
     input:enabled
         cursor pointer
+
+    @media screen and (max-width 525px)
+        label
+            font-size 12px
 </style>

@@ -102,5 +102,6 @@
 
     hr
         color var(--color-primary)
+        border-radius 1px
 </style>
 
