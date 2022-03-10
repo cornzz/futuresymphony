@@ -24,7 +24,7 @@
             errors = form.getInvalid()
             console.log(`saving registration ${registrationID}: ${JSON.stringify(dto)}`)
             $loading = true
-            const response = await fetch(new URL(`registration.php?key=${registrationID}`, $baseURL).toString(), {
+            const response = await fetch(new URL(`registration.php?key=${registrationID}`, dev ? 'http://localhost:8080' : `${window.location.origin}/api/`).toString(), {
                 method: 'POST',
                 body: JSON.stringify(dto)
             })
@@ -50,7 +50,7 @@
         $loading = true
         registrationID = window.location.search.substring(1)
         console.log(`loading registration ${registrationID}`)
-        const response = await fetch(new URL(`registration.php?key=${registrationID}`, $baseURL).toString())
+        const response = await fetch(new URL(`registration.php?key=${registrationID}`, dev ? 'http://localhost:8080' : `${window.location.origin}/api/`).toString())
         // TODO: parse dto from response
         if (registrationID === '1') {
             dto = JSON.parse('{"firstName":"Ernst","lastName":"Haft","email":"ernsthaft@web.de","dateOfBirth":"2004-06-01","country":"DE","idCopy":{"value":"id.jpeg"},"pieceTitle":"Title","annotation":"My piece","pieceScore":{"value":"piece.pdf"},"pieceDemo":{"value":"piece.mp3"},"instrumentation":[[true],[true],[true],[true],[true],[true],[false],[true,true],[false,true],[true],[true],[true],[false],[true],[true],[true],[true],[true],[true],[true],[true,true,true,true,true,true],[true,true,true,true,true],[true,true,true,false],[true,true,false],[false,false]],"remarks":"","scoreConfirmations":[false,false,false],"proofOfPayment":{"value":""}}')
