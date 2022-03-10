@@ -53,7 +53,7 @@
         const response = await fetch(new URL(`registration.php?key=${registrationID}`, dev ? 'http://localhost:8080' : `${window.location.origin}/api/`).toString())
         // TODO: parse dto from response
         if (registrationID === '1') {
-            dto = JSON.parse('{"firstName":"Ernst","lastName":"Haft","email":"ernsthaft@web.de","dateOfBirth":"2004-06-01","country":"DE","idCopy":{"value":"id.jpeg"},"pieceTitle":"Title","annotation":"My piece","pieceScore":{"value":"piece.pdf"},"pieceDemo":{"value":"piece.mp3"},"instrumentation":[[true],[true],[true],[true],[true],[true],[false],[true,true],[false,true],[true],[true],[true],[false],[true],[true],[true],[true],[true],[true],[true],[true,true,true,true,true,true],[true,true,true,true,true],[true,true,true,false],[true,true,false],[false,false]],"remarks":"","scoreConfirmations":[false,false,false],"proofOfPayment":{"value":""}}')
+            dto = JSON.parse('{"firstName":"Ernst","lastName":"Haft","email":"ernsthaft@web.de","dateOfBirth":"2004-06-01","country":"DE","idCopy":{"value":"id.jpeg"},"pieceTitle":"Title","annotation":"My piece","pieceScore":{"value":"piece.pdf"},"pieceDemo":{"value":"piece.mp3"},"instrumentation":[[false],[false],[false],[false],[false],[false],[false],[false,false],[false,false],[false],[false],[false],[false,false],[false],[false],[false],[false],[false],[false],[false,false,false,false,false,false],[false,false,false,false,false],[false,false,false,false],[false,false,false],[false,false]],"remarks":"","scoreConfirmations":[false,false,false],"proofOfPayment":{"value":""}}')
         }
         $loading = false
         initialLoad = true
