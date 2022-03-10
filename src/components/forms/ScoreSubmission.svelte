@@ -74,7 +74,7 @@
     style="display: none"
     required
 />
-<div class="checkboxes">
+<div>
     <Checkbox
         name="scoreConfirmation1"
         label={$_('registration.scoreConfirmations.1')}
@@ -97,3 +97,11 @@
         {disabled}
     />
 </div>
+
+<style lang="stylus">
+    .form-row
+        display grid
+        grid-template-columns 1fr 1fr
+        column-gap 40px
+        row-gap 15px
+</style>

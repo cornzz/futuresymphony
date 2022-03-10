@@ -3,12 +3,14 @@
     import RegistrationForm from '../../components/forms/RegistrationForm.svelte'
     import Button from '../../components/forms/Button.svelte'
     import type { RegistrationDTO } from '../../helpers/RegistrationDTO'
-    import { loading, baseURL } from '../../helpers/stores'
+    import { loading, baseURL, showBack } from '../../helpers/stores'
     import { _ } from 'svelte-i18n'
     import { onMount } from 'svelte'
     import { dev } from '$app/env'
 
     export let dto: RegistrationDTO = null
+
+    showBack.set(true)
 
     let form
     let registrationID: string
@@ -51,7 +53,7 @@
         const response = await fetch(new URL(`registration.php?key=${registrationID}`, $baseURL).toString())
         // TODO: parse dto from response
         if (registrationID === '1') {
-            dto = JSON.parse('{"firstName":"Ernst","lastName":"Haft","email":"ernsthaft@web.de","dateOfBirth":"2004-06-01","country":"DE","idCopy":{"value":"id.jpeg"},"pieceTitle":"Title","annotation":"My piece","pieceScore":{"value":"piece.pdf"},"pieceDemo":{"value":"piece.mp3"},"instrumentation":[[false],[true],[false],[true],[true],[true],[false],[true,true],[false,true],[true],[true],[true],[false],[false],[true],[true],[true],[true],[true],[false],[true,true,true,true,true,true],[true,true,true,true,true],[false,true,true,false],[true,true,false],[false,false]],"scoreConfirmations":[false,false,false],"payment":{"value":"proof.pdf"}}')
+            dto = JSON.parse('{"firstName":"Ernst","lastName":"Haft","email":"ernsthaft@web.de","dateOfBirth":"2004-06-01","country":"DE","idCopy":{"value":"id.jpeg"},"pieceTitle":"Title","annotation":"My piece","pieceScore":{"value":"piece.pdf"},"pieceDemo":{"value":"piece.mp3"},"instrumentation":[[false],[true],[false],[true],[true],[true],[false],[true,true],[false,true],[true],[true],[true],[false],[false],[true],[true],[true],[true],[true],[false],[true,true,true,true,true,true],[true,true,true,true,true],[false,false,true,false],[true,true,false],[false,false]],"scoreConfirmations":[false,false,false],"payment":{"value":""}}')
         }
         $loading = false
         initialLoad = true
@@ -95,7 +97,10 @@
         {/if}
         <Button
             type="primary"
-            on:click={async () => disabled = !disabled && (!formChanged || await saveForm())}
+            on:click={async () => {
+                disabled = !disabled && (!formChanged || await saveForm())
+                disabled && document.getElementById('back').click()
+            }}
         >
             {!disabled ? $_('registration.form.save') : $_('registration.form.edit')}
         </Button>
