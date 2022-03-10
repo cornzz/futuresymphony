@@ -25,19 +25,19 @@
 		<link rel="stylesheet" href="/_app/assets/pages/__layout.svelte-10c06ccf.css">
 		<link rel="stylesheet" href="/_app/assets/pages/registration/__layout.svelte-ce216036.css">
 		<link rel="stylesheet" href="/_app/assets/Tab-ab767d30.css">
-		<link rel="stylesheet" href="/_app/assets/Button-464c4a19.css">
-		<link rel="modulepreload" href="/_app/start-1eddd4ff.js">
-		<link rel="modulepreload" href="/_app/chunks/vendor-d9d57f64.js">
-		<link rel="modulepreload" href="/_app/pages/__layout.svelte-25448f99.js">
-		<link rel="modulepreload" href="/_app/chunks/stores-b871fb0f.js">
-		<link rel="modulepreload" href="/_app/chunks/index-bace1b8a.js">
-		<link rel="modulepreload" href="/_app/pages/registration/__layout.svelte-2a567355.js">
-		<link rel="modulepreload" href="/_app/chunks/Tab-00d4de2c.js">
-		<link rel="modulepreload" href="/_app/pages/registration/index.svelte-2a6abb34.js">
-		<link rel="modulepreload" href="/_app/chunks/Button-fafb8375.js">
+		<link rel="stylesheet" href="/_app/assets/Button-0682d8de.css">
+		<link rel="modulepreload" href="/_app/start-f40bfe89.js">
+		<link rel="modulepreload" href="/_app/chunks/vendor-21361551.js">
+		<link rel="modulepreload" href="/_app/pages/__layout.svelte-04fa826b.js">
+		<link rel="modulepreload" href="/_app/chunks/stores-1e3f24e1.js">
+		<link rel="modulepreload" href="/_app/chunks/index-be776757.js">
+		<link rel="modulepreload" href="/_app/pages/registration/__layout.svelte-6bd7cb6f.js">
+		<link rel="modulepreload" href="/_app/chunks/Tab-918ebe6a.js">
+		<link rel="modulepreload" href="/_app/pages/registration/index.svelte-a42714f7.js">
+		<link rel="modulepreload" href="/_app/chunks/Button-1b7d846e.js">
 
 		<script type="module">
-			import { start } from "/_app/start-1eddd4ff.js";
+			import { start } from "/_app/start-f40bfe89.js";
 			start({
 				target: document.querySelector("#svelte"),
 				paths: {"base":"","assets":""},
@@ -49,9 +49,9 @@
 					status: 200,
 					error: null,
 					nodes: [
-						import("/_app/pages/__layout.svelte-25448f99.js"),
-						import("/_app/pages/registration/__layout.svelte-2a567355.js"),
-						import("/_app/pages/registration/index.svelte-2a6abb34.js")
+						import("/_app/pages/__layout.svelte-04fa826b.js"),
+						import("/_app/pages/registration/__layout.svelte-6bd7cb6f.js"),
+						import("/_app/pages/registration/index.svelte-a42714f7.js")
 					],
 					url: new URL("http://prerender/registration"),
 					params: {}
@@ -85,25 +85,25 @@
         
 
 <h1 class="cover-heading"><b>Registration to the competition</b></h1>
-<div class="info svelte-1xiwjza">As a first step, please submit the following information. You will receive an email from <tt>registration@futuresymphony.lt</tt> with further instructions.
-    
+<div class="info svelte-1xiwjza"><!-- HTML_TAG_START -->As a first step, please submit the following information. You will receive an email from <tt>registration@futuresymphony.lt<tt> with further instructions.<!-- HTML_TAG_END -->
+        Applications can be submitted and revised until the 30th of June 2022 23:59 EEST (Lithuanian time).
 </div>
     
     
-    <div class="form svelte-1hb949x"><span class="saveIndicator svelte-1hb949x">Input saved.</span>
-    <div class="form-row svelte-1hb949x"><div class="svelte-1ijv6iu"><label for="firstName" class="svelte-1ijv6iu">First name</label>
+    <div class="form svelte-6592de"><span class="saveIndicator svelte-6592de">Input saved.</span>
+    <div class="form-row svelte-6592de"><div class="svelte-1ijv6iu"><label for="firstName" data-label="registration.form.firstName" class="svelte-1ijv6iu">Name</label>
     <input id="firstName" type="text"  required class="svelte-1ijv6iu" value="">
 </div>
-        <div class="svelte-1ijv6iu"><label for="lastName" class="svelte-1ijv6iu">Last name</label>
+        <div class="svelte-1ijv6iu"><label for="lastName" data-label="registration.form.lastName" class="svelte-1ijv6iu">Surname</label>
     <input id="lastName" type="text"  required class="svelte-1ijv6iu" value="">
 </div></div>
-    <div class="form-row svelte-1hb949x"><div class="svelte-1ijv6iu"><label for="email" class="svelte-1ijv6iu">Email address</label>
+    <div class="form-row svelte-6592de"><div class="svelte-1ijv6iu"><label for="email" data-label="registration.form.email" class="svelte-1ijv6iu">Email address</label>
     <input id="email" type="email"  required class="svelte-1ijv6iu" value="">
 </div>
-        <div class="svelte-1ijv6iu"><label for="dateOfBirth" class="svelte-1ijv6iu">Date of birth</label>
+        <div class="svelte-1ijv6iu"><label for="dateOfBirth" data-label="registration.form.dateOfBirth" class="svelte-1ijv6iu">Date of birth</label>
     <input id="dateOfBirth" type="date" min="1987-09-09" max="2004-06-30"  required class="svelte-1ijv6iu" value="">
 </div></div>
-    <div class="form-row svelte-1hb949x"><div class="svelte-1tg773r"><label for="country" class="svelte-1tg773r">Country</label>
+    <div class="form-row svelte-6592de"><div class="svelte-1tg773r"><label for="country" data-label="registration.form.country" class="svelte-1tg773r">Country</label>
     <div class="background svelte-1tg773r" ><select id="country" type="select"  required class="svelte-1tg773r"><option value="AF">Afghanistan
                 </option><option value="AX">Åland Islands
                 </option><option value="AL">Albania
@@ -357,15 +357,13 @@
 </div>
         </div>
     
-    <div class="checkboxes svelte-1hb949x"><label  class="svelte-1qn6qy0"><input id="agreeRegulations" type="checkbox"  required class="svelte-1qn6qy0">
-    <!-- HTML_TAG_START -->I agree with the <a href='/files/fsc_regulations_EN_2022-02-24.pdf' target='_blank' class='link'>regulations</a> and the <a href='/privacy' target='_blank' class='link'>privacy policy</a>.<!-- HTML_TAG_END -->
-</label></div></div>
-<div class="buttons svelte-1hb949x"><button class="outline svelte-xyyc8a" >Save
-        
+    <div class="checkboxes svelte-6592de"><div><label  data-label="I agree with the &lt;a href=&#39;/files/fsc_regulations_EN_2022-02-24.pdf&#39; target=&#39;_blank&#39; class=&#39;link&#39;&gt;regulations&lt;/a&gt; and the &lt;a href=&#39;/privacy&#39; target=&#39;_blank&#39; class=&#39;link&#39;&gt;privacy policy&lt;/a&gt;." class="svelte-yemtnc"><input id="agreeRegulations" type="checkbox"  required class="svelte-yemtnc">
+        <!-- HTML_TAG_START -->I agree with the <a href='/files/fsc_regulations_EN_2022-02-24.pdf' target='_blank' class='link'>regulations</a> and the <a href='/privacy' target='_blank' class='link'>privacy policy</a>.<!-- HTML_TAG_END --></label>
+</div></div></div>
+<div class="buttons svelte-6592de"><button class="outline svelte-xyyc8a" >Save
 </button>
         
         <button class="primary svelte-xyyc8a" disabled>Submit
-        
 </button>
 </div></div>
 </div></div></div>

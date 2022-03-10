@@ -99,7 +99,7 @@
             "min30": "Kūrinio instrumentuotėje privalo būti bent <b>30 atlikėjų</b>.",
             "youSelected": "Jūs pasirinkote <b>{number} atlikėjus</b>.",
             "max30": "Kūrinio instrumentuotėje galimi ne daugiau kaip <b>35 atlikėjai</b>.",
-            "paymentProof": "Perlaidą patcirtinantis dokumentas",
+            "paymentProof": "Perlaidą patvirtinantis dokumentas",
             "upload": "Įkelti",
             "maxSize": "Iki",
             "maxChars": "Iki {number} spaudos ženklų",

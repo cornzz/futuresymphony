@@ -50,7 +50,7 @@
         
             $mail->send();
             return TRUE;
-        } catch (Exception $e) {
+        } catch (Throwable $e) {
             echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
             return FALSE;
         }
