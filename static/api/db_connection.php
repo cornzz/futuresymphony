@@ -4,6 +4,7 @@
     function OpenCon()
     {
         $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME) or die("Connection failed: %s\n". $conn->error);
+        $conn->set_charset("utf8");
 
         return $conn;
     }
