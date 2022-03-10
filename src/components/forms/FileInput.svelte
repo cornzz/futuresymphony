@@ -77,13 +77,13 @@
         border solid 1px var(--color-border)
         border-radius var(--border-radius)
         overflow hidden
-        background linear-gradient(to left, #fff, transparent 6%)
+        height 40px
 
         &:before
         &:after
             position absolute
             font-size 14px
-            top 5px
+            top 4px
             height 30px
             line-height 30px
 
@@ -105,7 +105,9 @@
         &:after
             content attr(data-file-text)
             left 75px
-            z-index -1
+            width calc(100% - 80px)
+            overflow hidden
+            text-overflow ellipsis
         
         &[disabled="true"]
             background-color var(--color-background)
