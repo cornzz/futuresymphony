@@ -104,4 +104,8 @@
         grid-template-columns 1fr 1fr
         column-gap 40px
         row-gap 15px
+
+    @media screen and (max-width 525px)
+        .form-row
+            grid-template-columns 1fr
 </style>
