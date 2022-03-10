@@ -53,7 +53,7 @@
         const response = await fetch(new URL(`registration.php?key=${registrationID}`, $baseURL).toString())
         // TODO: parse dto from response
         if (registrationID === '1') {
-            dto = JSON.parse('{"firstName":"Ernst","lastName":"Haft","email":"ernsthaft@web.de","dateOfBirth":"2004-06-01","country":"DE","idCopy":{"value":"id.jpeg"},"pieceTitle":"Title","annotation":"My piece","pieceScore":{"value":"piece.pdf"},"pieceDemo":{"value":"piece.mp3"},"instrumentation":[[false],[true],[false],[true],[true],[true],[false],[true,true],[false,true],[true],[true],[true],[false],[false],[true],[true],[true],[true],[true],[false],[true,true,true,true,true,true],[true,true,true,true,true],[false,false,true,false],[true,true,false],[false,false]],"scoreConfirmations":[false,false,false],"payment":{"value":""}}')
+            dto = JSON.parse('{"firstName":"Ernst","lastName":"Haft","email":"ernsthaft@web.de","dateOfBirth":"2004-06-01","country":"DE","idCopy":{"value":"id.jpeg"},"pieceTitle":"Title","annotation":"My piece","pieceScore":{"value":"piece.pdf"},"pieceDemo":{"value":"piece.mp3"},"instrumentation":[[true],[true],[true],[true],[true],[true],[false],[true,true],[false,true],[true],[true],[true],[false],[true],[true],[true],[true],[true],[true],[true],[true,true,true,true,true,true],[true,true,true,true,true],[true,true,true,false],[true,true,false],[false,false]],"remarks":"","scoreConfirmations":[false,false,false],"proofOfPayment":{"value":""}}')
         }
         $loading = false
         initialLoad = true
@@ -100,6 +100,7 @@
             on:click={async () => {
                 disabled = !disabled && (!formChanged || await saveForm())
                 disabled && document.getElementById('back').click()
+                disabled && form.closeSubsections()
             }}
         >
             {!disabled ? $_('registration.form.save') : $_('registration.form.edit')}

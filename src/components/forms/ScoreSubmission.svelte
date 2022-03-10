@@ -56,7 +56,14 @@
     on:input
     {disabled}
 />
-
+<Textarea
+    name="remarks"
+    label={'registration.form.remarks'}
+    maxlength={300}
+    bind:value={dto.remarks}
+    on:input
+    {disabled}
+/>
 <label
     for="scoreConfirmations"
     data-label='registration.scoreConfirmations.label'
@@ -74,7 +81,7 @@
     style="display: none"
     required
 />
-<div>
+<div class="checkboxes">
     <Checkbox
         name="scoreConfirmation1"
         label={$_('registration.scoreConfirmations.1')}
@@ -104,6 +111,9 @@
         grid-template-columns 1fr 1fr
         column-gap 40px
         row-gap 15px
+
+    .checkboxes > :global(*)
+        margin-top 5px
 
     @media screen and (max-width 525px)
         .form-row

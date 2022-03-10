@@ -9,7 +9,7 @@
     export let type: string = ''
     export let accept: string
     export let value: string = ''
-    export let files: FileList
+    export let files: FileList = undefined
     export let disabled: boolean = false
 
     let inputElement
@@ -61,6 +61,7 @@
     @require 'input.styl'
 
     label
+        position relative
         z-index 0
 
     input

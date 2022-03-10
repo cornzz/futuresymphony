@@ -20,12 +20,12 @@
     </span>
     <div class="file">
         <FileInput
-            name="paymentProof"
-            label={'registration.form.paymentProof'}
+            name="proofOfPayment"
+            label={'registration.form.proofOfPayment'}
             maxSize={5242880}
             accept="application/pdf,image/*"
-            bind:value={dto.payment.value}
-            bind:files={dto.payment.files}
+            bind:value={dto.proofOfPayment.value}
+            bind:files={dto.proofOfPayment.files}
             on:input
             {disabled}
         />

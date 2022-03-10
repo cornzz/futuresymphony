@@ -1,16 +1,15 @@
 <script lang="ts">
     import Input from './Input.svelte'
-    import Textarea from './Textarea.svelte'
     import Select from './Select.svelte'
     import FileInput from './FileInput.svelte'
     import Checkbox from './Checkbox.svelte'
-    import Instrumentation from './Instrumentation.svelte'
+    import ScoreSubmission from './ScoreSubmission.svelte'
     import Payment from './Payment.svelte'
     import { _ } from 'svelte-i18n'
     import { RegistrationDTO } from '../../helpers/RegistrationDTO'
     import { countries } from '../../helpers/countryCodes'
     import { onMount } from 'svelte'
-import ScoreSubmission from './ScoreSubmission.svelte'
+    import { dev } from '$app/env'
 
     export let disabled: boolean = false
     export let newRegistration: boolean = false
@@ -22,6 +21,7 @@ import ScoreSubmission from './ScoreSubmission.svelte'
     let saveIndicator
     let saveIndicatorTimeout1 = null
     let saveIndicatorTimeout2 = null
+    let submissionSection, paymentSection
 
     export function reportValidity(queryString?: string): boolean {
         let inputElements: Array<HTMLInputElement | HTMLSelectElement> = Array.from(document.querySelectorAll(queryString ?? 'input, select'))
@@ -55,15 +55,20 @@ import ScoreSubmission from './ScoreSubmission.svelte'
         changed = true
     }
 
-    function toggleSubsection(): void {
-        const subsection: HTMLElement = this.nextElementSibling
-        if (!this.classList.contains('active')) {
+    function toggleSubsection(element: any, close?: boolean): void {
+        const subsection: HTMLElement = element.nextElementSibling as HTMLElement
+        if (!element.classList.contains('active') && !close) {
             subsection.style.height = subsection.scrollHeight + 'px'
-            this.classList.add('active')
+            element.classList.add('active')
         } else {
             subsection.style.height = '0px'
-            this.classList.remove('active')
+            element.classList.remove('active')
         }
+    }
+
+    export function closeSubsections() {
+        toggleSubsection(submissionSection, true)
+        toggleSubsection(paymentSection, true)
     }
 
     onMount(() => {
@@ -139,7 +144,7 @@ import ScoreSubmission from './ScoreSubmission.svelte'
     </div>
     {#if !newRegistration}
     <hr>
-    <div class="subsection-title" on:click={toggleSubsection}>{$_('registration.form.scoreSubmission')}</div>
+    <div class="subsection-title" bind:this={submissionSection} on:click={(e) => toggleSubsection(e.target)}>{$_('registration.form.scoreSubmission')}</div>
     <div class="subsection">
         <ScoreSubmission
             {dto}
@@ -148,7 +153,7 @@ import ScoreSubmission from './ScoreSubmission.svelte'
         />
     </div>
     <hr>
-    <div class="subsection-title" on:click={toggleSubsection}>{$_('payment.title')}</div>
+    <div class="subsection-title" bind:this={paymentSection} on:click={(e) => toggleSubsection(e.target)}>{$_('payment.title')}</div>
     <div class="subsection">
         <Payment
             {dto}

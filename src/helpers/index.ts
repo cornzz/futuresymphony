@@ -1,6 +1,6 @@
 import { cubicOut } from 'svelte/easing'
 
-export function mail() {
+export function mail(): void {
     window.location.href = `mailto:${this.dataset.user}@futuresymphony.lt`
 }
 
@@ -18,7 +18,12 @@ export function fadeHeight(node, {
     }
 }
 
-export function initSmoothScrolling() {
+export function highlightElement(element: HTMLElement): void {
+    element.style.backgroundColor = 'yellow'
+    setTimeout(() => element.style.backgroundColor = '', 1000)
+}
+
+export function initSmoothScrolling(): void {
     document.querySelectorAll('a[href*="#"]')
         .forEach(el => el.addEventListener('click', (event: MouseEvent) => {
             let anchor = event.target as HTMLAnchorElement
@@ -40,7 +45,7 @@ export function initSmoothScrolling() {
 }
 
 // Scroll function from https://github.com/Robbendebiene/Sliding-Scroll
-function scrollToY(y, duration = 0, element = document.scrollingElement) {
+function scrollToY(y: number, duration = 0, element = document.scrollingElement): void {
     if (element.scrollTop === y) return
   
     const cosParameter = (element.scrollTop - y) / 2

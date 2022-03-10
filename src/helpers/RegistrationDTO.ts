@@ -5,14 +5,14 @@ export class RegistrationDTO {
     dateOfBirth: string = ''
     country: string = ''
     idCopy?: { value: string, files: FileList } = { value: '', files: undefined}
-
     pieceTitle?: string
     annotation?: string
     pieceScore?: { value: string, files: FileList } = { value: '', files: undefined}
     pieceDemo?: { value: string, files: FileList } = { value: '', files: undefined}
     instrumentation?: boolean[][]
+    remarks?: string
     scoreConfirmations?: boolean[] = [false, false, false]
-    payment?: { value: string, files: FileList } = { value: '', files: undefined}
+    proofOfPayment?: { value: string, files: FileList } = { value: '', files: undefined}
 
     lang: string = ''
 }

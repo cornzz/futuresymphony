@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { highlightElement } from '../helpers'
     import { locale } from 'svelte-i18n'
 
     let button, date
@@ -6,11 +7,6 @@
     function focusButton() {
         button.classList.toggle('focus')
         setTimeout(() => button.classList.toggle('focus'), 1000)
-    }
-
-    function highlightStartDate() {
-        date.classList.toggle('highlight')
-        setTimeout(() => date.classList.toggle('highlight'), 1000)
     }
 </script>
 
@@ -29,8 +25,8 @@
 
         <p>
             <a href="/files/fsc_regulations_EN_2022-02-24.pdf" class="link" target="_blank">Regulations of the Competition</a><br>
-            <span on:click={highlightStartDate} class="link">Proceed to the Registration Platform</span>
-            <span class="startDate" bind:this={date}>(will open up by 10th of March 2022)</span>
+            <span on:click={() => highlightElement(date)} class="link">Proceed to the Registration Platform</span>
+            <span class="highlight" bind:this={date}>(will open up by 10th of March 2022)</span>
         </p>
     {:else if $locale === 'lt'}
         <!-- <b>Registracija</b><br> -->
@@ -46,8 +42,8 @@
 
         <p>
             <a href="/files/fsc_regulations_LT_2022-02-24.pdf" class="link" target="_blank">Konkurso nuostatai</a><br>
-            <span on:click={highlightStartDate} class="link">Pradėti registraciją</span>
-            <span class="startDate" bind:this={date}>(platforma atsidarys iki 2022 m. kovo 10 d.)</span>
+            <span on:click={() => highlightElement(date)} class="link">Pradėti registraciją</span>
+            <span class="highlight" bind:this={date}>(platforma atsidarys iki 2022 m. kovo 10 d.)</span>
         </p>
     {/if}
 </div>
@@ -87,12 +83,5 @@
                 background-color #fff
                 box-shadow 4px 4px 0 0 var(--color-primary)
                 color var(--color-primary)
-
-        .startDate
-            transition all 0.2s ease
-            border-radius 3px
-
-            &:global(.highlight)
-                background-color yellow
 </style>
 
