@@ -104,6 +104,7 @@
             "upload": "Įkelti",
             "maxSize": "Iki",
             "maxChars": "Iki {number} spaudos ženklų",
+            "optional": "neprivaloma",
             "inputSaved": "Įvestis išsaugota.",
             "save": "Išsaugoti",
             "submit": "Pateikti",

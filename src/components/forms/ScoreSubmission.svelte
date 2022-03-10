@@ -62,6 +62,7 @@
     maxlength={300}
     bind:value={dto.remarks}
     on:input
+    optional
     {disabled}
 />
 <label

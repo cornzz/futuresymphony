@@ -104,6 +104,7 @@
             "upload": "Upload",
             "maxSize": "Max.",
             "maxChars": "Max. {number} characters",
+            "optional": "optional",
             "inputSaved": "Input saved.",
             "save": "Save",
             "submit": "Submit",

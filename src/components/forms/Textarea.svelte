@@ -5,12 +5,15 @@
     export let label: string
     export let maxlength: number
     export let value: string | Date
+    export let optional: boolean = false
     export let disabled: boolean = false
+
+    $: labelAppendix = (maxlength ? $_('registration.form.maxChars', { values: { number: maxlength } }) : '') + (optional ? `, ${$_('registration.form.optional')}` : '')
 </script>
 
 <div>
     <label for={name} data-label={label}>
-        {$_(label)} {maxlength ? `(${$_('registration.form.maxChars', { values: { number: maxlength } })})` : ''}
+        {$_(label)} {labelAppendix ? `(${labelAppendix})` : ''}
     </label>
     <textarea
         id={name}
