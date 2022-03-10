@@ -24,7 +24,7 @@
             errors = form.getInvalid()
             console.log(`saving registration ${registrationID}: ${JSON.stringify(dto)}`)
             $loading = true
-            const response = await fetch(new URL(`registration.php?${registrationID}`, $baseURL).toString(), {
+            const response = await fetch(new URL(`registration.php?key=${registrationID}`, $baseURL).toString(), {
                 method: 'POST',
                 body: JSON.stringify(dto)
             })
