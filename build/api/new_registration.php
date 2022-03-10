@@ -33,7 +33,7 @@
         $stmt = $conn->prepare("SELECT * FROM new_registrations WHERE email=?");
         $stmt->bind_param("s", $form["email"]);
         $stmt->execute();
-        if (mysqli_num_rows($stmt->get_result())) {
+        if ($stmt->get_result()->num_rows) {
             http_response_code(400);
             echo "Email already used.";
             return;
@@ -43,7 +43,7 @@
     // Generate reg key
     do {
         $reg_key = join("-", str_split(strtoupper(bin2hex(random_bytes(10))), 5));
-    } while (mysqli_num_rows($conn->query("SELECT * FROM new_registrations WHERE reg_key='{$reg_key}'")));
+    } while ($conn->query("SELECT * FROM new_registrations WHERE reg_key='{$reg_key}'")->num_rows);
 
     // Send confirmation email
     if (APP_ENV != "dev") {
