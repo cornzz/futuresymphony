@@ -7,7 +7,7 @@
 
     const dispatch = createEventDispatcher();
 
-    export let selected: boolean[][] = orchestra.map(e => Array(e.max).fill(0))
+    export let selected: boolean[][] = orchestra.map(e => Array(e.max).fill(false))
     export let disabled: boolean = false
 
     let maxWarning

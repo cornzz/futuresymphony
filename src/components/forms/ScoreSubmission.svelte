@@ -34,8 +34,8 @@
         maxSize={10485760}
         type=".pdf"
         accept="application/pdf"
-        bind:value={dto.pieceScore.value}
-        bind:files={dto.pieceScore.files}
+        bind:value={dto.pieceScore}
+        bind:files={dto.pieceScoreFile}
         on:input
         {disabled}
     />
@@ -45,8 +45,8 @@
         maxSize={31457280}
         type=".mp3"
         accept="audio/mpeg"
-        bind:value={dto.pieceDemo.value}
-        bind:files={dto.pieceDemo.files}
+        bind:value={dto.pieceDemo}
+        bind:files={dto.pieceDemoFile}
         on:input
         {disabled}
     />

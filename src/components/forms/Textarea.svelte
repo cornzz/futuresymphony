@@ -22,7 +22,7 @@
         bind:value
         on:input
         {disabled}
-        required
+        required={!optional}
     />
 </div>
 

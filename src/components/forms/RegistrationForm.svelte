@@ -24,12 +24,12 @@
     let submissionSection, paymentSection
 
     export function reportValidity(queryString?: string): boolean {
-        let inputElements: Array<HTMLInputElement | HTMLSelectElement> = Array.from(document.querySelectorAll(queryString ?? 'input, select'))
+        let inputElements: Array<HTMLInputElement | HTMLSelectElement> = Array.from(document.querySelectorAll(queryString ?? 'input, select, textarea'))
         return inputElements.every(e => e.reportValidity())
     }
 
     export function getInvalid(): string[] {
-        let inputElements: Array<HTMLInputElement | HTMLSelectElement> = Array.from(document.querySelectorAll('input, select'))
+        let inputElements: Array<HTMLInputElement | HTMLSelectElement> = Array.from(document.querySelectorAll('input, select, textarea'))
         return inputElements.filter(e => !e.checkValidity()).map(e => e.labels[0].dataset.label)
     }
 
@@ -135,8 +135,8 @@
                 label={'registration.form.idCopy'}
                 maxSize={2097152}
                 accept="image/*,application/pdf"
-                bind:value={dto.idCopy.value}
-                bind:files={dto.idCopy.files}
+                bind:value={dto.idCopy}
+                bind:files={dto.idCopyFile}
                 on:input={handleInput}
                 {disabled}
             />

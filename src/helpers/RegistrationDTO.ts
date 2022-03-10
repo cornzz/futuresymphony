@@ -4,15 +4,19 @@ export class RegistrationDTO {
     email: string = ''
     dateOfBirth: string = ''
     country: string = ''
-    idCopy?: { value: string, files: FileList } = { value: '', files: undefined}
+    idCopy?: string
+    idCopyFile?: FileList
     pieceTitle?: string
     annotation?: string
-    pieceScore?: { value: string, files: FileList } = { value: '', files: undefined}
-    pieceDemo?: { value: string, files: FileList } = { value: '', files: undefined}
+    pieceScore?: string
+    pieceScoreFile?: FileList
+    pieceDemo?: string
+    pieceDemoFile?: FileList
     instrumentation?: boolean[][]
     remarks?: string
     scoreConfirmations?: boolean[] = [false, false, false]
-    proofOfPayment?: { value: string, files: FileList } = { value: '', files: undefined}
+    proofOfPayment?: string
+    proofOfPaymentFile?: FileList
 
     lang: string = ''
 }
