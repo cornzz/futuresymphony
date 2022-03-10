@@ -1,4 +1,6 @@
 <script lang="ts">
+    import { _ } from 'svelte-i18n'
+
     export let name: string
     export let label: string
     export let value: string
@@ -7,7 +9,7 @@
 </script>
 
 <div>
-    <label for={name}>{label}</label>
+    <label for={name} data-label={label}>{$_(label)}</label>
     <div class="background" {disabled}>
         <select id={name} type="select" bind:value on:input {disabled} required>
             {#each options as option}

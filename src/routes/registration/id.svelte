@@ -6,13 +6,13 @@
     import { loading, baseURL } from '../../helpers/stores'
     import { _ } from 'svelte-i18n'
     import { onMount } from 'svelte'
+    import { dev } from '$app/env'
 
     export let dto: RegistrationDTO = null
 
     let form
     let registrationID: string
     let initialLoad: boolean = false
-    let editing: boolean = false
     let disabled: boolean = false
     let errors: string[] = []
     let formChanged: boolean = false
@@ -22,49 +22,57 @@
             errors = form.getInvalid()
             console.log(`saving registration ${registrationID}: ${JSON.stringify(dto)}`)
             $loading = true
-            await fetch(new URL('registration.php', $baseURL).toString(), {
+            const response = await fetch(new URL(`registration.php?${registrationID}`, $baseURL).toString(), {
                 method: 'POST',
                 body: JSON.stringify(dto)
             })
             // TODO: Fileupload
             $loading = false
             formChanged = false
-            return true
+            if (response.status === 200) {
+                return true
+            } else {
+                // TODO: display error
+                return false
+            }
         }
         return false
     }
 
     $: if (form) {
         errors = form.getInvalid()
-        disabled = true
+        disabled = true && !dev
     }
 
-    onMount(() => {
+    onMount(async () => {
         $loading = true
         registrationID = window.location.search.substring(1)
         console.log(`loading registration ${registrationID}`)
-        setTimeout(() => {
-            if (registrationID === '1') {
-                dto = JSON.parse('{"firstName":"Ernst","lastName":"Haft","email":"ernsthaft@web.de","dateOfBirth":"1990-01-01","country":"DE","idCopy":{"value":"","files": "null"},"pieceTitle":"","annotation":"","pieceScore":{"value":"","files":"null"},"pieceDemo":{"value":"","files":"null"},"instrumentation":"","remarks":""}')
-            }
-            $loading = false
-            initialLoad = true
-        }, 0)
+        const response = await fetch(new URL(`registration.php?key=${registrationID}`, $baseURL).toString())
+        // TODO: parse dto from response
+        if (registrationID === '1') {
+            dto = JSON.parse('{"firstName":"Ernst","lastName":"Haft","email":"ernsthaft@web.de","dateOfBirth":"2004-06-01","country":"DE","idCopy":{"value":"id.jpeg"},"pieceTitle":"Title","annotation":"My piece","pieceScore":{"value":"piece.pdf"},"pieceDemo":{"value":"piece.mp3"},"instrumentation":[[false],[true],[false],[true],[true],[true],[false],[true,true],[false,true],[true],[true],[true],[false],[false],[true],[true],[true],[true],[true],[false],[true,true,true,true,true,true],[true,true,true,true,true],[false,true,true,false],[true,true,false],[false,false]],"scoreConfirmations":[false,false,false],"payment":{"value":"proof.pdf"}}')
+        }
+        $loading = false
+        initialLoad = true
     })
 </script>
 
 <h1 class="cover-heading"><b>{$_('registration.yourRegistration')}</b></h1>
 {#if dto}
+    <InfoBox type="info">
+        {$_('registration.editingAllowedUntil')}
+    </InfoBox>
     {#if errors.length === 0}
         <InfoBox type="success">
-            Your registration is complete! 
+            {$_('registration.complete')}
         </InfoBox>
     {:else}
         <InfoBox type="warning">
-            Following fields are missing for your registration to be complete:
+            {$_('registration.missingForComplete')}
             <ul>
                 {#each errors as error}
-                    <li>{error}</li>
+                    <li>{$_(error)}</li>
                 {/each}
             </ul>
         </InfoBox>
@@ -75,33 +83,26 @@
         bind:dto
         bind:changed={formChanged}
     >
-        {#if editing}
+        {#if !disabled}
             <Button
                 type="outline"
-                on:click={() => {
-                    editing = false
-                    disabled = true
-                }}
+                on:click={() => disabled = true}
             >
-                Cancel
+                {$_('registration.form.cancel')}
             </Button>
         {:else}
             <div></div>
         {/if}
         <Button
             type="primary"
-            on:click={async () => {
-                let disable = editing && (!formChanged || await saveForm())
-                editing = !disable
-                disabled = disable
-            }}
+            on:click={async () => disabled = !disabled && (!formChanged || await saveForm())}
         >
-            {editing ? 'Save' : 'Edit'}
+            {!disabled ? $_('registration.form.save') : $_('registration.form.edit')}
         </Button>
     </RegistrationForm>
 {:else if initialLoad}
     <div class="center">
-        Registration not found.
+        {$_('registration.notfound')}
         <a href="/" class="link">{$_('error.goBack')}</a>
     </div>
 {/if}

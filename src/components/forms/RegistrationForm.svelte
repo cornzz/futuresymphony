@@ -4,11 +4,13 @@
     import Select from './Select.svelte'
     import FileInput from './FileInput.svelte'
     import Checkbox from './Checkbox.svelte'
+    import Instrumentation from './Instrumentation.svelte'
     import Payment from './Payment.svelte'
     import { _ } from 'svelte-i18n'
     import { RegistrationDTO } from '../../helpers/RegistrationDTO'
     import { countries } from '../../helpers/countryCodes'
     import { onMount } from 'svelte'
+import ScoreSubmission from './ScoreSubmission.svelte'
 
     export let disabled: boolean = false
     export let newRegistration: boolean = false
@@ -28,7 +30,7 @@
 
     export function getInvalid(): string[] {
         let inputElements: Array<HTMLInputElement | HTMLSelectElement> = Array.from(document.querySelectorAll('input, select'))
-        return inputElements.filter(e => e.validationMessage).map(e => e.labels[0].textContent.split('(')[0].trim())
+        return inputElements.filter(e => !e.checkValidity()).map(e => e.labels[0].dataset.label)
     }
 
     export function saveForm(): void {
@@ -53,12 +55,14 @@
         changed = true
     }
 
-    function toggleSubsection(event: MouseEvent): void {
-        const subsection: HTMLElement = (event.target as HTMLElement).nextElementSibling as HTMLElement
-        if (subsection.clientHeight === 0) {
+    function toggleSubsection(): void {
+        const subsection: HTMLElement = this.nextElementSibling
+        if (!this.classList.contains('active')) {
             subsection.style.height = subsection.scrollHeight + 'px'
+            this.classList.add('active')
         } else {
             subsection.style.height = '0px'
+            this.classList.remove('active')
         }
     }
 
@@ -72,12 +76,12 @@
 </script>
 
 <div class="form">
-    <span class="saveIndicator" bind:this={saveIndicator}>Input saved.</span>
+    <span class="saveIndicator" bind:this={saveIndicator}>{$_('registration.form.inputSaved')}</span>
     <div class="form-row">
         <Input
             type="text"
             name="firstName"
-            label="First name"
+            label={'registration.form.firstName'}
             bind:value={dto.firstName}
             on:input={handleInput}
             {disabled}
@@ -85,7 +89,7 @@
         <Input
             type="text"
             name="lastName"
-            label="Last name"
+            label={'registration.form.lastName'}
             bind:value={dto.lastName}
             on:input={handleInput}
             {disabled}
@@ -95,7 +99,7 @@
         <Input
             type="email"
             name="email"
-            label="Email address"
+            label={'registration.form.email'}
             bind:value={dto.email}
             on:input={handleInput}
             {disabled}
@@ -103,7 +107,7 @@
         <Input
             type="date"
             name="dateOfBirth"
-            label="Date of birth"
+            label={'registration.form.dateOfBirth'}
             min="1987-09-09"
             max="2004-06-30"
             bind:value={dto.dateOfBirth}
@@ -114,7 +118,7 @@
     <div class="form-row">
         <Select
             name="country"
-            label="Country"
+            label={'registration.form.country'}
             bind:value={dto.country}
             on:input={handleInput}
             options={countries}
@@ -123,9 +127,9 @@
         {#if !newRegistration}
             <FileInput
                 name="idCopy"
-                label="ID document"
+                label={'registration.form.idCopy'}
                 maxSize={2097152}
-                accept="image/*"
+                accept="image/*,application/pdf"
                 bind:value={dto.idCopy.value}
                 bind:files={dto.idCopy.files}
                 on:input={handleInput}
@@ -135,55 +139,21 @@
     </div>
     {#if !newRegistration}
     <hr>
-    <div class="subsection-title" on:click={toggleSubsection}>Score submission</div>
+    <div class="subsection-title" on:click={toggleSubsection}>{$_('registration.form.scoreSubmission')}</div>
     <div class="subsection">
-        <Input
-            type="text"
-            name="pieceTitle"
-            label="Piece title"
-            bind:value={dto.pieceTitle}
+        <ScoreSubmission
+            {dto}
             on:input={handleInput}
             {disabled}
         />
-        <Textarea
-            name="annotation"
-            label="Annotation"
-            maxlength={200}
-            bind:value={dto.annotation}
-            on:input={handleInput}
-            {disabled}
-        />
-        <div class="form-row">
-            <FileInput
-                name="pieceScore"
-                label="Score"
-                maxSize={10485760}
-                type=".pdf"
-                accept="application/pdf"
-                bind:value={dto.pieceScore.value}
-                bind:files={dto.pieceScore.files}
-                on:input={handleInput}
-                {disabled}
-            />
-            <FileInput
-                name="pieceDemo"
-                label="Demo file"
-                maxSize={10485760}
-                type=".mp3"
-                accept="audio/mpeg"
-                bind:value={dto.pieceDemo.value}
-                bind:files={dto.pieceDemo.files}
-                on:input={handleInput}
-                {disabled}
-            />
-        </div>
     </div>
     <hr>
-    <div class="subsection-title" on:click={toggleSubsection}>Payment</div>
+    <div class="subsection-title" on:click={toggleSubsection}>{$_('payment.title')}</div>
     <div class="subsection">
         <Payment
-            firstName={dto.firstName}
-            lastName={dto.lastName}
+            {dto}
+            on:input={handleInput}
+            {disabled}
         />
     </div>
     <hr>
@@ -191,10 +161,10 @@
     <div class="checkboxes">
         <Checkbox
             name="agreeRegulations"
-            label="I agree with the <a href='/files/fsc_regulations_EN_2022-02-24.pdf' target='_blank' class='link'>regulations</a> and the <a href='/privacy' target='_blank' class='link'>privacy policy</a>."
-            required
+            label={$_('registration.regulationsAccepted')}
             bind:checked={regulationsAccepted}
             disabled={disabled || !newRegistration}
+            required
         />
     </div>
 </div>
@@ -209,6 +179,7 @@
         border solid 1px var(--color-border)
         border-radius var(--border-radius)
         padding 30px 45px
+        font-size 16px
 
         /*& > :global(*:not(:first-child))*/
         & > :global(:not(.saveIndicator + *))
@@ -240,11 +211,12 @@
         column-gap 15px
     
     hr
-        color var(--color-primary)
+        border none
+        height 1px
+        background-color var(--color-primary)
         border-radius 1px
     
     .subsection-title
-        font-size 0.9em
         position relative
 
         &:hover
@@ -253,7 +225,7 @@
         &:after
             content ''
             position absolute
-            top 35%
+            top 30%
             right 5px
             width 10px
             height 10px
@@ -279,6 +251,7 @@
     @media screen and (max-width 525px)
         .form
             padding 20px
+            font-size 14px
 
             .form-row
                 grid-template-columns 1fr

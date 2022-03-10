@@ -1,22 +1,25 @@
 <script lang="ts">
     export let name: string
     export let label: string
+    export let fullwidth: boolean = false
+    export let checked: boolean = false
     export let disabled: boolean = false
     export let required: boolean = false
-    export let checked
 </script>
 
-<label {disabled}>
-    <input
-        id={name}
-        type="checkbox"
-        bind:checked
-        on:input
-        {disabled}
-        {required}
-    />
-    {@html label}
-</label>
+<div>
+    <label {disabled} data-label={label} class:fullwidth>
+        <input
+            id={name}
+            type="checkbox"
+            bind:checked
+            on:input
+            {disabled}
+            {required}
+        />
+        {@html label}
+    </label>
+</div>
 
 <style lang="stylus">
     input
@@ -65,10 +68,14 @@
         font-size 14px
         line-height 24px
         padding-left 28px
+        display block
 
     label[disabled="false"]
     input:enabled
         cursor pointer
+
+    .fullwidth
+        width 100%
 
     @media screen and (max-width 525px)
         label

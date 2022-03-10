@@ -45,6 +45,7 @@
         $reg_key = join("-", str_split(strtoupper(bin2hex(random_bytes(10))), 5));
     } while (mysqli_num_rows($conn->query("SELECT * FROM new_registrations WHERE reg_key='{$reg_key}'")));
 
+    // Send confirmation email
     if (!sendNewRegMail($form["email"], $form["firstName"], $form["lastName"], $reg_key, $form["lang"])) {
         http_response_code(500);
         echo "Error sending confirmation email.";

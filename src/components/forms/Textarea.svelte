@@ -1,4 +1,6 @@
 <script lang="ts">
+    import { _ } from 'svelte-i18n'
+
     export let name: string
     export let label: string
     export let maxlength: number
@@ -7,11 +9,13 @@
 </script>
 
 <div>
-    <label for={name}>{label}</label>
+    <label for={name} data-label={label}>
+        {$_(label)} {maxlength ? `(${$_('registration.form.maxChars', { values: { number: maxlength } })})` : ''}
+    </label>
     <textarea
         id={name}
         {maxlength}
-        rows="6"
+        rows="4"
         bind:value
         on:input
         {disabled}

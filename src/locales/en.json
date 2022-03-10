@@ -65,10 +65,55 @@
     },
     "registration": {
         "title": "Registration to the competition",
-        "yourRegistration": "Your registration",
         "meta": {
             "title": "Registration - Future Symphony Competition",
             "description": "Registration to the 3rd \"Future Symphony\" Competition opens on the 1st of March 2022."
+        },
+        "firstStep": "As a first step, please submit the following information. You will receive an email from <tt>registration@futuresymphony.lt<tt> with further instructions.",
+        "regulationsAccepted": "I agree with the <a href='/files/fsc_regulations_EN_2022-02-24.pdf' target='_blank' class='link'>regulations</a> and the <a href='/privacy' target='_blank' class='link'>privacy policy</a>.",
+        "success": "Your registration has been submitted. Please follow the instructions that have been sent to your email address, <tt>{email}</tt>.",
+        "yourRegistration": "Your registration",
+        "editingAllowedUntil": "Applications can be submitted and revised until the 30th of June 2022 23:59 EEST (Lithuanian time).",
+        "complete": "Your registration is complete!",
+        "missingForComplete": "Following fields are missing for your registration to be complete:",
+        "notfound": "Registration not found.",
+        "scoreConfirmations": {
+            "label": "Score submission - confirmations",
+            "1": "I confirm that the submitted piece has not been performed in paid concerts, broadcast on the Internet, radio or television, performed in other competitions or won any prizes.",
+            "2": "I confirm that the submitted piece meets the score requirements (see section IV of the <a href='/files/fsc_regulations_EN_2022-02-24.pdf' target='_blank' class='link'>regulations</a>).",
+            "3": "I confirm that I will not disclose the authorship of my piece until the announcement of the results of the 2nd round."
+        },
+        "form": {
+            "firstName": "Name",
+            "lastName": "Surname",
+            "email": "Email address",
+            "dateOfBirth": "Date of birth",
+            "country": "Country",
+            "idCopy": "ID photograph",
+            "scoreSubmission": "Score submission",
+            "pieceTitle": "Piece title",
+            "annotation": "Annotation",
+            "pieceScore": "Score",
+            "pieceDemo": "Demo file",
+            "instrumentation": "Instrumentation",
+            "min30": "The score instrumentation requires at least <b>30 performers</b>.",
+            "youSelected": "You selected <b>{number} performers</b>.",
+            "max30": "The score instrumentation can have at most <b>35 performers</b>.",
+            "paymentProof": "Proof of payment",
+            "upload": "Upload",
+            "maxSize": "Max.",
+            "maxChars": "Max. {number} characters",
+            "inputSaved": "Input saved.",
+            "save": "Save",
+            "submit": "Submit",
+            "edit": "Edit",
+            "cancel": "Cancel",
+            "error": {
+                "emailUsed": "This email address has already been used. Please choose a different one.",
+                "invalidForm": "An error has occured. Please check your input.",
+                "pleaseWait": "Please wait before submitting another registration.",
+                "errorOccurred": "An error has occurred. Please try again later, or contact us."
+            }
         }
     },
     "orchestra": {
@@ -79,8 +124,8 @@
         "firstClarinet": "1st Clarinet",
         "secondClarinet": "2nd Clarinet / Bass clarinet",
         "saxophone": "Saxophone",
-        "bassoon": "Bassoon {number}",
-        "frechHorn": "French Horn {number}",
+        "bassoon": "Bassoon",
+        "frenchHorn": "French Horn",
         "trumpet": "Trumpet",
         "trombone": "Trombone",
         "timpani": "Timpani",
@@ -92,13 +137,15 @@
         "electricGuitar": "Electric Guitar",
         "femaleNarrator": "Female Narrator",
         "maleNarrator": "Male Narrator",
-        "iViolin": "I Violin {number}",
-        "iiViolin": "II Violin {number}",
-        "viola": "Viola {number}",
-        "violoncello": "Violoncello {number}",
-        "doublebass": "Doublebass {number}"
+        "iViolin": "I Violin",
+        "iiViolin": "II Violin",
+        "viola": "Viola",
+        "violoncello": "Violoncello",
+        "doublebass": "Doublebass"
     },
     "payment": {
+        "title": "Payment",
+        "amount": "Amount",
         "recipient": "Recipient",
         "purpose": "Purpose of payment",
         "regToFSC": "registration to FSC"

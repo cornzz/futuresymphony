@@ -1,4 +1,6 @@
 <script lang="ts">
+    import { _ } from 'svelte-i18n'
+
     export let type: 'text' | 'date' | 'email'
     export let name: string
     export let label: string
@@ -9,7 +11,7 @@
 </script>
 
 <div>
-    <label for={name}>{label}</label>
+    <label for={name} data-label={label}>{$_(label)}</label>
     {#if type === 'text' }
         <input
             id={name}

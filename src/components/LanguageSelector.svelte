@@ -3,21 +3,19 @@
 
     export let big: boolean = false
 
-    function changeLanguage(event) {
-        locale.set(event.target.dataset.lang)
+    function changeLanguage() {
+        locale.set(this.dataset.lang)
     }
 
-    function showFlag(event) {
-        let node = event.target
-        node.src = node.dataset.lang === 'en' ? '/images/gb_o.svg' : '/images/lt_o.svg'
+    function showFlag() {
+        this.src = this.dataset.lang === 'en' ? '/images/gb_o.svg' : '/images/lt_o.svg'
     }
     
-    function hideFlag(event) {
-        let node = event.target
-        let lang = node.dataset.lang
+    function hideFlag() {
+        let lang = this.dataset.lang
         if (lang === $locale)
             return
-        node.src = lang === 'en' ? '/images/gb.svg' : '/images/lt.svg'
+        this.src = lang === 'en' ? '/images/gb.svg' : '/images/lt.svg'
     }
 </script>
 

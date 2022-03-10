@@ -1,4 +1,7 @@
 <script lang="ts">
+    import { _ } from "svelte-i18n"
+    import { onMount } from "svelte"
+
     export let name: string
     export let label: string
     export let multiple: boolean = false
@@ -8,6 +11,8 @@
     export let value: string = ''
     export let files: FileList
     export let disabled: boolean = false
+
+    let inputElement
     
     function formatBytes(bytes, decimals = 2) {
         if (bytes === 0) return '0 Bytes';
@@ -20,15 +25,27 @@
 
         return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
     }
+
+    onMount(() => {
+        inputElement.checkValidity = () => {
+            return value !== '';
+        }
+    })
 </script>
 
 
-<label for={name}>
-    {label} (Max. {formatBytes(maxSize)}{type ? `, ${type}` : ''})
-    <div class="preview" data-button-text={'Upload'} data-file-text={value.split('\\').pop()} {disabled}>
+<label for={name} data-label={label}>
+    {$_(label)} ({$_('registration.form.maxSize')} {formatBytes(maxSize)}{type ? `, ${type}` : ''})
+    <div
+        class="preview"
+        data-button-text={$_('registration.form.upload')}
+        data-file-text={value.split('\\').pop()}
+        {disabled}
+    >
         <input
             id={name}
             type="file"
+            bind:this={inputElement}
             bind:value
             bind:files
             on:input
@@ -67,8 +84,9 @@
             content attr(data-button-text)
             left 5px
             height 30px
+            width 60px
+            text-align center
             background-color var(--color-primary)
-            padding 0 5px
             border-radius var(--border-radius)
             transition all 0.05s ease
             color #fff

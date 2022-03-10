@@ -10,8 +10,9 @@ export class RegistrationDTO {
     annotation?: string
     pieceScore?: { value: string, files: FileList } = { value: '', files: undefined}
     pieceDemo?: { value: string, files: FileList } = { value: '', files: undefined}
-    instrumentation?: string
-    remarks?: string
+    instrumentation?: boolean[][]
+    scoreConfirmations?: boolean[] = [false, false, false]
+    payment?: { value: string, files: FileList } = { value: '', files: undefined}
 
     lang: string = ''
 }

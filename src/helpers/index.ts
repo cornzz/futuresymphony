@@ -20,13 +20,13 @@ export function fadeHeight(node, {
 
 export function initSmoothScrolling() {
     document.querySelectorAll('a[href*="#"]')
-        .forEach(el => el.addEventListener('click', (event: any) => {
-            let anchor = event.target
+        .forEach(el => el.addEventListener('click', (event: MouseEvent) => {
+            let anchor = event.target as HTMLAnchorElement
             if (
                 location.pathname.replace(/^\//, '') == anchor.pathname.replace(/^\//, '') && 
                 location.hostname == anchor.hostname
             ) {
-                let target = document.querySelector(anchor.hash)
+                let target = document.querySelector(anchor.hash) as HTMLElement
                 event.preventDefault()
                 anchor.parentElement.classList.add('clicked')
                 let scroll = target.offsetTop - document.querySelector('.masthead').clientHeight + 1

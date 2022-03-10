@@ -58,7 +58,6 @@
     },
     "regulations": {
         "title": "Konkurso nuostatai",
-        "yourRegistration": "Jūsų registration",
         "meta": {
             "title": "Nuostatai - Future Symphony Konkursas",
             "description": "Nuostatai III-am „Future Symphony“ tarptautiniam kompozicijų simfoniniam orkestrui konkursui"
@@ -69,6 +68,52 @@
         "meta": {
             "title": "Registracija - Future Symphony konkursas",
             "description": "Registracija į III-jį „Future Symphony“ konkursą atsidaro 2022 m. kovo 1 d."
+        },
+        "firstStep": "Pirmiausia pateikite šią informaciją. Iš <tt>registration@futuresymphony.lt<tt> gausite el. laišką su tolimesnėmis instrukcijomis.",
+        "regulationsAccepted": "Sutinku su <a href='/files/fsc_regulations_LT_2022-02-24.pdf' target='_blank' class='link'>konkurso nuostatais</a> ir <a href='/privacy' target='_blank' class='link'>privatumo politika.</a>",
+        "success": "Jūsų registracija pateikta. Vykdykite instrukcijas, kurios buvo išsiųstos jūsų el. pašto adresu <tt>{email}</tt>.",
+        "yourRegistration": "Jūsų registracija",
+        "editingAllowedUntil": "Paraiškas teikti ir koreguoti galima iki 2021 m. birželio 30 d. 23:59 EEST (Lietuvos laiku).",
+        "complete": "Jūsų registracija baigta!",
+        "missingForComplete": "Kad registracija būtų užbaigta, trūksta šių laukų:",
+        "notfound": "Registracija nerasta.",
+        "scoreConfirmations": {
+            "label": "Kūrinio pateikimas - patvirtinimai",
+            "1": "Patvirtinu, kad mano pateiktas kūrinys nėra skambėjęs mokamuose koncertuose, transliuotas internete, radijuje ar televizijoje, atliktas kituose konkursuose ar juose laimėjęs bet kokių prizų.",
+            "2": "Patvirtinu, kad mano pateiktas kūrinys atitinka visus partitūros nurodymus (žr. <a href='/files/fsc_regulations_LT_2022-02-24.pdf' target='_blank' class='link'>Nuostatų</a> IV punktą).",
+            "3": "Patvirtinu, kad neatskleisiu savo kūrinio autorystės iki pat konkurso 2-ojo turo rezultatų paskelbimo."
+        },
+        "form": {
+            "firstName": "Vardas",
+            "lastName": "Pavardė",
+            "email": "Elektroninis paštas",
+            "dateOfBirth": "Gimimo Data",
+            "country": "Šalis",
+            "idCopy": "ID nuotrauka",
+            "scoreSubmission": "Kūrinio pateikimas",
+            "pieceTitle": "Kūrinio pavadinimas",
+            "annotation": "Anotacija",
+            "pieceScore": "Partitūra",
+            "pieceDemo": "Demo įrašas",
+            "instrumentation": "Instrumentuotė",
+            "min30": "Kūrinio instrumentuotėje privalo būti bent <b>30 atlikėjų</b>.",
+            "youSelected": "Jūs pasirinkote <b>{number} atlikėjus</b>.",
+            "max30": "Kūrinio instrumentuotėje galimi ne daugiau kaip <b>35 atlikėjai</b>.",
+            "paymentProof": "Perlaidą patcirtinantis dokumentas",
+            "upload": "Įkelti",
+            "maxSize": "Iki",
+            "maxChars": "Iki {number} spaudos ženklų",
+            "inputSaved": "Įvestis išsaugota.",
+            "save": "Išsaugoti",
+            "submit": "Pateikti",
+            "edit": "Redaguoti",
+            "cancel": "Atšaukti",
+            "error": {
+                "emailUsed": "Šis el. pašto adresas jau buvo naudojamas. Pasirinkite kitą.",
+                "invalidForm": "Įvyko klaida. Patikrinkite įvestą informaciją.",
+                "pleaseWait": "Palaukite prieš pateikdami kitą registraciją.",
+                "errorOccurred": "Įvyko klaida. Bandykite dar kartą vėliau arba susisiekite su mumis."
+            }
         }
     },
     "orchestra": {
@@ -79,8 +124,8 @@
         "firstClarinet": "1 Klarnetas",
         "secondClarinet": "2 Klarnetas / bosinis klarnetas",
         "saxophone": "Saksofonas",
-        "bassoon": "Fagotas {number}",
-        "frechHorn": "Valtorna {number}",
+        "bassoon": "Fagotas",
+        "frenchHorn": "Valtorna",
         "trumpet": "Timitas",
         "trombone": "Trombonas",
         "timpani": "Timpanu atlikejas",
@@ -92,13 +137,15 @@
         "electricGuitar": "Elektrinė gitara",
         "femaleNarrator": "Naratorės moters balsas",
         "maleNarrator": "Naratoriaus vyro balsas",
-        "iViolin": "I smuikas {number}",
-        "iiViolin": "II smuikas {number}",
-        "viola": "Altas {number}",
-        "violoncello": "Violončelė {number}",
-        "doublebass": "Kontrabosas {number}"
+        "iViolin": "I smuikas",
+        "iiViolin": "II smuikas",
+        "viola": "Altas",
+        "violoncello": "Violončelė",
+        "doublebass": "Kontrabosas"
     },
     "payment": {
+        "title": "Apmokėjimas",
+        "amount": "Suma",
         "recipient": "Gavėjas",
         "purpose": "Mokėjimo paskirtis",
         "regToFSC": "registracija FSC"
