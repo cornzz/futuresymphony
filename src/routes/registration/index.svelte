@@ -77,13 +77,13 @@
         bind:dto
         bind:regulationsAccepted
     >
-        <Button
+        <!-- <Button
             type="outline"
             on:click={() => form.saveForm()}
         >
             {$_('registration.form.save')}
-        </Button>
-        <!-- <div></div> -->
+        </Button> -->
+        <div></div>
         <Button
             type="primary"
             disabled={!regulationsAccepted}

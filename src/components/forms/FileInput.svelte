@@ -60,17 +60,23 @@
 <style lang="stylus">
     @require 'input.styl'
 
+    label
+        z-index 0
+
     input
         opacity 0
         z-index -1
     
+    /* TODO: Fix broken label clicking
     .preview[disabled="false"]:hover
-        cursor pointer
+        cursor pointer*/
 
     .preview
         position relative
         border solid 1px var(--color-border)
         border-radius var(--border-radius)
+        overflow hidden
+        background linear-gradient(to left, #fff, transparent 6%)
 
         &:before
         &:after
@@ -92,11 +98,13 @@
             color #fff
         
         &[disabled="false"]:hover:before
-                background-color var(--color-primary-hover)
+            background-color var(--color-primary-hover)
+            cursor pointer
 
         &:after
             content attr(data-file-text)
             left 75px
+            z-index -1
         
         &[disabled="true"]
             background-color var(--color-background)
