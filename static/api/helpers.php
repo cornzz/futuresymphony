@@ -1,4 +1,9 @@
 <?php
+    function deadline() {
+        $deadline = new DateTime("2022-06-30 23:59:59", new DateTimeZone("Europe/Vilnius"));
+        return $deadline->getTimestamp() < time();
+    }
+
     function validateDate($date, $format = "Y-m-d")
     {
         $d = DateTime::createFromFormat($format, $date);
@@ -12,19 +17,19 @@
         if ($form == null)
             return FALSE;
 
-        $formKeysNewRegistration = array("firstName", "lastName", "email", "dateOfBirth", "country", "lang");
-        $formKeysRest = array();
+        $formKeysNewRegistration = array("firstName", "lastName", "email", "dateOfBirth", "country");
+        $formKeysRest = array("idCopy", "pieceTitle", "annotation", "pieceScore", "pieceDemo", "instrumentation", "remarks", "scoreConfirmations", "proofOfPayment");
         foreach ($formKeysNewRegistration as $key) {
             if (!array_key_exists($key, $form) || $form[$key] == "")
                 return FALSE;
         }
 
-        if ($new && $form["lang"] != "en" && $form["lang"] != "lt")
+        if ($new && (!array_key_exists("lang", $form) || $form["lang"] != "en" && $form["lang"] != "lt"))
             return FALSE;
-
+            
         if (!filter_var($form["email"], FILTER_VALIDATE_EMAIL))
             return FALSE;
-
+            
         if (!validateDate($form["dateOfBirth"]))
             return FALSE;
 
@@ -34,8 +39,25 @@
 
         if (!$new) {
             foreach ($formKeysRest as $key) {
-                if (!array_key_exists($key, $form) || $form[$key] == "")
+                if (!array_key_exists($key, $form)) {
                     return FALSE;
+                }
+            }
+        }
+
+        $instrumentation = $form["instrumentation"];
+        $sampleInstrumentation = [[false],[false],[false],[false],[false],[false],[false],[false,false],[false,false],[false],[false],[false],[false,false],[false],[false],[false],[false],[false],[false],[false,false,false,false,false,false],[false,false,false,false,false],[false,false,false,false],[false,false,false],[false,false]];
+        if ($instrumentation == "" || !is_array($instrumentation) || count($instrumentation) !== 24) {
+            return FALSE;
+        } else {
+            foreach ($sampleInstrumentation as $index => $group) {
+                if (count($group) !== count($instrumentation[$index])) {
+                    return FALSE;
+                }
+                foreach ($instrumentation[$index] as $value) {
+                    if (!is_bool($value))
+                        return FALSE;
+                }
             }
         }
 

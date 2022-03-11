@@ -107,7 +107,7 @@
             label={'registration.form.email'}
             bind:value={dto.email}
             on:input={handleInput}
-            {disabled}
+            disabled={disabled || !newRegistration}
         />
         <Input
             type="date"

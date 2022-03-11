@@ -16,14 +16,15 @@
     let registrationID: string
     let initialLoad: boolean = false
     let disabled: boolean = false
-    let errors: string[] = []
+    let invalidFields: string[] = []
+    let error: string = ''
     let formChanged: boolean = false
     let deadline: boolean = new Date() > new Date('Jun 30 2022 23:59:59 GMT+0200')
 
     async function saveForm() {
         if (form.reportValidity('#firstName, #lastName, #email, #dateOfBirth, #country')) {
-            errors = form.getInvalid()
-            console.log(`saving registration ${registrationID}: ${JSON.stringify(dto)}`)
+            invalidFields = form.getInvalid()
+            console.log(`saving registration ${registrationID}: \n ${Object.entries(dto)} \n ${JSON.stringify(dto)}`)
             $loading = true
             const response = await fetch(new URL(`registration.php?key=${registrationID}`, dev ? 'http://localhost:8080' : `${window.location.origin}/api/`).toString(), {
                 method: 'POST',
@@ -33,9 +34,15 @@
             $loading = false
             formChanged = false
             if (response.status === 200) {
+                error = ''
                 return true
             } else {
-                // TODO: display error
+                let responseText = await response.text()
+                if (responseText === 'Invalid form.') {
+                    error = 'registration.form.error.invalidForm'
+                } else {
+                    error = 'registration.form.error.errorOccurred'
+                }
                 return false
             }
         }
@@ -43,8 +50,8 @@
     }
 
     $: if (form) {
-        errors = form.getInvalid()
-        disabled = true && !dev
+        invalidFields = form.getInvalid()
+        disabled = true
     }
 
     onMount(async () => {
@@ -74,7 +81,7 @@
             {$_('registration.editingAllowedUntil')} {$_('registration.confirmationAfterDeadline')}
         </InfoBox>
     {/if}
-    {#if errors.length === 0}
+    {#if invalidFields.length === 0}
         <InfoBox type="success">
             {$_('registration.complete')}
         </InfoBox>
@@ -82,10 +89,15 @@
         <InfoBox type="warning">
             {$_('registration.missingForComplete')}
             <ul>
-                {#each errors as error}
-                    <li>{$_(error)}</li>
+                {#each invalidFields as field}
+                    <li>{$_(field)}</li>
                 {/each}
             </ul>
+        </InfoBox>
+    {/if}
+    {#if error}
+        <InfoBox type="error">
+            {$_(error)}
         </InfoBox>
     {/if}
     <RegistrationForm
@@ -108,8 +120,8 @@
             <Button
                 type="primary"
                 on:click={async () => {
-                    disabled = !disabled && (!formChanged || await saveForm())
-                    disabled && document.getElementById('back').click()
+                    disabled = !disabled && (!formChanged || await saveForm());
+                    (disabled || error) && document.getElementById('back').click()
                     disabled && form.closeSubsections()
                 }}
             >

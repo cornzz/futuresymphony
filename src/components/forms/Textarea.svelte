@@ -4,7 +4,7 @@
     export let name: string
     export let label: string
     export let maxlength: number
-    export let value: string | Date
+    export let value: string | Date = ''
     export let optional: boolean = false
     export let disabled: boolean = false
 
