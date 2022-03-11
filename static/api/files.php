@@ -16,10 +16,11 @@
             echo "Invalid key.";
             return;
         }
+        $reg_key = $_POST["reg_key"];
         
         // Check if key exists in user_files
         $stmt = $conn->prepare("SELECT reg_key FROM user_files WHERE reg_key=?");
-        $stmt->bind_param("s", $_POST["reg_key"]);
+        $stmt->bind_param("s", $reg_key);
         $stmt->execute();
         $result = $stmt->get_result();
         if (!$result->num_rows) {
@@ -27,10 +28,10 @@
             echo "Key not found.";
             return;
         }
-        $idCopyFile = isset($_FILES["idCopyFile"]) ? file_get_contents($_FILES["idCopyFile"]['tmp_name']) : null;
-        $pieceScoreFile = isset($_FILES["pieceScoreFile"]) ? file_get_contents($_FILES["pieceScoreFile"]['tmp_name']) : null;
-        $pieceDemoFile = isset($_FILES["pieceDemoFile"]) ? file_get_contents($_FILES["pieceDemoFile"]['tmp_name']) : null;
-        $proofOfPaymentFile = isset($_FILES["proofOfPaymentFile"]) ? file_get_contents($_FILES["proofOfPaymentFile"]['tmp_name']) : null;
+        $idCopyFile = isset($_FILES["idCopyFile"]) ? $_FILES["idCopyFile"] : null;
+        $pieceScoreFile = isset($_FILES["pieceScoreFile"]) ? $_FILES["pieceScoreFile"] : null;
+        $pieceDemoFile = isset($_FILES["pieceDemoFile"]) ? $_FILES["pieceDemoFile"] : null;
+        $proofOfPaymentFile = isset($_FILES["proofOfPaymentFile"]) ? $_FILES["proofOfPaymentFile"] : null;
 
         // Upload files
         foreach (
@@ -42,8 +43,11 @@
             ) as $key => $file
         ) {
             if (!is_null($file)) {
-                $stmt = $conn->prepare("UPDATE user_files SET $key=? WHERE reg_key=?");
-                $stmt->bind_param("ss", $file, $_POST["reg_key"]);
+                $file_content = file_get_contents($file["tmp_name"]);
+                $file_type = mime_content_type($file["tmp_name"]);
+                $file_name = $file["name"];
+                $stmt = $conn->prepare("UPDATE user_files SET {$key}=?, {$key}Type=?, {$key}Name=? WHERE reg_key=?");
+                $stmt->bind_param("ssss", $file_content, $file_type, $file_name, $reg_key);
                 $success = $stmt->execute();
                 if (!$success) {
                     http_response_code(500);
