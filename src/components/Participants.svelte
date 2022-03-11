@@ -25,8 +25,7 @@
 
         <p>
             <a href="/files/fsc_regulations_EN_2022-02-24.pdf" class="link" target="_blank">Regulations of the Competition</a><br>
-            <span on:click={() => highlightElement(date)} class="link">Proceed to the Registration Platform</span>
-            <span class="highlight" bind:this={date}>(will open up soon)</span>
+            <a href="/registration" class="link">Proceed to the Registration Platform</a>
         </p>
     {:else if $locale === 'lt'}
         <!-- <b>Registracija</b><br> -->
@@ -42,8 +41,7 @@
 
         <p>
             <a href="/files/fsc_regulations_LT_2022-02-24.pdf" class="link" target="_blank">Konkurso nuostatai</a><br>
-            <span on:click={() => highlightElement(date)} class="link">Pradėti registraciją</span>
-            <span class="highlight" bind:this={date}>(platforma atsidarys netrukus)</span>
+            <a href="/registration" class="link">Pradėti registraciją</a>
         </p>
     {/if}
 </div>
