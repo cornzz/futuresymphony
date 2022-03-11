@@ -14,6 +14,7 @@
             body {
                 height: 100%;
                 font-family: 'Open Sans', sans-serif;
+                font-size: 0.9em;
             }
             body {
                 padding: 0 10px;
@@ -28,12 +29,26 @@
                 justify-content: center;
                 overflow: scroll;
             }
+            a {
+                position: relative
+            }
+            a:hover:after {
+                content: attr(data-label);
+                position: absolute;
+                top: 14px;
+                left: 14px;
+                border-radius: 2px;
+                padding: 2px;
+                background-color: #ccc;
+                z-index: 1000;
+            }
             .link,
             .link:focus {
                 text-decoration: none;
                 border-bottom: 1px solid #184C85;
                 color: #184C85;
                 transition: all 0.1s ease;
+                line-height: 18px;
             }
             .link:hover {
                 text-decoration: none;
@@ -101,7 +116,7 @@
         ?>
         <h1>Registrations</h1>
         <div class="table-wrapper">
-            <table id="table" class="display" cellspacing="0" width="100%">
+            <table id="table" class="display compact" cellspacing="0" width="100%">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -138,15 +153,15 @@
                         <td><?php echo $row["lastName"];?></td>
                         <td><?php echo $row["dateOfBirth"];?></td>
                         <td><?php echo $row["country"];?></td>
-                        <td><a class="link" target="_blank" href="https://futuresymphony.lt/api/files.php?key=<?php echo $row["reg_key"];?>&file=idCopyFile"><?php echo $row["idCopyFileName"];?></a></td>
+                        <td><?php if ($row["idCopyFileName"] !== null && $row["idCopyFileName"] !== "") { ?><a class="link" target="_blank" data-label="<?php echo $row["idCopyFileName"]; ?>" href="https://futuresymphony.lt/api/files.php?key=<?php echo $row["reg_key"];?>&file=idCopyFile">Download</a><?php } ?></td>
                         <td><?php echo $row["pieceTitle"];?></td>
-                        <td><?php if ($row["annotation"] !== null && $row["annotation"] !== "") {?><span class="link" onClick="showContent('<?php echo $row["annotation"];?>')">Click to see</span><?php } ?></td>
-                        <td><a class="link" target="_blank" href="https://futuresymphony.lt/api/files.php?key=<?php echo $row["reg_key"];?>&file=pieceScoreFile"><?php echo $row["pieceScoreFileName"];?></a></td>
-                        <td><a class="link" target="_blank" href="https://futuresymphony.lt/api/files.php?key=<?php echo $row["reg_key"];?>&file=pieceDemoFile"><?php echo $row["pieceDemoFileName"];?></a></td>
+                        <td><?php if ($row["annotation"] !== null && $row["annotation"] !== "") { ?><span class="link" onClick="showContent('<?php echo $row["annotation"];?>')">Click to see</span><?php } ?></td>
+                        <td><?php if ($row["pieceScoreFileName"] !== null && $row["pieceScoreFileName"] !== "") { ?><a class="link" target="_blank" data-label="<?php echo $row["pieceScoreFileName"]; ?>" href="https://futuresymphony.lt/api/files.php?key=<?php echo $row["reg_key"];?>&file=pieceScoreFile">Download</a><?php } ?></td>
+                        <td><?php if ($row["pieceDemoFileName"] !== null && $row["pieceDemoFileName"] !== "") { ?><a class="link" target="_blank" data-label="<?php echo $row["pieceDemoFileName"]; ?>" href="https://futuresymphony.lt/api/files.php?key=<?php echo $row["reg_key"];?>&file=pieceDemoFile">Download</a><?php } ?></td>
                         <td><?php if ($row["instrumentation"] !== null) {?><span class="link" onClick="showInstrumentation(<?php echo $row["instrumentation"];?>)">Click to see</span><?php } ?></td>
-                        <td><?php if ($row["remarks"] !== null && $row["remarks"] !== "") {?><span class="link" onClick="showContent('<?php echo $row["remarks"];?>')">Click to see</span><?php } ?></td>
+                        <td><?php if ($row["remarks"] !== null && $row["remarks"] !== "") { ?><span class="link" onClick="showContent('<?php echo $row["remarks"];?>')">Click to see</span><?php } ?></td>
                         <td><?php echo $row["scoreConfirmations"];?></td>
-                        <td><a class="link" target="_blank" href="https://futuresymphony.lt/api/files.php?key=<?php echo $row["reg_key"];?>&file=proofOfPayment"><?php echo $row["proofOfPaymentFileName"];?></a></td>
+                        <td><?php if ($row["proofOfPaymentFileName"] !== null && $row["proofOfPaymentFileName"] !== "") { ?><a class="link" target="_blank" data-label="<?php echo $row["proofOfPaymentFileName"]; ?>" href="https://futuresymphony.lt/api/files.php?key=<?php echo $row["reg_key"];?>&file=proofOfPaymentFile">Download</a><?php } ?></td>
                         <td><?php echo $row["paymentConfirmed"];?></td>
                         <td><?php echo $row["complete"];?></td>
                         <td><?php echo $row["secondRound"];?></td>
