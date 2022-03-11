@@ -25,7 +25,7 @@
             maxSize={2097152}
             accept="application/pdf,image/*"
             bind:value={dto.proofOfPayment}
-            bind:files={dto.proofOfPaymentFile}
+            bind:files={dto.files.proofOfPaymentFile}
             on:input
             {disabled}
         />

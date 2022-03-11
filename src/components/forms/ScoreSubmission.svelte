@@ -35,7 +35,7 @@
         type=".pdf"
         accept="application/pdf"
         bind:value={dto.pieceScore}
-        bind:files={dto.pieceScoreFile}
+        bind:files={dto.files.pieceScoreFile}
         on:input
         {disabled}
     />
@@ -46,7 +46,7 @@
         type=".mp3"
         accept="audio/mpeg"
         bind:value={dto.pieceDemo}
-        bind:files={dto.pieceDemoFile}
+        bind:files={dto.files.pieceDemoFile}
         on:input
         {disabled}
     />

@@ -24,40 +24,44 @@
     async function saveForm() {
         if (form.reportValidity('#firstName, #lastName, #email, #dateOfBirth, #country')) {
             invalidFields = form.getInvalid()
-            console.log(`saving registration ${registrationID}`, dto)
+            console.log(`saving registration ${registrationID}`)
             $loading = true
-            console.log('sending form...')
+            // Submit form data
             let response = await fetch(new URL(`registration.php?key=${registrationID}`, dev ? 'http://localhost:8080' : `${window.location.origin}/api/`).toString(), {
                 method: 'POST',
                 body: JSON.stringify(dto)
             })
+            // If successful, upload files
             if (response.status === 200) {
-                console.log('sending files...')
                 let data = new FormData()
                 data.append("reg_key", registrationID)
-                for (let file of Object.entries(dto).filter(([_, v]) => v instanceof FileList)) {
-                    data.append(file[0], file[1][0])
+                for (let file of Object.entries(dto.files)) {
+                    file[1] && data.append(file[0], file[1][0])
                 }
                 response = await fetch(new URL(`files.php?key=${registrationID}`, dev ? 'http://localhost:8080' : `${window.location.origin}/api/`).toString(), {
                     method: 'POST',
                     body: data
                 })
+                // If successful, clean up
+                if (response.status === 200) {
+                    dto.files.idCopyFile = undefined
+                    dto.files.pieceDemoFile = undefined
+                    dto.files.pieceScoreFile = undefined
+                    dto.files.proofOfPaymentFile = undefined
+                    error = ''
+                    formChanged = false
+                    $loading = false
+                    return true
+                }
+            }
+            // One of the requests failed, display error
+            let responseText = await response.text()
+            if (responseText === 'Invalid form.') {
+                error = 'registration.form.error.invalidForm'
+            } else {
+                error = 'registration.form.error.errorOccurred'
             }
             $loading = false
-            if (response.status === 200) {
-                console.log('success!')
-                error = ''
-                formChanged = false
-                return true
-            } else {
-                let responseText = await response.text()
-                if (responseText === 'Invalid form.') {
-                    error = 'registration.form.error.invalidForm'
-                } else {
-                    error = 'registration.form.error.errorOccurred'
-                }
-                return false
-            }
         }
         return false
     }
@@ -77,9 +81,7 @@
             const response = await fetch(new URL(`registration.php?key=${registrationID}`, dev ? 'http://localhost:8080' : `${window.location.origin}/api/`).toString())
             if (response.status === 200) {
                 let responseDto = JSON.parse(await response.text())
-                console.log(responseDto)
                 dto = Object.assign(new RegistrationDTO, Object.fromEntries(Object.entries(responseDto).filter(([_, v]) => v !== null)))
-                console.log(dto)
             }
         }
         $loading = false

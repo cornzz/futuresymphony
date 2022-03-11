@@ -8,15 +8,15 @@
     showBack.set(false)
 </script>
 
+{#if $loading}
+    <div class="spinner">
+        <div>
+            <Circle2 colorOuter="var(--color-primary)" colorCenter="var(--color-link)" />
+        </div>
+    </div>
+{/if}
 <Tab oversize justify={false}>
     <div class="wrapper">
-        {#if $loading}
-            <div class="spinner">
-                <div>
-                    <Circle2 colorOuter="var(--color-primary)" colorCenter="var(--color-link)" />
-                </div>
-            </div>
-        {/if}
         <slot></slot>
     </div>
 </Tab>
@@ -33,7 +33,7 @@
             margin-top 15px
 
     .spinner
-        position absolute
+        position fixed
         z-index 1000
         display flex
         flex-direction column

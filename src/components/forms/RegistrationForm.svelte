@@ -9,7 +9,6 @@
     import { RegistrationDTO } from '../../helpers/RegistrationDTO'
     import { countries } from '../../helpers/countryCodes'
     import { onMount } from 'svelte'
-    import { dev } from '$app/env'
 
     export let disabled: boolean = false
     export let newRegistration: boolean = false
@@ -136,7 +135,7 @@
                 maxSize={2097152}
                 accept="image/*,application/pdf"
                 bind:value={dto.idCopy}
-                bind:files={dto.idCopyFile}
+                bind:files={dto.files.idCopyFile}
                 on:input={handleInput}
                 {disabled}
             />
