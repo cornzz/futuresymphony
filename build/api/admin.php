@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Future Symphony Competition - Admin</title>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
+        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
+        <style>
+            html,
+            body {
+                height: 100%;
+                font-family: 'Open Sans', sans-serif;
+            }
+            body {
+                padding: 0 10px;
+                width: 100vw;
+                margin: 0 auto;
+                overflow: hidden;
+            }
+            .table-wrapper {
+                height: 100vh;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                overflow: scroll;
+            }
+            .link,
+            .link:focus {
+                text-decoration: none;
+                border-bottom: 1px solid #184C85;
+                color: #184C85;
+                transition: all 0.1s ease;
+            }
+            .link:hover {
+                text-decoration: none;
+                border-bottom-color: transparent;
+                color: #171E26;
+                cursor: pointer;
+            }
+        </style>
+        <script>
+            $(document).ready(function() {
+                $('#table').DataTable({
+                    columnDefs: [
+                        {
+                            targets: "_all",
+                            className: 'dt-center'
+                        }
+                    ]
+                });
+            });
+
+            let orchestra = [
+                { name: "firstFlute", max: 1, selected: 0 },
+                { name: "secondFlute", max: 1, selected: 0 },
+                { name: "firstOboe", max: 1, selected: 0 },
+                { name: "secondOboe", max: 1, selected: 0 },
+                { name: "firstClarinet", max: 1, selected: 0 },
+                { name: "secondClarinet", max: 1, selected: 0 },
+                { name: "saxophone", max: 1, selected: 0 },
+                { name: "bassoon", max: 2, selected: 0 },
+                { name: "frenchHorn", max: 2, selected: 0 },
+                { name: "trumpet", max: 1, selected: 0 },
+                { name: "trombone", max: 1, selected: 0 },
+                { name: "timpani", max: 1, selected: 0 },
+                { name: "percussion", max: 2, selected: 0 },
+                { name: "pianoCelesta", max: 1, selected: 0 },
+                { name: "harp", max: 1, selected: 0 },
+                { name: "accordion", max: 1, selected: 0 },
+                { name: "electricGuitar", max: 1, selected: 0 },
+                { name: "femaleNarrator", max: 1, selected: 0 },
+                { name: "maleNarrator", max: 1, selected: 0 },
+                { name: "iViolin", max: 6, selected: 0 },
+                { name: "iiViolin", max: 5, selected: 0 },
+                { name: "viola", max: 4, selected: 0 },
+                { name: "violoncello", max: 3, selected: 0 },
+                { name: "doublebass", max: 2, selected: 0 },
+            ]
+
+            function showInstrumentation(selection) {
+                let text = selection.map((e, i) => `${e.filter(Boolean).length}x ${orchestra[i].name}`).filter(e => !e.startsWith('0')).join('\n')
+                window.alert(text)
+            }
+
+            function showContent(content) {
+                window.alert(content)
+            }
+        </script>
+    </head>
+    <body>
+        <?php
+            require_once "db_connection.php";
+
+            $conn = OpenCon();
+
+            $result = $conn->query("SELECT a.id, b.reg_key, b.email, b.firstName, b.lastName, b.dateOfBirth, b.country, b.pieceTitle, b.annotation, b.instrumentation, b.remarks, b.scoreConfirmations, b.paymentConfirmed, b.complete, b.secondRound, c.idCopyFileName, c.pieceScoreFileName, c.pieceDemoFileName, c.proofOfPaymentFileName FROM new_registrations AS a JOIN registrations AS b ON a.reg_key = b.reg_key JOIN user_files AS c ON b.reg_key = c.reg_key");
+        ?>
+        <h1>Registrations</h1>
+        <div class="table-wrapper">
+            <table id="table" class="display" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Key</th>
+                        <th>E-mail</th>
+                        <th>Name</th>
+                        <th>Surname</th>
+                        <th>Date of Birth</th>
+                        <th>Country</th>
+                        <th>ID document</th>
+                        <th>Piece title</th>
+                        <th>Annotation</th>
+                        <th>Score</th>
+                        <th>Demo file</th>
+                        <th>Instrumentation</th>
+                        <th>Remarks</th>
+                        <th>Score confirmations</th>
+                        <th>Proof of payment</th>
+                        <th>Payment confirmed</th>
+                        <th>Registration complete</th>
+                        <th>Second round</th>
+                    </tr>
+                </thead>
+            
+                <tbody>
+                    <?php
+                        while ($row = $result->fetch_assoc()) {
+                    ?>
+                    <tr>
+                        <td><?php echo $row["id"];?></td>
+                        <td><a class="link" target="_blank" href="https://futuresymphony.lt/registration/id?<?php echo $row["reg_key"];?>"><?php echo $row["reg_key"];?></a></td>
+                        <td><?php echo $row["email"];?></td>
+                        <td><?php echo $row["firstName"];?></td>
+                        <td><?php echo $row["lastName"];?></td>
+                        <td><?php echo $row["dateOfBirth"];?></td>
+                        <td><?php echo $row["country"];?></td>
+                        <td><a class="link" target="_blank" href="https://futuresymphony.lt/api/files.php?key=<?php echo $row["reg_key"];?>&file=idCopyFile"><?php echo $row["idCopyFileName"];?></a></td>
+                        <td><?php echo $row["pieceTitle"];?></td>
+                        <td><?php if ($row["annotation"] !== null && $row["annotation"] !== "") {?><span class="link" onClick="showContent('<?php echo $row["annotation"];?>')">Click to see</span><?php } ?></td>
+                        <td><a class="link" target="_blank" href="https://futuresymphony.lt/api/files.php?key=<?php echo $row["reg_key"];?>&file=pieceScoreFile"><?php echo $row["pieceScoreFileName"];?></a></td>
+                        <td><a class="link" target="_blank" href="https://futuresymphony.lt/api/files.php?key=<?php echo $row["reg_key"];?>&file=pieceDemoFile"><?php echo $row["pieceDemoFileName"];?></a></td>
+                        <td><?php if ($row["instrumentation"] !== null) {?><span class="link" onClick="showInstrumentation(<?php echo $row["instrumentation"];?>)">Click to see</span><?php } ?></td>
+                        <td><?php if ($row["remarks"] !== null && $row["remarks"] !== "") {?><span class="link" onClick="showContent('<?php echo $row["remarks"];?>')">Click to see</span><?php } ?></td>
+                        <td><?php echo $row["scoreConfirmations"];?></td>
+                        <td><a class="link" target="_blank" href="https://futuresymphony.lt/api/files.php?key=<?php echo $row["reg_key"];?>&file=proofOfPayment"><?php echo $row["proofOfPaymentFileName"];?></a></td>
+                        <td><?php echo $row["paymentConfirmed"];?></td>
+                        <td><?php echo $row["complete"];?></td>
+                        <td><?php echo $row["secondRound"];?></td>
+                    </tr>
+                    <?php
+                        }
+                    ?>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>
