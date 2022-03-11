@@ -43,20 +43,19 @@
                     return FALSE;
                 }
             }
-        }
-
-        $instrumentation = $form["instrumentation"];
-        $sampleInstrumentation = [[false],[false],[false],[false],[false],[false],[false],[false,false],[false,false],[false],[false],[false],[false,false],[false],[false],[false],[false],[false],[false],[false,false,false,false,false,false],[false,false,false,false,false],[false,false,false,false],[false,false,false],[false,false]];
-        if ($instrumentation == "" || !is_array($instrumentation) || count($instrumentation) !== 24) {
-            return FALSE;
-        } else {
-            foreach ($sampleInstrumentation as $index => $group) {
-                if (count($group) !== count($instrumentation[$index])) {
-                    return FALSE;
-                }
-                foreach ($instrumentation[$index] as $value) {
-                    if (!is_bool($value))
+            $instrumentation = $form["instrumentation"];
+            $sampleInstrumentation = [[false],[false],[false],[false],[false],[false],[false],[false,false],[false,false],[false],[false],[false],[false,false],[false],[false],[false],[false],[false],[false],[false,false,false,false,false,false],[false,false,false,false,false],[false,false,false,false],[false,false,false],[false,false]];
+            if ($instrumentation == "" || !is_array($instrumentation) || count($instrumentation) !== 24) {
+                return FALSE;
+            } else {
+                foreach ($sampleInstrumentation as $index => $group) {
+                    if (count($group) !== count($instrumentation[$index])) {
                         return FALSE;
+                    }
+                    foreach ($instrumentation[$index] as $value) {
+                        if (!is_bool($value))
+                            return FALSE;
+                    }
                 }
             }
         }

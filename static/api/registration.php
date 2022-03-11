@@ -1,5 +1,5 @@
 <?php
-    require "db_connection.php";
+    require_once "db_connection.php";
     require "helpers.php";
 
     $conn = OpenCon();
@@ -18,7 +18,7 @@
             return;
         }
         if (!array_key_exists("reg_key", $form)) {
-            http_response_code(404);
+            http_response_code(400);
             echo "Invalid key.";
             return;
         }
@@ -94,12 +94,13 @@
             $stmt->execute();
             $result = $stmt->get_result();
 
-            // Insert into registrations
             if ($result->num_rows) {
+                // Insert into registrations and user_files
                 $row = $result->fetch_assoc();
                 $stmt = $conn->prepare("INSERT INTO registrations(reg_key, email, firstName, lastName, dateOfBirth, country) VALUES (?, ?, ?, ?, ?, ?)");
                 $stmt->bind_param("ssssss", $reg_key, $row["email"], $row["firstName"], $row["lastName"], $row["dateOfBirth"], $row["country"]);
                 $stmt->execute();
+                $stmt = $conn->query("INSERT INTO user_files(reg_key) VALUES ('{$reg_key}')");
                 echo json_encode($row);
                 return;
             } else {

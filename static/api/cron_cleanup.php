@@ -1,5 +1,5 @@
 <?php
-    require "db_connection.php";
+    require_once "db_connection.php";
 
     if (!isset($_GET["token"]) || $_GET["token"] != CRONJOB_TOKEN) {
         http_response_code(403);

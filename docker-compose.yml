@@ -9,6 +9,7 @@ services:
             - db
         volumes:
             - ./static/api:/var/www/html
+            - ./php/config.ini:/usr/local/etc/php/conf.d/config.ini
         ports:
             - 8080:80
     db:

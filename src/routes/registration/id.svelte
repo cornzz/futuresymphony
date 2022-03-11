@@ -24,17 +24,30 @@
     async function saveForm() {
         if (form.reportValidity('#firstName, #lastName, #email, #dateOfBirth, #country')) {
             invalidFields = form.getInvalid()
-            console.log(`saving registration ${registrationID}: \n ${Object.entries(dto)} \n ${JSON.stringify(dto)}`)
+            console.log(`saving registration ${registrationID}`, dto)
             $loading = true
-            const response = await fetch(new URL(`registration.php?key=${registrationID}`, dev ? 'http://localhost:8080' : `${window.location.origin}/api/`).toString(), {
+            console.log('sending form...')
+            let response = await fetch(new URL(`registration.php?key=${registrationID}`, dev ? 'http://localhost:8080' : `${window.location.origin}/api/`).toString(), {
                 method: 'POST',
                 body: JSON.stringify(dto)
             })
-            // TODO: Fileupload
-            $loading = false
-            formChanged = false
             if (response.status === 200) {
+                console.log('sending files...')
+                let data = new FormData()
+                data.append("reg_key", registrationID)
+                for (let file of Object.entries(dto).filter(([_, v]) => v instanceof FileList)) {
+                    data.append(file[0], file[1][0])
+                }
+                response = await fetch(new URL(`files.php?key=${registrationID}`, dev ? 'http://localhost:8080' : `${window.location.origin}/api/`).toString(), {
+                    method: 'POST',
+                    body: data
+                })
+            }
+            $loading = false
+            if (response.status === 200) {
+                console.log('success!')
                 error = ''
+                formChanged = false
                 return true
             } else {
                 let responseText = await response.text()
