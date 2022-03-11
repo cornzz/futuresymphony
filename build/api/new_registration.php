@@ -1,10 +1,16 @@
 <?php
     require_once "load_env.php";
-    require "db_connection.php";
+    require_once "db_connection.php";
     require "helpers.php";
     require "mail.php";
 
     $conn = OpenCon();
+
+    if (deadline()) {
+        http_response_code(403);
+        echo "Deadline passed.";
+        return;
+    }
 
     // Validate form
     $form = json_decode(file_get_contents("php://input"), TRUE);
