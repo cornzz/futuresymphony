@@ -56,22 +56,26 @@
                 }
             }
         }
-    } else if (isset($_GET["key"]) && $_GET["key"] !== "") {
+    } else if (
+        isset($_GET["key"]) &&
+        $_GET["key"] !== "" &&
+        isset($_GET["file"]) &&
+        in_array($_GET["file"], array("idCopyFile", "pieceScoreFile", "pieceDemoFile", "proofOfPaymentFile"))
+    ) {
         $reg_key = $_GET["key"];
+        $file = $_GET["file"];
+        $type = $file.'Type';
+        $name = $file.'Name';
 
-        // Check if key exists in user_files
-        $stmt = $conn->prepare("SELECT * FROM user_files WHERE reg_key=?");
-        $stmt->bind_param("s", $reg_key);
-        $stmt->execute();
-        $result = $stmt->get_result();
+        $result = $conn->query("SELECT {$file}, {$type}, {$name} FROM user_files WHERE reg_key='{$reg_key}'");
 
         if ($result->num_rows) {
-            $arr = $result->fetch_assoc();
-            // TODO: correctly return result
-            echo json_encode($arr);
-            return;
+            list($file_content, $file_type, $file_name) = $result->fetch_array();
+            header("Content-type: {$file_type}");
+            header("Content-Disposition: attachment; filename={$file_name}");
+            echo $file_content;
         } else {
-            http_response_code(404);
+            http_response_code(400);
             echo "Key not found.";
             return;
         }
