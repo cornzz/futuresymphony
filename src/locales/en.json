@@ -69,7 +69,7 @@
             "title": "Registration - Future Symphony Competition",
             "description": "Registration to the 3rd \"Future Symphony\" Competition opens on the 1st of March 2022."
         },
-        "firstStep": "As a first step, please submit the following information. You will receive an email from <tt>registration@futuresymphony.lt<tt> with further instructions.",
+        "firstStep": "As a first step, please submit the following information. You will receive an email from <tt>registration@futuresymphony.lt</tt> with further instructions.",
         "regulationsAccepted": "I agree with the <a href='/files/fsc_regulations_EN_2022-02-24.pdf' target='_blank' class='link'>regulations</a> and the <a href='/privacy' target='_blank' class='link'>privacy policy</a>.",
         "success": "Your registration has been submitted. Please follow the instructions that have been sent to your email address, <tt>{email}</tt>.",
         "yourRegistration": "Your registration",

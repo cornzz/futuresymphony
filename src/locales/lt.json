@@ -69,7 +69,7 @@
             "title": "Registracija - Future Symphony konkursas",
             "description": "Registracija į III-jį „Future Symphony“ konkursą atsidaro 2022 m. kovo 1 d."
         },
-        "firstStep": "Pirmiausia pateikite šią informaciją. Iš <tt>registration@futuresymphony.lt<tt> gausite el. laišką su tolimesnėmis instrukcijomis.",
+        "firstStep": "Pirmiausia pateikite šią informaciją. Iš <tt>registration@futuresymphony.lt</tt> gausite el. laišką su tolimesnėmis instrukcijomis.",
         "regulationsAccepted": "Sutinku su <a href='/files/fsc_regulations_LT_2022-02-24.pdf' target='_blank' class='link'>konkurso nuostatais</a> ir <a href='/privacy' target='_blank' class='link'>privatumo politika.</a>",
         "success": "Jūsų registracija pateikta. Vykdykite instrukcijas, kurios buvo išsiųstos jūsų el. pašto adresu <tt>{email}</tt>.",
         "yourRegistration": "Jūsų registracija",
