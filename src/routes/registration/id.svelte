@@ -76,7 +76,7 @@
         registrationID = window.location.search.substring(1)
         console.log(`loading registration ${registrationID}`)
         if (registrationID === '1') {
-            dto = JSON.parse('{"firstName":"Ernst","lastName":"Haft","email":"ernsthaft@web.de","dateOfBirth":"2001-01-11","country":"AX","scoreConfirmations":[true,false,false],"reg_key":"1","proofOfPayment":"proof.pdf","instrumentation":[[false],[false],[false],[false],[false],[false],[false],[true,false],[false,true],[false],[true],[false],[true,true],[false],[false],[false],[false],[false],[false],[true,true,true,true,false,false],[false,false,true,true,false],[true,true,true,true],[true,false,false],[false,false]],"pieceDemo":"","pieceScore":"score.pdf","idCopy":"id.jpeg","pieceTitle":"My piece"}')
+            dto = JSON.parse('{"reg_key":"1","firstName":"Ernst","lastName":"Haft","email":"ernsthaft@web.de","dateOfBirth":"2001-01-11","country":"AX","pieceTitle":"My piece","pieceDemo":"","pieceScore":"score.pdf","idCopy":"id.jpeg","instrumentation":[[true],[true],[true],[true],[true],[true],[true],[true,true],[false,true],[false],[true],[false],[true,true],[false],[false],[false],[false],[false],[true],[true,true,true,true,true,true],[true,true,true,true,false],[true,true,true,true],[true,false,false],[false,false]],"scoreConfirmations":[true,false,false],"proofOfPayment":"proof.pdf","files":{"idCopyFile":"undefined","pieceScoreFile":"undefined","pieceDemoFile":"undefined","proofOfPaymentFile":"undefined"}}')
         } else {
             const response = await fetch(new URL(`registration.php?key=${registrationID}`, dev ? 'http://localhost:8080' : `${window.location.origin}/api/`).toString())
             if (response.status === 200) {

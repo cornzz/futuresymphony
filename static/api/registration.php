@@ -100,7 +100,7 @@
                 $stmt = $conn->prepare("INSERT INTO registrations(reg_key, email, firstName, lastName, dateOfBirth, country) VALUES (?, ?, ?, ?, ?, ?)");
                 $stmt->bind_param("ssssss", $reg_key, $row["email"], $row["firstName"], $row["lastName"], $row["dateOfBirth"], $row["country"]);
                 $stmt->execute();
-                $stmt = $conn->query("INSERT INTO user_files(reg_key) VALUES ('{$reg_key}')");
+                $conn->query("INSERT INTO user_files(reg_key) VALUES ('{$reg_key}')");
                 echo json_encode($row);
                 return;
             } else {
