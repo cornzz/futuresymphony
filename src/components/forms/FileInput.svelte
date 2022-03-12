@@ -15,20 +15,36 @@
     let inputElement
     
     function formatBytes(bytes, decimals = 2) {
-        if (bytes === 0) return '0 Bytes';
+        if (bytes === 0) return '0 Bytes'
 
-        const k = 1024;
-        const dm = decimals < 0 ? 0 : decimals;
-        const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+        const k = 1024
+        const dm = decimals < 0 ? 0 : decimals
+        const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB']
 
-        const i = Math.floor(Math.log(bytes) / Math.log(k));
+        const i = Math.floor(Math.log(bytes) / Math.log(k))
 
-        return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
+        return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i]
     }
 
     onMount(() => {
+        inputElement.validateFiles = () => {
+            if (files && files.length) {
+                if (files[0].size > maxSize) {
+                    inputElement.setCustomValidity($_('registration.form.validation.fileSize'))
+                    inputElement.reportValidity()
+                    return false
+                } else if (type && !files[0].name.match(/(\..*)/).includes(type)) {
+                    inputElement.setCustomValidity($_('registration.form.validation.fileType'))
+                    inputElement.reportValidity()
+                    return false
+                }
+            }
+            inputElement.setCustomValidity('')
+            return true
+        }
+
         inputElement.checkValidity = () => {
-            return value !== '';
+            return value !== ''
         }
     })
 </script>

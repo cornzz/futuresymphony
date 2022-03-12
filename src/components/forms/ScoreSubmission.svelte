@@ -107,16 +107,8 @@
 </div>
 
 <style lang="stylus">
-    .form-row
-        display grid
-        grid-template-columns 1fr 1fr
-        column-gap 40px
-        row-gap 15px
+    @require './form.styl'
 
     .checkboxes > :global(*)
         margin-top 5px
-
-    @media screen and (max-width 525px)
-        .form-row
-            grid-template-columns 1fr
 </style>

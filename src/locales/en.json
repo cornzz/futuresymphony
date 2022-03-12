@@ -70,7 +70,7 @@
             "description": "Registration to the 3rd \"Future Symphony\" Competition opens on the 1st of March 2022."
         },
         "firstStep": "As a first step, please submit the following information. You will receive an email from <tt>registration@futuresymphony.lt</tt> with further instructions.",
-        "regulationsAccepted": "I agree with the <a href='/files/fsc_regulations_EN_2022-02-24.pdf' target='_blank' class='link'>regulations</a> and the <a href='/privacy' target='_blank' class='link'>privacy policy</a>.",
+        "regulationsAccepted": "I agree with the <a href='/files/fsc_regulations_EN_2022-02-24.pdf' target='_blank' class='link'>Regulations of the Competition</a> and the <a href='/privacy' target='_blank' class='link'>Privacy Policy</a>.",
         "success": "Your registration has been submitted. Please follow the instructions that have been sent to your email address, <tt>{email}</tt>.",
         "yourRegistration": "Your registration",
         "editingAllowedUntil": "Applications can be submitted and revised until the 30th of June 2022 23:59 EEST (Lithuanian time).",
@@ -79,7 +79,7 @@
         "missingForComplete": "Following fields are missing for your registration to be complete:",
         "notfound": "Registration not found.",
         "scoreConfirmations": {
-            "label": "Score submission - confirmations",
+            "label": "Score submission - agreements",
             "1": "I confirm that the submitted piece has not been performed in paid concerts, broadcast on the Internet, radio or television, performed in other competitions or won any prizes.",
             "2": "I confirm that the submitted piece meets the score requirements (see section IV of the <a href='/files/fsc_regulations_EN_2022-02-24.pdf' target='_blank' class='link'>regulations</a>).",
             "3": "I confirm that I will not disclose the authorship of my piece until the announcement of the results of the 2nd round."
@@ -98,8 +98,8 @@
             "pieceDemo": "Demo file",
             "instrumentation": "Instrumentation",
             "min30": "The score instrumentation requires at least <b>30 performers</b>.",
-            "youSelected": "You selected <b>{number} performers</b>.",
-            "max30": "The score instrumentation can have at most <b>35 performers</b>.",
+            "youSelected": "You selected <b>{number} {number, plural, =1 {performer} other {performers}}</b>.",
+            "max30": "You can choose up to <b>35 performers</b>.",
             "remarks": "Remarks",
             "proofOfPayment": "Proof of payment",
             "upload": "Upload",
@@ -116,6 +116,10 @@
                 "invalidForm": "An error has occured. Please check your input.",
                 "pleaseWait": "Please wait before submitting another registration.",
                 "errorOccurred": "An error has occurred. Please try again later, or contact us."
+            },
+            "validation": {
+                "fileSize": "Please select a smaller file.",
+                "fileType": "Please select a file with the correct type."
             }
         }
     },

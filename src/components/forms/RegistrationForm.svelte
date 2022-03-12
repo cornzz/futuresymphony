@@ -17,14 +17,14 @@
     export let changed: boolean = false
 
     let inputTimeout = null
-    let saveIndicator
+    let saveIndicator: HTMLElement
     let saveIndicatorTimeout1 = null
     let saveIndicatorTimeout2 = null
-    let submissionSection, paymentSection
+    let submissionSection: HTMLElement, paymentSection: HTMLElement
 
     export function reportValidity(queryString?: string): boolean {
-        let inputElements: Array<HTMLInputElement | HTMLSelectElement> = Array.from(document.querySelectorAll(queryString ?? 'input, select, textarea'))
-        return inputElements.every(e => e.reportValidity())
+        let inputElements: Array<any> = Array.from(document.querySelectorAll(queryString ?? 'input, select, textarea'))
+        return inputElements.every(e => e.type === 'file' ? e.validateFiles() : e.reportValidity())
     }
 
     export function getInvalid(): string[] {
@@ -38,9 +38,9 @@
             clearTimeout(saveIndicatorTimeout1)
             clearTimeout(saveIndicatorTimeout2)
             localStorage.setItem('newRegistrationDto', JSON.stringify(dto))
-            saveIndicator.style.opacity = 1
+            saveIndicator.style.opacity = '1'
             saveIndicator.style.display = 'block'
-            saveIndicatorTimeout1 = setTimeout(() => saveIndicator && (saveIndicator.style.opacity = 0), 2000)
+            saveIndicatorTimeout1 = setTimeout(() => saveIndicator && (saveIndicator.style.opacity = '0'), 2000)
             saveIndicatorTimeout2 = setTimeout(() => saveIndicator && (saveIndicator.style.display = ''), 3000)
             clearTimeout(inputTimeout)
         }
@@ -142,27 +142,27 @@
         {/if}
     </div>
     {#if !newRegistration}
-    <hr>
-    <div class="subsection-title" bind:this={submissionSection} on:click={(e) => toggleSubsection(e.target)}>{$_('registration.form.scoreSubmission')}</div>
-    <div class="subsection">
-        <ScoreSubmission
-            {dto}
-            on:input={handleInput}
-            {disabled}
-        />
-    </div>
-    <hr>
-    <div class="subsection-title" bind:this={paymentSection} on:click={(e) => toggleSubsection(e.target)}>{$_('payment.title')}</div>
-    <div class="subsection">
-        <Payment
-            {dto}
-            on:input={handleInput}
-            {disabled}
-        />
-    </div>
-    <hr>
+        <hr>
+        <div class="subsection-title" bind:this={submissionSection} on:click={(e) => toggleSubsection(e.target)}>{$_('registration.form.scoreSubmission')}</div>
+        <div class="subsection">
+            <ScoreSubmission
+                {dto}
+                on:input={handleInput}
+                {disabled}
+            />
+        </div>
+        <hr>
+        <div class="subsection-title" bind:this={paymentSection} on:click={(e) => toggleSubsection(e.target)}>{$_('payment.title')}</div>
+        <div class="subsection">
+            <Payment
+                {dto}
+                on:input={handleInput}
+                {disabled}
+            />
+        </div>
+        <hr>
     {/if}
-    <div class="checkboxes">
+    <div class="checkbox">
         <Checkbox
             name="agreeRegulations"
             label={$_('registration.regulationsAccepted')}
@@ -177,6 +177,8 @@
 </div>
 
 <style lang="stylus">
+    @require './form.styl'
+
     .form
         position relative
         background-color #fff
@@ -184,10 +186,6 @@
         border-radius var(--border-radius)
         padding 30px 45px
         font-size 16px
-
-        /*& > :global(*:not(:first-child))*/
-        & > :global(:not(.saveIndicator + *))
-            margin-top 15px
 
         .saveIndicator
             font-size 12px
@@ -197,19 +195,12 @@
             color var(--color-light-gray)
             transition all 1s ease
 
-        .form-row
-            display grid
-            grid-template-columns 1fr 1fr
-            column-gap 40px
-            row-gap 15px
-
-        .checkboxes
+        .checkbox
             margin-top 15px
 
     .buttons
         margin 15px 0
-        width 50%
-        float right
+        margin-left 50%
         display grid
         grid-template-columns 1fr 1fr
         column-gap 15px
@@ -219,9 +210,11 @@
         height 1px
         background-color var(--color-primary)
         border-radius 1px
+        margin 0
     
     .subsection-title
         position relative
+        padding 15px 0
 
         &:hover
             cursor pointer
@@ -229,7 +222,7 @@
         &:after
             content ''
             position absolute
-            top 30%
+            top 42%
             right 5px
             width 10px
             height 10px
@@ -248,26 +241,23 @@
         padding 0 3px
         transition height 0.4s ease
         overflow hidden
-        
+
         & > :global(*)
-            margin-top 15px
+            margin-bottom 15px
 
     @media screen and (max-width 525px)
         .form
             padding 20px
             font-size 14px
 
-            .form-row
-                grid-template-columns 1fr
-
         .buttons
-            width 100%
+            margin-left 0
 
         .subsection-title
             font-size 1.2em
 
             &:after
-                top 40%
+                top 47%
                 width 7px
                 height 7px
                 border-width 2px

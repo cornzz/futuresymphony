@@ -5,14 +5,14 @@
     import { RegistrationDTO } from '../../helpers/RegistrationDTO'
     import { loading, baseURL, showBack } from '../../helpers/stores'
     import { _ } from 'svelte-i18n'
-    import { onMount } from 'svelte'
+    import { onMount, tick } from 'svelte'
     import { dev } from '$app/env'
 
     export let dto: RegistrationDTO = null
 
     showBack.set(true)
 
-    let form
+    let form: RegistrationForm
     let registrationID: string
     let initialLoad: boolean = false
     let disabled: boolean = false
@@ -22,7 +22,9 @@
     let deadline: boolean = new Date() > new Date('Jun 30 2022 23:59:59 GMT+0200')
 
     async function saveForm() {
-        if (form.reportValidity('#firstName, #lastName, #email, #dateOfBirth, #country')) {
+        error = ''
+        await tick()
+        if (form.reportValidity('#firstName, #lastName, #email, #dateOfBirth, #country, #idCopy, #pieceScore, #pieceDemo, #proofOfPayment')) {
             invalidFields = form.getInvalid()
             console.log(`saving registration ${registrationID}`)
             $loading = true
@@ -48,7 +50,6 @@
                     dto.files.pieceDemoFile = undefined
                     dto.files.pieceScoreFile = undefined
                     dto.files.proofOfPaymentFile = undefined
-                    error = ''
                     formChanged = false
                     $loading = false
                     return true
@@ -76,7 +77,7 @@
         registrationID = window.location.search.substring(1)
         console.log(`loading registration ${registrationID}`)
         if (registrationID === '1') {
-            dto = JSON.parse('{"reg_key":"1","firstName":"Ernst","lastName":"Haft","email":"ernsthaft@web.de","dateOfBirth":"2001-01-11","country":"AX","pieceTitle":"My piece","pieceDemo":"","pieceScore":"score.pdf","idCopy":"id.jpeg","instrumentation":[[true],[true],[true],[true],[true],[true],[true],[true,true],[false,true],[false],[true],[false],[true,true],[false],[false],[false],[false],[false],[true],[true,true,true,true,true,true],[true,true,true,true,false],[true,true,true,true],[true,false,false],[false,false]],"scoreConfirmations":[true,false,false],"proofOfPayment":"proof.pdf","files":{"idCopyFile":"undefined","pieceScoreFile":"undefined","pieceDemoFile":"undefined","proofOfPaymentFile":"undefined"}}')
+            dto = JSON.parse('{"reg_key":"1","firstName":"Ernst","lastName":"Haft","email":"ernsthaft@web.de","dateOfBirth":"2001-01-11","country":"AX","pieceTitle":"My piece","pieceDemo":"","pieceScore":"score.pdf","idCopy":"","instrumentation":[[true],[true],[true],[true],[true],[true],[true],[true,true],[false,true],[false],[true],[false],[true,true],[false],[false],[false],[false],[false],[true],[true,true,true,true,true,true],[true,true,true,true,false],[true,true,true,true],[true,false,false],[false,false]],"scoreConfirmations":[true,false,false],"proofOfPayment":"proof.pdf","files":{"idCopyFile":null,"pieceScoreFile":null,"pieceDemoFile":null,"proofOfPaymentFile":null}}')
         } else {
             const response = await fetch(new URL(`registration.php?key=${registrationID}`, dev ? 'http://localhost:8080' : `${window.location.origin}/api/`).toString())
             if (response.status === 200) {

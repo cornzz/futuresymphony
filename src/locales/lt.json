@@ -70,7 +70,7 @@
             "description": "Registracija į III-jį „Future Symphony“ konkursą atsidaro 2022 m. kovo 1 d."
         },
         "firstStep": "Pirmiausia pateikite šią informaciją. Iš <tt>registration@futuresymphony.lt</tt> gausite el. laišką su tolimesnėmis instrukcijomis.",
-        "regulationsAccepted": "Sutinku su <a href='/files/fsc_regulations_LT_2022-02-24.pdf' target='_blank' class='link'>konkurso nuostatais</a> ir <a href='/privacy' target='_blank' class='link'>privatumo politika.</a>",
+        "regulationsAccepted": "Sutinku su <a href='/files/fsc_regulations_LT_2022-02-24.pdf' target='_blank' class='link'>Konkurso nuostatais</a> ir <a href='/privacy' target='_blank' class='link'>Privatumo politika.</a>",
         "success": "Jūsų registracija pateikta. Vykdykite instrukcijas, kurios buvo išsiųstos jūsų el. pašto adresu <tt>{email}</tt>.",
         "yourRegistration": "Jūsų registracija",
         "editingAllowedUntil": "Paraiškas teikti ir koreguoti galima iki 2021 m. birželio 30 d. 23:59 EEST (Lietuvos laiku).",
@@ -98,8 +98,8 @@
             "pieceDemo": "Demo įrašas",
             "instrumentation": "Instrumentuotė",
             "min30": "Kūrinio instrumentuotėje privalo būti bent <b>30 atlikėjų</b>.",
-            "youSelected": "Jūs pasirinkote <b>{number} atlikėjus</b>.",
-            "max30": "Kūrinio instrumentuotėje galimi ne daugiau kaip <b>35 atlikėjai</b>.",
+            "youSelected": "Jūs pasirinkote <b>{number} {number, plural, =0 {atlikėjų} =1 {atlikėją} other {atlikėjus}}</b>.",
+            "max30": "Galite pasirinkti iki <b>35 atlikėjų</b>.",
             "remarks": "Pastabos",
             "proofOfPayment": "Perlaidą patvirtinantis dokumentas",
             "upload": "Įkelti",
@@ -116,6 +116,10 @@
                 "invalidForm": "Įvyko klaida. Patikrinkite įvestą informaciją.",
                 "pleaseWait": "Palaukite prieš pateikdami kitą registraciją.",
                 "errorOccurred": "Įvyko klaida. Bandykite dar kartą vėliau arba susisiekite su mumis."
+            },
+            "validation": {
+                "fileSize": "Pasirinkite mažesnį failą.",
+                "fileType": "Please select a file with the correct type."
             }
         }
     },

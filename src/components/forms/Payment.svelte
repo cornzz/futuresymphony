@@ -23,7 +23,7 @@
             name="proofOfPayment"
             label={'registration.form.proofOfPayment'}
             maxSize={2097152}
-            accept="application/pdf,image/*"
+            accept="image/*,application/pdf"
             bind:value={dto.proofOfPayment}
             bind:files={dto.files.proofOfPaymentFile}
             on:input
