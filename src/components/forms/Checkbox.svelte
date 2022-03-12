@@ -8,7 +8,7 @@
 </script>
 
 <div>
-    <label {disabled} data-label={label} class:fullwidth>
+    <label {disabled} data-label={label} class:fullwidth on:click>
         <input
             id={name}
             type="checkbox"
@@ -29,10 +29,14 @@
         min-height 14px
         margin-left -28px
         margin-right 10px
-        border 2px solid #9595a2
+        border 2px solid #c2c2c9
         vertical-align text-bottom
         position relative
         border-radius 3px
+
+        &:enabled
+            background-color #fff
+            border-color #9595a2
 
         &:hover:enabled
             border-color #676774

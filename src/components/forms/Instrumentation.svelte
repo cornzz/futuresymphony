@@ -36,16 +36,16 @@
                             fullwidth={instrument.max === 1}
                             on:input={(e) => {
                                 // @ts-ignore
-                                totalSelected === 35 && e.target.checked && highlightElement(maxWarning)
-                                // @ts-ignore
                                 e.target.checked = totalSelected === 35 ? false : e.target.checked
                                 dispatch('input')
                             }}
+                            on:click={(e) => {
+                                // @ts-ignore
+                                totalSelected === 35 && !e.target.checked && highlightElement(maxWarning)
+                            }}
                             bind:checked={selected[i][j]}
-                            {disabled}
+                            disabled={disabled || totalSelected === 35 && !selected[i][j]}
                         />
-                        <!-- // @ts-ignore
-                        selected[i] = e.target.checked ? 1 : -1 -->
                     {/each}
                 </div>
             {/each}
