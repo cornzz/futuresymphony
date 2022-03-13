@@ -35,7 +35,8 @@
         }
     },
     "participants": {
-        "title": "For Participants"
+        "title": "For Participants",
+        "registration": "Start registration"
     },
     "sponsors": {
         "title": "Sponsors and Partners",

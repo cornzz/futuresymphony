@@ -1,13 +1,7 @@
 <script lang="ts">
-    import { highlightElement } from '../helpers'
-    import { locale } from 'svelte-i18n'
+    import Button from './forms/Button.svelte'
+    import { locale, _ } from 'svelte-i18n'
 
-    let button, date
-
-    function focusButton() {
-        button.classList.toggle('focus')
-        setTimeout(() => button.classList.toggle('focus'), 1000)
-    }
 </script>
 
 <div class="content">
@@ -15,35 +9,20 @@
         <!-- <b>Registration</b><br> -->
         <p>Composers who are willing to participate in the competition must submit the application form <b>by June 30<sup>th</sup> 2022</b>.</p>
         <p>Application fee – <b>50 €</b></p>
-        <p>Before applying, please carefully read the <b>Regulations of the Competition</b>.</p>
-        
-        <!-- <div class="center">
-            <a class="button" tabindex="0" href="https://artistdb.eu/en/nousr/contests" target="_blank" bind:this={button}>
-                Register
-            </a>
-        </div> -->
-
-        <p>
-            <a href="/files/fsc_regulations_EN_2022-02-24.pdf" class="link" target="_blank">Regulations of the Competition</a><br>
-            <a href="/registration" class="link">Proceed to the Registration Platform</a>
-        </p>
+        <p>Before applying, please carefully read the <a href="/files/fsc_regulations_EN_2022-02-24.pdf" class="link" target="_blank">Regulations of the Competition</a>.</p>
     {:else if $locale === 'lt'}
         <!-- <b>Registracija</b><br> -->
         <p>Kompozitoriai, norintys dalyvauti konkurse, privalo užsiregistruoti <b>iki 2022 m. birželio 30 d.</b></p>
         <p>Registracijos mokestis – <b>50 €</b></p>
-        <p>Siųsdami paraiška į konkursą Jūs sutinkate su <b>Konkurso nuostatais</b>.</p>
-        
-        <!-- <div class="center">
-            <a class="button" tabindex="0" href="https://artistdb.eu/en/nousr/contests" target="_blank" bind:this={button}>
-                Register
-            </a>
-        </div> -->
-
-        <p>
-            <a href="/files/fsc_regulations_LT_2022-02-24.pdf" class="link" target="_blank">Konkurso nuostatai</a><br>
-            <a href="/registration" class="link">Pradėti registraciją</a>
-        </p>
+        <p>Siųsdami paraiška į konkursą Jūs sutinkate su <a href="/files/fsc_regulations_LT_2022-02-24.pdf" class="link" target="_blank">Konkurso nuostatais</a>.</p>
     {/if}
+    <div class="center">
+        <a class="button" href="/registration" target="_blank">
+            <Button type="primary" style="width: 200px">
+                {$_('participants.registration')}
+            </Button>
+        </a>
+    </div>
 </div>
 
 <style lang="stylus">
@@ -52,34 +31,9 @@
         flex-grow 1
 
         .center
+            margin 70px 0
             width 100%
+            height 100%
             text-align center
-
-        .button
-            width 200px
-            box-sizing border-box
-            font-size 0.7em
-            transition background-color .1s,
-                        box-shadow .1s,
-                        color .1s,
-                        transform .1s
-            background-color var(--color-primary)
-            border-radius 2px
-            border 2px solid var(--color-primary)
-            color #fff
-            cursor pointer
-            display inline-block
-            font-weight 700
-            padding 5px 20px
-            text-decoration none !important
-            outline none
-            margin 25px 0
-
-            &:hover
-            &:global(.focus)
-                transform translate(-2px,-2px)
-                background-color #fff
-                box-shadow 4px 4px 0 0 var(--color-primary)
-                color var(--color-primary)
 </style>
 

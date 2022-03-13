@@ -17,6 +17,8 @@
     let success: boolean = false
 
     async function submitForm() {
+        error = ''
+        warning = ''
         if (form.reportValidity()) {
             $loading = true
             dto.lang = $locale
@@ -25,8 +27,6 @@
                 body: JSON.stringify(dto)
             })
             if (response.status === 200) {
-                error = ''
-                warning = ''
                 success = true
                 !dev && localStorage.removeItem('newRegistrationDto')
             } else {

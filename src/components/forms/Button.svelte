@@ -1,9 +1,10 @@
 <script lang="ts">
-    export let type: 'outline' | 'primary' = 'outline'
+    export let type: 'outline' | 'primary' | 'special' = 'outline'
     export let disabled: boolean = false
+    export let style: string = ''
 </script>
 
-<button class={type} on:click {disabled}>
+<button class={type} on:click {disabled} {style}>
     <slot></slot>
 </button>
 
@@ -21,13 +22,6 @@
         &:disabled
             opacity 0.3
 
-    .outline
-        background-color #fff
-        border solid 1px var(--color-border)
-
-        &:hover:enabled
-            background-color #fafafa
-    
     .primary
         background-color var(--color-primary)
         color #fff
@@ -35,7 +29,37 @@
         
         &:hover:enabled
             background-color var(--color-primary-hover)
-    
+
+    .outline
+        background-color #fff
+        border solid 1px var(--color-border)
+
+        &:hover:enabled
+            background-color #fafafa
+
+    .special
+        box-sizing border-box
+        transition background-color .1s,
+                    box-shadow .1s,
+                    color .1s,
+                    transform .1s
+        background-color var(--color-primary)
+        border-radius var(--border-radius)
+        border 2px solid var(--color-primary)
+        color #fff
+        cursor pointer
+        display inline-block
+        padding 5px 20px
+        text-decoration none !important
+        outline none
+
+        &:hover
+        &:global(.focus)
+            transform translate(-2px,-2px)
+            background-color #fff
+            box-shadow 4px 4px 0 0 var(--color-primary)
+            color var(--color-primary)
+
     @media screen and (max-width 525px)
         height 40px
 </style>
