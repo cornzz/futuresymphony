@@ -17,17 +17,18 @@
                 font-size: 0.9em;
             }
             body {
-                padding: 0 10px;
                 width: 100vw;
                 margin: 0 auto;
-                overflow: hidden;
+                overflow-x: hidden;
+            }
+            #table_wrapper {
+                overflow: scroll;
+                padding-bottom: 40px;
             }
             .table-wrapper {
-                height: 100vh;
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
-                overflow: scroll;
             }
             a {
                 position: relative
@@ -56,10 +57,21 @@
                 color: #171E26;
                 cursor: pointer;
             }
+            .title {
+                margin-top: 100px;
+            }
         </style>
         <script>
             $(document).ready(function() {
                 $('#table').DataTable({
+                    columnDefs: [
+                        {
+                            targets: "_all",
+                            className: 'dt-center'
+                        }
+                    ]
+                });
+                $('#table2').DataTable({
                     columnDefs: [
                         {
                             targets: "_all",
@@ -113,9 +125,10 @@
             $conn = OpenCon();
 
             $result = $conn->query("SELECT a.id, b.reg_key, b.email, b.firstName, b.lastName, b.dateOfBirth, b.country, b.pieceTitle, b.annotation, b.instrumentation, b.remarks, b.scoreConfirmations, b.paymentConfirmed, b.complete, b.secondRound, c.idCopyFileName, c.pieceScoreFileName, c.pieceDemoFileName, c.proofOfPaymentFileName FROM new_registrations AS a JOIN registrations AS b ON a.reg_key = b.reg_key JOIN user_files AS c ON b.reg_key = c.reg_key");
+            $resultUnconfirmed = $conn->query("SELECT a.id, a.reg_key, a.email, a.firstName, a.lastName, a.dateOfBirth, a.country FROM new_registrations AS a LEFT JOIN registrations AS b ON a.reg_key = b.reg_key WHERE b.reg_key IS NULL");
         ?>
-        <h1>Registrations</h1>
         <div class="table-wrapper">
+            <h1>Registrations</h1>
             <table id="table" class="display compact" cellspacing="0" width="100%">
                 <thead>
                     <tr>
@@ -147,25 +160,108 @@
                     ?>
                     <tr>
                         <td><?php echo $row["id"];?></td>
-                        <td><a class="link" target="_blank" href="https://futuresymphony.lt/registration/id?<?php echo $row["reg_key"];?>"><?php echo $row["reg_key"];?></a></td>
+                        <td>
+                            <a class="link" target="_blank" href="https://futuresymphony.lt/registration/id?<?php echo $row["reg_key"];?>">
+                                <?php echo $row["reg_key"];?>
+                            </a>
+                        </td>
                         <td><?php echo $row["email"];?></td>
                         <td><?php echo $row["firstName"];?></td>
                         <td><?php echo $row["lastName"];?></td>
                         <td><?php echo $row["dateOfBirth"];?></td>
                         <td><?php echo $row["country"];?></td>
-                        <td><?php if ($row["idCopyFileName"] !== null && $row["idCopyFileName"] !== "") { ?><a class="link" target="_blank" data-label="<?php echo $row["idCopyFileName"]; ?>" href="https://futuresymphony.lt/api/files.php?key=<?php echo $row["reg_key"];?>&file=idCopyFile">Download</a><?php } ?></td>
+                        <td>
+                            <?php if ($row["idCopyFileName"] !== null && $row["idCopyFileName"] !== "") {?>
+                                <a class="link" target="_blank" data-label="<?php echo $row["idCopyFileName"];?>" href="https://futuresymphony.lt/api/files.php?key=<?php echo $row["reg_key"];?>&file=idCopyFile">
+                                    Download
+                                </a>
+                            <?php }?>
+                        </td>
                         <td><?php echo $row["pieceTitle"];?></td>
-                        <td><?php if ($row["annotation"] !== null && $row["annotation"] !== "") { ?><span class="link" onClick="showContent('<?php echo $row["annotation"];?>')">Click to see</span><?php } ?></td>
-                        <td><?php if ($row["pieceScoreFileName"] !== null && $row["pieceScoreFileName"] !== "") { ?><a class="link" target="_blank" data-label="<?php echo $row["pieceScoreFileName"]; ?>" href="https://futuresymphony.lt/api/files.php?key=<?php echo $row["reg_key"];?>&file=pieceScoreFile">Download</a><?php } ?></td>
-                        <td><?php if ($row["pieceDemoFileName"] !== null && $row["pieceDemoFileName"] !== "") { ?><a class="link" target="_blank" data-label="<?php echo $row["pieceDemoFileName"]; ?>" href="https://futuresymphony.lt/api/files.php?key=<?php echo $row["reg_key"];?>&file=pieceDemoFile">Download</a><?php } ?></td>
-                        <td><?php if ($row["instrumentation"] !== null) {?><span class="link" onClick="showInstrumentation(<?php echo $row["instrumentation"];?>)">Click to see</span><?php } ?></td>
-                        <td><?php if ($row["remarks"] !== null && $row["remarks"] !== "") { ?><span class="link" onClick="showContent('<?php echo $row["remarks"];?>')">Click to see</span><?php } ?></td>
+                        <td>
+                            <?php if ($row["annotation"] !== null && $row["annotation"] !== "") {?>
+                                <span class="link" onClick="showContent('<?php echo $row["annotation"];?>')">
+                                    Click to see
+                                </span>
+                            <?php }?>
+                        </td>
+                        <td>
+                            <?php if ($row["pieceScoreFileName"] !== null && $row["pieceScoreFileName"] !== "") {?>
+                                <a class="link" target="_blank" data-label="<?php echo $row["pieceScoreFileName"];?>" href="https://futuresymphony.lt/api/files.php?key=<?php echo $row["reg_key"];?>&file=pieceScoreFile">
+                                    Download
+                                </a>
+                            <?php }?>
+                        </td>
+                        <td>
+                            <?php if ($row["pieceDemoFileName"] !== null && $row["pieceDemoFileName"] !== "") { ?>
+                                <a class="link" target="_blank" data-label="<?php echo $row["pieceDemoFileName"]; ?>" href="https://futuresymphony.lt/api/files.php?key=<?php echo $row["reg_key"];?>&file=pieceDemoFile">
+                                    Download
+                                </a>
+                            <?php }?>
+                        </td>
+                        <td>
+                            <?php if ($row["instrumentation"] !== null) {?>
+                                <span class="link" onClick="showInstrumentation(<?php echo $row["instrumentation"];?>)">
+                                    Click to see
+                                </span>
+                            <?php }?>
+                        </td>
+                        <td>
+                            <?php if ($row["remarks"] !== null && $row["remarks"] !== "") { ?>
+                                <span class="link" onClick="showContent('<?php echo $row["remarks"];?>')">
+                                    Click to see
+                                </span>
+                            <?php }?>
+                        </td>
                         <td><?php echo $row["scoreConfirmations"];?></td>
-                        <td><?php if ($row["proofOfPaymentFileName"] !== null && $row["proofOfPaymentFileName"] !== "") { ?><a class="link" target="_blank" data-label="<?php echo $row["proofOfPaymentFileName"]; ?>" href="https://futuresymphony.lt/api/files.php?key=<?php echo $row["reg_key"];?>&file=proofOfPaymentFile">Download</a><?php } ?></td>
+                        <td>
+                            <?php if ($row["proofOfPaymentFileName"] !== null && $row["proofOfPaymentFileName"] !== "") { ?>
+                                <a class="link" target="_blank" data-label="<?php echo $row["proofOfPaymentFileName"]; ?>" href="https://futuresymphony.lt/api/files.php?key=<?php echo $row["reg_key"];?>&file=proofOfPaymentFile">
+                                    Download
+                                </a>
+                            <?php }?>
+                        </td>
                         <td><?php echo $row["paymentConfirmed"];?></td>
                         <td><?php echo $row["complete"];?></td>
                         <td><?php echo $row["secondRound"];?></td>
                     </tr>
+                    <?php
+                        }
+                    ?>
+                </tbody>
+            </table>
+
+            <h1 class="title">Unconfirmed Registrations</h1>
+            <table id="table2" class="display compact" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Key</th>
+                        <th>E-mail</th>
+                        <th>Name</th>
+                        <th>Surname</th>
+                        <th>Date of Birth</th>
+                        <th>Country</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <?php
+                        while ($row = $resultUnconfirmed->fetch_assoc()) {
+                    ?>
+                        <tr class="unconfirmed">
+                            <td><?php echo $row["id"];?></td>
+                            <td>
+                                <a class="link" target="_blank" href="https://futuresymphony.lt/registration/id?<?php echo $row["reg_key"];?>">
+                                    <?php echo $row["reg_key"];?>
+                                </a>
+                            </td>
+                            <td><?php echo $row["email"];?></td>
+                            <td><?php echo $row["firstName"];?></td>
+                            <td><?php echo $row["lastName"];?></td>
+                            <td><?php echo $row["dateOfBirth"];?></td>
+                            <td><?php echo $row["country"];?></td>
+                        </tr>
                     <?php
                         }
                     ?>
