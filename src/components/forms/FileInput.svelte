@@ -10,6 +10,7 @@
     export let accept: string
     export let value: string = ''
     export let files: FileList = undefined
+    export let optional: boolean = false
     export let disabled: boolean = false
 
     let inputElement
@@ -25,6 +26,11 @@
 
         return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i]
     }
+
+    $: labelAppendix = [
+        type ? type : '',
+        optional ? $_('registration.form.optional') : ''
+    ].filter(Boolean).join(', ')
 
     onMount(() => {
         inputElement.validateFiles = () => {
@@ -44,14 +50,14 @@
         }
 
         inputElement.checkValidity = () => {
-            return value !== ''
+            return optional || value !== ''
         }
     })
 </script>
 
 
 <label for={name} data-label={label}>
-    {$_(label)} ({$_('registration.form.maxSize')} {formatBytes(maxSize)}{type ? `, ${type}` : ''})
+    {$_(label)} ({$_('registration.form.maxSize')} {formatBytes(maxSize)}{labelAppendix ? `, ${labelAppendix}` : ''})
     <div
         class="preview"
         data-button-text={$_('registration.form.upload')}
@@ -68,7 +74,7 @@
             {multiple}
             {accept}
             {disabled}
-            required
+            required={!optional}
         />
     </div>
 </label>

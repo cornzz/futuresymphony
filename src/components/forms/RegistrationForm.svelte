@@ -54,20 +54,26 @@
         changed = true
     }
 
-    function toggleSubsection(element: any, close?: boolean): void {
-        const subsection: HTMLElement = element.nextElementSibling as HTMLElement
-        if (!element.classList.contains('active') && !close) {
-            subsection.style.height = subsection.scrollHeight + 'px'
-            element.classList.add('active')
-        } else {
+    function toggleSubsection(subsection: HTMLElement, action?: 'open' | 'close'): void {
+        const subsectionTitle: HTMLElement = subsection.previousElementSibling as HTMLElement
+        if (!subsectionTitle.classList.contains('active') && action !== 'close' || action === 'open') {
+            subsection.style.height = (subsection.firstChild as HTMLElement).scrollHeight + 15 + 'px'
+            subsectionTitle.classList.add('active')
+        } else if (subsectionTitle.classList.contains('active')) {
             subsection.style.height = '0px'
-            element.classList.remove('active')
+            subsectionTitle.classList.remove('active')
         }
     }
 
-    export function closeSubsections() {
-        toggleSubsection(submissionSection, true)
-        toggleSubsection(paymentSection, true)
+    export function closeSubsections(): void {
+        toggleSubsection(submissionSection, 'close')
+        toggleSubsection(paymentSection, 'close')
+    }
+
+    function resizeSubsection(subsection: HTMLElement): void {
+        if (subsection.previousElementSibling.classList.contains('active')) {
+            toggleSubsection(subsection, 'open')
+        }
     }
 
     onMount(() => {
@@ -143,20 +149,22 @@
     </div>
     {#if !newRegistration}
         <hr>
-        <div class="subsection-title" bind:this={submissionSection} on:click={(e) => toggleSubsection(e.target)}>{$_('registration.form.scoreSubmission')}</div>
-        <div class="subsection">
+        <div class="subsection-title" on:click={() => toggleSubsection(submissionSection)}>{$_('registration.form.scoreSubmission')}</div>
+        <div class="subsection" bind:this={submissionSection}>
             <ScoreSubmission
                 {dto}
                 on:input={handleInput}
+                on:resize={() => resizeSubsection(submissionSection)}
                 {disabled}
             />
         </div>
         <hr>
-        <div class="subsection-title" bind:this={paymentSection} on:click={(e) => toggleSubsection(e.target)}>{$_('payment.title')}</div>
-        <div class="subsection">
+        <div class="subsection-title" on:click={() => toggleSubsection(paymentSection)}>{$_('payment.title')}</div>
+        <div class="subsection" bind:this={paymentSection}>
             <Payment
                 {dto}
                 on:input={handleInput}
+                on:resize={() => resizeSubsection(paymentSection)}
                 {disabled}
             />
         </div>
@@ -241,9 +249,6 @@
         padding 0 3px
         transition height 0.4s ease
         overflow hidden
-
-        & > :global(*)
-            margin-bottom 15px
 
     @media screen and (max-width 525px)
         .form

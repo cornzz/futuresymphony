@@ -155,7 +155,9 @@
         "amount": "Suma",
         "recipient": "Gavėjas",
         "purpose": "Mokėjimo paskirtis",
-        "regToFSC": "registracija FSC"
+        "regToFSC": "registracija FSC",
+        "ukraine": "Visi ukrainiečiai kompozitoriai gali dalyvauti konkurse nemokamai. Mokėjimą patvirtinančio dokumento įkėlimas yra neprivalomas.",
+        "sanctioned": "Konkurse nemokamai gali dalyvauti dalyviai iš visų šalių, kurios pateko (arba gali patekti iki 2022 m. birželio 30 d.) į tarptautinių pinigų perlaidų apribojimų sąrašą. Tokiems dalyviams žinotina, jog prizo laimėjimo atveju laimėjimas negalės būti pervestas, nebent iki bendrojo registracijos termino pabaigos bus sumokėtas dalyvio mokestis."
     },
     "privacy": {
         "title": "VšĮ „Muzikinis pirštas“ privatumo politika",

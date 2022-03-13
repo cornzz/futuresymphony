@@ -8,7 +8,10 @@
     export let optional: boolean = false
     export let disabled: boolean = false
 
-    $: labelAppendix = (maxlength ? $_('registration.form.maxChars', { values: { number: maxlength } }) : '') + (optional ? `, ${$_('registration.form.optional')}` : '')
+    $: labelAppendix = [
+        maxlength ? $_('registration.form.maxChars', { values: { number: maxlength } }) : '',
+        optional ? $_('registration.form.optional') : ''
+    ].filter(Boolean).join(', ')
 </script>
 
 <div>

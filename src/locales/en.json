@@ -155,7 +155,9 @@
         "amount": "Amount",
         "recipient": "Recipient",
         "purpose": "Purpose of payment",
-        "regToFSC": "registration to FSC"
+        "regToFSC": "registration to FSC",
+        "ukraine": "All Ukrainian composers can participate in the competition free of charge. Upload of the payment receipt is optional.",
+        "sanctioned": "It is allowed to participate in the Competition free of charge for participants from all countries that fell on (or might fall till June 30th, 2022) the list of international transaction restrictions. Such participants will not receive a cash prize in case of winning unless the application fee is paid before the end of the registration deadline."
     },
     "privacy": {
         "title": "Privacy Policy for PI „Muzikinis pirštas“",

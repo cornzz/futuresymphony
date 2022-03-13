@@ -1,13 +1,30 @@
 <script lang="ts">
     import type { RegistrationDTO } from '../../helpers/RegistrationDTO'
     import FileInput from './FileInput.svelte'
+    import { createEventDispatcher, tick } from 'svelte'
     import { _ } from 'svelte-i18n'
 
     export let dto: RegistrationDTO
     export let disabled: boolean
+
+    const dispatch = createEventDispatcher()
+
+    let clientHeight
+
+    $: sanctioned = ['AF', 'BY', 'CU', 'IR', 'KP', 'SY'].includes(dto.country)
+    $: ukraine = dto.country === 'UA'
+    $: if (clientHeight) (async () => {
+        await tick()
+        dispatch('resize')
+    })()
 </script>
 
-<div>
+<div class="payment" bind:clientHeight>
+    {#if ukraine || sanctioned}
+        <div class="text">
+            {ukraine ? $_('payment.ukraine') : $_('payment.sanctioned')}
+        </div>
+    {/if}
     <b>{$_('payment.amount')}:</b> <span style="float: right">50 €</span><br>
     <b>{$_('payment.recipient')}:</b> <span>{$_('contacts.vsi')} Muzikinis pirstas</span><br>
     <b>IBAN:</b> <span>LT39 7300 0101 5990 2690</span><br>
@@ -27,14 +44,18 @@
             bind:value={dto.proofOfPayment}
             bind:files={dto.files.proofOfPaymentFile}
             on:input
+            optional={sanctioned || ukraine}
             {disabled}
         />
     </div>
 </div>
 
 <style lang="stylus">
-    div
+    .payment
         font-size 0.9em
+    
+        .text
+            margin-bottom 15px
 
     span
         float right
