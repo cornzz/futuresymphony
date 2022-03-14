@@ -68,12 +68,15 @@
             <Input
                 type="email"
                 name="resendEmail"
+                placeholder="person@example.com"
                 bind:value={email}
+                on:keyup={(e) => e.key === 'Enter' && resendEmail()}
             />
             <Button
                 type="primary"
                 slim
                 on:click={resendEmail}
+                disabled={$loading}
             >
                 {$_('registration.form.submit')}
             </Button>

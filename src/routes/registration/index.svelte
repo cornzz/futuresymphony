@@ -102,8 +102,8 @@
         <div></div>
         <Button
             type="primary"
-            disabled={!regulationsAccepted}
             on:click={() => submitForm()}
+            disabled={!regulationsAccepted || $loading}
         >
             {$_('registration.form.submit')}
         </Button>

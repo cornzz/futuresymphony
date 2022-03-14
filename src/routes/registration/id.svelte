@@ -131,6 +131,7 @@
                     error = ''
                     dto = { ...cachedDto }
                 }}
+                disabled={$loading}
             >
                 {$_('registration.form.cancel')}
             </Button>
@@ -146,6 +147,7 @@
                     disabled && form.closeSubsections()
                     cachedDto = disabled ? null : error === '' ? { ...dto } : cachedDto
                 }}
+                disabled={$loading}
             >
                 {!disabled ? $_('registration.form.save') : $_('registration.form.edit')}
             </Button>

@@ -4,6 +4,7 @@
     export let type: 'text' | 'date' | 'email'
     export let name: string
     export let label: string = ''
+    export let placeholder: string = ''
     export let min: string = ''
     export let max: string = ''
     export let value: string | Date = ''
@@ -12,12 +13,14 @@
 
 <div>
     <label for={name} data-label={label}>{$_(label)}</label>
-    {#if type === 'text' }
+    {#if type === 'text'}
         <input
             id={name}
             type="text"
+            {placeholder}
             bind:value
             on:input
+            on:keyup
             {disabled}
             required
         />
@@ -25,6 +28,7 @@
         <input
             id={name}
             type="date"
+            {placeholder}
             {min}
             {max}
             bind:value
@@ -36,8 +40,10 @@
         <input
             id={name}
             type="email"
+            {placeholder}
             bind:value
             on:input
+            on:keyup
             {disabled}
             required
         />
