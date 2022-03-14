@@ -251,11 +251,7 @@
                     ?>
                         <tr class="unconfirmed">
                             <td><?php echo $row["id"];?></td>
-                            <td>
-                                <a class="link" target="_blank" href="https://futuresymphony.lt/registration/id?<?php echo $row["reg_key"];?>">
-                                    <?php echo $row["reg_key"];?>
-                                </a>
-                            </td>
+                            <td><?php echo $row["reg_key"];?></td>
                             <td><?php echo $row["email"];?></td>
                             <td><?php echo $row["firstName"];?></td>
                             <td><?php echo $row["lastName"];?></td>
