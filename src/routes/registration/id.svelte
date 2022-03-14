@@ -19,6 +19,7 @@
     let invalidFields: string[] = []
     let error: string = ''
     let formChanged: boolean = false
+    let cachedDto: RegistrationDTO = null
     let deadline: boolean = new Date() > new Date('Jun 30 2022 23:59:59 GMT+0200')
 
     async function saveForm(): Promise<boolean> {
@@ -125,7 +126,11 @@
         {#if !disabled}
             <Button
                 type="outline"
-                on:click={() => disabled = true}
+                on:click={() => {
+                    disabled = true
+                    error = ''
+                    dto = { ...cachedDto }
+                }}
             >
                 {$_('registration.form.cancel')}
             </Button>
@@ -139,6 +144,7 @@
                     disabled = !disabled && (!formChanged || await saveForm());
                     (disabled || error) && document.getElementById('back').click()
                     disabled && form.closeSubsections()
+                    cachedDto = disabled ? null : error === '' ? { ...dto } : cachedDto
                 }}
             >
                 {!disabled ? $_('registration.form.save') : $_('registration.form.edit')}
