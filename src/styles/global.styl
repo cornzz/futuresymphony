@@ -60,6 +60,13 @@ img
 ul
     margin 0 0 10px
 
+
+hr
+    border none
+    height 1px
+    background-color var(--color-primary)
+    border-radius 1px
+
 .nav
     padding-left 0
     margin-bottom 0
@@ -126,7 +133,12 @@ ul
     color var(--color-link)
     transition all 0.1s ease
 
-.link:hover
+    &.disabled
+        color #6d6d6d
+        border-bottom-color #6d6d6d
+        cursor initial
+
+.link:not(.disabled):hover
     text-decoration none
     border-bottom-color transparent
     color var(--color-link-hover)

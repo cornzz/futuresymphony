@@ -140,7 +140,10 @@
                 </div>
                 <hr>
                 <div class="language">
-                    <LanguageSelector big/>
+                    <LanguageSelector
+                        big
+                        on:localeChange={() => navOpen = false}
+                    />
                 </div>
             </div>
         </div>

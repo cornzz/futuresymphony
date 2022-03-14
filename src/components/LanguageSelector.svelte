@@ -1,10 +1,14 @@
 <script lang="ts">
+    import { createEventDispatcher } from 'svelte'
     import { locale } from 'svelte-i18n'
 
     export let big: boolean = false
 
+    const dispatch = createEventDispatcher()
+
     function changeLanguage() {
         locale.set(this.dataset.lang)
+        dispatch('localeChange')
     }
 
     function showFlag() {

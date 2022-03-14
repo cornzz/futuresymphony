@@ -2,6 +2,7 @@
     import InfoBox from '../../components/forms/InfoBox.svelte'
     import RegistrationForm from '../../components/forms/RegistrationForm.svelte'
     import Button from '../../components/forms/Button.svelte'
+    import Resend from '../../components/forms/Resend.svelte'
     import { RegistrationDTO } from '../../helpers/RegistrationDTO'
     import { MetaTags } from 'svelte-meta-tags'
     import { baseURL, loading } from '../../helpers/stores'
@@ -16,7 +17,7 @@
     let error: string = ''
     let success: boolean = false
 
-    async function submitForm() {
+    async function submitForm(): Promise<void> {
         error = ''
         warning = ''
         if (form.reportValidity()) {
@@ -35,8 +36,10 @@
                     warning = 'registration.form.error.emailUsed'
                 } else if (responseText === 'Invalid form.') {
                     error = 'registration.form.error.invalidForm'
+                } else if (responseText === 'Error sending confirmation email.') {
+                    error = 'registration.form.error.emailError'
                 } else if (responseText === 'Too many requests.') {
-                    error = 'registration.form.error.pleaseWait'
+                    warning = 'registration.form.error.pleaseWait'
                 } else {
                     error = 'registration.form.error.errorOccurred'
                 }
@@ -53,24 +56,37 @@
 
 <h1 class="cover-heading"><b>{$_('registration.title')}</b></h1>
 {#if success}
-<InfoBox type="success">
-    {@html $_('registration.success', { values: { email: dto.email } })}
-</InfoBox>
+    <InfoBox type="success">
+        {@html $_('registration.success', { values: { email: dto.email } })}
+        <Resend
+            type="didNotReceive"
+            email={dto.email}
+            bind:error
+            bind:warning
+        />
+    </InfoBox>
 {:else}
     <InfoBox type="info">
         {@html $_('registration.firstStep')}
         {$_('registration.editingAllowedUntil')}
+        <Resend
+            type="alreadyRegistered"
+            bind:error
+            bind:warning
+        />
     </InfoBox>
-    {#if warning}
-        <InfoBox type="warning">
-            {$_(warning)}
-        </InfoBox>
-    {/if}
-    {#if error}
-        <InfoBox type="error">
-            {$_(error)}
-        </InfoBox>
-    {/if}
+{/if}
+{#if warning}
+    <InfoBox type="warning">
+        {$_(warning)}
+    </InfoBox>
+{/if}
+{#if error}
+    <InfoBox type="error">
+        {$_(error)}
+    </InfoBox>
+{/if}
+{#if !success}
     <RegistrationForm
         bind:this={form}
         newRegistration

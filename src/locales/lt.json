@@ -73,6 +73,16 @@
         "firstStep": "Pirmiausia pateikite šią informaciją. Iš <tt>registration@futuresymphony.lt</tt> gausite el. laišką su tolimesnėmis instrukcijomis.",
         "regulationsAccepted": "Sutinku su <a href='/files/fsc_regulations_LT_2022-02-24.pdf' target='_blank' class='link'>Konkurso nuostatais</a> ir <a href='/privacy' target='_blank' class='link'>Privatumo politika.</a>",
         "success": "Jūsų registracija pateikta. Vykdykite instrukcijas, kurios buvo išsiųstos jūsų el. pašto adresu <tt>{email}</tt>.",
+        "resend": {
+            "alreadyRegistered": "Jei jau užsiregistravote, bet nerandate patvirtinimo el. laiško, spustelėkite",
+            "didNotReceive": "Jeigu negavote el. laiško, spustelėkite",
+            "here": "čia",
+            "yourEmail": "Norėdami gauti pakartotiną patvirtinimo nuoroda, įveskite savo el. pašto adresą",
+            "success": "Į nurodytą el. paštą išsiųstas laiškas su tolimesnėmis instrukcijomis. Jei negavote laiško, prašom susisiekti su mumis.",
+            "notFound": "Registracijos šiuo el. pašto adresu nerasta. Patikrinkite įvestą el. pašto adresą arba susisiekti su mumis.",
+            "sendAgain": "Norėdami gauti pakartotiną patvirtinimo nuoroda dar karta, spustelėkite",
+            "pleaseWait": "Palaukite prieš pateikdami kitą užklausą."
+        },
         "yourRegistration": "Jūsų registracija",
         "editingAllowedUntil": "Paraiškas teikti ir koreguoti galima iki 2021 m. birželio 30 d. 23:59 EEST (Lietuvos laiku).",
         "confirmationAfterDeadline": "Pasibaigus šiam terminui, gausite el. laišką, patvirtinantį jūsų registraciją.",
@@ -113,9 +123,10 @@
             "edit": "Redaguoti",
             "cancel": "Atšaukti",
             "error": {
-                "emailUsed": "Šis el. pašto adresas jau buvo naudojamas. Pasirinkite kitą.",
+                "emailUsed": "Šis el. pašto adresas jau buvo naudojamas. Prašau pasirinkite kitą.",
                 "invalidForm": "Įvyko klaida. Patikrinkite įvestą informaciją.",
                 "pleaseWait": "Palaukite prieš pateikdami kitą registraciją.",
+                "emailError": "Siunčiant patvirtinimo el. laišką įvyko klaida. Bandykite dar kartą vėliau arba susisiekite su mumis.",
                 "errorOccurred": "Įvyko klaida. Bandykite dar kartą vėliau arba susisiekite su mumis."
             },
             "validation": {

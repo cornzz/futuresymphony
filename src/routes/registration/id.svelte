@@ -21,7 +21,7 @@
     let formChanged: boolean = false
     let deadline: boolean = new Date() > new Date('Jun 30 2022 23:59:59 GMT+0200')
 
-    async function saveForm() {
+    async function saveForm(): Promise<boolean> {
         error = ''
         await tick()
         if (form.reportValidity('#firstName, #lastName, #email, #dateOfBirth, #country, #idCopy, #pieceScore, #pieceDemo, #proofOfPayment')) {

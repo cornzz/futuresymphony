@@ -99,9 +99,5 @@
         color rgba(96, 96, 97, 0.9)
         padding 5px 0 0 35px
         font-style italic
-
-    hr
-        color var(--color-primary)
-        border-radius 1px
 </style>
 

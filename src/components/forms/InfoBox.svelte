@@ -20,7 +20,7 @@
     .success
         position relative
         border-color #289501
-        padding-right 30px
+        padding-right 45px
 
         &:after
             content '✔'

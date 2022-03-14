@@ -23,7 +23,7 @@
     let submissionSection: HTMLElement, paymentSection: HTMLElement
 
     export function reportValidity(queryString?: string): boolean {
-        let inputElements: Array<any> = Array.from(document.querySelectorAll(queryString ?? 'input, select, textarea'))
+        let inputElements: Array<any> = Array.from(document.querySelectorAll(queryString ?? 'input:not([id=resendEmail]), select, textarea'))
         return inputElements.every(e => e.type === 'file' ? e.validateFiles() : e.reportValidity())
     }
 
@@ -214,10 +214,6 @@
         column-gap 15px
     
     hr
-        border none
-        height 1px
-        background-color var(--color-primary)
-        border-radius 1px
         margin 0
     
     .subsection-title

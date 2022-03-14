@@ -73,6 +73,16 @@
         "firstStep": "As a first step, please submit the following information. You will receive an email from <tt>registration@futuresymphony.lt</tt> with further instructions.",
         "regulationsAccepted": "I agree with the <a href='/files/fsc_regulations_EN_2022-02-24.pdf' target='_blank' class='link'>Regulations of the Competition</a> and the <a href='/privacy' target='_blank' class='link'>Privacy Policy</a>.",
         "success": "Your registration has been submitted. Please follow the instructions that have been sent to your email address, <tt>{email}</tt>.",
+        "resend": {
+            "alreadyRegistered": "If you already registered but can not find the confirmation email, please click",
+            "didNotReceive": "If you did not receive an email, please click",
+            "here": "here",
+            "yourEmail": "To resend the confirmation link, please enter your email address",
+            "success": "Success! Please follow the instructions in the confirmation email. If you did not receive an email, please contact us.",
+            "notFound": "Could not find a registration under this email address. Please check your input or contact us.",
+            "sendAgain": "To resend the confirmation link again, please click",
+            "pleaseWait": "Please wait before submitting another request."
+        },
         "yourRegistration": "Your registration",
         "editingAllowedUntil": "Applications can be submitted and revised until the 30th of June 2022 23:59 EEST (Lithuanian time).",
         "confirmationAfterDeadline": "You will receive an email confirming your registration after this deadline.",
@@ -116,6 +126,7 @@
                 "emailUsed": "This email address has already been used. Please choose a different one.",
                 "invalidForm": "An error has occured. Please check your input.",
                 "pleaseWait": "Please wait before submitting another registration.",
+                "email": "An error has occurred while sending the confirmation email. Please try again later, or contact us.",
                 "errorOccurred": "An error has occurred. Please try again later, or contact us."
             },
             "validation": {

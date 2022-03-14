@@ -1,10 +1,11 @@
 <script lang="ts">
     export let type: 'outline' | 'primary' | 'special' = 'outline'
+    export let slim: boolean = false
     export let disabled: boolean = false
     export let style: string = ''
 </script>
 
-<button class={type} on:click {disabled} {style}>
+<button class={type} on:click class:slim {disabled} {style}>
     <slot></slot>
 </button>
 
@@ -60,6 +61,10 @@
             box-shadow 4px 4px 0 0 var(--color-primary)
             color var(--color-primary)
 
-    @media screen and (max-width 525px)
+    .slim
         height 40px
+
+    @media screen and (max-width 525px)
+        button
+            height 40px
 </style>
