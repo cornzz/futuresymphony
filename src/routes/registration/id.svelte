@@ -29,7 +29,7 @@
             console.log(`saving registration ${registrationID}`)
             $loading = true
             // Submit form data
-            let response = await fetch(new URL(`registration.php?key=${registrationID}`, dev ? 'http://localhost:8080' : `${window.location.origin}/api/`).toString(), {
+            let response = await fetch(new URL('registration.php', dev ? 'http://localhost:8080' : `${window.location.origin}/api/`).toString(), {
                 method: 'POST',
                 body: JSON.stringify(dto)
             })

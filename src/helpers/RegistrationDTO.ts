@@ -20,5 +20,6 @@ export class RegistrationDTO {
         proofOfPaymentFile?: FileList
     } = { idCopyFile: undefined, pieceScoreFile: undefined, pieceDemoFile: undefined, proofOfPaymentFile: undefined }
 
-    lang: string = ''
+    reg_key?: string = ''
+    lang?: string = ''
 }

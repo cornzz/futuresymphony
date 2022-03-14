@@ -62,4 +62,20 @@
 
         return TRUE;
     }
+
+    function ValidateFile($file, $max_size, $types) {
+        if ($file === null)
+            return TRUE;
+
+        if (filesize($file["tmp_name"]) > $max_size)
+            return FALSE;
+
+        $matchingType = FALSE;
+        foreach ($types as $type) {
+            if (str_contains(mime_content_type($file["tmp_name"]), $type))
+                $matchingType = TRUE;
+        }
+
+        return $matchingType;
+    }
 ?>
