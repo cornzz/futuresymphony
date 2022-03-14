@@ -145,7 +145,7 @@
                     disabled = !disabled && (!formChanged || await saveForm());
                     (disabled || error) && document.getElementById('back').click()
                     disabled && form.closeSubsections()
-                    cachedDto = disabled ? null : error === '' ? { ...dto } : cachedDto
+                    cachedDto = !disabled && error === '' ? JSON.parse(JSON.stringify(dto)) : cachedDto
                 }}
                 disabled={$loading}
             >
