@@ -30,7 +30,7 @@
         error = ''
         warning = ''
         const emailInput: HTMLInputElement = document.getElementById('resendEmail') as HTMLInputElement
-        if (email || emailInput && emailInput.reportValidity()) {
+        if (emailInput && emailInput.reportValidity() || !emailInput && email) {
             $loading = true
             let searchParams = new URLSearchParams({ email, lang: $locale})
             const response = await fetch(
