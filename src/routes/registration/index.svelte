@@ -23,7 +23,7 @@
         if (form.reportValidity()) {
             $loading = true
             dto.lang = $locale
-            const response = await fetch(new URL('new_registration.php', dev ? 'http://localhost:8080/api/' : `${window.location.origin}/api/`).toString(), {
+            const response = await fetch(new URL('new_registration.php', $baseURL).toString(), {
                 method: 'POST',
                 body: JSON.stringify(dto)
             })

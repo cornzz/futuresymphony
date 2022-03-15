@@ -30,7 +30,7 @@
             console.log(`saving registration ${registrationID}`)
             $loading = true
             // Submit form data
-            let response = await fetch(new URL('registration.php', dev ? 'http://localhost:8080/api/' : `${window.location.origin}/api/`).toString(), {
+            let response = await fetch(new URL('registration.php', $baseURL).toString(), {
                 method: 'POST',
                 body: JSON.stringify(dto)
             })
@@ -41,7 +41,7 @@
                 for (let file of Object.entries(dto.files)) {
                     file[1] && data.append(file[0], file[1][0])
                 }
-                response = await fetch(new URL(`files.php?key=${registrationID}`, dev ? 'http://localhost:8080/api/' : `${window.location.origin}/api/`).toString(), {
+                response = await fetch(new URL(`files.php?key=${registrationID}`, $baseURL).toString(), {
                     method: 'POST',
                     body: data
                 })
@@ -80,7 +80,7 @@
         if (registrationID === '1') {
             dto = JSON.parse('{"reg_key":"1","firstName":"Ernst","lastName":"Haft","email":"ernsthaft@web.de","dateOfBirth":"2001-01-11","country":"DE","pieceTitle":"My piece","pieceDemo":"","pieceScore":"score.pdf","idCopy":"","instrumentation":[[true],[true],[true],[true],[true],[true],[true],[true,true],[false,true],[false],[true],[false],[true,true],[false],[false],[false],[false],[false],[true],[true,true,true,true,true,true],[true,true,true,true,false],[true,true,true,true],[true,false,false],[false,false]],"scoreConfirmations":[true,false,false],"proofOfPayment":"","files":{"idCopyFile":null,"pieceScoreFile":null,"pieceDemoFile":null,"proofOfPaymentFile":null}}')
         } else {
-            const response = await fetch(new URL(`registration.php?key=${registrationID}`, dev ? 'http://localhost:8080/api/' : `${window.location.origin}/api/`).toString())
+            const response = await fetch(new URL(`registration.php?key=${registrationID}`, $baseURL).toString())
             if (response.status === 200) {
                 let responseDto = JSON.parse(await response.text())
                 dto = Object.assign(new RegistrationDTO, Object.fromEntries(Object.entries(responseDto).filter(([_, v]) => v !== null)))

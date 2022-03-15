@@ -2,8 +2,7 @@
     import Input from './Input.svelte'
     import Button from './Button.svelte'
     import { locale, _ } from 'svelte-i18n'
-    import { loading } from '../../helpers/stores'
-    import { dev } from '$app/env'
+    import { loading, baseURL } from '../../helpers/stores'
 
     export let type: 'alreadyRegistered' | 'didNotReceive'
     export let error: string
@@ -33,10 +32,7 @@
         if (emailInput && emailInput.reportValidity() || !emailInput && email) {
             $loading = true
             let searchParams = new URLSearchParams({ email, lang: $locale})
-            const response = await fetch(
-                new URL('new_registration.php?' + searchParams,
-                dev ? 'http://localhost:8080/api/' : `${window.location.origin}/api/`).toString()
-            )
+            const response = await fetch(new URL('new_registration.php?' + searchParams, $baseURL).toString())
             if (response.status === 200) {
                 success = true
                 startTimer(5 * 60)
