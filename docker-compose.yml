@@ -8,7 +8,7 @@ services:
         depends_on:
             - db
         volumes:
-            - ./static/api:/var/www/html
+            - ./static/api:/var/www/html/api
             - ./php/config.ini:/usr/local/etc/php/conf.d/config.ini
         ports:
             - 8080:80

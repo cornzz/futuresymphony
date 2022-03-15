@@ -37,33 +37,25 @@
                 lastName=?,
                 dateOfBirth=?,
                 country=?,
-                idCopy=?,
                 pieceTitle=?,
                 annotation=?,
-                pieceScore=?,
-                pieceDemo=?,
                 instrumentation=?,
                 remarks=?,
-                scoreConfirmations=?,
-                proofOfPayment=?
+                scoreConfirmations=?
             WHERE reg_key=?"
         );
         $instrumentation = json_encode($form["instrumentation"]);
         $scoreConfirmations = json_encode($form["scoreConfirmations"]);
-        $stmt->bind_param("ssssssssssssss",
+        $stmt->bind_param("ssssssssss",
             $form["firstName"],
             $form["lastName"],
             $form["dateOfBirth"],
             $form["country"],
-            $form["idCopy"],
             $form["pieceTitle"],
             $form["annotation"],
-            $form["pieceScore"],
-            $form["pieceDemo"],
             $instrumentation,
             $form["remarks"],
             $scoreConfirmations,
-            $form["proofOfPayment"],
             $form["reg_key"]
         );
         $success = $stmt->execute();
@@ -82,9 +74,12 @@
         $result = $stmt->get_result();
 
         if ($result->num_rows) {
+            // Prepare and return existing data
             $arr = $result->fetch_assoc();
             $arr["instrumentation"] = json_decode($arr["instrumentation"]);
             $arr["scoreConfirmations"] = json_decode($arr["scoreConfirmations"]);
+            $fn = $conn->query("SELECT idCopyFileName, pieceScoreFileName, pieceDemoFileName, proofOfPaymentFileName FROM user_files WHERE reg_key='{$reg_key}'")->fetch_array();
+            [$arr["idCopy"], $arr["pieceScore"], $arr["pieceDemo"], $arr["proofOfPayment"]] = array($fn[0], $fn[1], $fn[2], $fn[3]);
             echo json_encode($arr);
             return;
         } else {

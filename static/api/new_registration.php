@@ -75,6 +75,7 @@
     } else if (isset($_GET["email"]) && $_GET["email"] !== "" && filter_var($_GET["email"], FILTER_VALIDATE_EMAIL) &&
                isset($_GET["lang"]) && (($_GET["lang"] === "en" || $_GET["lang"] === "lt"))
     ) {
+        // Resend confirmation mail
         $email = $_GET["email"];
         $stmt = $conn->prepare("SELECT * FROM new_registrations WHERE email=?");
         $stmt->bind_param("s", $email);

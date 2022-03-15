@@ -35,7 +35,7 @@
             let searchParams = new URLSearchParams({ email, lang: $locale})
             const response = await fetch(
                 new URL('new_registration.php?' + searchParams,
-                dev ? 'http://localhost:8080' : `${window.location.origin}/api/`).toString()
+                dev ? 'http://localhost:8080/api/' : `${window.location.origin}/api/`).toString()
             )
             if (response.status === 200) {
                 success = true
