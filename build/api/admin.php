@@ -161,7 +161,7 @@
                     <tr>
                         <td><?php echo $row["id"];?></td>
                         <td>
-                            <a class="link" target="_blank" href="https://futuresymphony.lt/registration/id?<?php echo $row["reg_key"];?>">
+                            <a class="link" target="_blank" href="/registration/id?<?php echo $row["reg_key"];?>">
                                 <?php echo $row["reg_key"];?>
                             </a>
                         </td>
@@ -172,7 +172,7 @@
                         <td><?php echo $row["country"];?></td>
                         <td>
                             <?php if ($row["idCopyFileName"] !== null && $row["idCopyFileName"] !== "") {?>
-                                <a class="link" target="_blank" data-label="<?php echo $row["idCopyFileName"];?>" href="https://futuresymphony.lt/api/files.php?key=<?php echo $row["reg_key"];?>&file=idCopyFile">
+                                <a class="link" target="_blank" data-label="<?php echo $row["idCopyFileName"];?>" href="/api/files.php?key=<?php echo $row["reg_key"];?>&file=idCopyFile">
                                     Download
                                 </a>
                             <?php }?>
@@ -187,14 +187,14 @@
                         </td>
                         <td>
                             <?php if ($row["pieceScoreFileName"] !== null && $row["pieceScoreFileName"] !== "") {?>
-                                <a class="link" target="_blank" data-label="<?php echo $row["pieceScoreFileName"];?>" href="https://futuresymphony.lt/api/files.php?key=<?php echo $row["reg_key"];?>&file=pieceScoreFile">
+                                <a class="link" target="_blank" data-label="<?php echo $row["pieceScoreFileName"];?>" href="/api/files.php?key=<?php echo $row["reg_key"];?>&file=pieceScoreFile">
                                     Download
                                 </a>
                             <?php }?>
                         </td>
                         <td>
                             <?php if ($row["pieceDemoFileName"] !== null && $row["pieceDemoFileName"] !== "") { ?>
-                                <a class="link" target="_blank" data-label="<?php echo $row["pieceDemoFileName"]; ?>" href="https://futuresymphony.lt/api/files.php?key=<?php echo $row["reg_key"];?>&file=pieceDemoFile">
+                                <a class="link" target="_blank" data-label="<?php echo $row["pieceDemoFileName"]; ?>" href="/api/files.php?key=<?php echo $row["reg_key"];?>&file=pieceDemoFile">
                                     Download
                                 </a>
                             <?php }?>
@@ -216,7 +216,7 @@
                         <td><?php echo $row["scoreConfirmations"];?></td>
                         <td>
                             <?php if ($row["proofOfPaymentFileName"] !== null && $row["proofOfPaymentFileName"] !== "") { ?>
-                                <a class="link" target="_blank" data-label="<?php echo $row["proofOfPaymentFileName"]; ?>" href="https://futuresymphony.lt/api/files.php?key=<?php echo $row["reg_key"];?>&file=proofOfPaymentFile">
+                                <a class="link" target="_blank" data-label="<?php echo $row["proofOfPaymentFileName"]; ?>" href="/api/files.php?key=<?php echo $row["reg_key"];?>&file=proofOfPaymentFile">
                                     Download
                                 </a>
                             <?php }?>

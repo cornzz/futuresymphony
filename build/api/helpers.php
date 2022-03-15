@@ -18,7 +18,7 @@
             return FALSE;
 
         $formKeysNewRegistration = array("firstName", "lastName", "email", "dateOfBirth", "country");
-        $formKeysRest = array("idCopy", "pieceTitle", "annotation", "pieceScore", "pieceDemo", "instrumentation", "remarks", "scoreConfirmations", "proofOfPayment");
+        $formKeysRest = array("pieceTitle", "annotation", "instrumentation", "remarks", "scoreConfirmations");
         foreach ($formKeysNewRegistration as $key) {
             if (!array_key_exists($key, $form) || $form[$key] == "")
                 return FALSE;
@@ -61,5 +61,21 @@
         }
 
         return TRUE;
+    }
+
+    function ValidateFile($file, $max_size, $types) {
+        if ($file === null)
+            return TRUE;
+
+        if (filesize($file["tmp_name"]) > $max_size)
+            return FALSE;
+
+        $matchingType = FALSE;
+        foreach ($types as $type) {
+            if (str_contains(mime_content_type($file["tmp_name"]), $type))
+                $matchingType = TRUE;
+        }
+
+        return $matchingType;
     }
 ?>

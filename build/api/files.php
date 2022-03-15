@@ -32,6 +32,19 @@
         $pieceScoreFile = isset($_FILES["pieceScoreFile"]) ? $_FILES["pieceScoreFile"] : null;
         $pieceDemoFile = isset($_FILES["pieceDemoFile"]) ? $_FILES["pieceDemoFile"] : null;
         $proofOfPaymentFile = isset($_FILES["proofOfPaymentFile"]) ? $_FILES["proofOfPaymentFile"] : null;
+        $fileValidation = [
+            [$idCopyFile, 2097152, ["application/pdf", "image/"]],
+            [$pieceScoreFile, 10485760, ["application/pdf"]],
+            [$pieceDemoFile, 31457280, ["audio/mpeg"]],
+            [$proofOfPaymentFile, 2097152, ["application/pdf", "image/"]]
+        ];
+        foreach ($fileValidation as $fv) {
+            if (!ValidateFile(...$fv)) {
+                http_response_code(400);
+                echo "Invalid file type or size: ".$fv[0]["name"];
+                return;
+            }
+        }
 
         // Upload files
         foreach (
@@ -57,10 +70,8 @@
             }
         }
     } else if (
-        isset($_GET["key"]) &&
-        $_GET["key"] !== "" &&
-        isset($_GET["file"]) &&
-        in_array($_GET["file"], array("idCopyFile", "pieceScoreFile", "pieceDemoFile", "proofOfPaymentFile"))
+        isset($_GET["key"]) && $_GET["key"] !== "" &&
+        isset($_GET["file"]) && in_array($_GET["file"], array("idCopyFile", "pieceScoreFile", "pieceDemoFile", "proofOfPaymentFile"))
     ) {
         $reg_key = $_GET["key"];
         $file = $_GET["file"];
