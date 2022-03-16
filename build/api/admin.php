@@ -109,12 +109,14 @@
             ]
 
             function showInstrumentation(selection) {
-                let text = selection.map((e, i) => `${e.filter(Boolean).length}x ${orchestra[i].name}`).filter(e => !e.startsWith('0')).join('\n')
+                let text = selection
+                    .map((e, i) => `${e.filter(Boolean).length}x ${orchestra[i].name}`)
+                    .filter(e => !e.startsWith('0')).join('\n')
                 window.alert(text)
             }
 
-            function showContent(content) {
-                window.alert(content)
+            function showContent(target) {
+                window.alert(target.dataset.content)
             }
         </script>
     </head>
@@ -126,6 +128,10 @@
 
             $result = $conn->query("SELECT a.id, b.reg_key, b.email, b.firstName, b.lastName, b.dateOfBirth, b.country, b.pieceTitle, b.annotation, b.instrumentation, b.remarks, b.scoreConfirmations, b.paymentConfirmed, b.complete, b.secondRound, c.idCopyFileName, c.pieceScoreFileName, c.pieceDemoFileName, c.proofOfPaymentFileName FROM new_registrations AS a JOIN registrations AS b ON a.reg_key = b.reg_key JOIN user_files AS c ON b.reg_key = c.reg_key");
             $resultUnconfirmed = $conn->query("SELECT a.id, a.reg_key, a.email, a.firstName, a.lastName, a.dateOfBirth, a.country FROM new_registrations AS a LEFT JOIN registrations AS b ON a.reg_key = b.reg_key WHERE b.reg_key IS NULL");
+
+            function esc($string) {
+                return htmlspecialchars($string, ENT_QUOTES, 'UTF-8');
+            }
         ?>
         <div class="table-wrapper">
             <h1>Registrations</h1>
@@ -165,50 +171,73 @@
                                 <?php echo $row["reg_key"];?>
                             </a>
                         </td>
-                        <td><?php echo $row["email"];?></td>
-                        <td><?php echo $row["firstName"];?></td>
-                        <td><?php echo $row["lastName"];?></td>
-                        <td><?php echo $row["dateOfBirth"];?></td>
-                        <td><?php echo $row["country"];?></td>
+                        <td><?php echo esc($row["email"]);?></td>
+                        <td><?php echo esc($row["firstName"]);?></td>
+                        <td><?php echo esc($row["lastName"]);?></td>
+                        <td><?php echo esc($row["dateOfBirth"]);?></td>
+                        <td><?php echo esc($row["country"]);?></td>
                         <td>
                             <?php if ($row["idCopyFileName"] !== null && $row["idCopyFileName"] !== "") {?>
-                                <a class="link" target="_blank" data-label="<?php echo $row["idCopyFileName"];?>" href="/api/files.php?key=<?php echo $row["reg_key"];?>&file=idCopyFile">
+                                <a
+                                    class="link"
+                                    target="_blank"
+                                    data-label="<?php echo esc($row["idCopyFileName"]);?>"
+                                    href="/api/files.php?key=<?php echo $row["reg_key"];?>&file=idCopyFile"
+                                >
                                     Download
                                 </a>
                             <?php }?>
                         </td>
-                        <td><?php echo $row["pieceTitle"];?></td>
+                        <td><?php echo esc($row["pieceTitle"]);?></td>
                         <td>
                             <?php if ($row["annotation"] !== null && $row["annotation"] !== "") {?>
-                                <span class="link" onClick="showContent('<?php echo $row["annotation"];?>')">
+                                <span
+                                    class="link"
+                                    data-content="<?php echo esc($row["annotation"]);?>"
+                                    onclick="showContent(this)"
+                                >
                                     Click to see
                                 </span>
                             <?php }?>
                         </td>
                         <td>
                             <?php if ($row["pieceScoreFileName"] !== null && $row["pieceScoreFileName"] !== "") {?>
-                                <a class="link" target="_blank" data-label="<?php echo $row["pieceScoreFileName"];?>" href="/api/files.php?key=<?php echo $row["reg_key"];?>&file=pieceScoreFile">
+                                <a
+                                    class="link"
+                                    target="_blank"
+                                    data-label="<?php echo esc($row["pieceScoreFileName"]);?>"
+                                    href="/api/files.php?key=<?php echo $row["reg_key"];?>&file=pieceScoreFile"
+                                >
                                     Download
                                 </a>
                             <?php }?>
                         </td>
                         <td>
                             <?php if ($row["pieceDemoFileName"] !== null && $row["pieceDemoFileName"] !== "") { ?>
-                                <a class="link" target="_blank" data-label="<?php echo $row["pieceDemoFileName"]; ?>" href="/api/files.php?key=<?php echo $row["reg_key"];?>&file=pieceDemoFile">
+                                <a
+                                    class="link"
+                                    target="_blank"
+                                    data-label="<?php echo esc($row["pieceDemoFileName"]); ?>"
+                                    href="/api/files.php?key=<?php echo $row["reg_key"];?>&file=pieceDemoFile"
+                                >
                                     Download
                                 </a>
                             <?php }?>
                         </td>
                         <td>
                             <?php if ($row["instrumentation"] !== null) {?>
-                                <span class="link" onClick="showInstrumentation(<?php echo $row["instrumentation"];?>)">
+                                <span class="link" onclick="showInstrumentation(<?php echo $row['instrumentation'];?>)">
                                     Click to see
                                 </span>
                             <?php }?>
                         </td>
                         <td>
                             <?php if ($row["remarks"] !== null && $row["remarks"] !== "") { ?>
-                                <span class="link" onClick="showContent('<?php echo $row["remarks"];?>')">
+                                <span
+                                    class="link"
+                                    data-content="<?php echo esc($row["remarks"]);?>"
+                                    onclick="showContent(this)"
+                                >
                                     Click to see
                                 </span>
                             <?php }?>
@@ -216,7 +245,12 @@
                         <td><?php echo $row["scoreConfirmations"];?></td>
                         <td>
                             <?php if ($row["proofOfPaymentFileName"] !== null && $row["proofOfPaymentFileName"] !== "") { ?>
-                                <a class="link" target="_blank" data-label="<?php echo $row["proofOfPaymentFileName"]; ?>" href="/api/files.php?key=<?php echo $row["reg_key"];?>&file=proofOfPaymentFile">
+                                <a
+                                    class="link"
+                                    target="_blank"
+                                    data-label="<?php echo esc($row["proofOfPaymentFileName"]); ?>"
+                                    href="/api/files.php?key=<?php echo $row["reg_key"];?>&file=proofOfPaymentFile"
+                                >
                                     Download
                                 </a>
                             <?php }?>
@@ -252,11 +286,11 @@
                         <tr class="unconfirmed">
                             <td><?php echo $row["id"];?></td>
                             <td><?php echo $row["reg_key"];?></td>
-                            <td><?php echo $row["email"];?></td>
-                            <td><?php echo $row["firstName"];?></td>
-                            <td><?php echo $row["lastName"];?></td>
-                            <td><?php echo $row["dateOfBirth"];?></td>
-                            <td><?php echo $row["country"];?></td>
+                            <td><?php echo esc($row["email"]);?></td>
+                            <td><?php echo esc($row["firstName"]);?></td>
+                            <td><?php echo esc($row["lastName"]);?></td>
+                            <td><?php echo esc($row["dateOfBirth"]);?></td>
+                            <td><?php echo esc($row["country"]);?></td>
                         </tr>
                     <?php
                         }
