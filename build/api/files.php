@@ -33,7 +33,7 @@
         $pieceDemoFile = isset($_FILES["pieceDemoFile"]) ? $_FILES["pieceDemoFile"] : null;
         $proofOfPaymentFile = isset($_FILES["proofOfPaymentFile"]) ? $_FILES["proofOfPaymentFile"] : null;
         $fileValidation = [
-            [$idCopyFile, 2097152, ["application/pdf", "image/"]],
+            [$idCopyFile, 5242880, ["application/pdf", "image/"]],
             [$pieceScoreFile, 10485760, ["application/pdf"]],
             [$pieceDemoFile, 31457280, ["audio/mpeg"]],
             [$proofOfPaymentFile, 2097152, ["application/pdf", "image/"]]

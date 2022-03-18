@@ -138,7 +138,7 @@
             <FileInput
                 name="idCopy"
                 label={'registration.form.idCopy'}
-                maxSize={2097152}
+                maxSize={5242880}
                 accept="image/*,application/pdf"
                 bind:value={dto.idCopy}
                 bind:files={dto.files.idCopyFile}
