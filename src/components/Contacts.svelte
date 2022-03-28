@@ -22,9 +22,10 @@
     <div style="padding: 0 0 5px 30px;">
         Džiugas Daugirda &ndash; <span on:click="{mail}" class="contactlink mail" data-user="dziugas"></span>
     </div>
-    <b>{$_('contacts.facebook')}:</b>
+    <b>{$_('contacts.socialMedia')}:</b>
     <div style="padding: 0 0 5px 30px;">
-        <a href="https://www.facebook.com/FScompetition" class="link" target="_blank">Future Symphony Competition</a>
+        <a href="https://www.facebook.com/FScompetition" class="link" target="_blank">Facebook - Future Symphony Competition</a><br>
+        <a href="https://www.youtube.com/channel/UCMQ-o5ylqM9DBZfNiD6bVGA/videos" class="link" target="_blank">YouTube - Future Symphony Competition</a>
     </div>
     <b>{$_('contacts.webdesign')}:</b>
     <div style="padding: 0 0 5px 30px;">
