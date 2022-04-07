@@ -1,28 +1,70 @@
 <script lang="ts">
     import { _ } from 'svelte-i18n'
+    import { createEventDispatcher } from 'svelte'
 
     export let name: string
     export let label: string
     export let value: string = ''
     export let options: string[][]
+    export let otherOption: string = null
     export let disabled: boolean = false
+    
+    const dispatch = createEventDispatcher()
+
+    let selectElement: HTMLSelectElement
+    let otherElement: HTMLInputElement
+    let other: boolean = false
+
+    function handleInput(): void {
+        other = selectElement.value === otherOption
+        value = other && otherElement?.value ? otherElement.value : selectElement.value
+        dispatch('input')
+    }
+
+    $: if (selectElement && otherOption) {
+        other = value && options.every(o => o[0] !== value) || [value, selectElement.value].includes(otherOption)
+        if (options.some(o => o[0] === value) && selectElement.value !== otherOption) {
+            selectElement.value = value
+        } else if (otherElement && options.every(o => o[0] !== value)) {
+            selectElement.value = otherOption
+            otherElement.value = value
+        }
+    }
 </script>
 
-<div>
-    <label for={name} data-label={label}>{$_(label)}</label>
-    <div class="background" {disabled}>
-        <select id={name} type="select" bind:value on:input {disabled} required>
-            {#each options as option}
-                <option value={option[0]}>
-                    {option[1]}
-                </option>
-            {/each}
-        </select>
+<div class="container">
+    <div>
+        <label for={name} data-label={label}>{$_(label)}</label>
+        <div class="background" {disabled}>
+            <select
+                id={name}
+                type="select"
+                bind:this={selectElement}
+                on:input={handleInput}
+                {disabled}
+                required
+            >
+                {#each options as option}
+                    <option value={option[0]}>
+                        {option[1]}
+                    </option>
+                {/each}
+            </select>
+        </div>
     </div>
+    {#if other}
+        <input type="text" on:input={handleInput} bind:this={otherElement} />
+    {/if}
 </div>
 
 <style lang="stylus">
     @require 'input.styl'
+
+    .container
+        display flex
+        flex-direction row
+        column-gap 20px
+        align-items flex-end
 
     select
         appearance none

@@ -34,7 +34,6 @@
 
     export function saveForm(): void {
         if (newRegistration) {
-            console.log('saving...')
             clearTimeout(saveIndicatorTimeout1)
             clearTimeout(saveIndicatorTimeout2)
             localStorage.setItem('newRegistrationDto', JSON.stringify(dto))
@@ -78,7 +77,9 @@
 
     onMount(() => {
         if (newRegistration) {
-            dto = JSON.parse(localStorage.getItem('newRegistrationDto')) ?? new RegistrationDTO()
+            try {
+                dto = JSON.parse(localStorage.getItem('newRegistrationDto')) ?? new RegistrationDTO()
+            } catch (e) {}
         }
 
         return () => clearTimeout(inputTimeout)
