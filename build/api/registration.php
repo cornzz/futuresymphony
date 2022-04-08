@@ -41,12 +41,13 @@
                 annotation=?,
                 instrumentation=?,
                 remarks=?,
-                scoreConfirmations=?
+                scoreConfirmations=?,
+                referrer=?
             WHERE reg_key=?"
         );
         $instrumentation = json_encode($form["instrumentation"]);
         $scoreConfirmations = json_encode($form["scoreConfirmations"]);
-        $stmt->bind_param("ssssssssss",
+        $stmt->bind_param("sssssssssss",
             $form["firstName"],
             $form["lastName"],
             $form["dateOfBirth"],
@@ -56,6 +57,7 @@
             $instrumentation,
             $form["remarks"],
             $scoreConfirmations,
+            $form["referrer"],
             $form["reg_key"]
         );
         $success = $stmt->execute();
