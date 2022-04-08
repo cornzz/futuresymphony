@@ -18,7 +18,7 @@
             return FALSE;
 
         $formKeysNewRegistration = array("firstName", "lastName", "email", "dateOfBirth", "country");
-        $formKeysRest = array("pieceTitle", "annotation", "instrumentation", "remarks", "scoreConfirmations");
+        $formKeysRest = array("pieceTitle", "annotation", "instrumentation", "remarks", "scoreConfirmations", "referrer");
         foreach ($formKeysNewRegistration as $key) {
             if (!array_key_exists($key, $form) || $form[$key] == "")
                 return FALSE;
@@ -64,9 +64,6 @@
     }
 
     function ValidateFile($file, $max_size, $types) {
-        if ($file === null)
-            return TRUE;
-
         if (filesize($file["tmp_name"]) > $max_size)
             return FALSE;
 

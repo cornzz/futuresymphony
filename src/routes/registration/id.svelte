@@ -16,16 +16,15 @@
     let initialLoad: boolean = false
     let disabled: boolean = false
     let invalidFields: string[] = []
-    let error: string = ''
+    let error: [string, Object] = null
     let formChanged: boolean = false
     let cachedDto: RegistrationDTO = null
     let deadline: boolean = new Date() > new Date('Jun 30 2022 23:59:59 GMT+0200')
 
     async function saveForm(): Promise<boolean> {
-        error = ''
+        error = null
         await tick()
         if (form.reportValidity('#firstName, #lastName, #email, #dateOfBirth, #country, #idCopy, #pieceScore, #pieceDemo, #proofOfPayment')) {
-            invalidFields = form.getInvalid()
             console.log(`saving registration ${registrationID}`)
             $loading = true
             // Submit form data
@@ -52,15 +51,19 @@
                     dto.files.proofOfPaymentFile = undefined
                     formChanged = false
                     $loading = false
+                    invalidFields = form.getInvalid()
                     return true
                 }
             }
             // One of the requests failed, display error
             let responseText = await response.text()
             if (responseText === 'Invalid form.') {
-                error = 'registration.form.error.invalidForm'
+                error = ['registration.form.error.invalidForm', {}]
+            } else if (responseText.startsWith('')) {
+                let invalidFiles = responseText.split(': ').pop()
+                error = ['registration.form.error.fileError', { values: { files: invalidFiles } }]
             } else {
-                error = 'registration.form.error.errorOccurred'
+                error = ['registration.form.error.errorOccurred', {}]
             }
             $loading = false
         }
@@ -83,8 +86,10 @@
         $loading = false
         initialLoad = true
         await tick()
-        invalidFields = form.getInvalid()
-        disabled = true
+        if (form) {
+            invalidFields = form.getInvalid()
+            disabled = true
+        }
     })
 </script>
 
@@ -111,7 +116,7 @@
     {/if}
     {#if error}
         <InfoBox type="error">
-            {$_(error)}
+            {$_(...error)}
         </InfoBox>
     {/if}
     <RegistrationForm
@@ -125,7 +130,7 @@
                 type="outline"
                 on:click={() => {
                     disabled = true
-                    error = ''
+                    error = null
                     dto = { ...cachedDto }
                 }}
                 disabled={$loading}
@@ -142,7 +147,7 @@
                     disabled = !disabled && (!formChanged || await saveForm());
                     (disabled || error) && document.getElementById('back').click()
                     disabled && form.closeSubsections()
-                    cachedDto = !disabled && error === '' ? JSON.parse(JSON.stringify(dto)) : cachedDto
+                    cachedDto = !disabled && !error ? JSON.parse(JSON.stringify(dto)) : cachedDto
                 }}
                 disabled={$loading}
             >
