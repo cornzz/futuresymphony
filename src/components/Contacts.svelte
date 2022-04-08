@@ -29,7 +29,8 @@
     </div>
     <b>{$_('contacts.webdesign')}:</b>
     <div style="padding: 0 0 5px 30px;">
-        Cornelius Kummer &ndash; <a href="https://corny.me" class="link" target="_blank">www.corny.me</a>
+        Cornelius Kummer &ndash; <span on:click="{mail}" class="contactlink mail" data-user="cornelius"></span><br>
+        <a href="https://corny.me" class="link" target="_blank">www.corny.me</a>
     </div>
 </div> 
 
