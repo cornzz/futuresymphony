@@ -7,7 +7,7 @@
     import Payment from './Payment.svelte'
     import { _ } from 'svelte-i18n'
     import { RegistrationDTO } from '../../helpers/RegistrationDTO'
-    import { countries } from '../../helpers/countryCodes'
+    import { referrers, countries } from '../../helpers/selectData'
     import { onMount } from 'svelte'
 
     export let disabled: boolean = false
@@ -170,6 +170,18 @@
             />
         </div>
         <hr>
+        <div class="referrer">
+            <Select
+                name="referrer"
+                label={'registration.form.referrer.title'}
+                bind:value={dto.referrer}
+                on:input={handleInput}
+                options={referrers}
+                otherOption="other"
+                optional
+                {disabled}
+            />
+        </div>
     {/if}
     <div class="checkbox">
         <Checkbox
@@ -204,7 +216,41 @@
             color var(--color-light-gray)
             transition all 1s ease
 
+        hr
+            margin 0
+        
+        .subsection-title
+            position relative
+            padding 15px 0
+
+            &:hover
+                cursor pointer
+
+            &:after
+                content ''
+                position absolute
+                top 42%
+                right 5px
+                width 10px
+                height 10px
+                border-bottom solid 3px grey
+                border-left solid 3px grey
+                border-radius 1px
+                transform translateY(-5px) rotate(-45deg)
+                transition transform 0.2s ease
+
+            &:global(.active:after)
+                transform translateY(0px) rotate(135deg)
+        
+        .subsection
+            height 0px
+            margin 0 -3px
+            padding 0 3px
+            transition height 0.4s ease
+            overflow hidden
+
         .checkbox
+        .referrer
             margin-top 15px
 
     .buttons
@@ -213,39 +259,6 @@
         display grid
         grid-template-columns 1fr 1fr
         column-gap 15px
-    
-    hr
-        margin 0
-    
-    .subsection-title
-        position relative
-        padding 15px 0
-
-        &:hover
-            cursor pointer
-
-        &:after
-            content ''
-            position absolute
-            top 42%
-            right 5px
-            width 10px
-            height 10px
-            border-bottom solid 3px grey
-            border-left solid 3px grey
-            border-radius 1px
-            transform translateY(-5px) rotate(-45deg)
-            transition transform 0.2s ease
-
-        &:global(.active:after)
-            transform translateY(0px) rotate(135deg)
-    
-    .subsection
-        height 0px
-        margin 0 -3px
-        padding 0 3px
-        transition height 0.4s ease
-        overflow hidden
 
     @media screen and (max-width 525px)
         .form

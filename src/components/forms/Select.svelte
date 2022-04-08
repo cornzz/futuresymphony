@@ -7,6 +7,7 @@
     export let value: string = ''
     export let options: string[][]
     export let otherOption: string = null
+    export let optional: boolean = false
     export let disabled: boolean = false
     
     const dispatch = createEventDispatcher()
@@ -21,7 +22,7 @@
         dispatch('input')
     }
 
-    $: if (selectElement && otherOption) {
+    $: if (selectElement) {
         other = value && options.every(o => o[0] !== value) || [value, selectElement.value].includes(otherOption)
         if (options.some(o => o[0] === value) && selectElement.value !== otherOption) {
             selectElement.value = value
@@ -34,7 +35,9 @@
 
 <div class="container">
     <div>
-        <label for={name} data-label={label}>{$_(label)}</label>
+        <label for={name} data-label={label}>
+            {$_(label)} {optional ? `(${$_('registration.form.optional')})` : ''}
+        </label>
         <div class="background" {disabled}>
             <select
                 id={name}
@@ -42,18 +45,30 @@
                 bind:this={selectElement}
                 on:input={handleInput}
                 {disabled}
-                required
+                required={!optional}
             >
+                <option hidden value>{$_('registration.form.pleaseSelect')}</option>
                 {#each options as option}
                     <option value={option[0]}>
-                        {option[1]}
+                        {option[1][0] === '$' ? $_(option[1].slice(1)) : option[1]}
                     </option>
                 {/each}
             </select>
         </div>
     </div>
     {#if other}
-        <input type="text" on:input={handleInput} bind:this={otherElement} />
+        <div>
+            <label for={`${name}-other`} data-label={label}/>
+            <input
+                id={`${name}-other`}
+                type="text"
+                placeholder={$_('registration.form.pleaseEnter')}
+                on:input={handleInput}
+                bind:this={otherElement}
+                {disabled}
+                required={!optional}
+            />
+        </div>
     {/if}
 </div>
 
@@ -61,30 +76,37 @@
     @require 'input.styl'
 
     .container
-        display flex
-        flex-direction row
-        column-gap 20px
-        align-items flex-end
+        display grid
+        grid-auto-columns 1fr
+        grid-auto-flow column
+        column-gap 40px
+        row-gap 5px
+        align-items end
 
-    select
-        appearance none
+        .background
+            position relative
 
-        &:hover:enabled
-            cursor pointer
+            select
+                appearance none
+
+                &:hover:enabled
+                    cursor pointer
+
+            &:after
+                content ''
+                width 12px
+                height 40px
+                position absolute
+                right 0
+                background no-repeat center url("data:image/svg+xml,%3csvg width='12px' height='6px' viewBox='0 0 12 6' xmlns='http://www.w3.org/2000/svg' %3e %3cg stroke='none' stroke-width='1' fill='none' fill-rule='evenodd' stroke-linecap='round' stroke-linejoin='round'%3e %3cpolyline id='Line-Copy-3' stroke='black' stroke-width='2' transform='translate(6.000000%2c 3.000000) scale(-1%2c 1) translate(-6.000000%2c -3.000000) ' points='1 1 6.05076272 5 11 1'%3e%3c/polyline%3e %3c/g%3e%3c/svg%3e")
+                margin-right 10px
+                pointer-events none
+
+            &[disabled="true"]:after
+                opacity 0.5
     
-    .background
-        position relative
-
-        &:after
-            content ''
-            width 12px
-            height 40px
-            position absolute
-            right 0
-            background no-repeat center url("data:image/svg+xml,%3csvg width='12px' height='6px' viewBox='0 0 12 6' xmlns='http://www.w3.org/2000/svg' %3e %3cg stroke='none' stroke-width='1' fill='none' fill-rule='evenodd' stroke-linecap='round' stroke-linejoin='round'%3e %3cpolyline id='Line-Copy-3' stroke='black' stroke-width='2' transform='translate(6.000000%2c 3.000000) scale(-1%2c 1) translate(-6.000000%2c -3.000000) ' points='1 1 6.05076272 5 11 1'%3e%3c/polyline%3e %3c/g%3e%3c/svg%3e")
-            margin-right 10px
-            pointer-events none
-
-    .background[disabled="true"]:after
-        opacity 0.5
+    @media screen and (max-width 525px)
+        .container
+            grid-auto-flow initial
+            row-gap 5px
 </style>

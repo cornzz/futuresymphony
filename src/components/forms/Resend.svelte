@@ -60,11 +60,11 @@
     <hr>
     <div class="resend" class:success>
         {#if !success}
-            <span>{$_('registration.resend.yourEmail')}:</span>
+            <span>{$_('registration.resend.enterYourEmail')}:</span>
             <Input
                 type="email"
                 name="resendEmail"
-                placeholder="person@example.com"
+                placeholder={$_('registration.resend.yourEmail')}
                 bind:value={email}
                 on:keyup={(e) => e.key === 'Enter' && resendEmail()}
             />

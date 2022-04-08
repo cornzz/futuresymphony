@@ -6,7 +6,6 @@
     import { loading, baseURL, showBack } from '../../helpers/stores'
     import { _ } from 'svelte-i18n'
     import { onMount, tick } from 'svelte'
-    import { dev } from '$app/env'
 
     export let dto: RegistrationDTO = null
 
@@ -68,11 +67,6 @@
         return false
     }
 
-    $: if (form) {
-        invalidFields = form.getInvalid()
-        disabled = true
-    }
-
     onMount(async () => {
         $loading = true
         registrationID = window.location.search.substring(1)
@@ -88,6 +82,9 @@
         }
         $loading = false
         initialLoad = true
+        await tick()
+        invalidFields = form.getInvalid()
+        disabled = true
     })
 </script>
 

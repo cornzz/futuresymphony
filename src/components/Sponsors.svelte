@@ -97,6 +97,7 @@
 
                 &:hover
                     opacity 1
+                    transform scale(103%)
 
         .text
             font-family 'Audiowide', "Courier New"
@@ -109,6 +110,7 @@
             &:hover
                 text-shadow 0 1px 1px rgba(0,0,0,.4)
                 cursor default
+                transform scale(103%)
 
     @media screen and (max-device-width: 600px)
         .content

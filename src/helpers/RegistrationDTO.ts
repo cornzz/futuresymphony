@@ -13,6 +13,7 @@ export class RegistrationDTO {
     remarks?: string
     scoreConfirmations?: boolean[] = [false, false, false]
     proofOfPayment?: string
+    referrer?: string
     files: {
         idCopyFile?: FileList
         pieceScoreFile?: FileList

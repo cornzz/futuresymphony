@@ -1,3 +1,12 @@
+export let referrers = [
+    ["facebook", "Facebook"],
+    ["instagram", "Instagram"],
+    ["composerssite", "Composers Site"],
+    ["wordOfMouth", "$registration.form.referrer.wordOfMouth"],
+    ["edInst", "$registration.form.referrer.edInst"],
+    ["other", "$registration.form.referrer.other"],
+]
+
 export let countries = [
     ["AF", "Afghanistan"],
     ["AX", "\u00c5land Islands"],
