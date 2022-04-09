@@ -59,7 +59,7 @@
             let responseText = await response.text()
             if (responseText === 'Invalid form.') {
                 error = ['registration.form.error.invalidForm', {}]
-            } else if (responseText.startsWith('')) {
+            } else if (responseText.startsWith('Invalid file type or size:')) {
                 let invalidFiles = responseText.split(': ').pop()
                 error = ['registration.form.error.fileError', { values: { files: invalidFiles } }]
             } else {

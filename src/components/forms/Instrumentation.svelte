@@ -17,7 +17,7 @@
 
 <div>
     <label for="instrumentation" data-label={'registration.form.instrumentation'}>{$_('registration.form.instrumentation')}</label>
-    <div class="instrumentation">
+    <div class="instrumentation" {disabled}>
         {#if totalSelected < 30}
             {@html $_('registration.form.min30')}
             <input id="instrumentation" style="display: none" required>
@@ -60,10 +60,12 @@
         white-space nowrap
 
     .instrumentation
-        background-color var(--color-background)
         border-radius var(--border-radius)
         border solid 1px var(--color-border)
         padding 5px
+
+        &[disabled="true"]
+            background-color var(--color-background)
 
         .checkboxes
             margin-top 10px
