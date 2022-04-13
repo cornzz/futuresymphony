@@ -87,7 +87,7 @@
             <a href="https://ayaladler.com/" class="link" target="_blank">Ayal Adler</a> (Izraelis)<br>
             <!-- <a href="https://www.emic.ee/helena-tulve" class="link" target="_blank">Helena Tulve</a> (Estija)<br> -->
         </p>
-        <p><b>Grand Prix</b> bus apdovanotas <b>1500 € piniginiu prizu</b> bei kūrinio įtraukimu į vieną iš Lietuvos nacionalinio simfoninio orkestro (LNSO) 2022–23 metų sezono koncertų. Kiti 2–3 geriausi kompozitoriai bus apdovanoti <i>Laureato diplomu</i> ir <b>pasidalins 1500 € prizinį fondą</b> lygiomis dalimis. Be to, visi kompozitoriai patekę į 2-ąjį turą gaus profesionalius savo kūrinių įrašus.</p>
+        <p><b>Grand Prix</b> bus apdovanotas <b>1500 € piniginiu prizu</b> bei kūrinio įtraukimu į vieną iš <b>Lietuvos nacionalinio simfoninio orkestro</b> (LNSO) 2022–23 metų sezono koncertų. Kiti 2–3 geriausi kompozitoriai bus apdovanoti <i>Laureato diplomu</i> ir <b>pasidalins 1500 € prizinį fondą</b> lygiomis dalimis. Be to, visi kompozitoriai patekę į 2-ąjį turą gaus profesionalius savo kūrinių įrašus.</p>
     {/if}
 </div>
 
