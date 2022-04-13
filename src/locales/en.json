@@ -114,6 +114,10 @@
             "max30": "You can choose up to <b>35 performers</b>.",
             "remarks": "Remarks",
             "proofOfPayment": "Proof of payment",
+            "billingAddress": {
+                "label": "Billing address",
+                "placeholder": "Street, house no., postcode, city"
+            },
             "referrer": {
                 "title": "How did you hear about FSC?",
                 "wordOfMouth": "Word of mouth",

@@ -114,6 +114,10 @@
             "max30": "Galite pasirinkti iki <b>35 atlikėjų</b>.",
             "remarks": "Pastabos",
             "proofOfPayment": "Perlaidą patvirtinantis dokumentas",
+            "billingAddress": {
+                "label": "Atsiskaitymo adresas",
+                "placeholder": "Gatvė, namo nr., pašto kodas, miestas"
+            },
             "referrer": {
                 "title": "Kaip sužinojote apie konkursą?",
                 "wordOfMouth": "Iš lūpų į lūpas",

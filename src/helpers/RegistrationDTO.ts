@@ -12,6 +12,7 @@ export class RegistrationDTO {
     instrumentation?: boolean[][]
     remarks?: string
     scoreConfirmations?: boolean[] = [false, false, false]
+    billingAddress?: string
     proofOfPayment?: string
     referrer?: string
     files: {

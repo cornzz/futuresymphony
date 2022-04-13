@@ -3,6 +3,7 @@
     import FileInput from './FileInput.svelte'
     import { createEventDispatcher, tick } from 'svelte'
     import { _ } from 'svelte-i18n'
+import Input from './Input.svelte'
 
     export let dto: RegistrationDTO
     export let disabled: boolean
@@ -35,6 +36,17 @@
         {@html dto.lastName ? dto.lastName : `<i>${$_('registration.form.lastName')}</i>`}
         {$_('payment.regToFSC')}
     </span>
+    <div class="address">
+        <Input
+            type="text"
+            name="billingAddress"
+            label={'registration.form.billingAddress.label'}
+            placeholder={$_('registration.form.billingAddress.placeholder')}
+            bind:value={dto.billingAddress}
+            on:input
+            {disabled}
+        />
+    </div>
     <div class="file">
         <FileInput
             name="proofOfPayment"
@@ -60,6 +72,7 @@
     span
         float right
 
+    .address
     .file
         margin-top 15px
 </style>

@@ -52,4 +52,7 @@
 
 <style lang="stylus">
     @require 'input.styl'
+
+    div
+        width 100%
 </style>
