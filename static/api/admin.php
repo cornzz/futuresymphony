@@ -126,7 +126,7 @@
 
             $conn = OpenCon();
 
-            $result = $conn->query("SELECT a.id, b.reg_key, b.email, b.firstName, b.lastName, b.dateOfBirth, b.country, b.pieceTitle, b.annotation, b.instrumentation, b.remarks, b.scoreConfirmations, b.referrer, b.paymentConfirmed, b.complete, b.secondRound, c.idCopyFileName, c.pieceScoreFileName, c.pieceDemoFileName, c.proofOfPaymentFileName FROM new_registrations AS a JOIN registrations AS b ON a.reg_key = b.reg_key JOIN user_files AS c ON b.reg_key = c.reg_key");
+            $result = $conn->query("SELECT a.id, b.reg_key, b.email, b.firstName, b.lastName, b.dateOfBirth, b.country, b.pieceTitle, b.annotation, b.instrumentation, b.remarks, b.scoreConfirmations, b.billingAddress, b.referrer, b.paymentConfirmed, b.complete, b.secondRound, c.idCopyFileName, c.pieceScoreFileName, c.pieceDemoFileName, c.proofOfPaymentFileName FROM new_registrations AS a JOIN registrations AS b ON a.reg_key = b.reg_key JOIN user_files AS c ON b.reg_key = c.reg_key");
             $resultUnconfirmed = $conn->query("SELECT a.id, a.reg_key, a.email, a.firstName, a.lastName, a.dateOfBirth, a.country FROM new_registrations AS a LEFT JOIN registrations AS b ON a.reg_key = b.reg_key WHERE b.reg_key IS NULL");
 
             function esc($string) {
@@ -154,6 +154,7 @@
                         <th>Remarks</th>
                         <th>Score confirmations</th>
                         <th>Proof of payment</th>
+                        <th>Billing address</th>
                         <th>Referrer</th>
                         <th>Payment confirmed</th>
                         <th>Registration complete</th>
@@ -256,6 +257,7 @@
                                 </a>
                             <?php }?>
                         </td>
+                        <td><?php echo $row["billingAddress"];?></td>
                         <td><?php echo $row["referrer"];?></td>
                         <td><?php echo $row["paymentConfirmed"];?></td>
                         <td><?php echo $row["complete"];?></td>

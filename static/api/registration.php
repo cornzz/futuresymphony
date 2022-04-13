@@ -42,12 +42,13 @@
                 instrumentation=?,
                 remarks=?,
                 scoreConfirmations=?,
+                billingAddress=?,
                 referrer=?
             WHERE reg_key=?"
         );
         $instrumentation = json_encode($form["instrumentation"]);
         $scoreConfirmations = json_encode($form["scoreConfirmations"]);
-        $stmt->bind_param("sssssssssss",
+        $stmt->bind_param("ssssssssssss",
             $form["firstName"],
             $form["lastName"],
             $form["dateOfBirth"],
@@ -57,6 +58,7 @@
             $instrumentation,
             $form["remarks"],
             $scoreConfirmations,
+            $form["billingAddress"],
             $form["referrer"],
             $form["reg_key"]
         );

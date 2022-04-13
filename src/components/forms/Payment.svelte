@@ -1,9 +1,9 @@
 <script lang="ts">
     import type { RegistrationDTO } from '../../helpers/RegistrationDTO'
+    import Input from './Input.svelte'
     import FileInput from './FileInput.svelte'
     import { createEventDispatcher, tick } from 'svelte'
     import { _ } from 'svelte-i18n'
-import Input from './Input.svelte'
 
     export let dto: RegistrationDTO
     export let disabled: boolean

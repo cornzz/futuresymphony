@@ -116,7 +116,7 @@
             "proofOfPayment": "Perlaidą patvirtinantis dokumentas",
             "billingAddress": {
                 "label": "Atsiskaitymo adresas",
-                "placeholder": "Gatvė, namo nr., pašto kodas, miestas"
+                "placeholder": "Gatvė, namo nr., pašto kodas, miestas, šalis"
             },
             "referrer": {
                 "title": "Kaip sužinojote apie konkursą?",

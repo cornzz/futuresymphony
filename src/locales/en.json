@@ -116,7 +116,7 @@
             "proofOfPayment": "Proof of payment",
             "billingAddress": {
                 "label": "Billing address",
-                "placeholder": "Street, house no., postcode, city"
+                "placeholder": "Street, house no., postcode, city, country"
             },
             "referrer": {
                 "title": "How did you hear about FSC?",
