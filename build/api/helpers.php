@@ -18,7 +18,7 @@
             return FALSE;
 
         $formKeysNewRegistration = array("firstName", "lastName", "email", "dateOfBirth", "country");
-        $formKeysRest = array("pieceTitle", "annotation", "instrumentation", "remarks", "scoreConfirmations", "referrer");
+        $formKeysRest = array("pieceTitle", "annotation", "instrumentation", "remarks", "scoreConfirmations", "billingAddress", "referrer");
         foreach ($formKeysNewRegistration as $key) {
             if (!array_key_exists($key, $form) || $form[$key] == "")
                 return FALSE;
