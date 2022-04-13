@@ -88,6 +88,7 @@
 
             select
                 appearance none
+                -webkit-appearance none
 
                 &:hover:enabled
                     cursor pointer
