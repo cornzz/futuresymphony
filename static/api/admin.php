@@ -69,6 +69,9 @@
                             targets: "_all",
                             className: 'dt-center'
                         }
+                    ],
+                    "order": [
+                        [ 0, "desc" ]
                     ]
                 });
                 $('#table2').DataTable({
@@ -77,6 +80,9 @@
                             targets: "_all",
                             className: 'dt-center'
                         }
+                    ],
+                    "order": [
+                        [ 0, "desc" ]
                     ]
                 });
             });
