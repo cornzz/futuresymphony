@@ -46,8 +46,8 @@
             <a href="https://ayaladler.com/" class="link" target="_blank">Ayal Adler</a> (Israel)<br>
             <!-- <a href="https://www.emic.ee/helena-tulve" class="link" target="_blank">Helena Tulve</a> (Estonia)<br> -->
         </p>
-        <p>The <b>Grand Prix</b> will be awarded a <b>1500 € cash prize</b>. The other 2–3 best composers will be awarded the <i>Laureate diploma</i> and <b>will share a 1500 € prize fund</b> in equal parts.</p>
-        <p>The authors of the pieces performed in the final concert will receive professional recordings of their pieces.</p>
+        <p>The <b>Grand Prix</b> will be awarded a <b>1500 € cash prize</b> and a performance by <b>the Lithuanian National Symphony Orchestra</b> (LNSO) in the season of 2022–23. The other 2–3 best composers will be awarded the <i>Laureate diploma</i> and <b>will share a 1500 € prize fund</b> in equal parts.</p>
+        <p>The authors of the pieces performed in the final concert will receive professional recordings of their pieces, while prizewinners will also have an opportunity to work with Lithuania's best music festivals.</p>
     {:else if $locale === 'lt'}
         <p>
             <span class="quote">Tai tarptautinio lygio konkursas, išryškinantis į ateitį orientuotą Lietuvos kultūrinį perspektyvumą, sukuriantis geriausias sąlygas aukščiausio lygio kultūriniams mainams.</span>
@@ -88,8 +88,8 @@
             <a href="https://ayaladler.com/" class="link" target="_blank">Ayal Adler</a> (Izraelis)<br>
             <!-- <a href="https://www.emic.ee/helena-tulve" class="link" target="_blank">Helena Tulve</a> (Estija)<br> -->
         </p>
-        <p><b>Grand Prix</b> bus apdovanotas <b>1500 € piniginiu prizu</b>. Kiti 2–3 geriausi kompozitoriai bus apdovanoti <i>Laureato diplomu</i> ir <b>pasidalins 1500 € prizinį fondą</b> lygiomis dalimis.</p>
-        <p>Visi baigiamajame koncerte skambėsiančių kūrinių autoriai taip pat gaus savo premjeros įrašus.</p>
+        <p><b>Grand Prix</b> bus apdovanotas <b>1500 € piniginiu prizu</b> bei kūrinio įtraukimu į vieną iš Lietuvos nacionalinio simfoninio orkestro (LNSO) 2022–23 metų sezono koncertų. Kiti 2–3 geriausi kompozitoriai bus apdovanoti <i>Laureato diplomu</i> ir <b>pasidalins 1500 € prizinį fondą</b> lygiomis dalimis.</p>
+        <p>Visi baigiamajame koncerte skambėsiančių kūrinių autoriai gaus savo premjeros įrašus, prizininkai taip pat turės galimybę dirbti su geriausios Lietuvos muzikos festivaliais.</p>
     {/if}
 </div>
 
