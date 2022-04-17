@@ -3,7 +3,6 @@
     
     import { onMount, tick } from 'svelte'
     import { _, locale } from 'svelte-i18n'
-    import { mail } from '../helpers'
     import { showLanding, showBack, sections } from '../helpers/stores'
     import LanguageSelector from './LanguageSelector.svelte';
 
@@ -177,12 +176,12 @@
     <a href="/privacy">
         Privacy Policy
     </a>
-    &nbsp; • &nbsp;
+    &nbsp; | &nbsp;
     <div class="desktop-only">
         <a href="https://www.facebook.com/FScompetition" class="social" target="_blank">
-            <img src="/images/fb_icon.svg" alt="fb_icon.svg" width="20">
+            <img src="/images/fb_icon.svg" alt="fb_icon.svg">
         </a>
-        &nbsp; • &nbsp;
+        &nbsp; | &nbsp;
     </div>
     <a href="https://futuresymphony.lt">
         &copy; 2018 - {new Date().getFullYear()} {showMobile ? 'FSC' : 'Future Symphony Competition'}

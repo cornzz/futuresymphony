@@ -116,7 +116,7 @@
 
     @media screen and (max-device-width: 600px)
         .news-link
-            margin-bottom 15px
+            margin-bottom 5px
 
         .news-link
             height 28%
