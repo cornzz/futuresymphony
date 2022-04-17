@@ -29,7 +29,7 @@
     display none
     grid-template-columns 42px 1fr 42px
     align-items center
-    height 50px
+    height 45px
     width 100%
 
     .menu
@@ -72,7 +72,9 @@
                     color rgba(255, 255, 255 0.9)
 
         hr
+            background-color rgba(255, 255, 255, .6)
             width 100px
+            height 2px
             margin 40px auto
 
         .language
@@ -91,14 +93,13 @@
         text-shadow 2px 2px 20px #666
         font-size clamp(17px, 5vmin, 25px)
         text-align center
-        line-height 50px
         white-space nowrap
         opacity 0
         transition all 0.2s ease
 
     .menu-icon
         display block
-        margin 10px
+        margin 0 10px
         width 22px
         height 28px 
         position relative
@@ -106,6 +107,9 @@
 
         &:hover
             cursor pointer
+
+            .line
+                background rgba(255,255,255,0.85)
 
         .line  
             position absolute
@@ -118,13 +122,13 @@
             transform-origin center
 
             &:nth-child(1)
-                top 7px
+                top 5px
 
             &:nth-child(2)
-                top 14px
+                top 12px
 
             &:nth-child(3)
-                top 21px
+                top 19px
 
         &.open
             .line:nth-child(1)

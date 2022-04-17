@@ -1,10 +1,12 @@
 <script lang="ts">
+    import ImageFrame from './ImageFrame.svelte'
     import Wrapper from '../components/Wrapper.svelte'
     import { onMount } from 'svelte'
     import { addMessages, init as init_i18n, _, locale } from 'svelte-i18n'
+    import { initSmoothScrolling } from '../helpers'
+    import { imageFrame } from '../helpers/stores'
     import en from '../locales/en.json'
     import lt from '../locales/lt.json'
-    import { initSmoothScrolling } from '../helpers'
 
     addMessages('en', en)
     addMessages('lt', lt)
@@ -43,6 +45,10 @@
         </Wrapper>
     </div>
 </div>
+
+<ImageFrame
+    bind:this={$imageFrame}
+/>
 
 <style global lang="stylus">
     @require '../styles/global.styl'
