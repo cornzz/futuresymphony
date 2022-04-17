@@ -1,6 +1,5 @@
 <script lang="ts">
     import { locale } from 'svelte-i18n'
-    import { imageFrame } from '../helpers/stores'
     import { fadeHeight } from '../helpers'
 
     let showFSO = false
@@ -23,13 +22,7 @@
             </p>
         </div>
         
-        <img
-            class="image right"
-            src="/images/about_1.jpg"
-            alt="Future Symphony Orchestra 1"
-            data-bigsrc="/images/about_1.jpg"
-            on:click={$imageFrame.toggleImageFrame}
-        >
+        <slot name="image1"></slot>
 
         <p>The 3<sup>rd</sup> International Composition Competition for Symphony Orchestra “Future Symphony” is a unique initiative of young musicians, striving to stimulate the evolution of symphonic tradition.</p>
         <p>The main objective of the competition is to encourage young composers all around the globe to write symphonic music and provide an opportunity to hear their compositions live. The competition seeks to discover new talents as well as to educate the new generation of musicians and develop an international bond between different cultures.</p>
@@ -46,13 +39,7 @@
             {/if}
         </p>
 
-        <img
-            class="image left" 
-            src="/images/about_2.jpg"
-            alt="Future Symphony Orchestra 1"
-            data-bigsrc="/images/about_2.jpg"
-            on:click={$imageFrame.toggleImageFrame}
-        >
+        <slot name="image2"></slot>
 
         <p>
             Scores will be judged by international professional composers, conductors and musicologists:<br>
@@ -82,6 +69,8 @@
                 – <b>Ayal Adler</b>, kompozitorius ir pianistas<br>
             </p>
         </div>
+
+        <slot name="image1"></slot>
         
         <p>III tarptautinis kompozicijų simfoniniam orkestrui konkursas <i>„Future Symphony“</i> – tai jaunųjų kūrėjų, kuriems rūpi simfoninės tradicijos evoliucija, iniciatyva.</p>
         <p>Pagrindinis <i>„Future Symphony“</i> konkurso tikslas – suteikti galimybę jauniesiems kompozitoriams išbandyti simfoninės kūrybos lauką. Konkursas siekia atskleisti naujus kompozicijos talentus, aktualiosios muzikos kūriniais ugdyti jaunąją atlikėjų kartą ir sukurti tarptautiniam bendradarbiavimui palankią kūrybinę erdvę.</p>
@@ -97,6 +86,9 @@
                 </div>
             {/if}
         </p>
+
+        <slot name="image2"></slot>
+
         <p>
             Koncerto metu kūrinius vertins profesionali tarptautinė kompozitorių, dirigentų ir muzikologų žiuri:<br>
             <a href="https://www.lmic.lv/en/composers/martins-vilums-488#work" class="link" target="_blank">Mārtiņš Viļums</a> (Latvija/Lietuva)<br>
@@ -123,26 +115,8 @@
             padding 5px 0 0 35px
             font-style italic
 
-    .image
-        height 35vmin
-
-        &:hover
-            cursor pointer
-    
-        &.right
-            float right
-            margin 10px 0 5px 15px
-        
-        &.left
-            float left
-            margin 10px 15px 5px 0
-
     @media screen and (max-device-width: 900px)
-        .image
-            &.right
-                margin 5px 0 5px 10px
-            
-            &.left
-                margin 5px 10px 5px 0
+        .quotes > p
+            margin-bottom 7px
 </style>
 

@@ -7,7 +7,7 @@
     import Contacts from '../components/Contacts.svelte'
     import { MetaTags } from 'svelte-meta-tags'
     import { onMount } from 'svelte'
-    import { showLanding, showBack, sections } from '../helpers/stores'
+    import { showLanding, showBack, sections, imageFrame } from '../helpers/stores'
     import { _ } from 'svelte-i18n'
 
     let about, news, participants, sponsors, contacts
@@ -34,7 +34,24 @@
 <div bind:this={about} id="about">
     <Tab oversize>
         <h1 class="cover-heading"><b>{$_('about.title')}</b></h1>
-        <About/>
+        <About>
+            <img
+                slot="image1"
+                class="image right"
+                src="/images/about_1.jpg"
+                alt="Future Symphony Orchestra 1"
+                data-bigsrc="/images/about_1.jpg"
+                on:click={$imageFrame.toggleImageFrame}
+            >
+            <img
+                slot="image2"
+                class="image left" 
+                src="/images/about_2.jpg"
+                alt="Future Symphony Orchestra 1"
+                data-bigsrc="/images/about_2.jpg"
+                on:click={$imageFrame.toggleImageFrame}
+            >
+        </About>
     </Tab>
 </div>
 
@@ -65,3 +82,27 @@
         <Contacts/>
     </Tab>
 </div>
+
+<style lang="stylus">
+    .image
+        height 35vmin
+
+        &:hover
+            cursor pointer
+    
+        &.right
+            float right
+            margin 10px 0 5px 15px
+        
+        &.left
+            float left
+            margin 10px 15px 5px 0
+
+    @media screen and (max-device-width: 900px)
+        .image
+            &.right
+                margin 5px 0 5px 10px
+            
+            &.left
+                margin 5px 10px 5px 0
+</style>
