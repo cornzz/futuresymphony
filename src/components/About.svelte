@@ -76,7 +76,7 @@
         <p>Pagrindinis <i>„Future Symphony“</i> konkurso tikslas – suteikti galimybę jauniesiems kompozitoriams išbandyti simfoninės kūrybos lauką. Konkursas siekia atskleisti naujus kompozicijos talentus, aktualiosios muzikos kūriniais ugdyti jaunąją atlikėjų kartą ir sukurti tarptautiniam bendradarbiavimui palankią kūrybinę erdvę.</p>
         <p>Konkurse dalyvauti gali <b>18–35 m.</b> kompozitoriai iš viso pasaulio.</p>
         <p>
-            <b>2022 m. rugsėjo 9 d.</b> Lietuvos nacionalinėje filharmonijoje <b>5-7 geriausias pateiktas partitūras</b> atliks specialiai <i>„Future Symphony“</i> konkursams suburiamas <span class="link" on:click="{() => showFSO = !showFSO}">Future Symphony Orchestra</span>
+            <b>2022 m. rugsėjo 9 d.</b> Lietuvos nacionalinėje filharmonijoje <b>5-7 geriausias pateiktas partitūras</b> atliks specialiai <i>„Future Symphony“</i> konkursams suburiamas <span class="link" on:click="{() => showFSO = !showFSO}">Future Symphony Orchestra</span>.
             {#if showFSO}
                 <div transition:fadeHeight style="overflow: hidden">
                     <hr>

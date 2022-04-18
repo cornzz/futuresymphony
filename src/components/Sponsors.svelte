@@ -7,8 +7,8 @@
         <div class="flex-column">
             <h2 class="sponsor-title">{$_('sponsors.financedBy')}:</h2>
             <div class="flex-row">
-                <a class="sponsor" href="https://www.ltkt.lt/" target="blank"><img src="/images/sponsors/logo_lkt.png" alt="logo_lkt.png"></a>
-                <a class="sponsor" href="https://www.latga.lt/" target="blank"><img src="/images/sponsors/logo_latga.png" alt="logo_latga.png"></a>
+                <a class="sponsor" href="https://www.ltkt.lt/" target="blank"><img src="/images/sponsors/logo_lkt.png" alt="logo_lkt.png" loading="lazy"></a>
+                <a class="sponsor" href="https://www.latga.lt/" target="blank"><img src="/images/sponsors/logo_latga.png" alt="logo_latga.png" loading="lazy"></a>
             </div>
         </div>
         <div class="flex-column">
@@ -22,15 +22,15 @@
         <div class="flex-column">
             <h2 class="sponsor-title">{$_('sponsors.mainSponsors')}:</h2>
             <div class="flex-row">
-                    <a class="sponsor" href="https://vilnius.lt/en/" target="blank"><img src="/images/sponsors/logo_v.png" alt="logo_v.png"></a>
-                    <a class="sponsor" href="https://www.filharmonija.lt/" target="blank"><img src="/images/sponsors/logo_lnf.png" alt="logo_lnf.png"></a>
+                    <a class="sponsor" href="https://vilnius.lt/en/" target="blank"><img src="/images/sponsors/logo_v.png" alt="logo_v.png" loading="lazy" on:load={() => console.log('loaded')}></a>
+                    <a class="sponsor" href="https://www.filharmonija.lt/" target="blank"><img src="/images/sponsors/logo_lnf.png" alt="logo_lnf.png" loading="lazy"></a>
             </div>
         </div>
         <div class="flex-column">
             <h2 class="sponsor-title">{$_('sponsors.sponsors')}:</h2>
             <div class="flex-row">
-                <a class="sponsor" href="http://skfoundation.com/" target="blank"><img src="/images/sponsors/logo_kf.png" alt="logo_kf.png"></a>
-                <a class="sponsor" href="https://www.triplenode.com/" target="blank"><img src="/images/sponsors/logo_tn.png" alt="logo_tn.png" class="oversize"></a>
+                <a class="sponsor" href="http://skfoundation.com/" target="blank"><img src="/images/sponsors/logo_kf.png" alt="logo_kf.png" loading="lazy"></a>
+                <a class="sponsor" href="https://www.triplenode.com/" target="blank"><img src="/images/sponsors/logo_tn.png" alt="logo_tn.png" loading="lazy" class="oversize"></a>
             </div>
         </div>
     </div>
@@ -38,14 +38,14 @@
         <div class="flex-column">
             <h2 class="sponsor-title">{$_('sponsors.infSponsor')}:</h2>
             <div class="flex-row">
-                <a class="sponsor" href="https://www.lrt.lt/" target="blank"><img src="/images/sponsors/logo_lrt.png" alt="logo_lrt.png"></a>
+                <a class="sponsor" href="https://www.lrt.lt/" target="blank"><img src="/images/sponsors/logo_lrt.png" alt="logo_lrt.png" loading="lazy"></a>
             </div>
         </div>
         <div class="flex-column" style="flex-grow: 2">
             <h2 class="sponsor-title">{$_('sponsors.partners')}:</h2>
             <div class="flex-row">
-                <a class="sponsor" href="https://www.jmr.lt/" target="blank"><img src="/images/sponsors/logo_pk.png" alt="logo_pk.png"></a>
-                <a class="sponsor undersize" href="https://domusmaria.com/" target="blank"><img src="/images/sponsors/logo_dm.png" alt="logo_dm.png"></a>
+                <a class="sponsor" href="https://www.jmr.lt/" target="blank"><img src="/images/sponsors/logo_pk.png" alt="logo_pk.png" loading="lazy"></a>
+                <a class="sponsor undersize" href="https://domusmaria.com/" target="blank"><img src="/images/sponsors/logo_dm.png" alt="logo_dm.png" loading="lazy"></a>
             </div>
         </div>
     </div>

@@ -38,17 +38,20 @@
             <img
                 slot="image1"
                 class="image right"
-                src="/images/about_1.jpg"
+                src="/images/gallery/about_1_small.jpg"
                 alt="Future Symphony Orchestra 1"
-                data-bigsrc="/images/about_1.jpg"
+                data-bigsrc="/images/gallery/about_1.jpg"
+                loading="lazy"
                 on:click={$imageFrame.toggleImageFrame}
             >
             <img
                 slot="image2"
                 class="image left" 
-                src="/images/about_2.jpg"
-                alt="Future Symphony Orchestra 1"
-                data-bigsrc="/images/about_2.jpg"
+                src="/images/gallery/about_2_small.jpg"
+                alt="Future Symphony Orchestra 2"
+                data-bigsrc="/images/gallery/about_2.jpg"
+                data-bigcaption="gallery.about2"
+                loading="lazy"
                 on:click={$imageFrame.toggleImageFrame}
             >
         </About>

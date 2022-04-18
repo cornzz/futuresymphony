@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { _ } from 'svelte-i18n'
 
     let src: string
     let alt: string
@@ -11,8 +12,19 @@
         alt = target.dataset.bigalt ?? (target as HTMLImageElement).alt ?? ''
         caption = target.dataset.bigcaption ?? ''
 
-        if (src || imageFrame.classList.contains('active'))
-            imageFrame.classList.toggle('active')
+        if (src) {
+            document.addEventListener('keydown', handleKeydown)
+            imageFrame.classList.add('active')
+        } else {
+            document.removeEventListener('keydown', handleKeydown)
+            imageFrame.classList.remove('active')
+        }
+    }
+
+    function handleKeydown(event: KeyboardEvent): void {
+        if (event.key === 'Escape') {
+            imageFrame.classList.remove('active')
+        }
     }
 </script>
 
@@ -20,7 +32,7 @@
     <div>
         <img {src} {alt}>
         {#if caption}
-            <span class="caption">{caption}</span>
+            <span class="caption">{$_(caption)}</span>
         {/if}
     </div>
     <span class="image-frame-close"></span>
@@ -46,10 +58,11 @@
 
             .caption
                 position absolute
-                bottom 0
+                bottom 3px
                 left 0
                 width 100%
-                background-color rgba(255, 255, 255, 0.7)
+                background-color rgba(255, 255, 255, 0.8)
+                padding 4px 0
                 text-align center
                 pointer-events none
 
@@ -109,5 +122,10 @@
 
             &:after
                 transform rotate(-45deg)
+
+    @media screen and (max-device-width: 600px)
+        .image-frame div .caption
+            padding 0
+            font-size 10px
 </style>
 

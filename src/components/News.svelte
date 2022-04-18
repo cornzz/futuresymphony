@@ -14,7 +14,12 @@
 {#each articles as { article }}
     <a href={`/news/${article.slug}`} class="news-link" class:fixed={!latest}>
         <div class="news-item dropshadow">
-            <img class="news-image-small" src={`/images/news/${article.images.small}`} alt={article.images.small}>
+            <img
+                class="news-image-small"
+                src={`/images/news/${article.images.small}`}
+                alt={article.images.small}
+                loading="lazy"
+            >
             <div class="news-content" data-readmore="{$_('news.readmore')}">
                 <div class="date"><i>{@html article.date[$locale]}</i></div>
                 <span class="title"><b>{@html article.title[$locale]}</b></span>

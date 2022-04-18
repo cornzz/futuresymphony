@@ -185,7 +185,7 @@
         "sanctioned": "It is allowed to participate in the Competition free of charge for participants from all countries that fell on (or might fall till June 30th, 2022) the list of international transaction restrictions. Such participants will not receive a cash prize in case of winning unless the application fee is paid before the end of the registration deadline."
     },
     "privacy": {
-        "title": "Privacy Policy for PI „Muzikinis pirštas“",
+        "title": "Privacy Policy of PI „Muzikinis pirštas“",
         "meta": {
             "title": "Privacy Policy - Future Symphony Competition",
             "description": "Privacy Policy of the 3rd Future Symphony Competition"
@@ -195,5 +195,8 @@
         "title": "Error - Future Symphony Competition",
         "pageNotFound": "Page not found",
         "goBack": "Go back"
+    },
+    "gallery": {
+        "about2": "Future Symphony Orchestra at the final concert of the first Future Symphony Competition in 2018"
     }
 }
