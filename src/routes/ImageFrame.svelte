@@ -1,42 +1,53 @@
 <script lang="ts">
     import { _ } from 'svelte-i18n'
+    import { fade, slide } from 'svelte/transition'
+    import { linear } from 'svelte/easing'
 
+    let show: boolean = false
     let src: string
     let alt: string
     let caption: string
-    let imageFrame: HTMLElement
+    let imageWidth: number
 
     export function toggleImageFrame(event: MouseEvent): void {
         let target: HTMLElement = event.target as HTMLElement
         src = target.dataset.bigsrc ?? ''
         alt = target.dataset.bigalt ?? (target as HTMLImageElement).alt ?? ''
         caption = target.dataset.bigcaption ?? ''
-
+        
         if (src) {
+            show = true
             document.addEventListener('keydown', handleKeydown)
-            imageFrame.classList.add('active')
         } else {
+            show = false
             document.removeEventListener('keydown', handleKeydown)
-            imageFrame.classList.remove('active')
         }
     }
 
     function handleKeydown(event: KeyboardEvent): void {
         if (event.key === 'Escape') {
-            imageFrame.classList.remove('active')
+            show = false
         }
     }
 </script>
 
-<div class="image-frame" bind:this={imageFrame} on:click={toggleImageFrame}>
-    <div>
-        <img {src} {alt}>
-        {#if caption}
-            <span class="caption">{$_(caption)}</span>
-        {/if}
+{#if show}
+    <div
+        class="image-frame"
+        on:click={toggleImageFrame}
+        transition:fade={{ duration: 300, easing: linear }}
+    >
+        <div>
+            <div bind:clientWidth={imageWidth}>
+                <img {src} {alt}>
+            </div>
+            {#if caption && imageWidth > 0}
+                <span class="caption" transition:fade={{ duration: 300, easing: linear }}>{$_(caption)}</span>
+            {/if}
+        </div>
+        <span class="image-frame-close" transition:slide={{ duration: 300 }}></span>
     </div>
-    <span class="image-frame-close"></span>
-</div>
+{/if}
 
 <style lang="stylus">
     .image-frame
@@ -46,10 +57,9 @@
         position fixed
         width 100%
         height 100%
-        top -100%
+        top 0
+        bottom 0
         background-color rgba(0, 0, 0, .7)
-        opacity 0
-        transition opacity .3s linear
         z-index 10
 
         & > div
@@ -81,14 +91,6 @@
                 &:hover
                     cursor pointer
 
-        &:global(.active)
-            opacity 1 !important
-            top 0 !important
-            bottom 0 !important
-
-            .image-frame-close
-                top 0
-
         .image-frame-close
             text-decoration none
             cursor pointer
@@ -99,7 +101,7 @@
             background #fff
             color #000
             position absolute
-            top -80px
+            top 0
             right 0
             transition .2s ease-in-out
 
@@ -124,8 +126,18 @@
                 transform rotate(-45deg)
 
     @media screen and (max-device-width: 600px)
-        .image-frame div .caption
-            padding 0
-            font-size 10px
+        .image-frame
+            .image-frame-close
+                width 45px
+                height 45px
+
+                &:before
+                &:after
+                    height 25px
+                    left 22px
+
+            div .caption
+                padding 0
+                font-size 10px
 </style>
 
