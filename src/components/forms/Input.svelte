@@ -8,11 +8,12 @@
     export let min: string = ''
     export let max: string = ''
     export let value: string | Date = ''
+    export let optional: boolean = false
     export let disabled: boolean = false
 </script>
 
 <div>
-    <label for={name} data-label={label}>{$_(label)}</label>
+    <label for={name} data-label={label}>{$_(label)} {optional ? `(${$_('registration.form.optional')})` : ''}</label>
     {#if type === 'text'}
         <input
             id={name}
@@ -22,7 +23,7 @@
             on:input
             on:keyup
             {disabled}
-            required
+            required={!optional}
         />
     {:else if type === 'date'}
         <input
@@ -34,7 +35,7 @@
             bind:value
             on:input
             {disabled}
-            required
+            required={!optional}
         />
     {:else if type === 'email'}
         <input
@@ -45,7 +46,7 @@
             on:input
             on:keyup
             {disabled}
-            required
+            required={!optional}
         />
     {/if}
 </div>

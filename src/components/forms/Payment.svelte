@@ -44,6 +44,7 @@
             placeholder={$_('registration.form.billingAddress.placeholder')}
             bind:value={dto.billingAddress}
             on:input
+            optional={sanctioned || ukraine}
             {disabled}
         />
     </div>
