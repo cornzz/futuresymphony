@@ -6,20 +6,20 @@
     import { showLanding, showBack, sections } from '../helpers/stores'
     import LanguageSelector from './LanguageSelector.svelte';
 
-    let landing, header, content, back, footer,
-        aboutlink, newslink, participantslink, sponsorslink, contactslink,
-        aboutpos, newspos, participantspos, sponsorspos, contactspos,
-        landingBottom = 0, windowWidth
-    let navOpen = false
-    let showMobile = false
+    let landing: HTMLElement, header: HTMLElement, content: HTMLElement, back: HTMLElement, footer: HTMLElement
+    let aboutlink: HTMLElement, newslink: HTMLElement, participantslink: HTMLElement, sponsorslink: HTMLElement, contactslink: HTMLElement
+    let aboutpos: number, newspos: number, participantspos: number, sponsorspos: number, contactspos: number
+    let landingBottom: number = 0, windowWidth: number
+    let navOpen: boolean = false
+    let showMobile: boolean = false
 
-    const windowPos = () => window.scrollY
+    const windowPos: () => number = () => window.scrollY
 
     // Change Header appearance according to position
-    function setHeader() {
+    function setHeader(): void {
         if (windowPos() >= landingBottom) {
             header.classList.add('active')
-            header.style.top = 0
+            header.style.top = '0'
             footer.classList.add('active')
             back?.classList.add('active')
         } else {
@@ -31,13 +31,13 @@
     }
 
     // Remove .active from all nav links and reset language link
-    function removeActive() {
+    function removeActive(): void {
         [aboutlink, newslink, participantslink, sponsorslink, contactslink].forEach(l => l.classList.remove('active'));
         (document.activeElement as HTMLElement).blur()
     }
 
     // Add .active to the correct nav link and set language link
-    function setActive() {
+    function setActive(): void {
         removeActive()
         if (aboutpos <= windowPos() && windowPos() < newspos) {
             aboutlink.classList.add('active')
@@ -52,7 +52,7 @@
         }
     }
 
-    function setPositions() {
+    function setPositions(): void {
         const getPos = (top) => Math.floor(top - 150)
         aboutpos = getPos($sections['#about'].offsetTop)
         newspos = getPos($sections['#news'].offsetTop)
@@ -61,14 +61,14 @@
         contactspos = getPos($sections['#contacts'].offsetTop)
     }
 
-    function jumpToHash() {
+    function jumpToHash(): void {
         let hash = window.location.hash
         let hashpos = hash ? (document.querySelector(hash) as any).offsetTop : 0
         window.scrollTo(0, hashpos - header.scrollHeight + 1)
     }
 
     // Set height of landing cover, push header up and set variables for relevant element positions
-    function init() {
+    function init(): void {
         if ($showLanding) {
             landing.style.height = window.innerHeight + 'px'
             landing.style['margin-bottom'] = -header.clientHeight - 1 + 'px'

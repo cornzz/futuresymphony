@@ -13,6 +13,7 @@
     button
         height 45px
         width 100%
+        padding 0 10px
         font-size 16px
         border-radius var(--border-radius)
         transition all 0.1s ease
@@ -64,7 +65,7 @@
     .slim
         height 40px
 
-    @media screen and (max-width 525px)
+    @media screen and (max-width 600px)
         button
             height 40px
 </style>

@@ -41,8 +41,8 @@
                 src="/images/gallery/about_1_small.jpg"
                 alt="Future Symphony Orchestra 1"
                 data-bigsrc="/images/gallery/about_1.jpg"
-                loading="lazy"
                 on:click={$imageFrame.toggleImageFrame}
+                loading="lazy"
             >
             <img
                 slot="image2"
@@ -51,8 +51,8 @@
                 alt="Future Symphony Orchestra 2"
                 data-bigsrc="/images/gallery/about_2.jpg"
                 data-bigcaption="gallery.about2"
-                loading="lazy"
                 on:click={$imageFrame.toggleImageFrame}
+                loading="lazy"
             >
         </About>
     </Tab>
