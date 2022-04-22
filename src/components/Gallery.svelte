@@ -1,10 +1,12 @@
 <script lang="ts">
     import { Splide, SplideSlide } from '@splidejs/svelte-splide'
     import '@splidejs/svelte-splide/css'
+    import { onMount } from 'svelte'
     import { imageFrame } from '../helpers/stores'
 
     type CarouselImage = { src: string, alt: string, bigsrc?: string, caption?: string }
 
+    let splide: Splide
     let images: CarouselImage[] = [
         {
             src: "/images/gallery/about_1_small.jpg",
@@ -34,11 +36,16 @@
     let windowWidth: number
 
     $: if (typeof window !== 'undefined') windowWidth = window.innerWidth
+
+    onMount(() => {
+        splide.splide.on('click', (_, event) => $imageFrame.toggleImageFrame(event))
+    })
 </script>
 
 <div class="gallery">
     <Splide
         hasTrack={false}
+        bind:this={splide}
         options={{
             perPage: windowWidth > 850 ? 3 : windowWidth > 600 ? 2 : 1,
             perMove: 1,
@@ -46,6 +53,7 @@
             gap: '15px',
             padding: { left: 50, right: 50, bottom: 50 },
             type: 'loop',
+            rewind: true,
             autoplay: true,
             interval: 8000,
             resetProgress: false,
@@ -62,7 +70,6 @@
                             alt={image.alt}
                             data-bigsrc={image.bigsrc}
                             data-caption={image.caption}
-                            on:click={$imageFrame.toggleImageFrame}
                             loading="lazy"
                         >
                     </SplideSlide>
