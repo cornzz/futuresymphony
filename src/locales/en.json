@@ -51,8 +51,9 @@
         "title": "Contacts",
         "organizer": "Event organizer",
         "vsi": "PI",
-        "projectManagers": "Project management",
-        "orchestraManager": "Orchestra management",
+        "projectManagement": "Project management",
+        "orchestraManagement": "Orchestra management",
+        "communicationAssistance": "Communication assistance",
         "email": "E-mail",
         "socialMedia": "Social Media",
         "webdesign": "Web design & administration"
@@ -185,6 +186,7 @@
         "sanctioned": "It is allowed to participate in the Competition free of charge for participants from all countries that fell on (or might fall till June 30th, 2022) the list of international transaction restrictions. Such participants will not receive a cash prize in case of winning unless the application fee is paid before the end of the registration deadline."
     },
     "privacy": {
+        "link": "Privacy Policy",
         "title": "Privacy Policy of PI „Muzikinis pirštas“",
         "meta": {
             "title": "Privacy Policy - Future Symphony Competition",

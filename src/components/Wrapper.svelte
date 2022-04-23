@@ -174,7 +174,7 @@
 {/if}
 <div class="mastfoot" bind:this={footer}>
     <a href="/privacy">
-        Privacy Policy
+        {$_('privacy.link')}
     </a>
     &nbsp; | &nbsp;
     <div class="desktop-only">

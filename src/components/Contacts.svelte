@@ -12,15 +12,19 @@
     <div style="padding: 0 0 5px 30px;">
         <b><span on:click="{mail}" class="contactlink mail" data-user="info"></span></b>
     </div>
-    <b>{$_('contacts.projectManagers')}:</b>
+    <b>{$_('contacts.projectManagement')}:</b>
     <div style="padding: 0 0 5px 30px;">
         Adomas Morkūnas-Budrys &ndash; <span on:click="{mail}" class="contactlink mail" data-user="adomas"></span><br>
         Danielius Tuita &ndash; <span on:click="{mail}" class="contactlink mail" data-user="danielius"></span><br>
         Jurgis Kubilius &ndash; <span on:click="{mail}" class="contactlink mail" data-user="jurgis"></span>
     </div>						
-    <b>{$_('contacts.orchestraManager')}:</b>
+    <b>{$_('contacts.orchestraManagement')}:</b>
     <div style="padding: 0 0 5px 30px;">
         Džiugas Daugirda &ndash; <span on:click="{mail}" class="contactlink mail" data-user="dziugas"></span>
+    </div>
+    <b>{$_('contacts.communicationAssistance')}:</b>
+    <div style="padding: 0 0 5px 30px;">
+        Salomeja Petronyte &ndash; <span on:click="{mail}" class="contactlink mail" data-user="salomeja"></span>
     </div>
     <b>{$_('contacts.socialMedia')}:</b>
     <div style="padding: 0 0 5px 30px;">

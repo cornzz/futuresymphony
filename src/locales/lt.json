@@ -51,8 +51,9 @@
         "title": "Kontaktai",
         "organizer": "Projekto organizatorius",
         "vsi": "VšĮ",
-        "projectManagers": "Projekto vadyba",
-        "orchestraManager": "Orkestro vadyba",
+        "projectManagement": "Projekto vadyba",
+        "orchestraManagement": "Orkestro vadyba",
+        "communicationAssistance": "Komunikacijos asistencija",
         "email": "El. paštas",
         "socialMedia": "Socialiniai tinklai",
         "webdesign": "Interneto svetainės dizainas ir administravimas"
@@ -185,6 +186,7 @@
         "sanctioned": "Konkurse nemokamai gali dalyvauti dalyviai iš visų šalių, kurios pateko (arba gali patekti iki 2022 m. birželio 30 d.) į tarptautinių pinigų perlaidų apribojimų sąrašą. Tokiems dalyviams žinotina, jog prizo laimėjimo atveju laimėjimas negalės būti pervestas, nebent iki bendrojo registracijos termino pabaigos bus sumokėtas dalyvio mokestis."
     },
     "privacy": {
+        "link": "Privatumo Politika",
         "title": "VšĮ „Muzikinis pirštas“ privatumo politika",
         "meta": {
             "title": "Privatumo politika - Future Symphony Konkursas",
