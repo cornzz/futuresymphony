@@ -31,3 +31,10 @@ export type NewsArticle = {
         }
     }
 }
+
+export type Image = {
+    src: string,
+    alt: string,
+    bigsrc?: string,
+    caption?: string
+} 

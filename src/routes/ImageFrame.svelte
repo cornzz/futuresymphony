@@ -2,31 +2,60 @@
     import { _ } from 'svelte-i18n'
     import { fade, slide } from 'svelte/transition'
     import { linear } from 'svelte/easing'
+    import type { Image } from '../helpers/types'
 
     let show: boolean = false
     let src: string
     let alt: string
     let caption: string
+    let images: Image[]
+    let index: number
+    let closeCallback: () => void
     let imageWidth: number
 
-    export function toggleImageFrame(event: MouseEvent): void {
-        let target: HTMLElement = event.target as HTMLElement
+    export function toggleImageFrame(
+        event: MouseEvent,
+        imageSeries?: Image[],
+        imageSeriesIndex?: number,
+        callback?: () => void
+    ): void {
+        const target = event.target as HTMLElement
         src = target.dataset.bigsrc ?? ''
         alt = target.dataset.bigalt ?? (target as HTMLImageElement).alt ?? ''
         caption = target.dataset.bigcaption ?? ''
+        images = imageSeries ?? []
+        index = imageSeriesIndex ?? 0
         
         if (src) {
             show = true
             document.addEventListener('keydown', handleKeydown)
+            closeCallback = callback ?? (() => {})
         } else {
             show = false
             document.removeEventListener('keydown', handleKeydown)
+            closeCallback()
+        }
+    }
+
+    function nextImage(direction: 'left' | 'right'): void {
+        if (images.length > 0) {
+            index = index + (direction === 'right' ? 1 : -1)
+            index = ((index % images.length) + images.length) % images.length
+            src = images[index].bigsrc
+            alt = images[index].bigsrc
+            caption = images[index].caption ?? ''
         }
     }
 
     function handleKeydown(event: KeyboardEvent): void {
         if (event.key === 'Escape') {
             show = false
+            document.removeEventListener('keydown', handleKeydown)
+            closeCallback()
+        } else if (event.key === 'ArrowRight') {
+            nextImage('right')
+        } else if (event.key === 'ArrowLeft') {
+            nextImage('left')
         }
     }
 </script>

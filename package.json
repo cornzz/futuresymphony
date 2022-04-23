@@ -33,6 +33,7 @@
   },
   "type": "module",
   "dependencies": {
+    "@splidejs/splide-extension-intersection": "^0.2.0",
     "@splidejs/svelte-splide": "^0.2.1",
     "svelte-i18n": "^3.3.13",
     "svelte-loading-spinners": "^0.1.7",

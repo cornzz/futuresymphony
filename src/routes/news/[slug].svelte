@@ -26,10 +26,9 @@
             <img
                 class="news-image"
                 src={`/images/news/${article.images.small}`}
-                alt={article.images.small}
+                alt="News subject"
                 data-bigsrc={article.images.regular ? `/images/news/${article.images.regular}` : ''}
-                data-bigalt={article.images.regular}
-                data-bigcaption={article.images.caption[$locale]}
+                data-bigcaption={article.images.caption?.[$locale]}
                 on:click={$imageFrame.toggleImageFrame}
             >
             {@html article.content.full[$locale]}

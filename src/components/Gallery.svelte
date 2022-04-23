@@ -1,12 +1,12 @@
 <script lang="ts">
     import { Splide, SplideSlide } from '@splidejs/svelte-splide'
+    import { Intersection } from '@splidejs/splide-extension-intersection'
     import '@splidejs/svelte-splide/css'
     import { onMount } from 'svelte'
     import { imageFrame } from '../helpers/stores'
+    import type { Image } from '../helpers/types'
 
-    type CarouselImage = { src: string, alt: string, bigsrc?: string, caption?: string }
-
-    let images: CarouselImage[] = [
+    let images: Image[] = [
         {
             src: "/images/gallery/orchestra_1_small.jpg",
             alt: "Future Symphony Orchestra",
@@ -60,40 +60,43 @@
         }
     ]
     let splide: Splide
-    let gallery: HTMLElement
     let windowWidth: number
 
     $: if (typeof window !== 'undefined') windowWidth = window.innerWidth
 
     onMount(() => {
-        splide.splide.on('click', (_, event) => $imageFrame.toggleImageFrame(event))
-        const io = new IntersectionObserver(entries => {
-            if (entries[0].isIntersecting && windowWidth > 600)
-                // splide.splide.Components.Autoplay.play()
-                console.log()
-            else
-                splide.splide.Components.Autoplay.pause()
-        }, { threshold: 0.75 })
-        io.observe(gallery)
-        console.log()
+        splide.splide.on('click', (_, event) => {
+            const target = event.target as HTMLElement
+            const currentImg = images.findIndex(img => img.bigsrc === target.dataset.bigsrc)
+            splide.splide.Components.Autoplay.pause()
+            const closeCallback = () => windowWidth > 600 && splide.splide.Components.Autoplay.play()
+            $imageFrame.toggleImageFrame(event, images, currentImg, closeCallback)
+        })
     })
 </script>
 
-<div class="gallery" bind:this={gallery}>
+<div class="gallery">
     <Splide
         hasTrack={false}
         bind:this={splide}
+        extensions={{ Intersection }}
         options={{
             type: 'loop',
             rewind: true,
             speed: 800,
-            perPage: windowWidth > 850 ? 3 : windowWidth > 600 ? 2 : 1,
+            perPage: windowWidth > 850 ? 3 : windowWidth > 500 ? 2 : 1,
             perMove: 1,
-            gap: '15px',
+            gap: '10px',
             padding: { left: 50, right: 50 },
             arrows: windowWidth > 600,
             easing: 'ease',
             interval: 8000,
+            autoplay: true,
+            pauseOnFocus: false,
+            intersection: {
+                inView: { autoplay: windowWidth > 600 },
+                outView: { autoplay: false },
+            },
             resetProgress: false,
             lazyLoad: 'nearby'
         }}
