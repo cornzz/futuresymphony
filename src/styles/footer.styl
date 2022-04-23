@@ -1,5 +1,5 @@
 .mastfoot
-    font-size 1.35vh
+    font-size 1.35vmin
     text-align center
     color rgba(255,255,255,.6) 
     background-color var(--color-primary)
@@ -22,11 +22,11 @@
     &:global(.active)
         margin-bottom 0
 
-.social
-    outline 0
+    .social
+        outline 0
 
-    img
-        width 20px
+        img
+            width 2vmin
 
 .desktop-only
     display none
@@ -43,3 +43,6 @@
 @media screen and (max-device-width: 850px)
     .mastfoot
         font-size 1.2vh
+
+        .social img
+            width 1.8vh

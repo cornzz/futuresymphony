@@ -199,6 +199,11 @@
         "goBack": "Go back"
     },
     "gallery": {
-        "about2": "Future Symphony Orchestra at the final concert of the first Future Symphony Competition in 2018"
+        "about2": "Future Symphony Orchestra at the final concert of the first Future Symphony Competition in 2018",
+        "orchestra_1": "Future Symphony Orchestra at the final concert of the second Future Symphony Competition in 2020",
+        "finalists": "Six of the seven finalists of the second Future Symphony Competition at the final concert (2020)",
+        "philharmonic": "Rehearsal at the Lithuanian National Philharmonic in Vilnius - showplace of the 2020 Future Symphony Competition final concert",
+        "audience_18": "Audience at the final concert of the first Future Symphony Competition in 2018",
+        "jury_18": "Jury at the final concert of the first Future Symphony Competition in 2018"
     }
 }

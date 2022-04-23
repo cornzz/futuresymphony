@@ -42,7 +42,9 @@
                 <img {src} {alt}>
             </div>
             {#if caption && imageWidth > 0}
-                <span class="caption" transition:fade={{ duration: 300, easing: linear }}>{$_(caption)}</span>
+                <span class="caption" transition:fade={{ duration: 300, easing: linear }}>
+                    {$_(caption)}
+                </span>
             {/if}
         </div>
         <span class="image-frame-close" transition:slide={{ duration: 300 }}></span>
@@ -69,10 +71,9 @@
             .caption
                 position absolute
                 bottom 3px
-                left 0
                 width 100%
                 background-color rgba(255, 255, 255, 0.8)
-                padding 4px 0
+                padding 4px 3px
                 text-align center
                 pointer-events none
 
@@ -137,7 +138,7 @@
                     left 22px
 
             div .caption
-                padding 0
+                padding 0 3px
                 font-size 10px
 </style>
 

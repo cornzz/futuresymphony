@@ -1,15 +1,16 @@
 <script lang="ts">
     import Tab from '../../components/Tab.svelte'
+    import { showLanding, showBack, imageFrame } from '../../helpers/stores'
+    import type { NewsArticle } from '../../helpers/types'
     import { MetaTags } from 'svelte-meta-tags'
     import { _, locale } from 'svelte-i18n'
-    import { showLanding, showBack, imageFrame } from '../../helpers/stores'
     import { page } from '$app/stores'
 
     showLanding.set(false)
     showBack.set(false)
 
-    const imports = import.meta.globEager('./articles/*.json')
-    let article = Object.values(imports).find(article => article.slug === $page.params.slug)
+    const imports = import.meta.globEager('./articles/*.json') as { [path: string]: NewsArticle }
+    let article: NewsArticle = Object.values(imports).find(article => article.slug === $page.params.slug)
 </script>
 
 <MetaTags
@@ -28,6 +29,7 @@
                 alt={article.images.small}
                 data-bigsrc={article.images.regular ? `/images/news/${article.images.regular}` : ''}
                 data-bigalt={article.images.regular}
+                data-bigcaption={article.images.caption[$locale]}
                 on:click={$imageFrame.toggleImageFrame}
             >
             {@html article.content.full[$locale]}
