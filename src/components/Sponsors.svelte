@@ -22,8 +22,8 @@
         <div class="flex-column">
             <h2 class="sponsor-title">{$_('sponsors.mainSponsors')}:</h2>
             <div class="flex-row">
-                    <a class="sponsor" href="https://vilnius.lt/en/" target="blank"><img src="/images/sponsors/logo_v.png" alt="logo_v.png" loading="lazy" on:load={() => console.log('loaded')}></a>
-                    <a class="sponsor" href="https://www.filharmonija.lt/" target="blank"><img src="/images/sponsors/logo_lnf.png" alt="logo_lnf.png" loading="lazy"></a>
+                <a class="sponsor" href="https://vilnius.lt/en/" target="blank"><img src="/images/sponsors/logo_v.png" alt="logo_v.png" loading="lazy"></a>
+                <a class="sponsor" href="https://www.filharmonija.lt/" target="blank"><img src="/images/sponsors/logo_lnf.png" alt="logo_lnf.png" loading="lazy"></a>
             </div>
         </div>
         <div class="flex-column">
