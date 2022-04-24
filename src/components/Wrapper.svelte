@@ -1,10 +1,10 @@
 <script lang="ts">
     // Disclaimer: this code was written with static site generation in mind, therefore is error prone when running as a SPA.
     
+    import LanguageSelector from './LanguageSelector.svelte'
     import { onMount, tick } from 'svelte'
     import { _, locale } from 'svelte-i18n'
     import { showLanding, showBack, sections } from '../helpers/stores'
-    import LanguageSelector from './LanguageSelector.svelte';
 
     let landing: HTMLElement, header: HTMLElement, content: HTMLElement, back: HTMLElement, footer: HTMLElement
     let aboutlink: HTMLElement, newslink: HTMLElement, participantslink: HTMLElement, sponsorslink: HTMLElement, contactslink: HTMLElement
@@ -13,6 +13,8 @@
     let navOpen: boolean = false
     let showMobile: boolean = false
 
+    const ARROW_ICON = "data:image/svg+xml,%3Csvg viewBox='0 0 2048 2048' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1523 1212q0 13-10 23l-50 50q-10 10-23 10t-23-10l-393-393-393 393q-10 10-23 10t-23-10l-50-50q-10-10-10-23t10-23l466-466q10-10 23-10t23 10l466 466q10 10 10 23z' fill='%23EEEEEE'/%3E%3C/svg%3E"
+    const FB_ICON = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' x='0px' y='0px' width='20px' viewBox='0 0 266.893 266.895' enable-background='new 0 0 266.893 266.895'%3E%3Cpath fill='%23304369' d='M248.082,262.307c7.854,0,14.223-6.369,14.223-14.225V18.812 c0-7.857-6.368-14.224-14.223-14.224H18.812c-7.857,0-14.224,6.367-14.224,14.224v229.27c0,7.855,6.366,14.225,14.224,14.225 H248.082z'/%3E%3Cpath fill='%23FFFFFF' d='M182.409,262.307v-99.803h33.499l5.016-38.895h-38.515V98.777c0-11.261,3.127-18.935,19.275-18.935 l20.596-0.009V45.045c-3.562-0.474-15.788-1.533-30.012-1.533c-29.695,0-50.025,18.126-50.025,51.413v28.684h-33.585v38.895h33.585 v99.803H182.409z'/%3E%3C/svg%3E"
     const windowPos: () => number = () => window.scrollY
 
     // Change Header appearance according to position
@@ -169,7 +171,7 @@
 
 {#if $showBack}
     <a id="back" href="#start" class="back" title="{$_('nav.back')}" bind:this={back}>
-        <img src="/images/arr.svg" alt="arr.svg">
+        <img src={ARROW_ICON} alt="arr.svg">
     </a>
 {/if}
 <div class="mastfoot" bind:this={footer}>
@@ -179,7 +181,7 @@
     &nbsp; | &nbsp;
     <div class="desktop-only">
         <a href="https://www.facebook.com/FScompetition" class="social" target="_blank">
-            <img src="/images/fb_icon.svg" alt="fb_icon.svg">
+            <img src={FB_ICON} alt="fb_icon.svg">
         </a>
         &nbsp; | &nbsp;
     </div>
