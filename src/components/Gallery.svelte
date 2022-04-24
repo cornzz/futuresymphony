@@ -111,9 +111,11 @@
                 {#each images as image}
                     <SplideSlide>
                         <img
-                            src="data:image/png;base64,..."
-                            data-splide-lazy={image.src}
+                            src="data:image/png;base64,AAA"
                             alt={image.alt}
+                            width="750"
+                            height="500"
+                            data-splide-lazy={image.src}
                             data-bigsrc={image.bigsrc}
                             data-bigcaption={image.caption}
                             loading="lazy"
@@ -138,6 +140,7 @@
     
         img
             width 100%
+            height auto
 
             &:hover
                 cursor pointer

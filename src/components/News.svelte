@@ -14,9 +14,11 @@
     <a href={`/news/${article.slug}`} class="news-link" class:fixed={!latest}>
         <div class="news-item dropshadow">
             <img
-                class="news-image-small"
                 src={`/images/news/${article.images.small}`}
                 alt={article.images.small}
+                width="248"
+                height="350"
+                class="news-image-small"
                 loading="lazy"
             >
             <div class="news-content" data-readmore="{$_('news.readmore')}">

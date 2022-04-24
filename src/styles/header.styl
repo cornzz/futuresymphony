@@ -115,7 +115,7 @@
             position absolute
             height 2px
             width 22px
-            background: #fff
+            background #fff
             border-radius 1px
             display block 
             transition all 0.25s ease
@@ -146,12 +146,10 @@
 .back
     opacity 0
     pointer-events none
-    background-color: rgba(0, 0, 0, 0.35)
+    background-color rgba(0, 0, 0, 0.35)
     transition all 0.1s
     border-radius 2px
-    position: fixed
-    width 35px
-    height 35px
+    position fixed
     bottom 70px
     right 30px
 
@@ -159,10 +157,12 @@
     &:focus
         cursor pointer
         filter brightness(150%)
-        background-color: rgba(0, 0, 0, 0.55)
+        background-color rgba(0, 0, 0, 0.55)
 
     img
         pointer-events none
+        width 35px
+        height 35px
 
     &:global(.active)
         opacity 1

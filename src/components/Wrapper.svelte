@@ -171,7 +171,7 @@
 
 {#if $showBack}
     <a id="back" href="#start" class="back" title="{$_('nav.back')}" bind:this={back}>
-        <img src={ARROW_ICON} alt="arr.svg">
+        <img src={ARROW_ICON} width="150" height="150" alt="arr.svg">
     </a>
 {/if}
 <div class="mastfoot" bind:this={footer}>
