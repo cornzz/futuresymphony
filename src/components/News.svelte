@@ -48,6 +48,7 @@
 
             img
                 height 100%
+                width auto
 
             .news-content
                 position relative

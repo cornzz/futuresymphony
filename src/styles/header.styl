@@ -118,7 +118,7 @@
             background: #fff
             border-radius 1px
             display block 
-            transition 0.1s 
+            transition all 0.25s ease
             transform-origin center
 
             &:nth-child(1)
@@ -132,13 +132,14 @@
 
         &.open
             .line:nth-child(1)
-                transform translateY(7px) rotate(-45deg)
+                transform translateY(7px) rotate(-135deg)
 
             .line:nth-child(2)
                 opacity 0
+                transform rotate(-360deg)
 
             .line:nth-child(3)
-                transform translateY(-7px) rotate(45deg)
+                transform translateY(-7px) rotate(-225deg)
 
 /* -- Desktop nav -- */
 
@@ -180,7 +181,6 @@
     border-bottom 2px solid black
     border-bottom-color #adadad
     z-index 2
-
 
     &:global(.active)
         background-color var(--color-primary)

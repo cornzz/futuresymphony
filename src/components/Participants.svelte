@@ -24,7 +24,6 @@
                 </Button>
             </a>
         </div>
-        <hr>
     </div>
     <Gallery/>
 </div>
@@ -33,17 +32,14 @@
     .content
         line-height: 1.65
         flex-grow 1
-        display flex
-        flex-direction column
-        justify-content space-between
 
         .center
             display flex
-            margin 60px 0
+            margin 60px 0 100px 0
             justify-content center
 
     @media screen and (max-device-width: 600px)
         .content .center
-            margin 40px 0
+            margin 40px 0 80px 0
 </style>
 

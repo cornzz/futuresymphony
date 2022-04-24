@@ -38,6 +38,8 @@
             <img
                 slot="image1"
                 class="image right"
+                width="750"
+                height="500"
                 src="/images/gallery/about_1_small.jpg"
                 alt="Future Symphony Orchestra 1"
                 data-bigsrc="/images/gallery/about_1.jpg"
@@ -46,7 +48,9 @@
             >
             <img
                 slot="image2"
-                class="image left" 
+                class="image left"
+                width="750"
+                height="500"
                 src="/images/gallery/about_2_small.jpg"
                 alt="Future Symphony Orchestra 2"
                 data-bigsrc="/images/gallery/about_2.jpg"
@@ -89,6 +93,7 @@
 <style lang="stylus">
     .image
         height 35vmin
+        width auto
 
         &:hover
             cursor pointer
