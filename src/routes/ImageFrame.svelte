@@ -26,7 +26,7 @@
         const target = event.target as HTMLElement
         src = target.dataset.bigsrc ?? ''
         alt = target.dataset.bigalt ?? (target as HTMLImageElement).alt ?? ''
-        caption = target.dataset.bigcaption ?? ''
+        caption = ''
         images = imageSeries ?? []
         index = imageSeriesIndex ?? 0
         
@@ -35,36 +35,40 @@
             loading = true
             await tick()
             image.onload = () => {
+                caption = target.dataset.bigcaption ?? ''
                 loading = false
             }
             document.addEventListener('keydown', handleKeydown)
             closeCallback = callback ?? (() => {})
         } else {
-            show = false
-            document.removeEventListener('keydown', handleKeydown)
-            closeCallback()
+            closeImage()
         }
+    }
+
+    function closeImage(): void {
+        show = false
+        document.removeEventListener('keydown', handleKeydown)
+        closeCallback()
     }
 
     function nextImage(direction: 'left' | 'right'): void {
         if (images.length > 0) {
             loading = true
-            image.onload = () => {
-                loading = false
-            }
             index = index + (direction === 'right' ? 1 : -1)
             index = ((index % images.length) + images.length) % images.length
             src = images[index].bigsrc
             alt = images[index].bigsrc
-            caption = images[index].caption ?? ''
+            caption = ''
+            image.onload = () => {
+                caption = images[index].caption ?? ''
+                loading = false
+            }
         }
     }
 
     function handleKeydown(event: KeyboardEvent): void {
         if (event.key === 'Escape') {
-            show = false
-            document.removeEventListener('keydown', handleKeydown)
-            closeCallback()
+            closeImage()
         } else if (event.key === 'ArrowRight') {
             nextImage('right')
         } else if (event.key === 'ArrowLeft') {
@@ -190,7 +194,7 @@
                     height 25px
                     left 22px
 
-            div .caption
+            div:not(.spinner) .caption
                 padding 0 3px
                 font-size 10px
 </style>
