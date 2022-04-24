@@ -53,6 +53,10 @@
             alt: "Percussionist 2018",
             bigsrc: "/images/gallery/percussionist_18.jpg"
         },{
+            src: "/images/gallery/cellists_18_small.jpg",
+            alt: "Cellists 2018",
+            bigsrc: "/images/gallery/cellists_18.jpg"
+        },{
             src: "/images/gallery/jury_18_small.jpg",
             alt: "Jury 2018",
             bigsrc: "/images/gallery/jury_18.jpg",

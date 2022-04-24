@@ -22,16 +22,6 @@
 </Tab>
 
 <style lang="stylus">
-    .wrapper
-        min-height 90vh
-        position relative
-
-        :global(.cover-heading)
-            margin 20px 0 30px
-
-        :global(& > *)
-            margin-top 15px
-
     .spinner
         position fixed
         z-index 1000
@@ -49,4 +39,14 @@
         border solid 1px var(--color-border)
         border-radius 50%
         box-shadow 0px 1px 5px 2px rgba(70,70,70,0.1)
+
+    .wrapper
+        min-height 90vh
+        position relative
+
+        :global(.cover-heading)
+            margin 20px 0 30px
+
+        :global(& > *)
+            margin-top 15px
 </style>

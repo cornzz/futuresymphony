@@ -1,8 +1,10 @@
 <script lang="ts">
+    import { Moon } from 'svelte-loading-spinners'
     import { _ } from 'svelte-i18n'
     import { fade, slide } from 'svelte/transition'
     import { linear } from 'svelte/easing'
     import type { Image } from '../helpers/types'
+    import { tick } from 'svelte'
 
     let show: boolean = false
     let src: string
@@ -11,14 +13,16 @@
     let images: Image[]
     let index: number
     let closeCallback: () => void
+    let image: HTMLElement
     let imageWidth: number
+    let loading: boolean = false
 
-    export function toggleImageFrame(
+    export async function toggleImageFrame(
         event: MouseEvent,
         imageSeries?: Image[],
         imageSeriesIndex?: number,
         callback?: () => void
-    ): void {
+    ): Promise<void> {
         const target = event.target as HTMLElement
         src = target.dataset.bigsrc ?? ''
         alt = target.dataset.bigalt ?? (target as HTMLImageElement).alt ?? ''
@@ -28,6 +32,11 @@
         
         if (src) {
             show = true
+            loading = true
+            await tick()
+            image.onload = () => {
+                loading = false
+            }
             document.addEventListener('keydown', handleKeydown)
             closeCallback = callback ?? (() => {})
         } else {
@@ -39,6 +48,10 @@
 
     function nextImage(direction: 'left' | 'right'): void {
         if (images.length > 0) {
+            loading = true
+            image.onload = () => {
+                loading = false
+            }
             index = index + (direction === 'right' ? 1 : -1)
             index = ((index % images.length) + images.length) % images.length
             src = images[index].bigsrc
@@ -66,9 +79,14 @@
         on:click={toggleImageFrame}
         transition:fade={{ duration: 300, easing: linear }}
     >
+        {#if loading}
+            <div class="spinner" transition:fade={{ duration: 100 }}>
+                <Moon color="var(--color-primary)" />
+            </div>
+        {/if}
         <div>
             <div bind:clientWidth={imageWidth}>
-                <img {src} {alt}>
+                <img {src} {alt} bind:this={image}>
             </div>
             {#if caption && imageWidth > 0}
                 <span class="caption" transition:fade={{ duration: 300, easing: linear }}>
@@ -93,7 +111,13 @@
         background-color rgba(0, 0, 0, .7)
         z-index 10
 
-        & > div
+        .spinner
+            position absolute
+            border-radius 40px
+            z-index 99
+            box-shadow inset 0px 0px 0px 8px #ffffff99
+
+        & > div:not(.spinner)
             display inline-block
             position relative
 
