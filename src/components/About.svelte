@@ -5,7 +5,7 @@
     let showFSO = false
 </script>
 
-<div style="line-height: 1.65">
+<div class="content">
     {#if $locale === 'en'}
         <div class="quotes">
             <p>
@@ -106,17 +106,27 @@
 </div>
 
 <style lang="stylus">
-    .quotes
-        margin-bottom 25px
-        
-        .quote
-            display block
-            color rgba(96, 96, 97, 0.9)
-            padding 5px 0 0 35px
-            font-style italic
+    .content
+        line-height 1.65
+
+        & > p
+            text-align justify
+
+        .quotes
+            margin-bottom 25px
+            
+            .quote
+                display block
+                color rgba(96, 96, 97, 0.9)
+                padding 5px 0 0 35px
+                font-style italic
 
     @media screen and (max-device-width: 900px)
-        .quotes > p
-            margin-bottom 7px
+        .content
+            & > p
+                text-align start
+
+            .quotes > p
+                margin-bottom 7px
 </style>
 

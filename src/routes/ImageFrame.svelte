@@ -88,7 +88,7 @@
                 <Moon color="var(--color-primary)" />
             </div>
         {/if}
-        <div class="image">
+        <div class="image" class:loading>
             <div bind:clientWidth={imageWidth}>
                 <img {src} {alt} bind:this={image}>
                 {#if images.length > 0}
@@ -129,14 +129,8 @@
             display inline-block
             position relative
 
-            .caption
-                position absolute
-                bottom 3px
-                width 100%
-                background rgba(255, 255, 255, 0.8)
-                padding 4px 3px
-                text-align center
-                pointer-events none
+            &.loading
+                display none
 
             img
                 border 3px solid #fff
@@ -177,6 +171,15 @@
                     cursor pointer
                     transform translateY(-50%) rotate(var(--rotation)) scale(110%)
                     opacity 0.85
+
+            .caption
+                position absolute
+                bottom 3px
+                width 100%
+                background rgba(255, 255, 255, 0.8)
+                padding 4px 3px
+                text-align center
+                pointer-events none
 
         .image-frame-close
             text-decoration none

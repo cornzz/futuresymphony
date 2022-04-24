@@ -95,6 +95,7 @@
             arrows: windowWidth > 600,
             easing: 'ease',
             interval: 8000,
+            flickPower: 100,
             autoplay: true,
             pauseOnFocus: false,
             intersection: {
