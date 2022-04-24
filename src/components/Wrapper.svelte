@@ -181,7 +181,7 @@
     &nbsp; | &nbsp;
     <div class="desktop-only">
         <a href="https://www.facebook.com/FScompetition" class="social" target="_blank">
-            <img src={FB_ICON} alt="fb_icon.svg">
+            <img src={FB_ICON} alt="fb_icon.svg" width="20" height="20">
         </a>
         &nbsp; | &nbsp;
     </div>
