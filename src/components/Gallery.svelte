@@ -151,5 +151,20 @@
 
         :global(.splide__pagination__page.is-active)
             background var(--color-primary)
+
+        :global(.splide__arrow)
+            background #fff
+            opacity 0.7
+            transition all 0.15s ease
+            height 25px
+            width 25px
+        
+        :global(.splide__arrow:hover)
+            transform translateY(-50%) scale(110%) !important
+            opacity 0.85
+
+        :global(.splide__arrow svg)
+            height 15px
+            width 15px
 </style>
 

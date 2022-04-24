@@ -88,9 +88,13 @@
                 <Moon color="var(--color-primary)" />
             </div>
         {/if}
-        <div>
+        <div class="image">
             <div bind:clientWidth={imageWidth}>
                 <img {src} {alt} bind:this={image}>
+                {#if images.length > 0}
+                    <div class="arrow left" on:click|stopPropagation={() => nextImage('left')}></div>
+                    <div class="arrow right" on:click|stopPropagation={() => nextImage('right')}></div>
+                {/if}
             </div>
             {#if caption && imageWidth > 0}
                 <span class="caption" transition:fade={{ duration: 300, easing: linear }}>
@@ -112,7 +116,7 @@
         height 100%
         top 0
         bottom 0
-        background-color rgba(0, 0, 0, .7)
+        background rgba(0, 0, 0, .7)
         z-index 10
 
         .spinner
@@ -121,7 +125,7 @@
             z-index 99
             box-shadow inset 0px 0px 0px 8px #ffffff99
 
-        & > div:not(.spinner)
+        .image
             display inline-block
             position relative
 
@@ -129,7 +133,7 @@
                 position absolute
                 bottom 3px
                 width 100%
-                background-color rgba(255, 255, 255, 0.8)
+                background rgba(255, 255, 255, 0.8)
                 padding 4px 3px
                 text-align center
                 pointer-events none
@@ -148,6 +152,31 @@
 
                 &:hover
                     cursor pointer
+                
+            .arrow
+                position absolute
+                top: 50%
+                background url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40' width='15px' height='15px' focusable='false'%3E%3Cpath d='m15.5 0.932-4.3 4.38 14.5 14.6-14.5 14.5 4.3 4.4 14.6-14.6 4.4-4.3-4.4-4.4-14.6-14.6z'%3E%3C/path%3E%3C/svg%3E") no-repeat center
+                height 25px
+                width 25px
+                background-color white
+                opacity 0.7
+                border-radius 25px
+                transition all 0.15s ease
+                transform translateY(-50%) rotate(var(--rotation))
+                
+                &.left
+                    left 10px
+                    --rotation 180deg
+
+                &.right
+                    right 10px
+                    --rotation 0deg
+
+                &:hover
+                    cursor pointer
+                    transform translateY(-50%) rotate(var(--rotation)) scale(110%)
+                    opacity 0.85
 
         .image-frame-close
             text-decoration none
@@ -194,7 +223,7 @@
                     height 25px
                     left 22px
 
-            div:not(.spinner) .caption
+            .image .caption
                 padding 0 3px
                 font-size 10px
 </style>

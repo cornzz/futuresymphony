@@ -24,7 +24,7 @@
     </div>
     <b>{$_('contacts.communicationAssistance')}:</b>
     <div style="padding: 0 0 5px 30px;">
-        Salomeja Petronyte &ndash; <span on:click="{mail}" class="contactlink mail" data-user="salomeja"></span>
+        Salomėja Petronytė &ndash; <span on:click="{mail}" class="contactlink mail" data-user="salomeja"></span>
     </div>
     <b>{$_('contacts.socialMedia')}:</b>
     <div style="padding: 0 0 5px 30px;">
