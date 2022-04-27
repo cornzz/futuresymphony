@@ -14,7 +14,7 @@
     let showMobile: boolean = false
 
     const ARROW_ICON = "data:image/svg+xml,%3Csvg viewBox='0 0 2048 2048' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1523 1212q0 13-10 23l-50 50q-10 10-23 10t-23-10l-393-393-393 393q-10 10-23 10t-23-10l-50-50q-10-10-10-23t10-23l466-466q10-10 23-10t23 10l466 466q10 10 10 23z' fill='%23EEEEEE'/%3E%3C/svg%3E"
-    const FB_ICON = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' x='0px' y='0px' width='20px' viewBox='0 0 266.893 266.895' enable-background='new 0 0 266.893 266.895'%3E%3Cpath fill='%23304369' d='M248.082,262.307c7.854,0,14.223-6.369,14.223-14.225V18.812 c0-7.857-6.368-14.224-14.223-14.224H18.812c-7.857,0-14.224,6.367-14.224,14.224v229.27c0,7.855,6.366,14.225,14.224,14.225 H248.082z'/%3E%3Cpath fill='%23FFFFFF' d='M182.409,262.307v-99.803h33.499l5.016-38.895h-38.515V98.777c0-11.261,3.127-18.935,19.275-18.935 l20.596-0.009V45.045c-3.562-0.474-15.788-1.533-30.012-1.533c-29.695,0-50.025,18.126-50.025,51.413v28.684h-33.585v38.895h33.585 v99.803H182.409z'/%3E%3C/svg%3E"
+    const FB_ICON = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 9.95 20'%3E%3Cpath d='M8.09 3.81c-1.4 0-1.58.84-1.58 1.67v1.3h3.35L9.49 11h-3v9H2.33v-9H0V6.88h2.42V3.81C2.42 1.3 3.81 0 6.6 0H10v3.81z'%3E%3C/path%3E%3C/svg%3E"
     const windowPos: () => number = () => window.scrollY
 
     // Change Header appearance according to position
@@ -181,7 +181,10 @@
     &nbsp; | &nbsp;
     <div class="desktop-only">
         <a href="https://www.facebook.com/FScompetition" class="social" target="_blank">
-            <img src={FB_ICON} alt="fb_icon.svg" width="20" height="20">
+            <svg viewBox="0 0 9.95 20" width="20" height="20">
+                <path d="M8.09 3.81c-1.4 0-1.58.84-1.58 1.67v1.3h3.35L9.49 11h-3v9H2.33v-9H0V6.88h2.42V3.81C2.42 1.3 3.81 0 6.6 0H10v3.81z">
+                </path>
+            </svg>
         </a>
         &nbsp; | &nbsp;
     </div>

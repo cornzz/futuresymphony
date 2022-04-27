@@ -1,7 +1,7 @@
 .mastfoot
     font-size 1.35vmin
     text-align center
-    color rgba(255,255,255,.6) 
+    color rgba(255,255,255,.6)
     background-color var(--color-primary)
     margin-bottom -70px
     border-top 1px solid
@@ -25,8 +25,18 @@
     .social
         outline 0
 
-        img
-            width 2vmin
+        svg
+            width 20px
+            height auto
+            vertical-align middle
+            fill rgba(255,255,255,0.6)
+            padding 2px
+            background-color rgba(255, 255, 255, 0.1)
+            border-radius 2px
+
+            &:hover
+                fill rgba(255,255,255,0.8)
+                background-color rgba(255, 255, 255, 0.15)
 
 .desktop-only
     display none
@@ -44,5 +54,6 @@
     .mastfoot
         font-size 1.2vh
 
-        .social img
-            width 1.8vh
+        .social svg
+            width 16px
+            height auto
