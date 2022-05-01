@@ -70,11 +70,12 @@
 
     onMount(() => {
         splide.splide.on('click', (_, event) => {
-            const target = event.target as HTMLElement
-            const currentImg = images.findIndex(img => img.bigsrc === target.dataset.bigsrc)
-            splide.splide.Components.Autoplay.pause()
+            const target = event.target as HTMLImageElement
+            const index = Number(target.dataset.index)
+            const current = images[index]
             const closeCallback = () => windowWidth > 600 && splide.splide.Components.Autoplay.play()
-            $imageFrame.toggleImageFrame(event, images, currentImg, closeCallback)
+            $imageFrame.toggleImageFrame(current.bigsrc, current.alt, current.caption, images, index, closeCallback)
+            splide.splide.Components.Autoplay.pause()
         })
     })
 </script>
@@ -108,7 +109,7 @@
     >
         <div class="splide__track">
             <ul class="splide__list">
-                {#each images as image}
+                {#each images as image, index}
                     <SplideSlide>
                         <img
                             src="data:image/png;base64,AAA"
@@ -116,8 +117,7 @@
                             width="750"
                             height="500"
                             data-splide-lazy={image.src}
-                            data-bigsrc={image.bigsrc}
-                            data-bigcaption={image.caption}
+                            data-index={index}
                             loading="lazy"
                         >
                     </SplideSlide>

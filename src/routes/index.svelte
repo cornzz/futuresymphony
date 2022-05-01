@@ -5,9 +5,10 @@
     import Participants from '../components/Participants.svelte'
     import Sponsors from '../components/Sponsors.svelte'
     import Contacts from '../components/Contacts.svelte'
+    import Image from '../components/Image.svelte'
     import { MetaTags } from 'svelte-meta-tags'
     import { onMount } from 'svelte'
-    import { showLanding, showBack, sections, imageFrame } from '../helpers/stores'
+    import { showLanding, showBack, sections } from '../helpers/stores'
     import { _ } from 'svelte-i18n'
 
     let about, news, participants, sponsors, contacts
@@ -35,29 +36,27 @@
     <Tab oversize>
         <h1 class="cover-heading"><b>{$_('about.title')}</b></h1>
         <About>
-            <img
-                slot="image1"
-                class="image right"
-                width="750"
-                height="500"
-                src="/images/gallery/about_1_small.jpg"
-                alt="Future Symphony Orchestra 1"
-                data-bigsrc="/images/gallery/about_1.jpg"
-                on:click={$imageFrame.toggleImageFrame}
-                loading="lazy"
-            >
-            <img
-                slot="image2"
-                class="image left"
-                width="750"
-                height="500"
-                src="/images/gallery/about_2_small.jpg"
-                alt="Future Symphony Orchestra 2"
-                data-bigsrc="/images/gallery/about_2.jpg"
-                data-bigcaption="gallery.about2"
-                on:click={$imageFrame.toggleImageFrame}
-                loading="lazy"
-            >
+            <div slot="image1" class="image right">
+                <Image
+                    src="/images/gallery/about_1_small.jpg"
+                    alt="Future Symphony Orchestra 1"
+                    width="750"
+                    height="500"
+                    bigsrc="/images/gallery/about_1.jpg"
+                    lazyLoad
+                />
+            </div>
+            <div slot="image2" class="image left">
+                <Image
+                    src="/images/gallery/about_2_small.jpg"
+                    alt="Future Symphony Orchestra 2"
+                    width="750"
+                    height="500"
+                    bigsrc="/images/gallery/about_2.jpg"
+                    caption="gallery.about2"
+                    lazyLoad
+                />
+            </div>
         </About>
     </Tab>
 </div>
@@ -92,11 +91,9 @@
 
 <style lang="stylus">
     .image
-        height 35vmin
-        width auto
-
-        &:hover
-            cursor pointer
+        :global(img)
+            height 35vmin
+            width auto
     
         &.right
             float right

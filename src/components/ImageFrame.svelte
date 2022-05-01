@@ -18,24 +18,24 @@
     let loading: boolean = false
 
     export async function toggleImageFrame(
-        event: MouseEvent,
+        imageSrc?: string,
+        imageAlt?: string,
+        imageCaption?: string,
         imageSeries?: Image[],
         imageSeriesIndex?: number,
         callback?: () => void
     ): Promise<void> {
-        const target = event.target as HTMLElement
-        src = target.dataset.bigsrc ?? ''
-        alt = target.dataset.bigalt ?? (target as HTMLImageElement).alt ?? ''
+        src = imageSrc ?? ''
+        alt = imageAlt ?? ''
         caption = ''
         images = imageSeries ?? []
         index = imageSeriesIndex ?? 0
-        
         if (src) {
             show = true
             loading = true
             await tick()
             image.onload = () => {
-                caption = target.dataset.bigcaption ?? ''
+                caption = imageCaption ?? ''
                 loading = false
             }
             document.addEventListener('keydown', handleKeydown)
@@ -80,7 +80,7 @@
 {#if show}
     <div
         class="image-frame"
-        on:click={toggleImageFrame}
+        on:click={() => toggleImageFrame()}
         transition:fade={{ duration: 300, easing: linear }}
     >
         {#if loading}
@@ -230,4 +230,3 @@
                 padding 0 3px
                 font-size 10px
 </style>
-

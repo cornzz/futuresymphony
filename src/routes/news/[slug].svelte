@@ -1,6 +1,7 @@
 <script lang="ts">
     import Tab from '../../components/Tab.svelte'
-    import { showLanding, showBack, imageFrame } from '../../helpers/stores'
+    import Image from '../../components/Image.svelte'
+    import { showLanding, showBack } from '../../helpers/stores'
     import type { NewsArticle } from '../../helpers/types'
     import { MetaTags } from 'svelte-meta-tags'
     import { _, locale } from 'svelte-i18n'
@@ -23,14 +24,14 @@
         <h1 class="cover-heading"><b>{@html article.title[$locale]}</b></h1>
         <span class="date"><i>{@html article.date[$locale]}</i></span>
         <div class="content">
-            <img
-                class="news-image"
-                src={`/images/news/${article.images.small}`}
-                alt="News subject"
-                data-bigsrc={article.images.regular ? `/images/news/${article.images.regular}` : ''}
-                data-bigcaption={article.images.caption?.[$locale]}
-                on:click={$imageFrame.toggleImageFrame}
-            >
+            <div class="news-image">
+                <Image
+                    src={`/images/news/${article.images.small}`}
+                    alt="News subject"
+                    bigsrc={article.images.regular ? `/images/news/${article.images.regular}` : ''}
+                    caption={article.images.caption?.[$locale]}
+                />
+            </div>
             {@html article.content.full[$locale]}
         </div>
     {/if}
@@ -48,17 +49,16 @@
 
     .news-image
         float right
-        height 40vh
         margin 5px 0 5px 20px
 
-        &:hover
-            cursor pointer
+        :global(img)
+            height 40vh
 
    @media screen and (max-device-width: 600px)
         .date
             line-height 2
             font-size 1.3vh
 
-        .news-image
+        .news-image :global(img)
             height 30vh
 </style>

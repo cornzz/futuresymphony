@@ -1,7 +1,7 @@
 <script lang="ts">
+    import Image from '../components/Image.svelte'
     import Tab from '../components/Tab.svelte'
     import { showLanding } from '../helpers/stores'
-    import { imageFrame } from '../helpers/stores'
 
     showLanding.set(false)
 
@@ -10,13 +10,15 @@
 <Tab oversize justify={false}>
     <h1 class="cover-heading"><b>Adomas Morkūnas-Budrys</b></h1>
     <div>
-        <img
-            class="bio-image"
-            src="/images/adomas_morkunas_budrys_small.jpg"
-            alt="Adomas Morkunas Budrys"
-            data-bigsrc="/images/adomas_morkunas_budrys.jpg"
-            on:click={$imageFrame.toggleImageFrame}
-        >
+        <div class="bio-image">
+            <Image
+                src="/images/adomas_morkunas_budrys_small.jpg"
+                alt="Adomas Morkunas Budrys"
+                width="372"
+                height="558"
+                bigsrc="/images/adomas_morkunas_budrys.jpg"
+            />
+        </div>
         <p>Acclaimed for his analytical mind, charisma, and profound musical understanding, <b>Adomas Morkūnas-Budrys</b> stands out as one of the most promising orchestra conductors of his generation.</p>
         <p>A 23-year-old conductor Adomas has already worked with such orchestras as Thessaloniki State Symphony, Olten Philharmonic of Izmir, Südwestdeutsche Philharmonie Konstanz, Musikkolegium Winterthur, and MÁV Symphony. In masterclasses, he has had an opportunity to work with such conductors as Paavo Järvi, Bernard Haitink, Mirga Gražinytė-Tyla, Jorma Panula, Larry Rachleff, and James Lowe.</p>
         <p>Adomas has been studying orchestra conducting with Johannes Schlaefli (Zürich University of the Arts) and prof. Ole Kristian Ruud (Norwegian Academy of Music). Recently, Adomas’ concert in Zürich in which he presented all of Jean Sibelius’s symphonies was awarded the highest mark.</p>
@@ -27,12 +29,12 @@
 
 <style lang="stylus">
     .bio-image
-        float left
-        height 50vh
         margin 10px 15px 5px 0
-
-        &:hover
-            cursor pointer
+        float left
+        
+        :global(img)
+            height 50vh
+            width auto
 
     @media screen and (max-device-width: 900px)
         .bio-image

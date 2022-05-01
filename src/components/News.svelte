@@ -12,7 +12,7 @@
 
 {#each articles as { article }}
     <a href={`/news/${article.slug}`} class="news-link" class:fixed={!latest}>
-        <div class="news-item dropshadow">
+        <div class="news-item dropshadow" data-readmore={$_('news.readmore')}>
             <img
                 src={`/images/news/${article.images.small}`}
                 alt={article.images.small}
@@ -21,7 +21,7 @@
                 class="news-image-small"
                 loading="lazy"
             >
-            <div class="news-content" data-readmore="{$_('news.readmore')}">
+            <div class="news-content">
                 <div class="date"><i>{@html article.date[$locale]}</i></div>
                 <span class="title"><b>{@html article.title[$locale]}</b></span>
                 <div class="text">
@@ -44,6 +44,7 @@
 
         .news-item
             display flex
+            position relative
             height 100%
             border 1px solid #CCC
             border-radius 2px
@@ -51,6 +52,9 @@
             img
                 height 100%
                 width auto
+                transition all 0.1s ease-in-out
+                border-top-left-radius 1px
+                border-bottom-left-radius 1px
 
             .news-content
                 position relative
@@ -74,45 +78,52 @@
                 .text
                     line-height: 1.55
 
-                &:before
-                    content ''
-                    position absolute
-                    top 0
-                    bottom 0
-                    left 0
-                    right 0
-                    opacity 0
-                    background-color #F5F5F5EF
-                    border-top-right-radius 2px
-                    border-bottom-right-radius 2px
-                    transition all 0.3s ease
-                
-                &:after
-                    content attr(data-readmore)
-                    position absolute
-                    top 50%
-                    left 0
-                    right 0
-                    transform translateY(-70%)
-                    font-weight 700
-                    opacity 0
-                    text-align center
-                    color var(--color-link)
-                    transition all 0.3s ease
-
-            &:hover .news-content:before
-            &:hover .news-content:after
-                opacity 1
+            &:before
+                content ''
+                position absolute
+                top -1px
+                bottom -1px
+                left -1px
+                right -1px
+                opacity 0
+                background-color #F5F5F5D8
+                border-radius 2px
+                transition all 0.2s ease-in-out
+                z-index 5
             
-            &:hover .news-content:after
-                transform translateY(-50%)
+            &:after
+                content attr(data-readmore)
+                position absolute
+                top 50%
+                left 0
+                right 0
+                opacity 0
+                text-align center
+                color var(--color-link)
+                transition all 0.25s ease-in-out
+                z-index 6
+
+            &:hover
+                border-color transparent
+
+                img
+                    transform scaleY(101%) translateX(-1px)
+                    border-top-left-radius 2px
+                    border-bottom-left-radius 2px
+
+                &:before
+                &:after
+                    opacity 1
+            
+                &:after
+                    transform translateY(-50%)
 
     .dropshadow
-        transition all 0.1s ease
+        transition all 0.15s ease-in-out
         
         &:hover
             cursor pointer
-            box-shadow 0px 0px 4px 1px var(--color-boxshadow)
+            box-shadow 0 1px 3px 0 rgba(60, 64, 67, .3), 0 4px 8px 3px rgba(60, 64, 67, .15)
     
     .fixed
         height 25vh !important

@@ -1,6 +1,6 @@
 <script lang="ts">
-    import ImageFrame from './ImageFrame.svelte'
     import Wrapper from '../components/Wrapper.svelte'
+    import ImageFrame from '../components/ImageFrame.svelte'
     import { onMount } from 'svelte'
     import { addMessages, init as init_i18n, _, locale } from 'svelte-i18n'
     import { initSmoothScrolling } from '../helpers'

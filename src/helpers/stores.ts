@@ -1,6 +1,6 @@
 import { type Writable, writable } from 'svelte/store'
 import { dev } from '$app/env'
-import type ImageFrame from 'src/routes/ImageFrame.svelte'
+import type ImageFrame from '../components/ImageFrame.svelte'
 
 export let showLanding: Writable<boolean> = writable(true)
 export let showBack: Writable<boolean> = writable(true)

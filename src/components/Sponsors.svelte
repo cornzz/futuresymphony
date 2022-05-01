@@ -93,11 +93,11 @@
             img
                 max-height 100%
                 opacity 0.7
-                transition all 0.15s ease-in-out
+                transition all 0.15s cubic-bezier(0.22, 1, 0.36, 1)
 
                 &:hover
                     opacity 1
-                    transform scale(103%)
+                    transform scale(104%)
 
         .text
             font-family 'Audiowide', "Courier New"
