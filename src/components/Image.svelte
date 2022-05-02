@@ -18,6 +18,7 @@
 
 <div
     class="image open"
+    class:fade={Boolean(bigsrc)}
     on:click={onclick}
 >
     <img
@@ -33,19 +34,20 @@
     .image
         position relative
 
-        &:after
-            content ''
-            position absolute
-            height 100%
-            width 100%
-            left 0
-            opacity 0
-            background-color rgba(0, 0, 0, .2)
-            transition all 0.2s ease
-
-        &:hover
-            cursor pointer
-
+        &.fade
             &:after
-                opacity 1
+                content ''
+                position absolute
+                height 100%
+                width 100%
+                left 0
+                opacity 0
+                background-color rgba(0, 0, 0, .2)
+                transition all 0.2s ease
+
+            &:hover
+                cursor pointer
+
+                &:after
+                    opacity 1
 </style>
