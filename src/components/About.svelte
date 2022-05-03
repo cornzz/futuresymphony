@@ -53,7 +53,7 @@
             <a href="https://ayaladler.com/" class="link" target="_blank">Ayal Adler</a> (Israel)<br>
             <!-- <a href="https://www.emic.ee/helena-tulve" class="link" target="_blank">Helena Tulve</a> (Estonia)<br> -->
         </p>
-        <p>The <b>Grand Prix</b> will be awarded a <b>1500 € cash prize</b> and a performance by <b>the Lithuanian National Symphony Orchestra</b> (LNSO) in the season of 2022–23. The other 2–3 best composers will be awarded the <i>Laureate diploma</i> and <b>will share a 1500 € prize fund</b> in equal parts. Furthermore, all finalists will receive professional recordings of their pieces.</p>
+        <p>The <b>Grand Prix</b> is a <b>1500 € cash prize</b> and a performance by <b>the Lithuanian National Symphony Orchestra</b> (LNSO) in the season of 2022–23. The other 2–3 best composers will be awarded Laureate diplomas and <b>will share a 1500 € prize fund</b> in equal parts. Furthermore, all finalists will receive professional recordings of their pieces.</p>
     {:else if $locale === 'lt'}
         <div class="quotes">
             <p>
@@ -74,9 +74,9 @@
         
         <p>III tarptautinis kompozicijų simfoniniam orkestrui konkursas <i>„Future Symphony“</i> – tai jaunųjų kūrėjų, kuriems rūpi simfoninės tradicijos evoliucija, iniciatyva.</p>
         <p>Pagrindinis <i>„Future Symphony“</i> konkurso tikslas – suteikti galimybę jauniesiems kompozitoriams išbandyti simfoninės kūrybos lauką. Konkursas siekia atskleisti naujus kompozicijos talentus, aktualiosios muzikos kūriniais ugdyti jaunąją atlikėjų kartą ir sukurti tarptautiniam bendradarbiavimui palankią kūrybinę erdvę.</p>
-        <p>Konkurse dalyvauti gali <b>18–35 m.</b> kompozitoriai iš viso pasaulio.</p>
+        <p>Konkurse dalyvauti gali <b>18&ndash;35 m.</b> kompozitoriai iš viso pasaulio.</p>
         <p>
-            <b>2022 m. rugsėjo 9 d.</b> Lietuvos nacionalinėje filharmonijoje <b>5-7 geriausias pateiktas partitūras</b> atliks specialiai <i>„Future Symphony“</i> konkursams suburiamas <span class="link" on:click="{() => showFSO = !showFSO}">Future Symphony Orchestra</span>.
+            <b>2022 m. rugsėjo 9 d.</b> Lietuvos nacionalinėje filharmonijoje <b>5&ndash;7 geriausias pateiktas partitūras</b> atliks specialiai <i>„Future Symphony“</i> konkursams suburiamas <span class="link" on:click="{() => showFSO = !showFSO}">Future Symphony Orchestra</span>.
             {#if showFSO}
                 <div transition:fadeHeight style="overflow: hidden">
                     <hr>
@@ -101,7 +101,7 @@
             <a href="https://ayaladler.com/" class="link" target="_blank">Ayal Adler</a> (Izraelis)<br>
             <!-- <a href="https://www.emic.ee/helena-tulve" class="link" target="_blank">Helena Tulve</a> (Estija)<br> -->
         </p>
-        <p><b>Grand Prix</b> bus apdovanotas <b>1500 € piniginiu prizu</b> bei kūrinio įtraukimu į vieną iš <b>Lietuvos nacionalinio simfoninio orkestro</b> (LNSO) 2022–23 metų sezono koncertų. Kiti 2–3 geriausi kompozitoriai bus apdovanoti <i>Laureato diplomu</i> ir <b>pasidalins 1500 € prizinį fondą</b> lygiomis dalimis. Be to, visi kompozitoriai patekę į 2-ąjį turą gaus profesionalius savo kūrinių įrašus.</p>
+        <p><b>Grand Prix</b> &ndash; <b>1500 € piniginis prizas</b> ir kūrinio atlikimas <b>Lietuvos nacionalinio simfoninio orkestro</b> (LNSO) 2022–23 metų sezone. Kiti 2–3 geriausi kompozitoriai bus apdovanoti Laureato diplomais ir <b>pasidalins 1500 € prizinį fondą</b> lygiomis dalimis. Be to, visi kompozitoriai patekę į 2-ąjį turą gaus profesionalius savo kūrinių įrašus.</p>
     {/if}
 </div>
 
