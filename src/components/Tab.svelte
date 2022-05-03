@@ -12,7 +12,7 @@
         background-color var(--color-background)
         height 95vh
         width 100vw
-        padding 0 15px 3%
+        padding 3% 15px
         overflow hidden
         font-size 2.3vmin
         margin-right auto
@@ -34,35 +34,35 @@
 
     @media (min-width: 1200px)
         .tab
-            padding 0 150px 3%
+            padding 3% 150px
 
     @media (min-width: 1200px) and (min-height: 800px)
         .tab
-            padding 0 160px 3%
+            padding 3% 160px
 
     @media (min-width: 1300px)
         .tab
-            padding 0 200px 3%
+            padding 3% 200px
 
     @media (min-width: 1400px) 
         .tab
-            padding 0 200px 3%
+            padding 3% 200px
 
     @media (min-width: 1400px) and (max-height: 900px)
         .tab
-            padding 0 200px 3%
+            padding 3% 200px
 
     @media (min-width: 1500px) and (max-height: 890px) 
         .tab
-            padding 0 240px 3%
+            padding 3% 240px
 
     @media (min-width: 1600px) and (min-height: 900px)
         .tab
-            padding 0 250px 3%
+            padding 3% 250px
 
     @media (min-width: 1700px) 
         .tab
-            padding 0 320px 3%
+            padding 3% 320px
 
     @media screen and (max-device-width: 600px) 
         .tab

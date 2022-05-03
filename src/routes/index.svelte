@@ -97,17 +97,17 @@
     
         &.right
             float right
-            margin 10px 0 5px 15px
+            margin 10px 0 25px 50px
         
         &.left
             float left
-            margin 10px 15px 5px 0
+            margin 10px 50px 25px 0
 
     @media screen and (max-device-width: 900px)
         .image
             &.right
-                margin 5px 0 5px 10px
+                margin 5px 0 10px 20px
             
             &.left
-                margin 5px 10px 5px 0
+                margin 5px 20px 10px 0
 </style>
