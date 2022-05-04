@@ -15,10 +15,10 @@
         "back": "Į pradžią"
     },
     "about": {
-        "title": "Sveiki atvykę!"
+        "title": "_sveiki atvykę!"
     },
     "news": {
-        "title": "Naujienos",
+        "title": "_naujienos",
         "older": "Senesnės naujienos",
         "readmore": "Skaityti daugiau",
         "slug": {
@@ -27,7 +27,7 @@
             }
         },
         "archive": {
-            "title": "Naujienų archyvas",
+            "title": "_naujienų archyvas",
             "meta": {
                 "title": "Naujienų archyvas - Future Symphony Konkursas",
                 "description": "Naujienų archyvas „Future Symphony“ tarptautiniam kompozicijų simfoniniam orkestrui konkursui"
@@ -35,11 +35,11 @@
         }
     },
     "participants": {
-        "title": "Dalyviams",
+        "title": "_dalyviams",
         "registration": "Pradėti registraciją"
     },
     "sponsors": {
-        "title": "Rėmėjai ir partneriai",
+        "title": "_rėmėjai ir partneriai",
         "financedBy": "Projektą finansuoja",
         "patron": "Mecenatas",
         "mainSponsors": "Pagrindiniai rėmėjai",
@@ -48,7 +48,7 @@
         "partners": "Partneriai"
     },
     "contacts": {
-        "title": "Kontaktai",
+        "title": "_kontaktai",
         "organizer": "Projekto organizatorius",
         "vsi": "VšĮ",
         "projectManagement": "Projekto vadyba",

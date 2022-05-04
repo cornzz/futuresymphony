@@ -15,10 +15,10 @@
         "back": "Back to top"
     },
     "about": {
-        "title": "Welcome!"
+        "title": "_welcome!"
     },
     "news": {
-        "title": "News",
+        "title": "_news",
         "older": "Older news",
         "readmore": "Read more",
         "slug": {
@@ -27,7 +27,7 @@
             }
         },
         "archive": {
-            "title": "News archive",
+            "title": "_news archive",
             "meta": {
                 "title": "News Archive - Future Symphony Competition",
                 "description": "News archive of the \"Future Symphony\" international composition competition for symphony orchestra"
@@ -35,11 +35,11 @@
         }
     },
     "participants": {
-        "title": "For Participants",
+        "title": "_for participants",
         "registration": "Start registration"
     },
     "sponsors": {
-        "title": "Sponsors and Partners",
+        "title": "_sponsors and partners",
         "financedBy": "This project is financed by",
         "patron": "Founding sponsor",
         "mainSponsors": "Main sponsors",
@@ -48,7 +48,7 @@
         "partners": "Partners"
     },
     "contacts": {
-        "title": "Contacts",
+        "title": "_contacts",
         "organizer": "Event organizer",
         "vsi": "PI",
         "projectManagement": "Project management",
