@@ -57,9 +57,11 @@
         const subsectionTitle: HTMLElement = subsection.previousElementSibling as HTMLElement
         if (!subsectionTitle.classList.contains('active') && action !== 'close' || action === 'open') {
             subsection.style.height = (subsection.firstChild as HTMLElement).scrollHeight + 15 + 'px'
+            subsection.classList.add('active')
             subsectionTitle.classList.add('active')
         } else if (subsectionTitle.classList.contains('active')) {
             subsection.style.height = '0px'
+            subsection.classList.remove('active')
             subsectionTitle.classList.remove('active')
         }
     }
@@ -246,8 +248,16 @@
             height 0px
             margin 0 -3px
             padding 0 3px
-            transition height 0.4s ease
+            transition height 0.5s ease
             overflow hidden
+
+            &:global( > div)
+                transition opacity 0.5s ease-in
+                opacity 0
+
+            &:global(.active > div)
+                transition opacity 0.3s ease
+                opacity 1
 
         .checkbox
         .referrer
