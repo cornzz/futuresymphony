@@ -143,32 +143,6 @@
 
 /* -- Desktop nav -- */
 
-.back
-    opacity 0
-    pointer-events none
-    background-color rgba(0, 0, 0, 0.35)
-    transition all 0.1s
-    border-radius 2px
-    position fixed
-    bottom 70px
-    right 30px
-    z-index 7
-
-    &:hover
-    &:focus
-        cursor pointer
-        filter brightness(150%)
-        background-color rgba(0, 0, 0, 0.55)
-
-    img
-        pointer-events none
-        width 35px
-        height 35px
-
-    &:global(.active)
-        opacity 1
-        pointer-events auto
-
 .desktop-nav
     display flex
     justify-content space-between
@@ -202,6 +176,7 @@
             text-shadow 1px 1px 1px rgba(0, 0, 0, .9)
             transition color 0.15s linear
             outline none
+            text-transform capitalize
 
         &:hover > a
         a:focus
@@ -232,6 +207,32 @@
 
     li + li
         margin-left 20px
+
+.back
+    opacity 0
+    pointer-events none
+    background-color rgba(0, 0, 0, 0.35)
+    transition all 0.1s
+    border-radius 2px
+    position fixed
+    bottom 70px
+    right 30px
+    z-index 7
+
+    &:hover
+    &:focus
+        cursor pointer
+        filter brightness(150%)
+        background-color rgba(0, 0, 0, 0.55)
+
+    img
+        pointer-events none
+        width 35px
+        height 35px
+
+    &:global(.active)
+        opacity 1
+        pointer-events auto
 
 /* TODO: rework this mess... */
 

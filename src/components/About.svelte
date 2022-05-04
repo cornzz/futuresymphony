@@ -116,7 +116,7 @@
             margin-bottom 25px
             display grid
             grid-template-columns 1fr 1fr
-            column-gap 25px
+            column-gap 20px
             row-gap 15px
             
             div
@@ -138,11 +138,16 @@
             & > p
                 text-align start
 
-            .quotes > p
-                margin-bottom 7px
 
     @media screen and (max-device-width: 750px)
-        .quotes div
-            grid-column span 2
+        .content .quotes
+            row-gap 10px
+
+            div
+                grid-column span 2
+                padding 5px 15px
+
+                .quote
+                    padding-left 10px
 </style>
 
