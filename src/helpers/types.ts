@@ -13,7 +13,7 @@ export type NewsArticle = {
         lt: string
     }
     content: {
-        short: {
+        short?: {
             en: string
             lt: string
         }

@@ -25,7 +25,7 @@
                 <div class="date"><i>{@html article.date[$locale]}</i></div>
                 <span class="title"><b>{@html article.title[$locale]}</b></span>
                 <div class="text">
-                    {@html article.content.short[$locale]}
+                    {@html article.content.full[$locale]}
                 </div>
             </div>
         </div>
@@ -60,6 +60,7 @@
                 position relative
                 font-size 0.9em
                 display grid
+                width 100%
                 grid-template-rows 1fr 1fr 5fr
                 padding 5px 10px 10px
                 
@@ -77,6 +78,33 @@
 
                 .text
                     line-height: 1.55
+
+                &:after
+                    content ''
+                    position absolute
+                    left 0
+                    right 0
+                    bottom 0
+                    height 30%
+                    background linear-gradient(
+                        to bottom,
+                        rgba(245, 245, 245, 0) 0%,
+                        rgba(245, 245, 245, 0.013) 4.5%,
+                        rgba(245, 245, 245, 0.049) 8.7%,
+                        rgba(245, 245, 245, 0.104) 12.9%,
+                        rgba(245, 245, 245, 0.175) 17.1%,
+                        rgba(245, 245, 245, 0.259) 21.5%,
+                        rgba(245, 245, 245, 0.352) 26.1%,
+                        rgba(245, 245, 245, 0.45) 31.2%,
+                        rgba(245, 245, 245, 0.55) 36.7%,
+                        rgba(245, 245, 245, 0.648) 42.9%,
+                        rgba(245, 245, 245, 0.741) 49.9%,
+                        rgba(245, 245, 245, 0.825) 57.7%,
+                        rgba(245, 245, 245, 0.896) 66.5%,
+                        rgba(245, 245, 245, 0.951) 76.4%,
+                        rgba(245, 245, 245, 0.987) 87.5%,
+                        rgb(245, 245, 245) 100%
+                    )
 
             &:before
                 content ''
