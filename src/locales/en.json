@@ -7,11 +7,11 @@
         "headline2": "3<sup>RD</sup> INTERNATIONAL MUSIC COMPOSITION COMPETITION<br>FOR SYMPHONY ORCHESTRA"
     },
     "nav": {
-        "about": "ABOUT",
-        "news": "NEWS",
-        "participants": "FOR PARTICIPANTS",
-        "sponsors": "SPONSORS & PARTNERS",
-        "contacts": "CONTACTS",
+        "about": "about",
+        "news": "news",
+        "participants": "for participants",
+        "sponsors": "sponsors & partners",
+        "contacts": "contacts",
         "back": "Back to top"
     },
     "about": {

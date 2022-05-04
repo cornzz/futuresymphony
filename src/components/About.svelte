@@ -8,18 +8,18 @@
 <div class="content">
     {#if $locale === 'en'}
         <div class="quotes">
-            <p>
+            <div>
                 <span class="quote">„This is a competition of international standing, which highlights Lithuania’s forward-looking cultural stature and provides the best environment for cultural exchange on the highest level.“</span>
                 – <b>Dobrinka Tabakova</b>, BBC Concert Orchestra composer-in-residence<br>
-            </p>
-            <p>
-                <span class="quote">„I truly believe this competition will soon find itself firmly established as one of the great events of its type.“</span>
-                – <b>Charles Philip Daniels Torres</b>, winner of the 2<sup>nd</sup> Future Symphony Competition<br>
-            </p>
-            <p>
+            </div>
+            <div>
                 <span class="quote">„I find this project to be highly unique, moving, and extremely important. The organizational committee, the orchestra musicians, and the conductor did their job superbly.“</span>
                 – <b>Ayal Adler</b>, composer & pianist<br>
-            </p>
+            </div>
+            <div>
+                <span class="quote">„I truly believe this competition will soon find itself firmly established as one of the great events of its type.“</span>
+                – <b>Charles Philip Daniels Torres</b>, winner of the 2<sup>nd</sup> Future Symphony Competition<br>
+            </div>
         </div>
         
         <slot name="image1"></slot>
@@ -56,18 +56,18 @@
         <p>The <b>Grand Prix</b> is a <b>1500 € cash prize</b> and a performance by <b>the Lithuanian National Symphony Orchestra</b> (LNSO) in the season of 2022–23. The other 2–3 best composers will be awarded Laureate diplomas and <b>will share a 1500 € prize fund</b> in equal parts. Furthermore, all finalists will receive professional recordings of their pieces.</p>
     {:else if $locale === 'lt'}
         <div class="quotes">
-            <p>
+            <div>
                 <span class="quote">Tai tarptautinio lygio konkursas, išryškinantis į ateitį orientuotą Lietuvos kultūrinį perspektyvumą, sukuriantis geriausias sąlygas aukščiausio lygio kultūriniams mainams.</span>
                 – <b>Dobrinka Tabakova</b>, BBC Concert Orchestra kompozitorė-rezidentė<br>
-            </p>
-            <p>
-                <span class="quote">„Esu įsitikinęs, jog „Future Symphony“ greitai įsitvirtins kaip vienas geriausių tokio tipo konkursų.“</span>
-                – <b>Charles Philip Daniels Torres</b>, II <i>„Future Symphony“</i> konkurso laimėtojas<br>
-            </p>
-            <p>
+            </div>
+            <div>
                 <span class="quote">„Nepaprastai unikalus, jaunatviškas ir reikšmingas projektas. Organizatoriai, atlikėjai ir dirigentas savo darbą atliko nepriekaištingai.“</span>
                 – <b>Ayal Adler</b>, kompozitorius ir pianistas<br>
-            </p>
+            </div>
+            <div>
+                <span class="quote">„Esu įsitikinęs, jog „Future Symphony“ greitai įsitvirtins kaip vienas geriausių tokio tipo konkursų.“</span>
+                – <b>Charles Philip Daniels Torres</b>, II <i>„Future Symphony“</i> konkurso laimėtojas<br>
+            </div>
         </div>
 
         <slot name="image1"></slot>
@@ -114,12 +114,24 @@
 
         .quotes
             margin-bottom 25px
+            display grid
+            grid-template-columns 1fr 1fr
+            column-gap 25px
+            row-gap 15px
             
-            .quote
-                display block
-                color rgba(96, 96, 97, 0.9)
-                padding 5px 0 0 35px
-                font-style italic
+            div
+                background-color #e9e9e9
+                padding 10px 20px
+                border-radius 5px
+
+                &:last-child
+                    grid-column span 2
+            
+                .quote
+                    display block
+                    color rgb(96, 96, 97)
+                    padding-left 15px
+                    font-style italic
 
     @media screen and (max-device-width: 900px)
         .content
@@ -128,5 +140,9 @@
 
             .quotes > p
                 margin-bottom 7px
+
+    @media screen and (max-device-width: 750px)
+        .quotes div
+            grid-column span 2
 </style>
 

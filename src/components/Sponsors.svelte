@@ -76,6 +76,7 @@
                 color rgba(70, 70, 70, .85)
                 font-style italic
                 font-size 2.2vmin
+                font-weight 300
                 text-align center
 
         .sponsor

@@ -115,6 +115,7 @@
             height 30px
             width 60px
             text-align center
+            font-family Arial, Helvetica, sans-serif
             background-color var(--color-primary)
             border-radius var(--border-radius)
             transition all 0.05s ease

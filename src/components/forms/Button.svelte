@@ -15,6 +15,7 @@
         width 100%
         padding 0 10px
         font-size 16px
+        font-family Arial, Helvetica, sans-serif
         border-radius var(--border-radius)
         transition all 0.1s ease
 
