@@ -102,11 +102,11 @@
     
         &.right
             float right
-            margin 30px 0 25px 50px
+            margin 25px 0 25px 65px
         
         &.left
             float left
-            margin 30px 50px 25px 0
+            margin 25px 65px 25px 0
         
         &:hover
             transition all 0.2s ease-in

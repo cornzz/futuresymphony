@@ -9,16 +9,16 @@
     {#if $locale === 'en'}
         <div class="quotes">
             <div>
-                <span class="quote">„This is a competition of international standing, which highlights Lithuania’s forward-looking cultural stature and provides the best environment for cultural exchange on the highest level.“</span>
-                – <b>Dobrinka Tabakova</b>, BBC Concert Orchestra composer-in-residence<br>
+                <span class="quote">This is a competition of international standing, which highlights Lithuania’s forward-looking cultural stature and provides the best environment for cultural exchange on the highest level.</span>
+                <span>– <b>Dobrinka Tabakova</b>, BBC Concert Orchestra composer-in-residence</span>
             </div>
             <div>
-                <span class="quote">„I find this project to be highly unique, moving, and extremely important. The organizational committee, the orchestra musicians, and the conductor did their job superbly.“</span>
-                – <b>Ayal Adler</b>, composer & pianist<br>
+                <span class="quote">I find this project to be highly unique, moving, and extremely important. The organizational committee, the orchestra musicians, and the conductor did their job superbly.</span>
+                <span>– <b>Ayal Adler</b>, composer & pianist</span>
             </div>
             <div>
-                <span class="quote">„I truly believe this competition will soon find itself firmly established as one of the great events of its type.“</span>
-                – <b>Charles Philip Daniels Torres</b>, winner of the 2<sup>nd</sup> Future Symphony Competition<br>
+                <span class="quote">I truly believe this competition will soon find itself firmly established as one of the great events of its type.</span>
+                <span>– <b>Charles Philip Daniels Torres</b>, winner of the 2<sup>nd</sup> Future Symphony Competition</span>
             </div>
         </div>
         
@@ -58,15 +58,15 @@
         <div class="quotes">
             <div>
                 <span class="quote">Tai tarptautinio lygio konkursas, išryškinantis į ateitį orientuotą Lietuvos kultūrinį perspektyvumą, sukuriantis geriausias sąlygas aukščiausio lygio kultūriniams mainams.</span>
-                – <b>Dobrinka Tabakova</b>, BBC Concert Orchestra kompozitorė-rezidentė<br>
+                <span>– <b>Dobrinka Tabakova</b>, BBC Concert Orchestra kompozitorė-rezidentė</span>
             </div>
             <div>
-                <span class="quote">„Nepaprastai unikalus, jaunatviškas ir reikšmingas projektas. Organizatoriai, atlikėjai ir dirigentas savo darbą atliko nepriekaištingai.“</span>
-                – <b>Ayal Adler</b>, kompozitorius ir pianistas<br>
+                <span class="quote">Nepaprastai unikalus, jaunatviškas ir reikšmingas projektas. Organizatoriai, atlikėjai ir dirigentas savo darbą atliko nepriekaištingai.</span>
+                <span>– <b>Ayal Adler</b>, kompozitorius ir pianistas</span>
             </div>
             <div>
-                <span class="quote">„Esu įsitikinęs, jog „Future Symphony“ greitai įsitvirtins kaip vienas geriausių tokio tipo konkursų.“</span>
-                – <b>Charles Philip Daniels Torres</b>, II <i>„Future Symphony“</i> konkurso laimėtojas<br>
+                <span class="quote">Esu įsitikinęs, jog „Future Symphony“ greitai įsitvirtins kaip vienas geriausių tokio tipo konkursų.</span>
+                <span>– <b>Charles Philip Daniels Torres</b>, II <i>„Future Symphony“</i> konkurso laimėtojas</span>
             </div>
         </div>
 
@@ -113,25 +113,43 @@
             text-align justify
 
         .quotes
-            margin-bottom 25px
+            margin 15px 0 25px
             display grid
-            grid-template-columns 1fr 1fr
-            column-gap 20px
-            row-gap 15px
-            
+            grid-template-columns 1.11fr 1fr
+            column-gap 25px
+            row-gap 22px
+
             div
+                position relative
                 background-color #e9e9e9
                 padding 10px 20px
-                border-radius 5px
+                border-radius 1px
+                font-size 0.95em
+
+                &:after
+                    content ''
+                    position absolute
+                    display block
+                    top -12px
+                    left -12px
+                    width 32px
+                    height 32px
+                    background url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='24px' viewBox='0 0 24 24' width='24px' fill='%23F5F5F5'%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3Cpath d='M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z'/%3E%3C/svg%3E") no-repeat center
+                    background-color var(--color-primary)
+                    border-radius 32px
 
                 &:last-child
                     grid-column span 2
             
                 .quote
                     display block
-                    color rgb(96, 96, 97)
-                    padding-left 15px
+                    color #404041
+                    padding 0 0 5px 17px
                     font-style italic
+
+                span:not(.quote)
+                    display inline-block
+                    line-height 1.45
 
     @media screen and (max-device-width: 900px)
         .content
@@ -141,13 +159,24 @@
 
     @media screen and (max-device-width: 750px)
         .content .quotes
-            row-gap 10px
+            row-gap 15px
 
             div
                 grid-column span 2
                 padding 5px 15px
 
+                &:after
+                    width 24px
+                    height 24px
+                    top -9px
+                    left -9px
+                    background-size 18px 18px
+
                 .quote
-                    padding-left 10px
+                    padding 0 0 3px 10px
+
+                span:not(.quote)
+                    display inline-block
+                    line-height 1.3
 </style>
 
