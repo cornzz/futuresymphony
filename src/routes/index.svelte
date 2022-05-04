@@ -91,10 +91,10 @@
 
 <style lang="stylus">
     .image
-        box-shadow 0 0 40px 25px rgba(25, 25, 25, 0.18)
+        box-shadow 0 10px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)
         border-radius 2px
         overflow hidden
-        transition all 0.1s ease-out
+        transition all 0.2s ease-out
         
         :global(img)
             height 35vmin
@@ -109,7 +109,7 @@
             margin 30px 50px 25px 0
         
         &:hover
-            transition all 0.1s ease-in
+            transition all 0.2s ease-in
             transform scale(101%)
 
     @media screen and (max-device-width: 900px)

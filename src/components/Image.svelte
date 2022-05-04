@@ -42,8 +42,8 @@
                 width 100%
                 left 0
                 opacity 0
-                background-color rgba(0, 0, 0, .2)
-                transition all 0.2s ease
+                background-color rgba(0, 0, 0, .15)
+                transition all 0.3s ease
 
             &:hover
                 cursor pointer
