@@ -107,7 +107,7 @@
 
 <style lang="stylus">
     .content
-        line-height 1.65
+        line-height 1.55
 
         & > p
             text-align justify
@@ -123,7 +123,7 @@
                 position relative
                 background-color #e9e9e9
                 padding 10px 20px
-                border-radius 1px
+                border-radius 2px
                 font-size 0.95em
 
                 &:after

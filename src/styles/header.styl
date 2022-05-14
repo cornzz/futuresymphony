@@ -128,39 +128,48 @@
 
             &:hover
                 cursor pointer
-
-                .line
-                    background rgba(255,255,255,0.85)
-
-            .line  
+            
+            .icon
                 position absolute
+                width 11px
                 height 2px
-                width 22px
                 background #fff
-                border-radius 1px
-                display block 
                 transition all 0.25s ease
-                transform-origin center
+                top 50%
+                transform translateY(-50%)
+                
+                &:before,
+                &:after
+                    content ''
+                    position absolute
+                    width 11px
+                    height 2px
+                    background #fff
+                    transition all 0.25s ease
+                
+                &:before
+                    top -7px
+                
+                &:after
+                    top 7px
 
-                &:nth-child(1)
-                    top 5px
+                &.right
+                    right 0
 
-                &:nth-child(2)
-                    top 12px
+            &.open .icon
+                background transparent
 
-                &:nth-child(3)
-                    top 19px
+                &.left:before
+                    transform rotateZ(45deg) translate(3px, 1px) scale(1.1)
 
-            &.open
-                .line:nth-child(1)
-                    transform translateY(7px) rotate(-135deg)
+                &.left:after
+                    transform rotateZ(-45deg) translate(3px, -1px) scale(1.1)
 
-                .line:nth-child(2)
-                    opacity 0
-                    transform rotate(-360deg)
+                &.right:before
+                    transform rotateZ(-45deg) translate(-3px, 1px) scale(1.1)
 
-                .line:nth-child(3)
-                    transform translateY(-7px) rotate(-225deg)
+                &.right:after
+                    transform rotateZ(45deg) translate(-3px, -1px) scale(1.1)
 
     /* -- Desktop nav -- */
     .desktop-nav

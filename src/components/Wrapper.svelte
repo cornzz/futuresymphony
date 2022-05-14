@@ -126,9 +126,8 @@
                 FUTURE SYMPHONY
             </a>
             <div class="menu-icon" class:open={navOpen} on:click={() => navOpen = !navOpen}>
-                <span class="line"></span>
-                <span class="line"></span>
-                <span class="line"></span>
+                <div class="icon left"></div>
+                <div class="icon right"></div>
             </div>
             <div class="menu" class:active={navOpen} on:touchmove={(e) => e.preventDefault()}>
                 <div class="links" on:click={() => navOpen = !navOpen}>
