@@ -21,12 +21,11 @@
     function setHeader(): void {
         if (windowPos() >= landingBottom) {
             header.classList.add('active')
-            header.style.top = '0'
+            setTimeout(() => header.classList.add('open'), 10)
             footer.classList.add('active')
             back?.classList.add('active')
-        } else {
-            header.classList.remove('active')
-            header.style.top = ''
+        } else if (windowPos() < landingBottom - header.clientHeight) {
+            header.classList.remove('active', 'open')
             footer.classList.remove('active')
             back?.classList.remove('active')
         }
@@ -74,7 +73,7 @@
         if ($showLanding) {
             landing.style.height = window.innerHeight + 'px'
             landing.style['margin-bottom'] = -header.clientHeight - 1 + 'px'
-            landingBottom = Math.floor(landing.clientHeight - header.clientHeight - 1)
+            landingBottom = Math.floor(landing.clientHeight - 1)
 
             setPositions()
         }
@@ -119,7 +118,7 @@
     </div>
 {/if}
 
-<div class="masthead active" bind:this={header}>
+<div class="masthead" bind:this={header}>
     {#if showMobile}
         <div class="mobile-nav">
             <div></div>

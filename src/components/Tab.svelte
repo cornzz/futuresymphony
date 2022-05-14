@@ -1,9 +1,10 @@
 <script lang="ts">
     export let oversize: boolean = false
     export let justify: boolean = true
+    export let style: string = ''
 </script>
 
-<div class="tab" class:oversize class:justify>
+<div class="tab" class:oversize class:justify {style}>
     <slot></slot>
 </div>
 
@@ -64,13 +65,13 @@
         .tab
             padding 2% 320px 3%
 
-    @media screen and (max-device-width: 600px) 
+    @media screen and (max-device-width: 600px)
         .tab
-            height 90vh
+            height 94vh
             font-size: 3.4vmin
 
         .oversize
-            min-height 90vh
+            min-height 94vh
             height auto
 
     @media screen and (max-device-width: 640px) and (orientation:landscape)

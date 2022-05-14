@@ -32,9 +32,10 @@
     description={$_('index.meta.description')}
 />
 
-<div bind:this={about} id="about">
-    <Tab oversize>
-        <h1 class="cover-heading"><b>{$_('about.title')}</b></h1>
+<div id="about"></div>
+<div bind:this={about}>
+    <Tab oversize style="padding-top: calc(2% + 46px);">
+        <h1 class="cover-heading">{$_('about.title')}</h1>
         <About>
             <div slot="image1" class="image right">
                 <Image
@@ -63,33 +64,37 @@
 
 <div bind:this={news} id="news">
     <Tab>
-        <h1 class="cover-heading"><b>{$_('news.title')}</b></h1>
+        <h1 class="cover-heading">{$_('news.title')}</h1>
         <News latest/>
     </Tab>
 </div>
 
 <div bind:this={participants} id="participants">        
     <Tab>
-        <h1 class="cover-heading"><b>{$_('participants.title')}</b></h1>
+        <h1 class="cover-heading">{$_('participants.title')}</h1>
         <Participants/>
     </Tab>
 </div>
 
 <div bind:this={sponsors} id="sponsors">
     <Tab>
-        <h1 class="cover-heading"><b>{$_('sponsors.title')}</b></h1>
+        <h1 class="cover-heading">{$_('sponsors.title')}</h1>
         <Sponsors/>
     </Tab>
 </div>
 
 <div bind:this={contacts} id="contacts">
     <Tab>
-        <h1 class="cover-heading"><b>{$_('contacts.title')}</b></h1>
+        <h1 class="cover-heading">{$_('contacts.title')}</h1>
         <Contacts/>
     </Tab>
 </div>
 
 <style lang="stylus">
+    #about
+        position relative
+        top 50px
+
     .image
         box-shadow 0 10px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)
         border-radius 2px
@@ -102,11 +107,11 @@
     
         &.right
             float right
-            margin 25px 0 25px 65px
+            margin 25px 5px 25px 60px
         
         &.left
             float left
-            margin 25px 65px 25px 0
+            margin 25px 60px 25px 5px
         
         &:hover
             transition all 0.2s ease-in
