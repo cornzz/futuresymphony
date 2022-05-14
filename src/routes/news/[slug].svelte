@@ -21,7 +21,7 @@
 
 <Tab oversize>
     {#if article}
-        <h1 class="cover-heading"><b>{@html article.title[$locale]}</b></h1>
+        <h1 class="cover-heading">{@html article.title[$locale]}</h1>
         <span class="date"><i>{@html article.date[$locale]}</i></span>
         <div class="content">
             <div class="news-image">

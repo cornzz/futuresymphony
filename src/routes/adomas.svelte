@@ -8,7 +8,7 @@
 </script>
 
 <Tab oversize justify={false}>
-    <h1 class="cover-heading"><b>Adomas Morkūnas-Budrys</b></h1>
+    <h1 class="cover-heading">Adomas Morkūnas-Budrys</h1>
     <div>
         <div class="bio-image">
             <Image

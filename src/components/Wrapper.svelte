@@ -19,7 +19,7 @@
 
     // Change Header appearance according to position
     function setHeader(): void {
-        if (windowPos() >= landingBottom) {
+        if (windowPos() >= landingBottom - 1) {
             header.classList.add('active')
             setTimeout(() => header.classList.add('open'), 10)
             footer.classList.add('active')
@@ -65,7 +65,7 @@
     function jumpToHash(): void {
         let hash = window.location.hash
         let hashpos = hash ? (document.querySelector(hash) as any).offsetTop : 0
-        window.scrollTo(0, hashpos - header.offsetHeight + 1)
+        window.scrollTo(0, hashpos - header.clientHeight + 1)
     }
 
     // Set height of landing cover, push header up and set variables for relevant element positions
@@ -95,10 +95,13 @@
             window.addEventListener('scroll', setHeader)
             window.addEventListener('scroll', setActive)
             locale.subscribe(async () => { await tick(); setPositions(); setHeader(); setActive() })
-        } else if (window.location.pathname.startsWith('/news')) {
-            newslink.classList.add('active')
-        } else if (window.location.pathname.startsWith('/registration')) {
-            participantslink.classList.add('active')
+        } else {
+            header.classList.add('active', 'open')
+            if (window.location.pathname.startsWith('/news')) {
+                newslink.classList.add('active')
+            } else if (window.location.pathname.startsWith('/registration')) {
+                participantslink.classList.add('active')
+            }
         }
 
         return () => {

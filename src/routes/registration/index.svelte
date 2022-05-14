@@ -54,7 +54,7 @@
     description={$_('registration.meta.description')}
 />
 
-<h1 class="cover-heading"><b>{$_('registration.title')}</b></h1>
+<h1 class="cover-heading">{$_('registration.title')}</h1>
 {#if success}
     <InfoBox type="success">
         {@html $_('registration.success', { values: { email: dto.email } })}

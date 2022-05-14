@@ -93,7 +93,7 @@
     })
 </script>
 
-<h1 class="cover-heading"><b>{$_('registration.yourRegistration')}</b></h1>
+<h1 class="cover-heading">{$_('registration.yourRegistration')}</h1>
 {#if dto}
     {#if !deadline}
         <InfoBox type="info">
