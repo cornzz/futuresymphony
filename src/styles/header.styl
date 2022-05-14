@@ -38,22 +38,33 @@
         top 0
         transform translateY(-100%)
 
-        .mobile-nav .title
-            opacity 1
+        .mobile-nav
+            .title
+                opacity 1
+
+            .menu-icon
+                right -10px
+                transform translate(0, -50%)
 
     &:global(.open)
         transform translateY(0)
         transition transform .35s cubic-bezier(.33, .59, .14, 1)
 
+        .mobile-nav .menu-icon
+            transition none
+
     /* -- Mobile nav -- */
     .mobile-nav
-        display none
-        grid-template-columns 42px 1fr 42px
+        position relative
         align-items center
         height 45px
         width 100%
 
         .title
+            position absolute
+            top 50%
+            left 50%
+            transform translate(-50%, -50%)
             font-family 'Audiowide', 'Courier New'
             text-decoration none
             color #fafafa
@@ -65,9 +76,13 @@
 
         .menu-icon
             display block
-            width 20px
-            height 28px 
-            position relative
+            position absolute
+            top 50%
+            right 50%
+            transform translate(50%, -50%)
+            transition all 0.4s cubic-bezier(.33, .59, .14, 1)
+            width 40px
+            height 28px
             justify-self end
             z-index 1000
 
@@ -76,13 +91,19 @@
             
             .icon
                 position absolute
-                width 50%
+                width 25%
                 height 2px
                 background #fff
                 transition all 0.25s ease
                 top 50%
                 transform translateY(-50%)
                 
+                &.left
+                    left 25%
+
+                &.right
+                    right 25%
+
                 &:before,
                 &:after
                     content ''
@@ -98,23 +119,24 @@
                 &:after
                     top 7px
 
-                &.right
-                    right 0
+            &.open
+                right -10px
+                transform translate(0, -50%)
 
-            &.open .icon
-                background transparent
+                .icon
+                    background transparent
 
-                &.left:before
-                    transform rotateZ(45deg) translate(3px, 2px) scale(1.1)
+                    &.left:before
+                        transform rotateZ(45deg) translate(3px, 2px) scale(1.1)
 
-                &.left:after
-                    transform rotateZ(-45deg) translate(3px, -2px) scale(1.1)
+                    &.left:after
+                        transform rotateZ(-45deg) translate(3px, -2px) scale(1.1)
 
-                &.right:before
-                    transform rotateZ(-45deg) translate(-4px, 1px) scale(1.1)
+                    &.right:before
+                        transform rotateZ(-45deg) translate(-4px, 1px) scale(1.1)
 
-                &.right:after
-                    transform rotateZ(45deg) translate(-4px, -1px) scale(1.1)
+                    &.right:after
+                        transform rotateZ(45deg) translate(-4px, -1px) scale(1.1)
 
         .menu
             background-color var(--color-primary)
@@ -335,13 +357,6 @@
                 font-size 22px
 
 @media screen and (max-device-width: 700px)
-    .masthead
-        .desktop-nav
-            display none
-
-        .mobile-nav
-            display grid
-
     .back
         bottom 45px
         right 20px
