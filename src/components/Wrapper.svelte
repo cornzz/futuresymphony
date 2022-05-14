@@ -65,7 +65,7 @@
     function jumpToHash(): void {
         let hash = window.location.hash
         let hashpos = hash ? (document.querySelector(hash) as any).offsetTop : 0
-        window.scrollTo(0, hashpos - header.scrollHeight + 1)
+        window.scrollTo(0, hashpos - header.offsetHeight + 1)
     }
 
     // Set height of landing cover, push header up and set variables for relevant element positions
@@ -77,7 +77,7 @@
 
             setPositions()
         }
-        content.style['margin-top'] = header.scrollHeight - 1 + 'px'
+        content.style['margin-top'] = header.offsetHeight - 1 + 'px'
         if (windowWidth !== window.innerWidth) {
             jumpToHash()
             windowWidth = window.innerWidth

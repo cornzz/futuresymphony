@@ -34,7 +34,7 @@
 
 <div id="about"></div>
 <div bind:this={about}>
-    <Tab oversize style="padding-top: calc(2% + 46px);">
+    <Tab oversize style="padding-top: calc(2% + 45px);">
         <h1 class="cover-heading">{$_('about.title')}</h1>
         <About>
             <div slot="image1" class="image right">
