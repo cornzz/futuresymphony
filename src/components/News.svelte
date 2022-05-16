@@ -162,9 +162,10 @@
 
     @media screen and (max-device-width: 600px)
         .news-link
-            margin-bottom 5px
+            margin-bottom 13px
+            height 27%
 
-        .news-link
-            height 28%
+            .news-item:after
+                font-size 16px
 </style>
 

@@ -63,7 +63,7 @@
 </div>
 
 <div bind:this={news} id="news">
-    <Tab>
+    <Tab justify={false}>
         <h1 class="cover-heading">{$_('news.title')}</h1>
         <News latest/>
     </Tab>
@@ -96,7 +96,7 @@
         top 50px
 
     .image
-        box-shadow 0 10px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)
+        box-shadow 0 10px 16px 0 rgba(0, 0, 0, .2), 0 6px 20px 0 rgba(0, 0, 0, .19)
         border-radius 2px
         overflow hidden
         transition all 0.2s ease-out
@@ -119,7 +119,7 @@
 
     @media screen and (max-device-width: 900px)
         .image
-            box-shadow 0 0 35px 15px rgba(25, 25, 25, 0.18)
+            box-shadow 0 10px 16px 0 rgba(0, 0, 0, .2), 0 6px 20px 0 rgba(0, 0, 0, .19)
             
             &.right
                 margin 15px 0 10px 25px

@@ -20,7 +20,7 @@
         locale.subscribe(lang => localStorage.setItem('locale', lang))
 
         if ('scrollRestoration' in history) {
-            history.scrollRestoration = 'manual';
+            history.scrollRestoration = 'manual'
         }
 
         /* TODO: timeout needed? */

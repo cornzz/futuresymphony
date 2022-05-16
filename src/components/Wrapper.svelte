@@ -64,7 +64,7 @@
 
     function jumpToHash(): void {
         let hash = window.location.hash
-        let hashpos = hash ? (document.querySelector(hash) as any).offsetTop : 0
+        let hashpos = hash ? (document.querySelector(hash) as any)?.offsetTop : 0
         window.scrollTo(0, hashpos - header.clientHeight + 1)
     }
 
@@ -84,7 +84,7 @@
         setHeader()
     }
 
-    $: if (typeof window !== 'undefined') showMobile = window.innerWidth <= 700
+    $: showMobile = (typeof window !== 'undefined' && window.innerWidth <= 700)
     
     onMount(() => {
         init()
@@ -96,9 +96,9 @@
             locale.subscribe(async () => { await tick(); setPositions(); setHeader(); setActive() })
         } else {
             header.classList.add('active', 'open')
-            if (window.location.pathname.startsWith('/news')) {
+            if (location.pathname.startsWith('/news')) {
                 newslink.classList.add('active')
-            } else if (window.location.pathname.startsWith('/registration')) {
+            } else if (location.pathname.startsWith('/registration')) {
                 participantslink.classList.add('active')
             }
         }
@@ -124,7 +124,7 @@
     {#if showMobile}
         <div class="mobile-nav">
             <div></div>
-            <a class="title" href="#start">
+            <a class="title" href="/#start">
                 FUTURE SYMPHONY
             </a>
             <div class="menu-icon" class:open={navOpen} on:click={() => navOpen = !navOpen}>
