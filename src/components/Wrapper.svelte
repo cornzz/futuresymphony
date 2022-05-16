@@ -14,7 +14,7 @@
     let showMobile: boolean = false
 
     const ARROW_ICON = "data:image/svg+xml,%3Csvg viewBox='0 0 2048 2048' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1523 1212q0 13-10 23l-50 50q-10 10-23 10t-23-10l-393-393-393 393q-10 10-23 10t-23-10l-50-50q-10-10-10-23t10-23l466-466q10-10 23-10t23 10l466 466q10 10 10 23z' fill='%23EEEEEE'/%3E%3C/svg%3E"
-    const FB_ICON = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 9.95 20'%3E%3Cpath d='M8.09 3.81c-1.4 0-1.58.84-1.58 1.67v1.3h3.35L9.49 11h-3v9H2.33v-9H0V6.88h2.42V3.81C2.42 1.3 3.81 0 6.6 0H10v3.81z'%3E%3C/path%3E%3C/svg%3E"
+    // const FB_ICON = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 9.95 20'%3E%3Cpath d='M8.09 3.81c-1.4 0-1.58.84-1.58 1.67v1.3h3.35L9.49 11h-3v9H2.33v-9H0V6.88h2.42V3.81C2.42 1.3 3.81 0 6.6 0H10v3.81z'%3E%3C/path%3E%3C/svg%3E"
     const windowPos: () => number = () => window.scrollY
 
     // Change Header appearance according to position
@@ -124,7 +124,7 @@
     {#if showMobile}
         <div class="mobile-nav">
             <div></div>
-            <a class="title" href="/#start">
+            <a class="title" href="#start">
                 FUTURE SYMPHONY
             </a>
             <div class="menu-icon" class:open={navOpen} on:click={() => navOpen = !navOpen}>
@@ -133,11 +133,11 @@
             </div>
             <div class="menu" class:active={navOpen} on:touchmove={(e) => e.preventDefault()}>
                 <div class="links" on:click={() => navOpen = !navOpen}>
-                    <a bind:this={aboutlink} href="/#about">{$_('nav.about')}</a>
-                    <a bind:this={newslink} href="/#news">{$_('nav.news')}</a>
-                    <a bind:this={participantslink} href="/#participants">{$_('nav.participants')}</a>
-                    <a bind:this={sponsorslink} href="/#sponsors">{$_('nav.sponsors')}</a>
-                    <a bind:this={contactslink} href="/#contacts">{$_('nav.contacts')}</a>
+                    <a bind:this={aboutlink} style="--n: 3" href="/#about">{$_('nav.about')}</a>
+                    <a bind:this={newslink} style="--n: 2.5" href="/#news">{$_('nav.news')}</a>
+                    <a bind:this={participantslink} style="--n: 2" href="/#participants">{$_('nav.participants')}</a>
+                    <a bind:this={sponsorslink} style="--n: 1.5" href="/#sponsors">{$_('nav.sponsors')}</a>
+                    <a bind:this={contactslink} style="--n: 1" href="/#contacts">{$_('nav.contacts')}</a>
                 </div>
                 <hr>
                 <div class="language">

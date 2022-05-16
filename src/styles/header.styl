@@ -41,6 +41,7 @@
         .mobile-nav
             .title
                 opacity 1
+                pointer-events initial
 
             .menu-icon
                 right -10px
@@ -72,7 +73,8 @@
             text-align center
             white-space nowrap
             opacity 0
-            transition all 0.2s ease
+            pointer-events none
+            transition opacity 0.2s ease
 
         .menu-icon
             display block
@@ -168,6 +170,8 @@
                     padding 0 10px
                     text-decoration none
                     text-transform capitalize
+                    transform translateX(calc(-50px * var(--n)))
+                    transition transform 0.7s cubic-bezier(.4, .97, .39, .97)
 
                     &:last-child
                         margin-bottom 0
@@ -193,6 +197,9 @@
                 opacity 1
                 left 0
                 pointer-events all
+
+                .links a
+                    transform translateX(0)
 
     /* -- Desktop nav -- */
     .desktop-nav
