@@ -132,7 +132,10 @@
                 <div class="icon right"></div>
             </div>
             <div class="menu" class:active={navOpen} on:touchmove={(e) => e.preventDefault()}>
-                <div class="links" on:click={() => navOpen = !navOpen}>
+                <div class="links" on:click={(e) => {
+                    if (e.target instanceof HTMLAnchorElement && location.pathname !== e.target.pathname) return
+                    navOpen = !navOpen
+                }}>
                     <a bind:this={aboutlink} style="--n: 3" href="/#about">{$_('nav.about')}</a>
                     <a bind:this={newslink} style="--n: 2.5" href="/#news">{$_('nav.news')}</a>
                     <a bind:this={participantslink} style="--n: 2" href="/#participants">{$_('nav.participants')}</a>
