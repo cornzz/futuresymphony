@@ -8,7 +8,7 @@
     import { _ } from 'svelte-i18n'
     import { RegistrationDTO } from '../../helpers/RegistrationDTO'
     import { referrers, countries } from '../../helpers/selectData'
-    import { onMount } from 'svelte'
+    import { onMount, tick } from 'svelte'
 
     export let disabled: boolean = false
     export let newRegistration: boolean = false
@@ -20,16 +20,15 @@
     let saveIndicator: HTMLElement
     let saveIndicatorTimeout1 = null
     let saveIndicatorTimeout2 = null
-    let submissionSection: HTMLElement, paymentSection: HTMLElement
 
     export function reportValidity(queryString?: string): boolean {
         let inputElements: Array<any> = Array.from(document.querySelectorAll(queryString ?? 'input:not([id=resendEmail]), select, textarea'))
         return inputElements.every(e => e.type === 'file' ? e.validateFiles() : e.reportValidity())
     }
 
-    export function getInvalid(): string[] {
+    export function getInvalid(): (HTMLInputElement | HTMLSelectElement)[] {
         let inputElements: Array<HTMLInputElement | HTMLSelectElement> = Array.from(document.querySelectorAll('input, select, textarea'))
-        return inputElements.filter(e => !e.checkValidity()).map(e => e.labels[0].dataset.label)
+        return inputElements.filter(e => !e.checkValidity())
     }
 
     export function saveForm(): void {
@@ -53,7 +52,8 @@
         changed = true
     }
 
-    function toggleSubsection(subsection: HTMLElement, action?: 'open' | 'close'): void {
+    export function toggleSubsection(subsectionName: string, action?: 'open' | 'close'): void {
+        const subsection = document.querySelector(subsectionName) as HTMLElement
         const subsectionTitle: HTMLElement = subsection.previousElementSibling as HTMLElement
         if (!subsectionTitle.classList.contains('active') && action !== 'close' || action === 'open') {
             subsection.style.height = (subsection.firstChild as HTMLElement).scrollHeight + 15 + 'px'
@@ -67,12 +67,12 @@
     }
 
     export function closeSubsections(): void {
-        toggleSubsection(submissionSection, 'close')
-        toggleSubsection(paymentSection, 'close')
+        toggleSubsection('#submissionSection', 'close')
+        toggleSubsection('#paymentSection', 'close')
     }
 
-    function resizeSubsection(subsection: HTMLElement): void {
-        if (subsection.previousElementSibling.classList.contains('active')) {
+    function resizeSubsection(subsection: string): void {
+        if (document.querySelector(subsection).previousElementSibling.classList.contains('active')) {
             toggleSubsection(subsection, 'open')
         }
     }
@@ -152,22 +152,22 @@
     </div>
     {#if !newRegistration}
         <hr>
-        <div class="subsection-title" on:click={() => toggleSubsection(submissionSection)}>{$_('registration.form.scoreSubmission')}</div>
-        <div class="subsection" bind:this={submissionSection}>
+        <div class="subsection-title" on:click={() => toggleSubsection('#submissionSection')}>{$_('registration.form.scoreSubmission')}</div>
+        <div class="subsection" id="submissionSection">
             <ScoreSubmission
                 {dto}
                 on:input={handleInput}
-                on:resize={() => resizeSubsection(submissionSection)}
+                on:resize={() => resizeSubsection('#submissionSection')}
                 {disabled}
             />
         </div>
         <hr>
-        <div class="subsection-title" on:click={() => toggleSubsection(paymentSection)}>{$_('payment.title')}</div>
-        <div class="subsection" bind:this={paymentSection}>
+        <div class="subsection-title" on:click={() => toggleSubsection('#paymentSection')}>{$_('payment.title')}</div>
+        <div class="subsection" id="paymentSection">
             <Payment
                 {dto}
                 on:input={handleInput}
-                on:resize={() => resizeSubsection(paymentSection)}
+                on:resize={() => resizeSubsection('#paymentSection')}
                 {disabled}
             />
         </div>
@@ -275,15 +275,15 @@
             padding 20px
             font-size 14px
 
+            .subsection-title
+                font-size 1.2em
+
+                &:after
+                    top 47%
+                    width 8px
+                    height 8px
+                    border-width 2px
+
         .buttons
             margin-left 0
-
-        .subsection-title
-            font-size 1.2em
-
-            &:after
-                top 47%
-                width 7px
-                height 7px
-                border-width 2px
 </style>

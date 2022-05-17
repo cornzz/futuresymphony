@@ -79,7 +79,6 @@
     <label
         for="scoreConfirmations"
         data-label='registration.scoreConfirmations.label'
-        style="display: none"
     >
     </label>
     <input

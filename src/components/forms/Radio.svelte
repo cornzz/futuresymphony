@@ -18,39 +18,10 @@
 
 <style lang="stylus">
     input
-        -webkit-appearance none
-        appearance none
-        min-width 14px
-        min-height 14px
-        margin-left -28px
-        margin-right 10px
-        border 2px solid #c2c2c9
+        position relative
+        top -1px
         vertical-align sub
-        padding 2px
-        background-clip content-box
-        border-radius 50%
-
-        &:enabled
-            background-color #fff
-            border-color #9595a2
-
-        &:hover:enabled
-            border-color #676774
-
-        &:active:enabled
-            border-color #484851
-
-        &:checked
-            background-color var(--color-primary)
-            border-color var(--color-primary)
-
-            &:hover:enabled
-                background-color var(--color-primary-hover)
-                border-color var(--color-primary-hover)
-
-            &[disabled]
-                background-color gray !important
-                border-color gray !important
+        accent-color var(--color-primary)
 
     label
         font-size 14px

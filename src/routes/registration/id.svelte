@@ -4,6 +4,7 @@
     import Button from '../../components/forms/Button.svelte'
     import { RegistrationDTO } from '../../helpers/RegistrationDTO'
     import { loading, baseURL, showBack } from '../../helpers/stores'
+    import { highlightElement } from '../../helpers'
     import { _ } from 'svelte-i18n'
     import { onMount, tick } from 'svelte'
 
@@ -15,7 +16,7 @@
     let registrationID: string
     let initialLoad: boolean = false
     let disabled: boolean = false
-    let invalidFields: string[] = []
+    let invalidFields: (HTMLInputElement | HTMLSelectElement)[] = []
     let error: [string, Object] = null
     let formChanged: boolean = false
     let cachedDto: RegistrationDTO = null
@@ -109,7 +110,16 @@
             {$_('registration.missingForComplete')}
             <ul>
                 {#each invalidFields as field}
-                    <li>{$_(field)}</li>
+                    <li
+                        on:click={() => {
+                            field.closest('#submissionSection') && form.toggleSubsection('#submissionSection', 'open')
+                            field.closest('#paymentSection') && form.toggleSubsection('#paymentSection', 'open')
+                            field.labels[0].scrollIntoView({ behavior: 'smooth', block: 'center' })
+                            highlightElement(field.labels[0])
+                        }}
+                    >
+                        {$_(field.labels[0].dataset.label)}
+                    </li>
                 {/each}
             </ul>
         </InfoBox>
@@ -173,4 +183,11 @@
     
     li
         margin-top 5px
+        list-style-type none
+        cursor pointer
+
+        &:before
+            content '› '
+            margin-left -15px
+            font-size 18px
 </style>

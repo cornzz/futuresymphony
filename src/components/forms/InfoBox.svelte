@@ -8,7 +8,7 @@
 
 <style lang="stylus">
     div
-        font-size 0.8em
+        font-size 16px
         border solid 1px var(--color-border)
         border-radius var(--border-radius)
         background-color #fff
@@ -40,6 +40,6 @@
 
     @media screen and (max-width 525px)
         div
-            font-size 0.9em
+            font-size 14px
             padding 5px 10px
 </style>
