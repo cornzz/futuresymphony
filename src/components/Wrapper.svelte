@@ -76,6 +76,7 @@
 
             setPositions()
         }
+        landing.style.height = window.innerHeight + 'px'
         content.style['margin-top'] = header.offsetHeight - 1 + 'px'
         if (windowWidth !== window.innerWidth) {
             jumpToHash()
