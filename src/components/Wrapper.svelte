@@ -71,12 +71,12 @@
     // Set height of landing cover, push header up and set variables for relevant element positions
     function init(): void {
         if ($showLanding) {
+            landing.style.height = window.innerHeight + 'px'
             landing.style['margin-bottom'] = -header.clientHeight - 1 + 'px'
             landingBottom = Math.floor(landing.clientHeight - 1)
 
             setPositions()
         }
-        landing.style.height = window.innerHeight + 'px'
         content.style['margin-top'] = header.offsetHeight - 1 + 'px'
         if (windowWidth !== window.innerWidth) {
             jumpToHash()
