@@ -14,6 +14,9 @@
         background-color #fff
         padding 5px 15px
 
+        :global(tt)
+            font-size smaller
+
     .info
         border-color var(--color-primary)
     
