@@ -72,6 +72,7 @@
             "description": "Registracija į III-jį „Future Symphony“ konkursą atsidaro 2022 m. kovo 1 d."
         },
         "firstStep": "Pirmiausia pateikite šią informaciją. Iš <tt>registration@futuresymphony.lt</tt> gausite el. laišką su tolimesnėmis instrukcijomis.",
+        "outlookBlocked": "Deja, šiuo metu negalime išsiųsti registracijos patvirtinimo nuorodos „Microsoft“ pašto paslaugų (<tt>outlook.com</tt>, <tt>live.com</tt>, <tt>hotmail.com</tt>, <tt>msn.com</tt>) naudotojams, nes šis el. pašto teikėjas šiuo metu blokuoja mūsų el. pašto serverius. Maloniai prašome minėtų paslaugų vartotojų registracijai naudoti kitą el. pašto paslaugų teikėją arba, atlikus pirmąjį registracijos žingsnį, susisiekti su mumis. Mes atsiprašome už nepatogumus ir stengiamės išspręsti šią problemą.",
         "regulationsAccepted": "Sutinku su <a href='/files/fsc_regulations_LT_2022-02-24.pdf' target='_blank' class='link'>Konkurso nuostatais</a> ir <a href='/privacy' target='_blank' class='link'>Privatumo politika.</a>",
         "success": "Jūsų registracija pateikta. Vykdykite instrukcijas, kurios buvo išsiųstos jūsų el. pašto adresu <tt>{email}</tt>.",
         "resend": {

@@ -5,6 +5,7 @@
     import Resend from '../../components/forms/Resend.svelte'
     import { RegistrationDTO } from '../../helpers/RegistrationDTO'
     import { MetaTags } from 'svelte-meta-tags'
+    import { fadeHeight } from '../../helpers'
     import { baseURL, loading } from '../../helpers/stores'
     import { _, locale } from 'svelte-i18n'
     import { dev } from '$app/env'
@@ -16,6 +17,9 @@
     let warning: string = ''
     let error: string = ''
     let success: boolean = false
+    let resendEmail: string = ''
+
+    $: outlookUser = [dto.email, resendEmail].some(mail => mail.match(/outlook\.|live\.|hotmail\.|msn\.|passport\./))
 
     async function submitForm(): Promise<void> {
         error = ''
@@ -60,7 +64,8 @@
         {@html $_('registration.success', { values: { email: dto.email } })}
         <Resend
             type="didNotReceive"
-            email={dto.email}
+            existingEmail={dto.email}
+            bind:email={resendEmail}
             bind:error
             bind:warning
         />
@@ -71,10 +76,18 @@
         {$_('registration.editingAllowedUntil')}
         <Resend
             type="alreadyRegistered"
+            bind:email={resendEmail}
             bind:error
             bind:warning
         />
     </InfoBox>
+{/if}
+{#if outlookUser}
+    <div transition:fadeHeight class="blockedInfobox">
+        <InfoBox type="warning">
+            {@html $_('registration.outlookBlocked')}
+        </InfoBox>
+    </div>
 {/if}
 {#if warning}
     <InfoBox type="warning">
@@ -111,5 +124,11 @@
 {/if}
 
 <style lang="stylus">
-
+    .blockedInfobox
+        margin-top 0
+        
+        &:before
+            content ''
+            display block
+            height 15px
 </style>

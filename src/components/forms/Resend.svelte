@@ -3,11 +3,13 @@
     import Button from './Button.svelte'
     import { locale, _ } from 'svelte-i18n'
     import { loading, baseURL } from '../../helpers/stores'
+    import { onMount } from 'svelte'
 
     export let type: 'alreadyRegistered' | 'didNotReceive'
+    export let existingEmail: string = ''
+    export let email: string = ''
     export let error: string
     export let warning: string
-    export let email: string = ''
 
     let clicked: boolean = false
     let success: boolean = false
@@ -52,6 +54,8 @@
             $loading = false
         }
     }
+
+    onMount(() => email = existingEmail)
 </script>
 
 {#if !clicked}

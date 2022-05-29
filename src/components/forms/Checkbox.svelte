@@ -45,6 +45,9 @@
         width 100%
 
     @media screen and (max-width 525px)
+        input
+            top 0
+
         label
             font-size 12px
 </style>

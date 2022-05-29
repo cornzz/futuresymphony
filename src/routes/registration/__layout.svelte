@@ -47,6 +47,6 @@
         :global(.cover-heading)
             margin 20px 0 30px
 
-        :global(& > *)
+        :global(& > div)
             margin-top 15px
 </style>
