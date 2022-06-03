@@ -3,6 +3,7 @@
     import Button from './Button.svelte'
     import { locale, _ } from 'svelte-i18n'
     import { loading, baseURL } from '../../helpers/stores'
+    import { fadeHeight } from '../../helpers'
     import { onMount } from 'svelte'
 
     export let type: 'alreadyRegistered' | 'didNotReceive'
@@ -61,31 +62,33 @@
 {#if !clicked}
     {$_(`registration.resend.${type}`)} <span on:click={() => clicked = !clicked} class="link">{$_('registration.resend.here')}</span>.
 {:else}
-    <hr>
-    <div class="resend" class:success>
-        {#if !success}
-            <span>{$_('registration.resend.enterYourEmail')}:</span>
-            <Input
-                type="email"
-                name="resendEmail"
-                placeholder={$_('registration.resend.yourEmail')}
-                bind:value={email}
-                on:keyup={(e) => e.key === 'Enter' && resendEmail()}
-            />
-            <Button
-                type="primary"
-                slim
-                on:click={resendEmail}
-                disabled={$loading}
-            >
-                {$_('registration.form.submit')}
-            </Button>
-        {:else}
-            {$_('registration.resend.success')}
-            {$_('registration.resend.sendAgain')}
-            <span on:click={() => tryAgainIn <= 0 && resendEmail()} class="link" class:disabled={tryAgainIn > 0}>{$_('registration.resend.here')}</span>.
-            {tryAgainIn > 0 ? `(${Math.floor(tryAgainIn / 60)}:${('0' + tryAgainIn % 60).slice(-2)})` : ''}
-        {/if}
+    <div transition:fadeHeight style="overflow: hidden">
+        <hr>
+        <div class="resend" class:success>
+            {#if !success}
+                <span>{$_('registration.resend.enterYourEmail')}:</span>
+                <Input
+                    type="email"
+                    name="resendEmail"
+                    placeholder={$_('registration.resend.yourEmail')}
+                    bind:value={email}
+                    on:keyup={(e) => e.key === 'Enter' && resendEmail()}
+                />
+                <Button
+                    type="primary"
+                    slim
+                    on:click={resendEmail}
+                    disabled={$loading}
+                >
+                    {$_('registration.form.submit')}
+                </Button>
+            {:else}
+                {$_('registration.resend.success')}
+                {$_('registration.resend.sendAgain')}
+                <span on:click={() => tryAgainIn <= 0 && resendEmail()} class="link" class:disabled={tryAgainIn > 0}>{$_('registration.resend.here')}</span>.
+                {tryAgainIn > 0 ? `(${Math.floor(tryAgainIn / 60)}:${('0' + tryAgainIn % 60).slice(-2)})` : ''}
+            {/if}
+        </div>
     </div>
 {/if}
 

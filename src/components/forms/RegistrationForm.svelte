@@ -264,11 +264,11 @@
             margin-top 15px
 
     .buttons
-        margin 15px 0
-        margin-left 50%
         display grid
         grid-template-columns 1fr 1fr
         column-gap 15px
+        margin 15px 0
+        margin-left 50%
 
     @media screen and (max-width 525px)
         .form
