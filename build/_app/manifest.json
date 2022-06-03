@@ -1,6 +1,6 @@
 {
   ".svelte-kit/build/runtime/internal/start.js": {
-    "file": "start-24c9f82d.js",
+    "file": "start-20de4d55.js",
     "src": ".svelte-kit/build/runtime/internal/start.js",
     "isEntry": true,
     "imports": [
@@ -48,7 +48,7 @@
       "_stores-3386f144.js"
     ],
     "css": [
-      "assets/pages/404.svelte-bfd357f2.css"
+      "assets/pages/__error.svelte-76caa9f2.css"
     ]
   },
   "src/routes/index.svelte": {
@@ -85,13 +85,13 @@
     ]
   },
   "src/routes/registration/index.svelte": {
-    "file": "pages/registration/index.svelte-f8f0dae4.js",
+    "file": "pages/registration/index.svelte-8eb30312.js",
     "src": "src/routes/registration/index.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
       "_vendor-cb23235c.js",
-      "_RegistrationForm-06acf785.js",
+      "_RegistrationForm-9188a5cc.js",
       "_Button-2f86d941.js",
       "_stores-3386f144.js",
       "_index-25c39a19.js"
@@ -101,13 +101,13 @@
     ]
   },
   "src/routes/registration/id.svelte": {
-    "file": "pages/registration/id.svelte-2e1d1d05.js",
+    "file": "pages/registration/id.svelte-15598cac.js",
     "src": "src/routes/registration/id.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
       "_vendor-cb23235c.js",
-      "_RegistrationForm-06acf785.js",
+      "_RegistrationForm-9188a5cc.js",
       "_Button-2f86d941.js",
       "_stores-3386f144.js",
       "_index-25c39a19.js"
@@ -182,7 +182,7 @@
       "_stores-3386f144.js"
     ],
     "css": [
-      "assets/pages/404.svelte-bfd357f2.css"
+      "assets/pages/__error.svelte-76caa9f2.css"
     ]
   },
   "_vendor-cb23235c.js": {
@@ -244,14 +244,14 @@
       "assets/Button-c042baf4.css"
     ]
   },
-  "_RegistrationForm-06acf785.js": {
-    "file": "chunks/RegistrationForm-06acf785.js",
+  "_RegistrationForm-9188a5cc.js": {
+    "file": "chunks/RegistrationForm-9188a5cc.js",
     "imports": [
       "_vendor-cb23235c.js",
       "_index-25c39a19.js"
     ],
     "css": [
-      "assets/RegistrationForm-1ce102cc.css"
+      "assets/RegistrationForm-700a7e9b.css"
     ]
   }
 }
