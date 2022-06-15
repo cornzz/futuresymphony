@@ -1,4 +1,5 @@
 <script lang="ts">
+    import Quote from './Quote.svelte'
     import { locale } from 'svelte-i18n'
     import { fadeHeight } from '../helpers'
 
@@ -8,18 +9,24 @@
 <div class="content">
     {#if $locale === 'en'}
         <div class="quotes">
-            <div>
-                <span class="quote">This is a competition of international standing, which highlights Lithuania’s forward-looking cultural stature and provides the best environment for cultural exchange on the highest level.</span>
-                <span>– <b>Dobrinka Tabakova</b>, BBC Concert Orchestra composer-in-residence</span>
-            </div>
-            <div>
-                <span class="quote">I find this project to be highly unique, moving, and extremely important. The organizational committee, the orchestra musicians, and the conductor did their job superbly.</span>
-                <span>– <b>Ayal Adler</b>, composer & pianist</span>
-            </div>
-            <div>
-                <span class="quote">I truly believe this competition will soon find itself firmly established as one of the great events of its type.</span>
-                <span>– <b>Charles Philip Daniels Torres</b>, winner of the 2<sup>nd</sup> Future Symphony Competition</span>
-            </div>
+            <Quote
+                quotee="Dobrinka Tabakova"
+                role="BBC Concert Orchestra composer-in-residence"
+            >
+                This is a competition of international standing, which highlights Lithuania’s forward-looking cultural stature and provides the best environment for cultural exchange on the highest level.
+            </Quote>
+            <Quote
+                quotee="Ayal Adler"
+                role="composer & pianist"
+            >
+                I find this project to be highly unique, moving, and extremely important. The organizational committee, the orchestra musicians, and the conductor did their job superbly.
+            </Quote>
+            <Quote
+                quotee="Charles Philip Daniels Torres"
+                role="winner of the 2<sup>nd</sup> Future Symphony Competition"
+            >
+                I truly believe this competition will soon find itself firmly established as one of the great events of its type.
+            </Quote>
         </div>
         
         <slot name="image1"></slot>
@@ -56,18 +63,24 @@
         <p>The <b>Grand Prix</b> is a <b>1500 € cash prize</b> and a performance by <b>the Lithuanian National Symphony Orchestra</b> (LNSO) in the season of 2022–23. The other 2–3 best composers will be awarded Laureate diplomas and <b>will share a 1500 € prize fund</b> in equal parts. Furthermore, all finalists will receive professional recordings of their pieces.</p>
     {:else if $locale === 'lt'}
         <div class="quotes">
-            <div>
-                <span class="quote">Tai tarptautinio lygio konkursas, išryškinantis į ateitį orientuotą Lietuvos kultūrinį perspektyvumą, sukuriantis geriausias sąlygas aukščiausio lygio kultūriniams mainams.</span>
-                <span>– <b>Dobrinka Tabakova</b>, BBC Concert Orchestra kompozitorė-rezidentė</span>
-            </div>
-            <div>
-                <span class="quote">Nepaprastai unikalus, jaunatviškas ir reikšmingas projektas. Organizatoriai, atlikėjai ir dirigentas savo darbą atliko nepriekaištingai.</span>
-                <span>– <b>Ayal Adler</b>, kompozitorius ir pianistas</span>
-            </div>
-            <div>
-                <span class="quote">Esu įsitikinęs, jog „Future Symphony“ greitai įsitvirtins kaip vienas geriausių tokio tipo konkursų.</span>
-                <span>– <b>Charles Philip Daniels Torres</b>, II <i>„Future Symphony“</i> konkurso laimėtojas</span>
-            </div>
+            <Quote
+                quotee="Dobrinka Tabakova"
+                role="BBC Concert Orchestra kompozitorė-rezidentė"
+            >
+                Tai tarptautinio lygio konkursas, išryškinantis į ateitį orientuotą Lietuvos kultūrinį perspektyvumą, sukuriantis geriausias sąlygas aukščiausio lygio kultūriniams mainams.
+            </Quote>
+            <Quote
+                quotee="Ayal Adler"
+                role="kompozitorius ir pianistas"
+            >
+                Nepaprastai unikalus, jaunatviškas ir reikšmingas projektas. Organizatoriai, atlikėjai ir dirigentas savo darbą atliko nepriekaištingai.
+            </Quote>
+            <Quote
+                quotee="Charles Philip Daniels Torres"
+                role="II <i>„Future Symphony“</i> konkurso laimėtojas"
+            >
+                Esu įsitikinęs, jog „Future Symphony“ greitai įsitvirtins kaip vienas geriausių tokio tipo konkursų.
+            </Quote>
         </div>
 
         <slot name="image1"></slot>
@@ -119,64 +132,18 @@
             column-gap 25px
             row-gap 22px
 
-            div
-                position relative
-                background-color #e9e9e9
-                padding 10px 20px
-                border-radius 2px
-                font-size 0.95em
-
-                &:after
-                    content ''
-                    position absolute
-                    display block
-                    top -12px
-                    left -12px
-                    width 32px
-                    height 32px
-                    background url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='24px' viewBox='0 0 24 24' width='24px' fill='%23F5F5F5'%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3Cpath d='M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z'/%3E%3C/svg%3E") no-repeat center
-                    background-color var(--color-primary)
-                    border-radius 32px
-
-                &:last-child
-                    grid-column span 2
-            
-                .quote
-                    display block
-                    color #404041
-                    padding 0 0 5px 17px
-                    font-style italic
-
-                span:not(.quote)
-                    display inline-block
-                    line-height 1.45
+            :global(div:last-child)
+                grid-column span 2
 
     @media screen and (max-device-width: 900px)
-        .content
-            & > p
-                text-align start
-
+        .content > p
+            text-align start
 
     @media screen and (max-device-width: 750px)
         .content .quotes
             row-gap 15px
 
-            div
+            :global(div)
                 grid-column span 2
-                padding 5px 15px
-
-                &:after
-                    width 24px
-                    height 24px
-                    top -9px
-                    left -9px
-                    background-size 18px 18px
-
-                .quote
-                    padding 0 0 3px 10px
-
-                span:not(.quote)
-                    display inline-block
-                    line-height 1.3
 </style>
 
