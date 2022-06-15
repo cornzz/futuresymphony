@@ -1,0 +1,31 @@
+{
+    "quotes": {
+        "1": {
+            "role": "BBC Concert Orchestra kompozitorė-rezidentė",
+            "quote": "Tai tarptautinio lygio konkursas, išryškinantis į ateitį orientuotą Lietuvos kultūrinį perspektyvumą, sukuriantis geriausias sąlygas aukščiausio lygio kultūriniams mainams."
+        },
+        "2": {
+            "role": "kompozitorius ir pianistas",
+            "quote": "Nepaprastai unikalus, jaunatviškas ir reikšmingas projektas. Organizatoriai, atlikėjai ir dirigentas savo darbą atliko nepriekaištingai."
+        },
+        "3": {
+            "role": "II <i>„Future Symphony“</i> konkurso laimėtojas",
+            "quote": "Esu įsitikinęs, jog „Future Symphony“ greitai įsitvirtins kaip vienas geriausių tokio tipo konkursų."
+        }
+    },
+    "sections": {
+        "about": "<p>III tarptautinis kompozicijų simfoniniam orkestrui konkursas <i>„Future Symphony“</i> – tai jaunųjų kūrėjų, kuriems rūpi simfoninės tradicijos evoliucija, iniciatyva.</p><p>Pagrindinis <i>„Future Symphony“</i> konkurso tikslas – suteikti galimybę jauniesiems kompozitoriams išbandyti simfoninės kūrybos lauką. Konkursas siekia atskleisti naujus kompozicijos talentus, aktualiosios muzikos kūriniais ugdyti jaunąją atlikėjų kartą ir sukurti tarptautiniam bendradarbiavimui palankią kūrybinę erdvę.</p><p>Konkurse dalyvauti gali <b>18&ndash;35 m.</b> kompozitoriai iš viso pasaulio.</p>",
+        "fso": {
+            "teaser": "<b>2022 m. rugsėjo 9 d.</b> Lietuvos nacionalinėje filharmonijoje <b>5&ndash;7 geriausias pateiktas partitūras</b> atliks specialiai <i>„Future Symphony“</i> konkursams suburiamas {span}.",
+            "about": "– tai lanksčios sudėties simfoninis orkestras, specialiai konkursui suburiamas iš jaunųjų Lietuvos atlikėjų. FSO jau dovanojo net 14 simfoninių kūrinių premjerų Lietuvos klausytojams. Orkestras sulaukė puikaus praeitų konkurso finalininkų, žiuri narių ir šalies meninės muzikos gerbėjų įvertinimo už profesionalumą, lankstumą ir jaunatvišką energiją.<br>FSO tikslas – rengti ir atlikti jaunųjų kompozitorių simfoninę kūrybą. Orkestras taip pat siekia supažindinti jaunosios kartos atlikėjus su šiuolaikinės muzikos ypatumais, ir Lietuvos klausytojams pristatyti aktualiosios simfoninės muzikos tendencijas."
+        },
+        "jury": {
+            "title": "Koncerto metu kūrinius vertins profesionali tarptautinė kompozitorių, dirigentų ir muzikologų žiuri:",
+            "lvlt": "Latvija/Lietuva",
+            "cynl": "Kipras/Olandija",
+            "lt": "Lietuva",
+            "il": "Izraelis"
+        },
+        "prize": "<b>Grand Prix</b> &ndash; <b>1500 € piniginis prizas</b> ir kūrinio atlikimas <b>Lietuvos nacionalinio simfoninio orkestro</b> (LNSO) 2022–23 metų sezone. Kiti 2–3 geriausi kompozitoriai bus apdovanoti Laureato diplomais ir <b>pasidalins 1500 € prizinį fondą</b> lygiomis dalimis. Be to, visi kompozitoriai patekę į 2-ąjį turą gaus profesionalius savo kūrinių įrašus."
+    }
+}

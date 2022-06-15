@@ -5,8 +5,8 @@
     import { addMessages, init as init_i18n, _, locale } from 'svelte-i18n'
     import { initSmoothScrolling } from '../helpers'
     import { imageFrame } from '../helpers/stores'
-    import en from '../locales/en.json'
-    import lt from '../locales/lt.json'
+    import en from '../locales/en/en.json'
+    import lt from '../locales/lt/lt.json'
 
     addMessages('en', en)
     addMessages('lt', lt)

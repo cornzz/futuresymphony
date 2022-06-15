@@ -1,0 +1,31 @@
+{
+    "quotes": {
+        "1": {
+            "role": "BBC Concert Orchestra composer-in-residence",
+            "quote": "This is a competition of international standing, which highlights Lithuania’s forward-looking cultural stature and provides the best environment for cultural exchange on the highest level."
+        },
+        "2": {
+            "role": "composer & pianist",
+            "quote": "I find this project to be highly unique, moving, and extremely important. The organizational committee, the orchestra musicians, and the conductor did their job superbly."
+        },
+        "3": {
+            "role": "winner of the 2<sup>nd</sup> Future Symphony Competition",
+            "quote": "I truly believe this competition will soon find itself firmly established as one of the great events of its type."
+        }
+    },
+    "sections": {
+        "about": "<p>The 3<sup>rd</sup> International Composition Competition for Symphony Orchestra “Future Symphony” is a unique initiative of young musicians, striving to stimulate the evolution of symphonic tradition.</p><p>The main objective of the competition is to encourage young composers all around the globe to write symphonic music and provide an opportunity to hear their compositions live. The competition seeks to discover new talents as well as to educate the new generation of musicians and develop an international bond between different cultures.</p><p>Composers from all around the world at the <b>age of 18&ndash;35</b> can apply to the competition.</p>",
+        "fso": {
+            "teaser": "{span} will perform 5 to 7 best scores in the final concert in the Lithuanian National Philharmonic Hall <b>on September 9<sup>th</sup> 2022</b>.",
+            "about": "is an orchestra brought together specifically for this competition and made up of young professional Lithuanian musicians. FSO has already performed 14 worldwide symphonic premiers and received acclaim from previous Competition’s finalists, jury members and Lithuanian music lovers for its versatility, high professionalism and youthful charisma.<br>The goal of FSO is to prepare and perform the scores of the young composers. The orchestra also strives to educate young musicians with the subtleties of contemporary music and to introduce new trends of symphonic music to the people of Lithuania."
+        },
+        "jury": {
+            "title": "Scores will be judged by international professional composers, conductors and musicologists:",
+            "lvlt": "Latvia/Lithuania",
+            "cynl": "Cyprus/The Netherlands",
+            "lt": "Lithuania",
+            "il": "Israel"
+        },
+        "prize": "The <b>Grand Prix</b> is a <b>1500 € cash prize</b> and a performance by <b>the Lithuanian National Symphony Orchestra</b> (LNSO) in the season of 2022–23. The other 2–3 best composers will be awarded Laureate diplomas and <b>will share a 1500 € prize fund</b> in equal parts. Furthermore, all finalists will receive professional recordings of their pieces."
+    }
+}

@@ -5,7 +5,6 @@
     import Participants from '../components/Participants.svelte'
     import Sponsors from '../components/Sponsors.svelte'
     import Contacts from '../components/Contacts.svelte'
-    import Image from '../components/Image.svelte'
     import { MetaTags } from 'svelte-meta-tags'
     import { onMount } from 'svelte'
     import { showLanding, showBack, sections } from '../helpers/stores'
@@ -36,29 +35,7 @@
 <div bind:this={about}>
     <Tab oversize style="padding-top: calc(2% + 45px);">
         <h1 class="cover-heading">{$_('about.title')}</h1>
-        <About>
-            <div slot="image1" class="image right">
-                <Image
-                    src="/images/gallery/about_1_small.jpg"
-                    alt="Future Symphony Orchestra 1"
-                    width="750"
-                    height="500"
-                    bigsrc="/images/gallery/about_1.jpg"
-                    lazyLoad
-                />
-            </div>
-            <div slot="image2" class="image left">
-                <Image
-                    src="/images/gallery/about_2_small.jpg"
-                    alt="Future Symphony Orchestra 2"
-                    width="750"
-                    height="500"
-                    bigsrc="/images/gallery/about_2.jpg"
-                    caption="gallery.about2"
-                    lazyLoad
-                />
-            </div>
-        </About>
+        <About/>
     </Tab>
 </div>
 
@@ -94,36 +71,4 @@
     #about
         position relative
         top 50px
-
-    .image
-        box-shadow 0 10px 16px 0 rgba(0, 0, 0, .2), 0 6px 20px 0 rgba(0, 0, 0, .19)
-        border-radius 2px
-        overflow hidden
-        transition all 0.2s ease-out
-        
-        :global(img)
-            height 35vmin
-            width auto
-    
-        &.right
-            float right
-            margin 25px 5px 25px 60px
-        
-        &.left
-            float left
-            margin 25px 60px 25px 5px
-        
-        &:hover
-            transition all 0.2s ease-in
-            transform scale(101%)
-
-    @media screen and (max-device-width: 900px)
-        .image
-            box-shadow 0 10px 16px 0 rgba(0, 0, 0, .2), 0 6px 20px 0 rgba(0, 0, 0, .19)
-            
-            &.right
-                margin 15px 0 10px 25px
-            
-            &.left
-                margin 15px 25px 10px 0
 </style>
