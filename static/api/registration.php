@@ -5,7 +5,7 @@
     $conn = OpenCon();
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        if (deadline()) {
+        if (Deadline()) {
             http_response_code(403);
             echo "Deadline passed.";
             return;
@@ -62,10 +62,12 @@
             $form["referrer"],
             $form["reg_key"]
         );
-        $success = $stmt->execute();
-        if (!$success) {
+        if (!$stmt->execute()) {
             http_response_code(500);
             echo "Error processing request: {$stmt->error}";
+            return;
+        } else {
+            echo "Registration successfully updated.";
             return;
         }
     } else if (isset($_GET["key"]) && $_GET["key"] !== "") {
@@ -79,12 +81,11 @@
 
         if ($result->num_rows) {
             // Prepare and return existing data
-            $arr = $result->fetch_assoc();
-            $arr["instrumentation"] = json_decode($arr["instrumentation"]);
-            $arr["scoreConfirmations"] = json_decode($arr["scoreConfirmations"]);
+            $row = DecodeRow($result->fetch_assoc());
             $fn = $conn->query("SELECT idCopyFileName, pieceScoreFileName, pieceDemoFileName, proofOfPaymentFileName FROM user_files WHERE reg_key='{$reg_key}'")->fetch_array();
-            [$arr["idCopy"], $arr["pieceScore"], $arr["pieceDemo"], $arr["proofOfPayment"]] = array($fn[0], $fn[1], $fn[2], $fn[3]);
-            echo json_encode($arr);
+            [$row["idCopy"], $row["pieceScore"], $row["pieceDemo"], $row["proofOfPayment"]] = array($fn[0], $fn[1], $fn[2], $fn[3]);
+            header('Content-type: application/json');
+            echo json_encode($row);
             return;
         } else {
             // Check if key exists in new_registrations
@@ -100,6 +101,7 @@
                 $stmt->bind_param("ssssss", $reg_key, $row["email"], $row["firstName"], $row["lastName"], $row["dateOfBirth"], $row["country"]);
                 $stmt->execute();
                 $conn->query("INSERT INTO user_files(reg_key) VALUES ('{$reg_key}')");
+                header('Content-type: application/json');
                 echo json_encode($row);
                 return;
             } else {

@@ -6,7 +6,7 @@
 
     $conn = OpenCon();
 
-    if (deadline()) {
+    if (Deadline()) {
         http_response_code(403);
         echo "Deadline passed.";
         return;
@@ -45,7 +45,7 @@
             $stmt->execute();
             if ($stmt->get_result()->num_rows) {
                 http_response_code(400);
-                echo "Email already used.";
+                echo "Email already in use.";
                 return;
             }
         }
@@ -71,6 +71,8 @@
             http_response_code(500);
             echo "Error processing request.";
             return;
+        } else {
+            echo "Registration successful."
         }
     } else if (isset($_GET["email"]) && $_GET["email"] !== "" && filter_var($_GET["email"], FILTER_VALIDATE_EMAIL) &&
                isset($_GET["lang"]) && (($_GET["lang"] === "en" || $_GET["lang"] === "lt"))
@@ -92,6 +94,8 @@
                 http_response_code(500);
                 echo "Error sending confirmation email.";
                 return;
+            } else {
+                echo "Email successfully resent."
             }
         }
     } else {
