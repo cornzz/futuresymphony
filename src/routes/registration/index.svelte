@@ -27,11 +27,11 @@
         if (form.reportValidity()) {
             $loading = true
             dto.lang = $locale
-            const response = await fetch(new URL('new_registration.php', $baseURL).toString(), {
+            const response = await fetch(new URL('new_registration.php', $baseURL), {
                 method: 'POST',
                 body: JSON.stringify(dto)
             })
-            if (response.status === 200) {
+            if (response.ok) {
                 success = true
                 !dev && localStorage.removeItem('newRegistrationDto')
             } else {

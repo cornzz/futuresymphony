@@ -2,6 +2,7 @@
     import Tab from '../components/Tab.svelte'
     import Image from '../components/Image.svelte'
     import Quote from '../components/Quote.svelte'
+    import { MetaTags } from 'svelte-meta-tags'
     import { showLanding } from '../helpers/stores'
     import { _, addMessages } from 'svelte-i18n'
     import adomas_en from '../locales/en/adomas.json'
@@ -12,6 +13,8 @@
 
     showLanding.set(false)
 </script>
+
+<MetaTags title={$_('meta.title')}/>
 
 <Tab oversize justify={false}>
     <h1 class="cover-heading">Adomas Morkūnas-Budrys</h1>

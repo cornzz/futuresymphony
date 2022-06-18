@@ -29,23 +29,23 @@
             console.log(`saving registration ${registrationID}`)
             $loading = true
             // Submit form data
-            let response = await fetch(new URL('registration.php', $baseURL).toString(), {
+            let response = await fetch(new URL('registration.php', $baseURL), {
                 method: 'POST',
                 body: JSON.stringify(dto)
             })
             // If successful, upload files
-            if (response.status === 200) {
+            if (response.ok) {
                 let data = new FormData()
                 data.append("reg_key", registrationID)
                 for (let file of Object.entries(dto.files)) {
                     file[1] && data.append(file[0], file[1][0])
                 }
-                response = await fetch(new URL(`files.php?key=${registrationID}`, $baseURL).toString(), {
+                response = await fetch(new URL(`files.php?key=${registrationID}`, $baseURL), {
                     method: 'POST',
                     body: data
                 })
                 // If successful, clean up
-                if (response.status === 200) {
+                if (response.ok) {
                     dto.files.idCopyFile = undefined
                     dto.files.pieceDemoFile = undefined
                     dto.files.pieceScoreFile = undefined
@@ -57,11 +57,11 @@
                 }
             }
             // One of the requests failed, display error
-            let responseText = await response.text()
+            const responseText = await response.text()
             if (responseText === 'Invalid form.') {
                 error = ['registration.form.error.invalidForm', {}]
             } else if (responseText.startsWith('Invalid file type or size:')) {
-                let invalidFiles = responseText.split(': ').pop()
+                const invalidFiles = responseText.split(': ').pop()
                 error = ['registration.form.error.fileError', { values: { files: invalidFiles } }]
             } else {
                 error = ['registration.form.error.errorOccurred', {}]
@@ -78,10 +78,13 @@
         if (registrationID === '1') {
             dto = JSON.parse('{"reg_key":"1","firstName":"Ernst","lastName":"Haft","email":"ernsthaft@web.de","dateOfBirth":"2001-01-11","country":"DE","pieceTitle":"My piece","pieceDemo":"","pieceScore":"score.pdf","idCopy":"","instrumentation":[[true],[true],[true],[true],[true],[true],[true],[true,true],[false,true],[false],[true],[false],[true,true],[false],[false],[false],[false],[false],[true],[true,true,true,true,true,true],[true,true,true,true,false],[true,true,true,true],[true,false,false],[false,false]],"scoreConfirmations":[true,false,false],"proofOfPayment":"","files":{"idCopyFile":null,"pieceScoreFile":null,"pieceDemoFile":null,"proofOfPaymentFile":null}}')
         } else {
-            const response = await fetch(new URL(`registration.php?key=${registrationID}`, $baseURL).toString())
-            if (response.status === 200) {
-                let responseDto = JSON.parse(await response.text())
-                dto = Object.assign(new RegistrationDTO, Object.fromEntries(Object.entries(responseDto).filter(([_, v]) => v !== null)))
+            const response = await fetch(new URL(`registration.php?key=${registrationID}`, $baseURL))
+            if (response.ok) {
+                const responseDto = await response.json()
+                dto = Object.assign(
+                    new RegistrationDTO,
+                    Object.fromEntries(Object.entries(responseDto).filter(([_, v]) => v !== null))
+                )
             }
         }
         $loading = false
