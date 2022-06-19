@@ -31,11 +31,11 @@
                 method: 'POST',
                 body: JSON.stringify(dto)
             })
-            if (response.ok) {
+            const responseText = await response.text()
+            if (response.ok && responseText === 'Registration successful.') {
                 success = true
                 !dev && localStorage.removeItem('newRegistrationDto')
             } else {
-                let responseText = await response.text()
                 if (responseText === 'Email already used.') {
                     warning = 'registration.form.error.emailUsed'
                 } else if (responseText === 'Invalid form.') {
