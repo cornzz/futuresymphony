@@ -3,6 +3,10 @@
     require "mail.php";
     require "helpers.php";
 
+    if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+        return;
+    }
+
     if (ADMIN_KEY === "" || !isset($_SERVER["PHP_AUTH_USER"]) || $_SERVER["PHP_AUTH_PW"] !== ADMIN_KEY) {
         header('WWW-Authenticate: Basic realm="Admin area"');
         header("HTTP/1.0 401 Unauthorized");
@@ -42,7 +46,7 @@
                 return;
             } else {
                 http_response_code(200);
-                echo "Registration $reg_key updated successfully.";
+                echo "Registration {$reg_key} updated successfully.";
                 return;
             }
         } else {
