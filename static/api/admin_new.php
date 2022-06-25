@@ -58,12 +58,13 @@
         $confirmed = $conn->query("
             SELECT
                 a.id,
-                b.reg_key,
-                b.email,
-                b.firstName,
-                b.lastName,
-                b.dateOfBirth,
-                b.country,
+                a.reg_key,
+                a.email,
+                a.firstName,
+                a.lastName,
+                a.dateOfBirth,
+                a.country,
+                a.registrationDate,
                 b.pieceTitle,
                 b.annotation,
                 b.instrumentation,
@@ -91,7 +92,8 @@
                 a.firstName,
                 a.lastName,
                 a.dateOfBirth,
-                a.country
+                a.country,
+                a.registrationDate
             FROM new_registrations AS a
             LEFT JOIN registrations AS b ON a.reg_key = b.reg_key
             WHERE b.reg_key IS NULL

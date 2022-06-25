@@ -38,31 +38,33 @@
     </select>
     registrations
     <table>
-        <tr>
-            <th>ID</th>
-            <th>Key</th>
-            <th>E-mail</th>
-            <th>Name</th>
-            <th>Surname</th>
-            <th>Date of Birth</th>
-            <th>Country</th>
-            {#if confirmed}
-                <th>ID document</th>
-                <th>Piece title</th>
-                <th>Annotation</th>
-                <th>Score</th>
-                <th>Demo file</th>
-                <th>Instrumentation</th>
-                <th>Remarks</th>
-                <th>Score confirmations</th>
-                <th>Proof of payment</th>
-                <th>Billing address</th>
-                <th>Referrer</th>
-                <th>Payment confirmed</th>
-                <th>Registration complete</th>
-                <th>Second round</th>
-            {/if}
-        </tr>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Key</th>
+                <th>E-mail</th>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Date of Birth</th>
+                <th>Country</th>
+                {#if confirmed}
+                    <th>ID document</th>
+                    <th>Piece title</th>
+                    <th>Annotation</th>
+                    <th>Score</th>
+                    <th>Demo file</th>
+                    <th>Instrumentation</th>
+                    <th>Remarks</th>
+                    <th>Score confirmations</th>
+                    <th>Proof of payment</th>
+                    <th>Billing address</th>
+                    <th>Referrer</th>
+                    <th>Payment confirmed</th>
+                    <th>Registration complete</th>
+                    <th>Second round</th>
+                {/if}
+            </tr>
+        </thead>
         {#each registrations.slice(0, numRows) as reg}
             <tr>
                 <td>{reg.id}</td>
@@ -162,7 +164,7 @@
                     <td>{reg.referrer ? mapReferrer(reg.referrer) : ''}</td>
                     <td>{reg.paymentConfirmed}</td>
                     <td>{reg.complete}</td>
-                    <td>{reg.secondRound}</td>
+                    <td>{reg.secondRound ?? ''}</td>
                 {/if}
             </tr>
         {/each}
