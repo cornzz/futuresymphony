@@ -4,9 +4,12 @@
     import { baseURL } from "../../helpers/stores"
     import { referrers } from "../../helpers/selectData"
     import { orchestra } from "../../helpers/orchestra"
+    import { createEventDispatcher } from "svelte"
 
     export let registrations: RegistrationDTO[]
     export let confirmed: boolean = true
+
+    const dispatch = createEventDispatcher()
 
     let numRows
 
@@ -14,10 +17,10 @@
         let text = instrumentation
             .map((instrument, index) => `${instrument.filter(Boolean).length}x ${orchestra[index].name}`)
             .filter(instrument => !instrument.startsWith('0')).join('\n')
-        window.alert(text)
+        showContent(text)
     }
 
-    const showContent = (content: string) => window.alert(content)
+    const showContent = (content: string) => dispatch('dialog', content)
 
     function mapReferrer(referrer: string) {
         const ref = referrers.find(option => option[0] === referrer)
@@ -189,5 +192,5 @@
                         border-radius 2px
                         padding 2px
                         background-color #ccc
-                        z-index 1000
+                        z-index 50
 </style>

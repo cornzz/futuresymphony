@@ -206,5 +206,12 @@
         "philharmonic": "Rehearsal at the Lithuanian National Philharmonic in Vilnius - showplace of the 2020 Future Symphony Competition final concert",
         "audience_18": "Audience at the final concert of the first Future Symphony Competition in 2018",
         "jury_18": "Jury at the final concert of the first Future Symphony Competition in 2018"
+    },
+    "admin": {
+        "password": "Password",
+        "error": {
+            "incorrectPass": "The password you entered is incorrect.",
+            "unknown": "An unknown error occurred. Please try again later."
+        }
     }
 }

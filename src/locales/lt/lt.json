@@ -206,5 +206,12 @@
         "philharmonic": "Repeticija Lietuvos nacionalinė filharmonija Vilniuje – 2020 m. Future Symphony konkurso finalinio koncerto vieta",
         "audience_18": "Pirmojo Future Symphony konkurso baigiamojo koncerto publika (2018 m.)",
         "jury_18": "Pirmojo Future Symphony konkurso baigiamojo koncerto žiuri (2018 m.)"
+    },
+    "admin": {
+        "password": "Slaptažodis",
+        "error": {
+            "incorrectPass": "Įvestas slaptažodis neteisingas.",
+            "unknown": "Įvyko nežinoma klaida. Pabandykite dar kartą vėliau."
+        }
     }
 }
