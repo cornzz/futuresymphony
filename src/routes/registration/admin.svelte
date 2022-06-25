@@ -2,6 +2,7 @@
     import type { RegistrationDTO } from "../../helpers/RegistrationDTO"
     import { loading, baseURL } from '../../helpers/stores'
     import { onMount } from "svelte"
+    import RegistrationsTable from "../../components/admin/RegistrationsTable.svelte"
 
     let confirmed: RegistrationDTO[]
     let unconfirmed: RegistrationDTO[]
@@ -19,20 +20,29 @@
     })
 </script>
 
-{#if confirmed && confirmed.length}
-    <h1 class="cover-heading">Confirmed registrations</h1>
-    <div class="wrapper">
-        {JSON.stringify(confirmed)}
-    </div>
-{/if}
-{#if unconfirmed && unconfirmed.length}
+<div>
+    {#if confirmed && confirmed.length}
+        <h1 class="cover-heading">Confirmed registrations</h1>
+        <RegistrationsTable
+            registrations={confirmed}
+        />
+    {:else}
+            No confirmed registrations
+    {/if}
+</div>
+<div>
     <h1 class="cover-heading">Unconfirmed registrations</h1>
-    <div class="wrapper">
-        {JSON.stringify(unconfirmed)}
-    </div>
-{/if}
+    {#if unconfirmed && unconfirmed.length}
+        <RegistrationsTable
+            registrations={unconfirmed}
+            confirmed={false}
+        />
+    {:else}
+        No unconfirmed registrations
+    {/if}
+</div>
 
 <style lang="stylus">
-    .wrapper
-        overflow-x scroll
+    div + div
+        margin-top 100px
 </style>

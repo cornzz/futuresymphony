@@ -8,7 +8,7 @@
     import { _ } from 'svelte-i18n'
     import { RegistrationDTO } from '../../helpers/RegistrationDTO'
     import { referrers, countries } from '../../helpers/selectData'
-    import { onMount, tick } from 'svelte'
+    import { onMount } from 'svelte'
 
     export let disabled: boolean = false
     export let newRegistration: boolean = false

@@ -24,4 +24,9 @@ export class RegistrationDTO {
 
     reg_key?: string = ''
     lang?: string = ''
+    
+    id?: number
+    paymentConfirmed?: boolean
+    complete?: boolean
+    secondRound?: boolean
 }

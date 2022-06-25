@@ -55,8 +55,47 @@
             return;
         }
     } else {
-        $confirmed = $conn->query("SELECT a.id, b.reg_key, b.email, b.firstName, b.lastName, b.dateOfBirth, b.country, b.pieceTitle, b.annotation, b.instrumentation, b.remarks, b.scoreConfirmations, b.billingAddress, b.referrer, b.paymentConfirmed, b.complete, b.secondRound, c.idCopyFileName, c.pieceScoreFileName, c.pieceDemoFileName, c.proofOfPaymentFileName FROM new_registrations AS a JOIN registrations AS b ON a.reg_key = b.reg_key JOIN user_files AS c ON b.reg_key = c.reg_key")->fetch_all(MYSQLI_ASSOC);
-        $unconfirmed = $conn->query("SELECT a.id, a.reg_key, a.email, a.firstName, a.lastName, a.dateOfBirth, a.country FROM new_registrations AS a LEFT JOIN registrations AS b ON a.reg_key = b.reg_key WHERE b.reg_key IS NULL")->fetch_all(MYSQLI_ASSOC);
+        $confirmed = $conn->query("
+            SELECT
+                a.id,
+                b.reg_key,
+                b.email,
+                b.firstName,
+                b.lastName,
+                b.dateOfBirth,
+                b.country,
+                b.pieceTitle,
+                b.annotation,
+                b.instrumentation,
+                b.remarks,
+                b.scoreConfirmations,
+                b.billingAddress,
+                b.referrer,
+                b.paymentConfirmed,
+                b.complete,
+                b.secondRound,
+                c.idCopyFileName as idCopy,
+                c.pieceScoreFileName as pieceScore,
+                c.pieceDemoFileName as pieceDemo,
+                c.proofOfPaymentFileName as proofOfPayment
+            FROM new_registrations AS a
+            JOIN registrations AS b ON a.reg_key = b.reg_key
+            JOIN user_files AS c ON b.reg_key = c.reg_key
+            ORDER BY a.id DESC
+        ")->fetch_all(MYSQLI_ASSOC);
+        $unconfirmed = $conn->query("
+            SELECT
+                a.id,
+                a.reg_key,
+                a.email,
+                a.firstName,
+                a.lastName,
+                a.dateOfBirth,
+                a.country
+            FROM new_registrations AS a
+            LEFT JOIN registrations AS b ON a.reg_key = b.reg_key
+            WHERE b.reg_key IS NULL
+        ")->fetch_all(MYSQLI_ASSOC);
         foreach ($confirmed as $i => $row) {
             $confirmed[$i] = DecodeRow($confirmed[$i]);
         }
