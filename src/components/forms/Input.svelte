@@ -1,7 +1,7 @@
 <script lang="ts">
     import { _ } from 'svelte-i18n'
 
-    export let type: 'text' | 'date' | 'email'
+    export let type: 'text' | 'date' | 'email' | 'password'
     export let name: string
     export let label: string = ''
     export let placeholder: string = ''
@@ -41,6 +41,17 @@
         <input
             id={name}
             type="email"
+            {placeholder}
+            bind:value
+            on:input
+            on:keyup
+            {disabled}
+            required={!optional}
+        />
+    {:else if type === 'password'}
+        <input
+            id={name}
+            type="password"
             {placeholder}
             bind:value
             on:input
