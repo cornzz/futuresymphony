@@ -39,7 +39,7 @@
                     inputElement.setCustomValidity($_('registration.form.validation.fileSize'))
                     inputElement.reportValidity()
                     return false
-                } else if (type && !files[0].name.match(/(\..*)/).includes(type)) {
+                } else if (type && !files[0].name.endsWith(type)) {
                     inputElement.setCustomValidity($_('registration.form.validation.fileType'))
                     inputElement.reportValidity()
                     return false
