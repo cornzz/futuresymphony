@@ -32,27 +32,39 @@
             return;
         }
         $stmt = $conn->prepare("
-            UPDATE registrations 
+            UPDATE base_registrations
             SET firstName=?,
                 lastName=?,
                 dateOfBirth=?,
-                country=?,
-                pieceTitle=?,
+                country=?
+            WHERE reg_key=?
+        ");
+        $stmt->bind_param("sssss",
+            $form["firstName"],
+            $form["lastName"],
+            $form["dateOfBirth"],
+            $form["country"],
+            $form["reg_key"]
+        );
+        if (!$stmt->execute()) {
+            http_response_code(500);
+            echo "Error processing request: {$stmt->error}";
+            return;
+        }
+        $stmt = $conn->prepare("
+            UPDATE registrations 
+            SET pieceTitle=?,
                 annotation=?,
                 instrumentation=?,
                 remarks=?,
                 scoreConfirmations=?,
                 billingAddress=?,
                 referrer=?
-            WHERE reg_key=?"
-        );
+            WHERE reg_key=?
+        ");
         $instrumentation = json_encode($form["instrumentation"]);
         $scoreConfirmations = json_encode($form["scoreConfirmations"]);
-        $stmt->bind_param("ssssssssssss",
-            $form["firstName"],
-            $form["lastName"],
-            $form["dateOfBirth"],
-            $form["country"],
+        $stmt->bind_param("ssssssss",
             $form["pieceTitle"],
             $form["annotation"],
             $instrumentation,
@@ -72,37 +84,58 @@
         }
     } else if (isset($_GET["key"]) && $_GET["key"] !== "") {
         $reg_key = $_GET["key"];
-
         // Check if key exists in registrations
-        $stmt = $conn->prepare("SELECT * FROM registrations WHERE reg_key=?");
+        $stmt = $conn->prepare("SELECT reg_key FROM registrations WHERE reg_key=?");
         $stmt->bind_param("s", $reg_key);
         $stmt->execute();
         $result = $stmt->get_result();
 
         if ($result->num_rows) {
             // Prepare and return existing data
+            $result = $conn->query("
+                SELECT
+                    a.id,
+                    a.reg_key,
+                    a.email,
+                    a.firstName,
+                    a.lastName,
+                    a.dateOfBirth,
+                    a.country,
+                    a.registrationDate,
+                    b.pieceTitle,
+                    b.annotation,
+                    b.instrumentation,
+                    b.remarks,
+                    b.scoreConfirmations,
+                    b.billingAddress,
+                    b.referrer,
+                    c.idCopyFileName as idCopy,
+                    c.pieceScoreFileName as pieceScore,
+                    c.pieceDemoFileName as pieceDemo,
+                    c.proofOfPaymentFileName as proofOfPayment
+                FROM base_registrations AS a
+                JOIN registrations AS b ON a.reg_key = b.reg_key
+                JOIN user_files AS c ON b.reg_key = c.reg_key
+                WHERE a.reg_key = '{$reg_key}'
+            ");
+            echo $conn->error;
             $row = DecodeRow($result->fetch_assoc());
-            $fn = $conn->query("SELECT idCopyFileName, pieceScoreFileName, pieceDemoFileName, proofOfPaymentFileName FROM user_files WHERE reg_key='{$reg_key}'")->fetch_array();
-            [$row["idCopy"], $row["pieceScore"], $row["pieceDemo"], $row["proofOfPayment"]] = array($fn[0], $fn[1], $fn[2], $fn[3]);
             header('Content-type: application/json');
             echo json_encode($row);
             return;
         } else {
-            // Check if key exists in new_registrations
-            $stmt = $conn->prepare("SELECT * FROM new_registrations WHERE reg_key=?");
+            // Check if key exists in base_registrations
+            $stmt = $conn->prepare("SELECT * FROM base_registrations WHERE reg_key=?");
             $stmt->bind_param("s", $reg_key);
             $stmt->execute();
             $result = $stmt->get_result();
 
             if ($result->num_rows) {
-                // Insert into registrations and user_files
-                $row = $result->fetch_assoc();
-                $stmt = $conn->prepare("INSERT INTO registrations(reg_key, email, firstName, lastName, dateOfBirth, country) VALUES (?, ?, ?, ?, ?, ?)");
-                $stmt->bind_param("ssssss", $reg_key, $row["email"], $row["firstName"], $row["lastName"], $row["dateOfBirth"], $row["country"]);
-                $stmt->execute();
+                // Insert new row into registrations and user_files
+                $conn->query("INSERT INTO registrations(reg_key) VALUES ('{$reg_key}')");
                 $conn->query("INSERT INTO user_files(reg_key) VALUES ('{$reg_key}')");
                 header('Content-type: application/json');
-                echo json_encode($row);
+                echo json_encode($result->fetch_assoc());
                 return;
             } else {
                 http_response_code(404);

@@ -77,9 +77,9 @@
     function DecodeRow($row) {
         $row["instrumentation"] = json_decode($row["instrumentation"]);
         $row["scoreConfirmations"] = json_decode($row["scoreConfirmations"]);
-        $row["paymentConfirmed"] = json_decode($row["paymentConfirmed"]);
-        $row["complete"] = json_decode($row["complete"]);
-        $row["secondRound"] = json_decode($row["secondRound"]);
+        $row["paymentConfirmed"] = in_array("paymentConfirmed", $row) ? json_decode($row["paymentConfirmed"]) : null;
+        $row["complete"] = in_array("complete", $row) ? json_decode($row["complete"]) : null;
+        $row["secondRound"] = in_array("secondRound", $row) ? json_decode($row["secondRound"]) : null;
         return $row;
     }
 ?>

@@ -79,7 +79,7 @@
                 c.pieceScoreFileName as pieceScore,
                 c.pieceDemoFileName as pieceDemo,
                 c.proofOfPaymentFileName as proofOfPayment
-            FROM new_registrations AS a
+            FROM base_registrations AS a
             JOIN registrations AS b ON a.reg_key = b.reg_key
             JOIN user_files AS c ON b.reg_key = c.reg_key
             ORDER BY a.id DESC
@@ -94,9 +94,10 @@
                 a.dateOfBirth,
                 a.country,
                 a.registrationDate
-            FROM new_registrations AS a
+            FROM base_registrations AS a
             LEFT JOIN registrations AS b ON a.reg_key = b.reg_key
             WHERE b.reg_key IS NULL
+            ORDER BY a.id DESC
         ")->fetch_all(MYSQLI_ASSOC);
         foreach ($confirmed as $i => $row) {
             $confirmed[$i] = DecodeRow($confirmed[$i]);

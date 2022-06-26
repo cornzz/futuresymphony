@@ -40,7 +40,7 @@
             
         if (APP_ENV != "dev") {
             // Check if email in use
-            $stmt = $conn->prepare("SELECT * FROM new_registrations WHERE email=?");
+            $stmt = $conn->prepare("SELECT * FROM base_registrations WHERE email=?");
             $stmt->bind_param("s", $form["email"]);
             $stmt->execute();
             if ($stmt->get_result()->num_rows) {
@@ -53,7 +53,7 @@
         // Generate reg key
         do {
             $reg_key = join("-", str_split(strtoupper(bin2hex(random_bytes(10))), 5));
-        } while ($conn->query("SELECT * FROM new_registrations WHERE reg_key='{$reg_key}'")->num_rows);
+        } while ($conn->query("SELECT * FROM base_registrations WHERE reg_key='{$reg_key}'")->num_rows);
 
         // Send confirmation email
         if (APP_ENV != "dev") {
@@ -64,8 +64,8 @@
             }
         }
 
-        // Insert data into new_registrations
-        $stmt = $conn->prepare("INSERT INTO new_registrations(reg_key, email, firstName, lastName, dateOfBirth, country) VALUES (?, ?, ?, ?, ?, ?)");
+        // Insert data into base_registrations
+        $stmt = $conn->prepare("INSERT INTO base_registrations(reg_key, email, firstName, lastName, dateOfBirth, country) VALUES (?, ?, ?, ?, ?, ?)");
         $stmt->bind_param("ssssss", $reg_key, $form["email"], $form["firstName"], $form["lastName"], $form["dateOfBirth"], $form["country"]);
         if (!$stmt->execute()) {
             http_response_code(500);
@@ -79,7 +79,7 @@
     ) {
         // Resend confirmation mail
         $email = $_GET["email"];
-        $stmt = $conn->prepare("SELECT * FROM new_registrations WHERE email=?");
+        $stmt = $conn->prepare("SELECT * FROM base_registrations WHERE email=?");
         $stmt->bind_param("s", $email);
         $stmt->execute();
         $result = $stmt->get_result();

@@ -27,7 +27,7 @@
         if (form.reportValidity()) {
             $loading = true
             dto.lang = $locale
-            const response = await fetch(new URL('new_registration.php', $baseURL), {
+            const response = await fetch(new URL('base_registration.php', $baseURL), {
                 method: 'POST',
                 body: JSON.stringify(dto)
             })

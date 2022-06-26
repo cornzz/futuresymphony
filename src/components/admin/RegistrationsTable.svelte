@@ -47,6 +47,7 @@
                 <th>Surname</th>
                 <th>Date of Birth</th>
                 <th>Country</th>
+                <th>Reg. Date</th>
                 {#if confirmed}
                     <th>ID document</th>
                     <th>Piece title</th>
@@ -82,6 +83,7 @@
                 <td>{reg.lastName}</td>
                 <td>{reg.dateOfBirth}</td>
                 <td>{reg.country}</td>
+                <td>{reg.registrationDate ?? ''}</td>
                 {#if confirmed}
                     <td>
                         {#if reg.idCopy}

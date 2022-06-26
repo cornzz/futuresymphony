@@ -130,6 +130,8 @@
         <?php
             require_once "db_connection.php";
 
+            return;
+
             $conn = OpenCon();
 
             $result = $conn->query("SELECT a.id, b.reg_key, b.email, b.firstName, b.lastName, b.dateOfBirth, b.country, b.pieceTitle, b.annotation, b.instrumentation, b.remarks, b.scoreConfirmations, b.billingAddress, b.referrer, b.paymentConfirmed, b.complete, b.secondRound, c.idCopyFileName, c.pieceScoreFileName, c.pieceDemoFileName, c.proofOfPaymentFileName FROM new_registrations AS a JOIN registrations AS b ON a.reg_key = b.reg_key JOIN user_files AS c ON b.reg_key = c.reg_key");

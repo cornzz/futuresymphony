@@ -35,7 +35,7 @@
         if (emailInput && emailInput.reportValidity() || !emailInput && email) {
             $loading = true
             let searchParams = new URLSearchParams({ email, lang: $locale})
-            const response = await fetch(new URL('new_registration.php?' + searchParams, $baseURL))
+            const response = await fetch(new URL('base_registration.php?' + searchParams, $baseURL))
             if (response.ok) {
                 success = true
                 startTimer(5 * 60)

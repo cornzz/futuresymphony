@@ -26,6 +26,7 @@ export class RegistrationDTO {
     lang?: string = ''
     
     id?: number
+    registrationDate?: string
     paymentConfirmed?: boolean
     complete?: boolean
     secondRound?: boolean
