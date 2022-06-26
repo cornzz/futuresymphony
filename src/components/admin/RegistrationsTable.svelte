@@ -11,7 +11,8 @@
 
     const dispatch = createEventDispatcher()
 
-    let numRows
+    let numRows: number
+    let showAll: boolean
 
     function showInstrumentation(instrumentation: boolean[][]) {
         let text = instrumentation
@@ -30,13 +31,17 @@
 </script>
 
 <div class="wrapper">
-    Showing
+    Show
     <select bind:value={numRows}>
         {#each [10, 20, 50, 100] as num}
             <option value={num}>{num}</option>
         {/each}
     </select>
-    registrations out of {registrations.length}
+    rows &ndash;
+    <label>
+        <input type="checkbox" bind:checked={showAll}/>
+        Show all
+    </label>
     <table>
         <thead>
             <tr>
@@ -66,7 +71,7 @@
                 {/if}
             </tr>
         </thead>
-        {#each registrations.slice(0, numRows) as reg}
+        {#each showAll ? registrations : registrations.slice(0, numRows) as reg}
             <tr>
                 <td>{reg.id}</td>
                 <td>
@@ -177,6 +182,10 @@
     .wrapper
         overflow-x scroll
         font-size 14px
+
+        label
+        input[type="checkbox"]
+            cursor pointer
 
         table
             width 100%
