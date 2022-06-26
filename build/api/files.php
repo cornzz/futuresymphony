@@ -5,7 +5,7 @@
     $conn = OpenCon();
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        if (deadline()) {
+        if (Deadline()) {
             http_response_code(403);
             echo "Deadline passed.";
             return;
@@ -48,8 +48,7 @@
                 $file_name = $file["name"];
                 $stmt = $conn->prepare("UPDATE user_files SET {$fv[0]}=?, {$fv[0]}Type=?, {$fv[0]}Name=? WHERE reg_key=?");
                 $stmt->bind_param("ssss", $file_content, $file_type, $file_name, $reg_key);
-                $success = $stmt->execute();
-                if (!$success) {
+                if (!$stmt->execute()) {
                     http_response_code(500);
                     echo "Error processing request: {$stmt->error}";
                     return;
@@ -59,6 +58,9 @@
         if (count($invalidFiles) > 0) {
             http_response_code(400);
             echo "Invalid file type or size: ".implode(", ", $invalidFiles);
+            return;
+        } else {
+            echo "File upload successful.";
             return;
         }
     } else if (
