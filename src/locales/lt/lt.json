@@ -142,7 +142,7 @@
                 "invalidForm": "Įvyko klaida. Patikrinkite įvestą informaciją.",
                 "pleaseWait": "Palaukite prieš pateikdami kitą registraciją.",
                 "emailError": "Siunčiant patvirtinimo el. laišką įvyko klaida. Bandykite dar kartą vėliau arba susisiekite su mumis.",
-                "fileError": "Šie failai yra netinkami: {files}. Patikrinkite įkeltus failus ir bandykite dar kartą.",
+                "fileError": "{number, plural, =1 {Šis failas netinkamas} other {Šie failai yra netinkami}}: {files}. Patikrinkite įkeltus failus ir bandykite dar kartą.",
                 "errorOccurred": "Įvyko klaida. Bandykite dar kartą vėliau arba susisiekite su mumis."
             },
             "validation": {

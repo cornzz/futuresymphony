@@ -142,7 +142,7 @@
                 "invalidForm": "An error has occured. Please check your input.",
                 "pleaseWait": "Please wait before submitting another registration.",
                 "email": "An error has occurred while sending the confirmation email. Please try again later, or contact us.",
-                "fileError": "Following files are invalid: {files}. Please check your input and try again.",
+                "fileError": "{number, plural, =1 {The following file is} other {Following files are}} invalid: {files}. Please check your input and try again.",
                 "errorOccurred": "An error has occurred. Please try again later, or contact us."
             },
             "validation": {

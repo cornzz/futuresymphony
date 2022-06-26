@@ -34,7 +34,8 @@
                 body: JSON.stringify(dto)
             })
             // If successful, upload files
-            if (response.ok) {
+            let responseText = await response.text()
+            if (response.ok && responseText === 'Registration successfully updated.') {
                 let data = new FormData()
                 data.append("reg_key", registrationID)
                 for (let file of Object.entries(dto.files)) {
@@ -45,7 +46,8 @@
                     body: data
                 })
                 // If successful, clean up
-                if (response.ok) {
+                responseText = await response.text()
+                if (response.ok && responseText === 'File upload successful.') {
                     dto.files.idCopyFile = undefined
                     dto.files.pieceDemoFile = undefined
                     dto.files.pieceScoreFile = undefined
@@ -57,12 +59,16 @@
                 }
             }
             // One of the requests failed, display error
-            const responseText = await response.text()
             if (responseText === 'Invalid form.') {
                 error = ['registration.form.error.invalidForm', {}]
             } else if (responseText.startsWith('Invalid file type or size:')) {
                 const invalidFiles = responseText.split(': ').pop()
-                error = ['registration.form.error.fileError', { values: { files: invalidFiles } }]
+                error = ['registration.form.error.fileError', {
+                    values: {
+                        number: invalidFiles.split(',').length,
+                        files: invalidFiles
+                    }
+                }]
             } else {
                 error = ['registration.form.error.errorOccurred', {}]
             }
