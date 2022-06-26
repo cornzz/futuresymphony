@@ -129,4 +129,8 @@
             border-radius 5px
             max-height 85vh
             overflow auto
+
+    @media screen and (max-width 525px)
+        .admin .login
+            width 75%
 </style>
