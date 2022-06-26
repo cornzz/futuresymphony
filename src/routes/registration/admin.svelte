@@ -18,7 +18,7 @@
     async function login(pass: string): Promise<boolean> {
         $loading = true
         const headers = new Headers({ 'Authorization': `Basic ${btoa('admin:' + pass)}` })
-        const response = await fetch(new URL('admin_new.php', $baseURL), {
+        const response = await fetch(new URL('admin.php', $baseURL), {
             method: 'POST',
             headers
         })
