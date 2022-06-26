@@ -127,4 +127,6 @@
             top 50%
             transform translateY(-50%)
             border-radius 5px
+            max-height 85vh
+            overflow auto
 </style>

@@ -30,13 +30,13 @@
 </script>
 
 <div class="wrapper">
-    Show
+    Showing
     <select bind:value={numRows}>
         {#each [10, 20, 50, 100] as num}
             <option value={num}>{num}</option>
         {/each}
     </select>
-    registrations
+    registrations out of {registrations.length}
     <table>
         <thead>
             <tr>
