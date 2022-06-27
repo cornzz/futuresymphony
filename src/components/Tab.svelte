@@ -1,10 +1,11 @@
 <script lang="ts">
     export let oversize: boolean = false
     export let justify: boolean = true
+    export let fullwidth: boolean = false
     export let style: string = ''
 </script>
 
-<div class="tab" class:oversize class:justify {style}>
+<div class="tab" class:oversize class:justify class:fullwidth {style}>
     <slot></slot>
 </div>
 
@@ -24,12 +25,16 @@
         display flex
         flex-direction column
 
-    .oversize
-        min-height 95vh
-        height auto
+        &.oversize
+            min-height 95vh
+            height auto
 
-    .justify
-        justify-content space-between
+        &.justify
+            justify-content space-between
+
+        &.fullwidth
+            padding-left 15px
+            padding-right 15px
 
     /* TODO: rework this mess... */
 
@@ -70,9 +75,9 @@
             height 94vh
             font-size: 3.4vmin
 
-        .oversize
-            min-height 94vh
-            height auto
+            &.oversize
+                min-height 94vh
+                height auto
 
     @media screen and (max-device-width: 640px) and (orientation:landscape)
         .tab

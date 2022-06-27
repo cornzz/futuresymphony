@@ -3,9 +3,14 @@
     import { Circle2 } from 'svelte-loading-spinners'
     import { showLanding, showBack, loading } from '../../helpers/stores'
     import { _ } from 'svelte-i18n'
+    import { onMount } from 'svelte'
+
+    let fullwidth = false
 
     showLanding.set(false)
     showBack.set(false)
+
+    onMount(() => location.pathname.endsWith('/admin') && (fullwidth = true))
 </script>
 
 {#if $loading}
@@ -15,7 +20,7 @@
         </div>
     </div>
 {/if}
-<Tab oversize justify={false}>
+<Tab oversize justify={false} {fullwidth}>
     <div class="wrapper">
         <slot></slot>
     </div>
