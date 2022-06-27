@@ -47,34 +47,32 @@
         Show all
     </label>
     <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Key</th>
-                <th>E-mail</th>
-                <th>Name</th>
-                <th>Surname</th>
-                <th>Date of Birth</th>
-                <th>Country</th>
-                <th>Reg. Date</th>
-                {#if confirmed}
-                    <th>ID document</th>
-                    <th>Piece title</th>
-                    <th>Annotation</th>
-                    <th>Score</th>
-                    <th>Demo file</th>
-                    <th>Instrumentation</th>
-                    <th>Remarks</th>
-                    <th>Score confirmations</th>
-                    <th>Proof of payment</th>
-                    <th>Billing address</th>
-                    <th>Referrer</th>
-                    <th>Payment confirmed</th>
-                    <th>Registration complete</th>
-                    <th>Second round</th>
-                {/if}
-            </tr>
-        </thead>
+        <tr>
+            <th>ID</th>
+            <th>Key</th>
+            <th>E-mail</th>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Date of Birth</th>
+            <th>Country</th>
+            <th>Reg. Date</th>
+            {#if confirmed}
+                <th>ID document</th>
+                <th>Piece title</th>
+                <th>Annotation</th>
+                <th>Score</th>
+                <th>Demo file</th>
+                <th>Instrumentation</th>
+                <th>Remarks</th>
+                <th>Score confirmations</th>
+                <th>Proof of payment</th>
+                <th>Billing address</th>
+                <th>Referrer</th>
+                <th>Payment confirmed</th>
+                <th>Registration complete</th>
+                <th>Second round</th>
+            {/if}
+        </tr>
         {#each showAll ? registrations : registrations.slice(0, numRows) as reg}
             <tr>
                 <td>{reg.id}</td>
@@ -229,29 +227,40 @@
         table
             width 100%
             font-size 12px
-
-            td
-                text-align center
-
-                &.success
-                    background-color var(--color-success)
-                
-                &.error
-                    background-color var(--color-error)
-                
-                &.warning
-                    background-color var(--color-warning)
-                
-                .link
-                    position relative
+            border-collapse collapse
             
-                    &[data-label]:hover:after
-                        content attr(data-label)
-                        position absolute
-                        top 14px
-                        left 14px
-                        border-radius 2px
-                        padding 2px
-                        background-color #ccc
-                        z-index 50
+            tr
+                &:hover > *:not(th)
+                    box-shadow inset 0 0 0 9999px rgba(0, 0, 0, .035)
+
+                &:nth-child(even)
+                    background-color #e9e9e9
+
+                th
+                    padding 0 5px
+
+                td
+                    text-align center
+
+                    &.success
+                        background-color var(--color-success)
+                    
+                    &.error
+                        background-color var(--color-error)
+                    
+                    &.warning
+                        background-color var(--color-warning)
+                    
+                    .link
+                        position relative
+                
+                        &[data-label]:hover:after
+                            content attr(data-label)
+                            position absolute
+                            top 14px
+                            left 14px
+                            border-radius 2px
+                            padding 2px
+                            background-color #ccc
+                            z-index 50
 </style>
