@@ -3,7 +3,8 @@
 
     export let name: string
     export let label: string
-    export let maxlength: number
+    export let maxlength: number = undefined
+    export let rows: number = 4
     export let value: string | Date = ''
     export let optional: boolean = false
     export let disabled: boolean = false
@@ -21,7 +22,7 @@
     <textarea
         id={name}
         {maxlength}
-        rows="4"
+        {rows}
         bind:value
         on:input
         {disabled}

@@ -37,7 +37,7 @@
 <div class="wrapper">
     Show
     <select bind:value={numRows}>
-        {#each [10, 20, 50, 100] as num}
+        {#each [5, 10, 25, 50, 100] as num}
             <option value={num}>{num}</option>
         {/each}
     </select>
@@ -238,6 +238,7 @@
 
                 th
                     padding 0 5px
+                    border-bottom solid 0.5px var(--color-primary)
 
                 td
                     text-align center

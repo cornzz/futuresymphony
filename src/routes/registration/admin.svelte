@@ -3,6 +3,7 @@
     import Input from "../../components/forms/Input.svelte"
     import Button from "../../components/forms/Button.svelte"
     import InfoBox from "../../components/forms/InfoBox.svelte"
+    import Mailer from "../../components/admin/Mailer.svelte"
     import type { RegistrationDTO } from "../../helpers/RegistrationDTO"
     import { loading, baseURL } from '../../helpers/stores'
     import { onMount } from "svelte"
@@ -14,6 +15,7 @@
     let initialLoad: boolean = false
     let error: string = ''
     let dialog: string = ''
+    let showMailer: boolean = false
 
     const getAuth = (pass: string): HeadersInit => { return { 'Authorization': `Basic ${btoa('admin:' + pass)}` }}
 
@@ -89,36 +91,54 @@
             {/if}
         </div>
     {:else if initialLoad}
-        <div class="registrations">
-            <h1 class="cover-heading">Confirmed registrations</h1>
-            {#if confirmed && confirmed.length}
-                <RegistrationsTable
-                    registrations={confirmed}
-                    on:dialog={(e) => dialog = e.detail}
-                    on:updateBoolean={(e) =>
-                        updateBoolean(e.detail.reg_key, e.detail.column, e.detail.value)
-                    }
-                />
-            {:else}
-                    No confirmed registrations
-            {/if}
-        </div>
-        <div class="registrations">
-            <h1 class="cover-heading">Unconfirmed registrations</h1>
-            {#if unconfirmed && unconfirmed.length}
-                <RegistrationsTable
-                    registrations={unconfirmed}
-                    confirmed={false}
-                    on:dialog={(e) => dialog = e.detail}
-                />
-            {:else}
-                No unconfirmed registrations
-            {/if}
+        <div class="dashboard">
+            <h1>Admin panel</h1>
+            <div class="actions">
+                <Button
+                    type="primary"
+                    on:click={() => showMailer = true}
+                >
+                    Send mail
+                </Button>
+            </div>
+            <div class="registrations">
+                <h2>Confirmed registrations</h2>
+                {#if confirmed && confirmed.length}
+                    <RegistrationsTable
+                        registrations={confirmed}
+                        on:dialog={(e) => dialog = e.detail}
+                        on:updateBoolean={(e) =>
+                            updateBoolean(e.detail.reg_key, e.detail.column, e.detail.value)
+                        }
+                    />
+                {:else}
+                        No confirmed registrations
+                {/if}
+            </div>
+            <div class="registrations">
+                <h2>Unconfirmed registrations</h2>
+                {#if unconfirmed && unconfirmed.length}
+                    <RegistrationsTable
+                        registrations={unconfirmed}
+                        confirmed={false}
+                        on:dialog={(e) => dialog = e.detail}
+                    />
+                {:else}
+                    No unconfirmed registrations
+                {/if}
+            </div>
         </div>
         {#if dialog}
             <dialog open>
                 <p>{dialog}</p>
                 <Button type="primary" slim on:click={() => dialog = ''}>OK</Button>
+            </dialog>
+        {/if}
+        {#if showMailer}
+            <dialog open>
+                <Mailer
+                    bind:show={showMailer}
+                />
             </dialog>
         {/if}
     {/if}
@@ -140,8 +160,19 @@
                 column-gap 15px
                 align-items end
 
-        .registrations:not(:first-child)
-            margin-top 100px
+        .dashboard
+            h1
+                margin-bottom 20px
+
+            .registrations
+                margin-top 50px
+
+                h2
+                    margin-bottom 20px
+
+            .actions
+                display grid
+                grid-template-columns repeat(auto-fill, 150px)
         
         dialog
             position fixed
