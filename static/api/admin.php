@@ -100,7 +100,7 @@
             ORDER BY a.id DESC
         ")->fetch_all(MYSQLI_ASSOC);
         foreach ($confirmed as $i => $row) {
-            $confirmed[$i] = DecodeRow($confirmed[$i]);
+            $confirmed[$i] = Helpers::decodeRow($confirmed[$i]);
         }
         header('Content-type: application/json');
         echo '{"confirmed":'.json_encode($confirmed).',"unconfirmed":'.json_encode($unconfirmed).'}';

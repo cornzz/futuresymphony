@@ -6,11 +6,7 @@
 
     $conn = OpenCon();
 
-    if (Deadline()) {
-        http_response_code(403);
-        echo "Deadline passed.";
-        return;
-    }
+    Helpers::deadline();
 
     $client_addr = $_SERVER["REMOTE_ADDR"];
     if (APP_ENV != "dev") {
@@ -32,7 +28,7 @@
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Validate form
         $form = json_decode(file_get_contents("php://input"), TRUE);
-        if (!ValidateDTO($form, TRUE)) {
+        if (!Helpers::validateDTO($form, TRUE)) {
             http_response_code(400);
             echo "Invalid form.";
             return;

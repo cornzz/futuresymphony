@@ -5,14 +5,10 @@
     $conn = OpenCon();
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        if (Deadline()) {
-            http_response_code(403);
-            echo "Deadline passed.";
-            return;
-        }
+        Helpers::deadline();
 
         $form = json_decode(file_get_contents("php://input"), TRUE);
-        if (!ValidateDTO($form, FALSE)) {
+        if (!Helpers::validateDTO($form, FALSE)) {
             http_response_code(400);
             echo "Invalid form.";
             return;
@@ -119,7 +115,7 @@
                 WHERE a.reg_key = '{$reg_key}'
             ");
             echo $conn->error;
-            $row = DecodeRow($result->fetch_assoc());
+            $row = Helpers::decodeRow($result->fetch_assoc());
             header('Content-type: application/json');
             echo json_encode($row);
             return;
