@@ -5,11 +5,7 @@
     $conn = OpenCon();
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        if (Deadline()) {
-            http_response_code(403);
-            echo "Deadline passed.";
-            return;
-        }
+        Helpers::deadline();
         
         if (!isset($_POST["reg_key"])) {
             http_response_code(400);
@@ -39,7 +35,7 @@
         foreach ($fileVerification as $fv) {
             $file = $_FILES[$fv[0]] ?? null;
             if (!is_null($file)) {
-                if (!ValidateFile($file, $fv[1], $fv[2])) {
+                if (!Helpers::validateFile($file, $fv[1], $fv[2])) {
                     $invalidFiles[] = $file["name"];
                     continue;
                 }
