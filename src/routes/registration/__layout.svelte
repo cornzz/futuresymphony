@@ -10,7 +10,7 @@
     showLanding.set(false)
     showBack.set(false)
 
-    onMount(() => location.pathname.endsWith('/admin') && (fullwidth = true))
+    onMount(() => location.pathname.includes('/admin') && (fullwidth = true))
 </script>
 
 {#if $loading}
