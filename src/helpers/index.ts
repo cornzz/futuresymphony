@@ -62,3 +62,5 @@ function scrollToY(y: number, duration = 0, element = document.scrollingElement)
     }
     window.requestAnimationFrame(step)
 }
+
+export const getAuth = (pass: string): HeadersInit => { return { 'Authorization': `Basic ${btoa('admin:' + pass)}` }}

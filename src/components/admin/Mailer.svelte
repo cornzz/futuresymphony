@@ -2,8 +2,27 @@
     import Button from "../forms/Button.svelte"
     import Input from "../forms/Input.svelte"
     import Textarea from "../forms/Textarea.svelte"
+    import { getAuth } from '../../helpers'
+    import { loading, baseURL } from '../../helpers/stores'
 
+    export let password: string
     export let show: boolean
+
+    type Criterion = { active: boolean, value: boolean }
+
+    let statusCriterion: Criterion = { active: true, value: true }
+    let completeCriterion: Criterion = { active: false, value: true }
+    let paymentCriterion: Criterion = { active: false, value: true }
+    let secondCriterion: Criterion = { active: false, value: null }
+
+    async function sendMail(): Promise<void> {
+        $loading = true
+        const response = await fetch(new URL('admin.php', $baseURL), {
+            method: 'POST',
+            headers: getAuth(password)
+        })
+        $loading = false
+    }
 </script>
 
 <div class="mailer">
@@ -17,23 +36,93 @@
         label="Message"
         rows={10}
     />
+    Sending criteria:
+    <div class="criteria">    
+        <div>
+            <label>
+                Status
+                <select bind:value={statusCriterion.value}>
+                    <option value={true}>confirmed</option>
+                    <option value={false}>unconfirmed</option>
+                </select>
+            </label>
+        </div>
+        <div>
+            <label>
+                <input type="checkbox" bind:checked={completeCriterion.active}/>
+                complete
+                <select disabled={!completeCriterion.active} bind:value={completeCriterion.value}>
+                    <option value={true}>true</option>
+                    <option value={false}>false</option>
+                </select>
+            </label>
+        </div>
+        <div>
+            <label>
+                <input type="checkbox" bind:checked={paymentCriterion.active}/>
+                payment
+                <select disabled={!paymentCriterion.active} bind:value={paymentCriterion.value}>
+                    <option value={true}>true</option>
+                    <option value={false}>false</option>
+                </select>
+            </label>
+        </div>
+        <div>
+            <label>
+                <input type="checkbox" bind:checked={secondCriterion.active}/>
+                second
+                <select disabled={!secondCriterion.active} bind:value={secondCriterion.value}>
+                    <option value={null}>TBD</option>
+                    <option value={true}>true</option>
+                    <option value={false}>false</option>
+                </select>
+            </label>
+        </div>
+    </div>
 </div>
 <div class="buttons">
     <Button on:click={() => show = false}>Cancel</Button>
-    <Button type="primary" on:click={() => {}}>Send</Button>
+    <Button type="primary" disabled={$loading} on:click={sendMail}>Send</Button>
 </div>
 
 <style lang="stylus">
     .mailer
+        display flex
+        flex-direction column
+        row-gap 15px
         width 85vw
+
+        .criteria
+            display grid
+            grid-template-columns repeat(4, 1fr)
+            align-items center
+            justify-items center
+            column-gap 40px
+            row-gap 10px
+            border-radius 5px
+            background-color var(--color-background)
+            padding 5px
+
+            label
+            input[type="checkbox"]
+                cursor pointer
+
+            label
+                display block
+                font-size 14px
+                margin-left 5px
 
     .buttons
         display flex
         flex-direction row
         justify-content end
         column-gap 15px
+        margin-top 15px
 
         &:global( > *)
             width 150px
 
+    @media screen and (max-width 900px)
+        .mailer .criteria
+            grid-template-columns 1fr 1fr
 </style>

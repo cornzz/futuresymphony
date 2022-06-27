@@ -6,6 +6,7 @@
     import Mailer from "../../components/admin/Mailer.svelte"
     import type { RegistrationDTO } from "../../helpers/RegistrationDTO"
     import { loading, baseURL } from '../../helpers/stores'
+    import { getAuth } from '../../helpers'
     import { onMount } from "svelte"
     import { _ } from 'svelte-i18n'
 
@@ -16,8 +17,6 @@
     let error: string = ''
     let dialog: string = ''
     let showMailer: boolean = false
-
-    const getAuth = (pass: string): HeadersInit => { return { 'Authorization': `Basic ${btoa('admin:' + pass)}` }}
 
     async function login(): Promise<boolean> {
         $loading = true
@@ -96,6 +95,7 @@
             <div class="actions">
                 <Button
                     type="primary"
+                    slim
                     on:click={() => showMailer = true}
                 >
                     Send mail
@@ -129,7 +129,7 @@
             </div>
         </div>
         {#if dialog}
-            <dialog open>
+            <dialog open class="message">
                 <p>{dialog}</p>
                 <Button type="primary" slim on:click={() => dialog = ''}>OK</Button>
             </dialog>
@@ -137,6 +137,7 @@
         {#if showMailer}
             <dialog open>
                 <Mailer
+                    {password}
                     bind:show={showMailer}
                 />
             </dialog>
@@ -176,7 +177,6 @@
         
         dialog
             position fixed
-            white-space pre-wrap
             z-index 5
             top 50%
             transform translateY(-50%)
@@ -184,6 +184,9 @@
             overflow-y auto
             max-height 85vh
             max-width 98vw
+
+            &.message
+                white-space pre-wrap
 
             p
                 overflow-wrap break-word
