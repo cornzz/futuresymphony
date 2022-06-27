@@ -214,6 +214,9 @@
         {/each}
     </table>
 </div>
+{#if !showAll && numRows < registrations.length}
+    <span class="center link" on:click={() => numRows += 5}>Show more</span>
+{/if}
 
 <style lang="stylus">
     .wrapper
@@ -264,4 +267,10 @@
                             padding 2px
                             background-color #ccc
                             z-index 50
+    .center
+        display block
+        width 100%
+        text-align center
+        margin-top 5px
+        font-size 14px
 </style>
