@@ -2,6 +2,7 @@
     import Button from './forms/Button.svelte'
     import Gallery from './Gallery.svelte'
     import { locale, _ } from 'svelte-i18n'
+    import { deadline } from '../helpers/stores'
 </script>
 
 <div class="content">
@@ -18,11 +19,15 @@
             <p>Siųsdami paraiška į konkursą Jūs sutinkate su <a href="/files/fsc_regulations_LT_2022-02-24.pdf" class="link" target="_blank">Konkurso nuostatais</a>.</p>
         {/if}
         <div class="center">
-            <a class="button" href="/registration" target="_blank">
-                <Button type="primary" style="padding: 0 20px">
-                    {$_('participants.registration')}
-                </Button>
-            </a>
+            {#if !$deadline}
+                <a class="button" href="/registration" target="_blank">
+                    <Button type="primary" style="padding: 0 20px">
+                        {$_('participants.registration')}
+                    </Button>
+                </a>
+            {:else}
+                The registration is now closed. Thank you for your participation!
+            {/if}
         </div>
     </div>
     <Gallery/>

@@ -3,7 +3,7 @@
     import RegistrationForm from '../../components/forms/RegistrationForm.svelte'
     import Button from '../../components/forms/Button.svelte'
     import { RegistrationDTO } from '../../helpers/RegistrationDTO'
-    import { loading, baseURL, showBack } from '../../helpers/stores'
+    import { loading, baseURL, showBack, deadline } from '../../helpers/stores'
     import { highlightElement } from '../../helpers'
     import { _ } from 'svelte-i18n'
     import { onMount, tick } from 'svelte'
@@ -20,7 +20,6 @@
     let error: [string, Object] = null
     let formChanged: boolean = false
     let cachedDto: RegistrationDTO = null
-    let deadline: boolean = new Date() > new Date('Jun 30 2022 23:59:59 GMT+0200')
 
     async function saveForm(): Promise<boolean> {
         error = null
@@ -105,7 +104,7 @@
 
 <h1 class="cover-heading">{$_('registration.yourRegistration')}</h1>
 {#if dto}
-    {#if !deadline}
+    {#if !$deadline}
         <InfoBox type="info">
             {$_('registration.editingAllowedUntil')} {$_('registration.confirmationAfterDeadline')}
         </InfoBox>
@@ -159,7 +158,7 @@
         {:else}
             <div></div>
         {/if}
-        {#if !deadline}
+        {#if !$deadline}
             <Button
                 type="primary"
                 on:click={async () => {

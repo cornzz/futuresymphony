@@ -6,9 +6,10 @@
     import { RegistrationDTO } from '../../helpers/RegistrationDTO'
     import { MetaTags } from 'svelte-meta-tags'
     import { fadeHeight } from '../../helpers'
-    import { baseURL, loading } from '../../helpers/stores'
+    import { baseURL, deadline, loading } from '../../helpers/stores'
     import { _, locale } from 'svelte-i18n'
     import { dev } from '$app/env'
+    import { onMount } from 'svelte'
 
     export let dto: RegistrationDTO = new RegistrationDTO()
 
@@ -51,6 +52,8 @@
             $loading = false
         }
     }
+
+    onMount(() => $deadline && (window.location.href = '/#participants'))
 </script>
 
 <MetaTags 
