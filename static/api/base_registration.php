@@ -53,7 +53,7 @@
 
         // Send confirmation email
         if (APP_ENV != "dev") {
-            if (!sendNewRegMail($form["email"], $form["firstName"], $form["lastName"], $reg_key, $form["lang"])) {
+            if (!Mail::sendNewRegMail($form["email"], $form["firstName"], $form["lastName"], $reg_key, $form["lang"])) {
                 http_response_code(500);
                 echo "Error sending confirmation email.";
                 return;
@@ -86,7 +86,7 @@
         }
         $row = $result->fetch_assoc();
         if (APP_ENV != "dev") {
-            if (!sendNewRegMail($email, $row["firstName"], $row["lastName"], $row["reg_key"], $_GET["lang"])) {
+            if (!Mail::sendNewRegMail($email, $row["firstName"], $row["lastName"], $row["reg_key"], $_GET["lang"])) {
                 http_response_code(500);
                 echo "Error sending confirmation email.";
                 return;

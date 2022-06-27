@@ -15,14 +15,14 @@
     let error: string = ''
     let dialog: string = ''
 
-    async function login(pass: string): Promise<boolean> {
+    const getAuth = (pass: string): HeadersInit => { return { 'Authorization': `Basic ${btoa('admin:' + pass)}` }}
+
+    async function login(): Promise<boolean> {
         $loading = true
-        const headers = new Headers({ 'Authorization': `Basic ${btoa('admin:' + pass)}` })
         const response = await fetch(new URL('admin.php', $baseURL), {
             method: 'POST',
-            headers
+            headers: getAuth(password)
         })
-        $loading = false
         if (response.ok) {
             ({ confirmed, unconfirmed } = await response.json())
             localStorage.setItem('adminPassword', password)
@@ -31,14 +31,34 @@
         } else {
             error = 'admin.error.unknown'
         }
+        $loading = false
         return error === ''
+    }
+
+    async function updateBoolean(
+        reg_key: string,
+        column: 'payment' | 'complete' | 'second',
+        value: boolean
+    ): Promise<void> {
+        $loading = true
+        const response = await fetch(new URL('admin.php', $baseURL), {
+            method: 'POST',
+            headers: {
+                ...getAuth(password),
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: new URLSearchParams({
+                reg_key,
+                [column]: String(value)
+            })
+        })
+        dialog = await response.text()
+        $loading = false
     }
 
     onMount(async () => {
         password = localStorage.getItem('adminPassword')
-        if (password) {
-            await login(password)
-        }
+        password && await login()
         initialLoad = true
     })
 </script>
@@ -51,13 +71,13 @@
                     name="password"
                     label={'admin.password'}
                     bind:value={password}
-                    on:keyup={(e) => e.key === 'Enter' && login(password)}
+                    on:keyup={(e) => e.key === 'Enter' && login()}
                 />
                 <Button
                     type="primary"
                     slim
                     disabled={$loading}
-                    on:click={async () => await login(password)}
+                    on:click={async () => await login()}
                 >
                     Login
                 </Button>
@@ -68,13 +88,16 @@
                 </InfoBox>
             {/if}
         </div>
-    {:else if initialLoad && !$loading}
+    {:else if initialLoad}
         <div class="registrations">
             <h1 class="cover-heading">Confirmed registrations</h1>
             {#if confirmed && confirmed.length}
                 <RegistrationsTable
                     registrations={confirmed}
                     on:dialog={(e) => dialog = e.detail}
+                    on:updateBoolean={(e) =>
+                        updateBoolean(e.detail.reg_key, e.detail.column, e.detail.value)
+                    }
                 />
             {:else}
                     No confirmed registrations
@@ -127,8 +150,12 @@
             top 50%
             transform translateY(-50%)
             border-radius 5px
+            overflow-y auto
             max-height 85vh
-            overflow auto
+            max-width 98vw
+
+            p
+                overflow-wrap break-word
 
     @media screen and (max-width 525px)
         .admin .login

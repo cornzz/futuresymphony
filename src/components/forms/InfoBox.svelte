@@ -22,7 +22,7 @@
     
     .success
         position relative
-        border-color #289501
+        border-color var(--color-success)
         padding-right 45px
 
         &:after
@@ -33,13 +33,13 @@
             top 0
             right 15px
             height 100%
-            color #289501
+            color var(--color-success)
 
     .warning
-        border-color #ffbf00
+        border-color var(--color-warning)
 
     .error
-        border-color #ff6d26
+        border-color var(--color-error)
 
     @media screen and (max-width 525px)
         div

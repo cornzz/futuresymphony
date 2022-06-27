@@ -14,19 +14,23 @@
     let numRows: number
     let showAll: boolean
 
-    function showInstrumentation(instrumentation: boolean[][]) {
+    function showInstrumentation(instrumentation: boolean[][]): void {
         let text = instrumentation
             .map((instrument, index) => `${instrument.filter(Boolean).length}x ${orchestra[index].name}`)
             .filter(instrument => !instrument.startsWith('0')).join('\n')
         showContent(text)
     }
 
-    const showContent = (content: string) => dispatch('dialog', content)
+    const showContent = (content: string): void => dispatch('dialog', content)
 
-    function mapReferrer(referrer: string) {
+    function mapReferrer(referrer: string): string {
         const ref = referrers.find(option => option[0] === referrer)
         const mapped = ref ? ref[1][0] === '$' ? $_(ref[1].slice(1)) : ref[1] : referrer
         return mapped
+    }
+
+    function updateBoolean(reg_key: string, column: string, selection: HTMLSelectElement): void {
+        dispatch('updateBoolean', { reg_key, column, value: selection.value })
     }
 </script>
 
@@ -37,7 +41,7 @@
             <option value={num}>{num}</option>
         {/each}
     </select>
-    rows &ndash;
+    rows | Total: {registrations.length} |
     <label>
         <input type="checkbox" bind:checked={showAll}/>
         Show all
@@ -169,9 +173,44 @@
                     </td>
                     <td>{reg.billingAddress ?? ''}</td>
                     <td>{reg.referrer ? mapReferrer(reg.referrer) : ''}</td>
-                    <td>{reg.paymentConfirmed}</td>
-                    <td>{reg.complete}</td>
-                    <td>{reg.secondRound ?? ''}</td>
+                    <td
+                        class:success={reg.paymentConfirmed}
+                        class:error={!reg.paymentConfirmed}
+                    >
+                        <select
+                            bind:value={reg.paymentConfirmed}
+                            on:input={(e) => updateBoolean(reg.reg_key, 'payment', e.currentTarget)}
+                        >
+                            <option value={true}>true</option>
+                            <option value={false}>false</option>
+                        </select>    
+                    </td>
+                    <td
+                        class:success={reg.complete}
+                        class:error={!reg.complete}
+                    >
+                        <select
+                            bind:value={reg.complete}
+                            on:input={(e) => updateBoolean(reg.reg_key, 'complete', e.currentTarget)}
+                        >
+                            <option value={true}>true</option>
+                            <option value={false}>false</option>
+                        </select>
+                    </td>
+                    <td
+                        class:success={reg.secondRound}
+                        class:error={!reg.secondRound}
+                        class:warning={reg.secondRound === null}
+                    >
+                        <select
+                            bind:value={reg.secondRound}
+                            on:input={(e) => updateBoolean(reg.reg_key, 'second', e.currentTarget)}
+                        >
+                            <option value={null}>TBD</option>
+                            <option value={true}>true</option>
+                            <option value={false}>false</option>
+                        </select>
+                    </td>
                 {/if}
             </tr>
         {/each}
@@ -194,6 +233,15 @@
             td
                 text-align center
 
+                &.success
+                    background-color var(--color-success)
+                
+                &.error
+                    background-color var(--color-error)
+                
+                &.warning
+                    background-color var(--color-warning)
+                
                 .link
                     position relative
             

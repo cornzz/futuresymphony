@@ -16,8 +16,8 @@
 
     $conn = OpenCon();
 
-    if (isset($_POST["regkey"])) {
-        $reg_key = $_POST["regkey"];
+    if (isset($_POST["reg_key"])) {
+        $reg_key = $_POST["reg_key"];
         // Check if key exists in registrations
         $stmt = $conn->prepare("SELECT reg_key FROM registrations WHERE reg_key=?");
         $stmt->bind_param("s", $reg_key);
@@ -25,13 +25,13 @@
         $result = $stmt->get_result();
 
         if ($result->num_rows) {
-            if (isset($_POST["payment"]) && filter_var($_POST["payment"], FILTER_VALIDATE_BOOLEAN)) {
+            if (isset($_POST["payment"]) && Helpers::isBool($_POST["payment"])) {
                 $stmt = $conn->prepare("UPDATE registrations SET paymentConfirmed=? WHERE reg_key=?");
                 $stmt->bind_param("ss", $_POST["payment"], $reg_key);
-            } else if (isset($_POST["complete"]) && filter_var($_POST["complete"], FILTER_VALIDATE_BOOLEAN)) {
+            } else if (isset($_POST["complete"]) && Helpers::isBool($_POST["complete"])) {
                 $stmt = $conn->prepare("UPDATE registrations SET complete=? WHERE reg_key=?");
                 $stmt->bind_param("ss", $_POST["complete"], $reg_key);
-            } else if (isset($_POST["second"]) && filter_var($_POST["second"], FILTER_VALIDATE_BOOLEAN)) {
+            } else if (isset($_POST["second"]) && Helpers::isBool($_POST["second"])) {
                 $stmt = $conn->prepare("UPDATE registrations SET secondRound=? WHERE reg_key=?");
                 $stmt->bind_param("ss", $_POST["second"], $reg_key);
             }
