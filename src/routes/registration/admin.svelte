@@ -139,6 +139,7 @@
                 <Mailer
                     {password}
                     bind:show={showMailer}
+                    bind:dialog
                 />
             </dialog>
         {/if}

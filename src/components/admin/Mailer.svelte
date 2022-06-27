@@ -7,9 +7,12 @@
 
     export let password: string
     export let show: boolean
+    export let dialog: string
 
     type Criterion = { active: boolean, value: boolean }
 
+    let subject: string
+    let message: string
     let statusCriterion: Criterion = { active: true, value: true }
     let completeCriterion: Criterion = { active: false, value: true }
     let paymentCriterion: Criterion = { active: false, value: true }
@@ -19,9 +22,20 @@
         $loading = true
         const response = await fetch(new URL('admin.php', $baseURL), {
             method: 'POST',
-            headers: getAuth(password)
+            headers: getAuth(password),
+            body: JSON.stringify({
+                subject,
+                message,
+                statusCriterion,
+                completeCriterion,
+                paymentCriterion,
+                secondCriterion
+            })
         })
+        const responseText = await response.text()
         $loading = false
+        dialog = responseText
+        show = false
     }
 </script>
 
@@ -30,11 +44,13 @@
         type="text"
         name="subject"
         label="Subject"
+        bind:value={subject}
     />
     <Textarea
         name="message"
         label="Message"
         rows={10}
+        bind:value={message}
     />
     Sending criteria:
     <div class="criteria">    
@@ -81,8 +97,18 @@
     </div>
 </div>
 <div class="buttons">
-    <Button on:click={() => show = false}>Cancel</Button>
-    <Button type="primary" disabled={$loading} on:click={sendMail}>Send</Button>
+    <Button
+        on:click={() => show = false}
+    >
+        Cancel
+    </Button>
+    <Button
+        type="primary"
+        disabled={!subject || !message || $loading}
+        on:click={sendMail}
+    >
+        Send
+    </Button>
 </div>
 
 <style lang="stylus">

@@ -237,7 +237,7 @@
                     box-shadow inset 0 0 0 9999px rgba(0, 0, 0, .035)
 
                 &:nth-child(even)
-                    background-color #e9e9e9
+                    background-color #e5e5e5
 
                 th
                     padding 0 5px
