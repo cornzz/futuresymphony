@@ -32,6 +32,14 @@
     function updateBoolean(reg_key: string, column: string, selection: HTMLSelectElement): void {
         dispatch('updateBoolean', { reg_key, column, value: selection.value })
     }
+
+    function copyColumnName(event: MouseEvent): void {
+        const target = event.target as HTMLElement
+        const column = target.dataset.label
+        navigator.clipboard.writeText(column)
+        target.dataset.label = 'copied ✔'
+        setTimeout(() => target.dataset.label = column, 1000)
+    }
 </script>
 
 <div class="controls">
@@ -49,30 +57,30 @@
 </div>
 <div class="wrapper">
     <table>
-        <tr>
-            <th>ID</th>
-            <th>Key</th>
-            <th>E-mail</th>
-            <th>Name</th>
-            <th>Surname</th>
-            <th>Date of Birth</th>
-            <th>Country</th>
-            <th>Reg. Date</th>
+        <tr on:click={copyColumnName}>
+            <th data-label="id">ID</th>
+            <th data-label="reg_key">Key</th>
+            <th data-label="email">E-mail</th>
+            <th data-label="firstName">Name</th>
+            <th data-label="lastName">Surname</th>
+            <th data-label="dateOfBirth">Date of Birth</th>
+            <th data-label="country">Country</th>
+            <th data-label="registrationDate">Reg. Date</th>
             {#if confirmed}
-                <th>ID document</th>
-                <th>Piece title</th>
-                <th>Annotation</th>
-                <th>Score</th>
-                <th>Demo file</th>
-                <th>Instrumentation</th>
-                <th>Remarks</th>
-                <th>Score confirmations</th>
-                <th>Proof of payment</th>
-                <th>Billing address</th>
-                <th>Referrer</th>
-                <th>Payment confirmed</th>
-                <th>Registration complete</th>
-                <th>Second round</th>
+                <th data-label="idCopy">ID document</th>
+                <th data-label="pieceTitle">Piece title</th>
+                <th data-label="annotation">Annotation</th>
+                <th data-label="pieceScore">Score</th>
+                <th data-label="pieceDemo">Demo file</th>
+                <th data-label="instrumentation">Instrumentation</th>
+                <th data-label="remarks">Remarks</th>
+                <th data-label="scoreConfirmations">Score confirmations</th>
+                <th data-label="proofOfPayment">Proof of payment</th>
+                <th data-label="billingAddress">Billing address</th>
+                <th data-label="referrer">Referrer</th>
+                <th data-label="paymentConfirmed">Payment confirmed</th>
+                <th data-label="complete">Registration complete</th>
+                <th data-label="secondRound">Second round</th>
             {/if}
         </tr>
         {#each showAll ? registrations : registrations.slice(0, numRows) as reg}
@@ -252,8 +260,10 @@
                     background-color #e5e5e5
 
                 th
+                    position relative
                     padding 0 5px
                     border-bottom solid 0.5px var(--color-primary)
+                    cursor pointer
 
                 td
                     position relative
@@ -271,16 +281,6 @@
                     
                     .link
                         position relative
-                
-                        &[data-label]:hover:after
-                            content attr(data-label)
-                            position absolute
-                            top 14px
-                            left 14px
-                            border-radius 2px
-                            padding 2px
-                            background-color #ccc
-                            z-index 50
                     
                     select
                         opacity 0
@@ -289,6 +289,19 @@
                         left 50%
                         transform translate(-50%, -50%)
                         cursor pointer
+                
+                th[data-label]:hover:after,
+                td .link[data-label]:hover:after
+                    content attr(data-label)
+                    position absolute
+                    top 85%
+                    left 50%
+                    border-radius 2px
+                    padding 2px
+                    background-color #ccc
+                    font-weight 300
+                    z-index 50
+                    white-space nowrap
 
     .center
         display block
