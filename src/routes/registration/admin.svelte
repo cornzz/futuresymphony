@@ -39,7 +39,7 @@
     async function updateBoolean(
         reg_key: string,
         column: 'payment' | 'complete' | 'second',
-        value: boolean
+        value: string
     ): Promise<void> {
         $loading = true
         const response = await fetch(new URL('admin.php', $baseURL), {
@@ -50,7 +50,7 @@
             },
             body: new URLSearchParams({
                 reg_key,
-                [column]: String(value)
+                [column]: value
             })
         })
         dialog = await response.text()

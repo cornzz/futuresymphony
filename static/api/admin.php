@@ -40,6 +40,7 @@
             $stmt->bind_param("ss", $complete, $reg_key);
         } else if (!is_null($second) && Helpers::isBool($second)) {
             $stmt = $conn->prepare("UPDATE registrations SET secondRound=? WHERE reg_key=?");
+            $second = $second === "null" ? null : $second;
             $stmt->bind_param("ss", $second, $reg_key);
         }
         if (!isset($stmt)) {
