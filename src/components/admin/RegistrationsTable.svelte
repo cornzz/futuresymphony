@@ -34,7 +34,7 @@
     }
 </script>
 
-<div class="wrapper">
+<div class="controls">
     Show
     <select bind:value={numRows}>
         {#each [5, 10, 25, 50, 100] as num}
@@ -46,6 +46,8 @@
         <input type="checkbox" bind:checked={showAll}/>
         Show all
     </label>
+</div>
+<div class="wrapper">
     <table>
         <tr>
             <th>ID</th>
@@ -226,13 +228,16 @@
 {/if}
 
 <style lang="stylus">
-    .wrapper
-        overflow-x scroll
+    .controls
         font-size 14px
 
         label
         input[type="checkbox"]
             cursor pointer
+
+    .wrapper
+        overflow-x scroll
+        font-size 14px
 
         table
             width 100%
