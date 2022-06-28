@@ -2,7 +2,7 @@
     require_once "load_env.php";
     require_once "db_connection.php";
     require "helpers.php";
-    require "mail.php";
+    require "mail_helper.php";
 
     $conn = OpenCon();
 
