@@ -4,6 +4,7 @@
     import Textarea from "../forms/Textarea.svelte"
     import { getAuth } from '../../helpers'
     import { loading, baseURL } from '../../helpers/stores'
+    import { onMount } from "svelte"
 
     export let password: string
     export let show: boolean
@@ -37,6 +38,13 @@
         dialog = responseText
         show = false
     }
+
+    const closeOnEscape = (event: KeyboardEvent) => event.key === 'Escape' && (show = false)
+
+    onMount(() => {
+        document.addEventListener('keydown', closeOnEscape)
+        return () => document.removeEventListener('keydown', closeOnEscape)
+    })
 </script>
 
 <div class="mailer">
@@ -63,37 +71,39 @@
                 </select>
             </label>
         </div>
-        <div>
-            <label>
-                <input type="checkbox" bind:checked={completeCriterion.active}/>
-                complete
-                <select disabled={!completeCriterion.active} bind:value={completeCriterion.value}>
-                    <option value={true}>true</option>
-                    <option value={false}>false</option>
-                </select>
-            </label>
-        </div>
-        <div>
-            <label>
-                <input type="checkbox" bind:checked={paymentCriterion.active}/>
-                payment
-                <select disabled={!paymentCriterion.active} bind:value={paymentCriterion.value}>
-                    <option value={true}>true</option>
-                    <option value={false}>false</option>
-                </select>
-            </label>
-        </div>
-        <div>
-            <label>
-                <input type="checkbox" bind:checked={secondCriterion.active}/>
-                second
-                <select disabled={!secondCriterion.active} bind:value={secondCriterion.value}>
-                    <option value={null}>TBD</option>
-                    <option value={true}>true</option>
-                    <option value={false}>false</option>
-                </select>
-            </label>
-        </div>
+        {#if statusCriterion.value}
+            <div>
+                <label>
+                    <input type="checkbox" bind:checked={completeCriterion.active}/>
+                    complete
+                    <select disabled={!completeCriterion.active} bind:value={completeCriterion.value}>
+                        <option value={true}>true</option>
+                        <option value={false}>false</option>
+                    </select>
+                </label>
+            </div>
+            <div>
+                <label>
+                    <input type="checkbox" bind:checked={paymentCriterion.active}/>
+                    payment
+                    <select disabled={!paymentCriterion.active} bind:value={paymentCriterion.value}>
+                        <option value={true}>true</option>
+                        <option value={false}>false</option>
+                    </select>
+                </label>
+            </div>
+            <div>
+                <label>
+                    <input type="checkbox" bind:checked={secondCriterion.active}/>
+                    second
+                    <select disabled={!secondCriterion.active} bind:value={secondCriterion.value}>
+                        <option value={null}>TBD</option>
+                        <option value={true}>true</option>
+                        <option value={false}>false</option>
+                    </select>
+                </label>
+            </div>
+        {/if}
     </div>
 </div>
 <div class="buttons">
