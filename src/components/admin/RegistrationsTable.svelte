@@ -285,6 +285,9 @@
                     select
                         opacity 0
                         position absolute
+                        height 100%
+                        width 100%
+                        border none
                         top 50%
                         left 50%
                         transform translate(-50%, -50%)
