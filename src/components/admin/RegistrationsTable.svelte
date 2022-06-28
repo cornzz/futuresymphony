@@ -181,7 +181,8 @@
                         >
                             <option value={true}>true</option>
                             <option value={false}>false</option>
-                        </select>    
+                        </select>
+                        {reg.paymentConfirmed}
                     </td>
                     <td
                         class:success={reg.complete}
@@ -194,6 +195,7 @@
                             <option value={true}>true</option>
                             <option value={false}>false</option>
                         </select>
+                        {reg.complete}
                     </td>
                     <td
                         class:success={reg.secondRound}
@@ -208,6 +210,7 @@
                             <option value={true}>true</option>
                             <option value={false}>false</option>
                         </select>
+                        {reg.secondRound ?? 'TBD'}
                     </td>
                 {/if}
             </tr>
@@ -244,10 +247,12 @@
                     border-bottom solid 0.5px var(--color-primary)
 
                 td
+                    position relative
                     text-align center
 
                     &.success
                         background-color var(--color-success)
+                        color #fff
                     
                     &.error
                         background-color var(--color-error)
@@ -267,6 +272,15 @@
                             padding 2px
                             background-color #ccc
                             z-index 50
+                    
+                    select
+                        opacity 0
+                        position absolute
+                        top 50%
+                        left 50%
+                        transform translate(-50%, -50%)
+                        cursor pointer
+
     .center
         display block
         width 100%
