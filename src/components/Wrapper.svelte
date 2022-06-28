@@ -133,6 +133,7 @@
                 <div class="icon right"></div>
             </div>
             <div class="menu" class:active={navOpen} on:touchmove={(e) => e.preventDefault()}>
+                <!-- svelte-ignore missing-declaration -->
                 <div class="links" on:click={(e) => {
                     if (e.target instanceof HTMLAnchorElement && location.pathname !== e.target.pathname) return
                     navOpen = !navOpen
@@ -145,10 +146,7 @@
                 </div>
                 <hr>
                 <div class="language">
-                    <LanguageSelector
-                        big
-                        on:localeChange={() => navOpen = false}
-                    />
+                    <LanguageSelector big on:localeChange={() => navOpen = false} />
                 </div>
             </div>
         </div>
