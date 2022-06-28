@@ -20,21 +20,21 @@
 
     async function sendMail(): Promise<void> {
         $loading = true
-        // const response = await fetch(new URL('admin.php', $baseURL), {
-        //     method: 'POST',
-        //     headers: getAuth(password),
-        //     body: JSON.stringify({
-        //         subject,
-        //         message,
-        //         statusCriterion,
-        //         completeCriterion,
-        //         paymentCriterion,
-        //         secondCriterion
-        //     })
-        // })
-        // const responseText = await response.text()
+        const response = await fetch(new URL('admin.php', $baseURL), {
+            method: 'POST',
+            headers: getAuth(password),
+            body: JSON.stringify({
+                subject,
+                message,
+                statusCriterion,
+                completeCriterion,
+                paymentCriterion,
+                secondCriterion
+            })
+        })
+        const responseText = await response.text()
         $loading = false
-        // dialog = responseText
+        dialog = responseText
         show = false
     }
 </script>

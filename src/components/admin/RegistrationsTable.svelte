@@ -148,7 +148,7 @@
                             <span class="link" on:click={() => showInstrumentation(reg.instrumentation)}>Show</span>
                         {/if}    
                     </td>
-                    <td>    
+                    <td>
                         {#if reg.remarks}
                             <span class="link" on:click={() => showContent(reg.remarks)}>Show</span>
                         {/if}
@@ -169,7 +169,11 @@
                             </a>
                         {/if}    
                     </td>
-                    <td>{reg.billingAddress ?? ''}</td>
+                    <td>
+                        {#if reg.billingAddress}
+                            <span class="link" on:click={() => showContent(reg.billingAddress)}>Show</span>
+                        {/if}
+                    </td>
                     <td>{reg.referrer ? mapReferrer(reg.referrer) : ''}</td>
                     <td
                         class:success={reg.paymentConfirmed}
