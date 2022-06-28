@@ -1,8 +1,8 @@
 <?php
-    require "authenticate.php";
-    require_once "db_connection.php";
-    require "mail_helper.php";
-    require "helpers.php";
+    require_once "helpers/authenticate.php";
+    require_once "helpers/db_connection.php";
+    require "helpers/mail_helper.php";
+    require "helpers/helpers.php";
 
     $connection = OpenCon();
 

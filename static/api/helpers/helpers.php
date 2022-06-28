@@ -16,7 +16,7 @@ class Helpers {
         return $d && $d->format($format) === $date && $startDate <= $d && $d <= $endDate;
     }
 
-    static function validateDTO($form, $new) {
+    static function validateRegistrationDTO($form, $new) {
         if ($form == null)
             return FALSE;
 

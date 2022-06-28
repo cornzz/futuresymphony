@@ -1,6 +1,6 @@
 <?php
-    require_once "db_connection.php";
-    require "helpers.php";
+    require_once "helpers/db_connection.php";
+    require "helpers/helpers.php";
 
     $conn = OpenCon();
 
