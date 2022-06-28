@@ -8,7 +8,12 @@
     }
 
     $form = json_decode(file_get_contents("php://input"), TRUE);
-    echo var_dump($form);
+    if (!Helpers::validateMailerDTO($form)) {
+        http_response_code(400);
+        echo "Invalid form.";
+        return;
+    }
 
+    echo "Valid form.";
 
 ?>
