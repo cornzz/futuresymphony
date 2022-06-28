@@ -1,6 +1,6 @@
 {
   ".svelte-kit/build/runtime/internal/start.js": {
-    "file": "start-d19bd31b.js",
+    "file": "start-7df508f1.js",
     "src": ".svelte-kit/build/runtime/internal/start.js",
     "isEntry": true,
     "imports": [
@@ -25,14 +25,14 @@
     ]
   },
   "src/routes/__layout.svelte": {
-    "file": "pages/__layout.svelte-d22ff82e.js",
+    "file": "pages/__layout.svelte-a5dc7ea4.js",
     "src": "src/routes/__layout.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
       "_vendor-3b8c650a.js",
       "_stores-a1012c52.js",
-      "_index-14c4ccb3.js"
+      "_index-8490d5e5.js"
     ],
     "css": [
       "assets/pages/__layout.svelte-3e5db85e.css"
@@ -53,7 +53,7 @@
     ]
   },
   "src/routes/index.svelte": {
-    "file": "pages/index.svelte-3abf7d9b.js",
+    "file": "pages/index.svelte-edecc8a2.js",
     "src": "src/routes/index.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
@@ -62,7 +62,7 @@
       "_Tab-fe19bf4c.js",
       "_Quote-e66dbf13.js",
       "_Image-661cccf2.js",
-      "_index-14c4ccb3.js",
+      "_index-8490d5e5.js",
       "_News-1255d445.js",
       "_Button-17e544cc.js",
       "_stores-a1012c52.js",
@@ -87,49 +87,50 @@
     ]
   },
   "src/routes/registration/index.svelte": {
-    "file": "pages/registration/index.svelte-9d4bcd12.js",
+    "file": "pages/registration/index.svelte-29454082.js",
     "src": "src/routes/registration/index.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
       "_vendor-3b8c650a.js",
-      "_selectData-108b1f14.js",
-      "_RegistrationForm-37050542.js",
+      "_selectData-82a6e62f.js",
+      "_RegistrationForm-0f06edce.js",
       "_Button-17e544cc.js",
       "_stores-a1012c52.js",
-      "_index-14c4ccb3.js"
+      "_index-8490d5e5.js"
     ],
     "css": [
       "assets/pages/registration/index.svelte-f4a12000.css"
     ]
   },
   "src/routes/registration/admin.svelte": {
-    "file": "pages/registration/admin.svelte-ab231ab7.js",
+    "file": "pages/registration/admin.svelte-580ddd0f.js",
     "src": "src/routes/registration/admin.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
       "_vendor-3b8c650a.js",
       "_stores-a1012c52.js",
-      "_selectData-108b1f14.js",
-      "_Button-17e544cc.js"
+      "_selectData-82a6e62f.js",
+      "_Button-17e544cc.js",
+      "_index-8490d5e5.js"
     ],
     "css": [
-      "assets/pages/registration/admin.svelte-52a71227.css"
+      "assets/pages/registration/admin.svelte-586e68cf.css"
     ]
   },
   "src/routes/registration/id.svelte": {
-    "file": "pages/registration/id.svelte-8c9401ac.js",
+    "file": "pages/registration/id.svelte-66036445.js",
     "src": "src/routes/registration/id.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
       "_vendor-3b8c650a.js",
-      "_selectData-108b1f14.js",
-      "_RegistrationForm-37050542.js",
+      "_selectData-82a6e62f.js",
+      "_RegistrationForm-0f06edce.js",
       "_Button-17e544cc.js",
       "_stores-a1012c52.js",
-      "_index-14c4ccb3.js"
+      "_index-8490d5e5.js"
     ],
     "css": [
       "assets/pages/registration/id.svelte-e5eb3c09.css"
@@ -211,8 +212,8 @@
       "assets/vendor-5e1fe644.css"
     ]
   },
-  "_index-14c4ccb3.js": {
-    "file": "chunks/index-14c4ccb3.js",
+  "_index-8490d5e5.js": {
+    "file": "chunks/index-8490d5e5.js",
     "imports": [
       "_vendor-3b8c650a.js"
     ]
@@ -273,24 +274,24 @@
       "assets/Button-c042baf4.css"
     ]
   },
-  "_selectData-108b1f14.js": {
-    "file": "chunks/selectData-108b1f14.js",
+  "_selectData-82a6e62f.js": {
+    "file": "chunks/selectData-82a6e62f.js",
     "imports": [
       "_vendor-3b8c650a.js"
     ],
     "css": [
-      "assets/selectData-3017ed03.css"
+      "assets/selectData-9fa8a7d5.css"
     ]
   },
-  "_RegistrationForm-37050542.js": {
-    "file": "chunks/RegistrationForm-37050542.js",
+  "_RegistrationForm-0f06edce.js": {
+    "file": "chunks/RegistrationForm-0f06edce.js",
     "imports": [
       "_vendor-3b8c650a.js",
-      "_selectData-108b1f14.js",
-      "_index-14c4ccb3.js"
+      "_selectData-82a6e62f.js",
+      "_index-8490d5e5.js"
     ],
     "css": [
-      "assets/RegistrationForm-eae50c98.css"
+      "assets/RegistrationForm-a16b19af.css"
     ]
   }
 }
