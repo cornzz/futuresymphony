@@ -39,8 +39,15 @@
                 $mail->Body    = strtr($template, array("{message}" => $body_html));
                 $mail->AltBody = $body;
             
-                $mail->send();
-                return TRUE;
+                if (!$mail->send()) {
+                    return FALSE;
+                } else {
+                    $sentPath = "{".MAIL_HOST.":993/imap/ssl}Sent";
+                    $imapConnection = imap_open($sentPath, MAIL_USER, MAIL_PASS);
+                    imap_append($imapConnection, $sentPath, $mail->getSentMIMEMessage());
+                    imap_close($imapConnection);
+                    return TRUE;
+                }
             } catch (Throwable $e) {
                 echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
                 return FALSE;

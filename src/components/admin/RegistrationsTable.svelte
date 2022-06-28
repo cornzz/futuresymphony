@@ -49,7 +49,7 @@
             <option value={num}>{num}</option>
         {/each}
     </select>
-    rows | Total: {registrations.length} |
+    rows | Total: <b>{registrations.length}</b> |
     <label>
         <input type="checkbox" bind:checked={showAll}/>
         Show all
