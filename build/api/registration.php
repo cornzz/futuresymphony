@@ -1,6 +1,6 @@
 <?php
-    require_once "db_connection.php";
-    require "helpers.php";
+    require_once "helpers/db_connection.php";
+    require "helpers/helpers.php";
 
     $conn = OpenCon();
 
@@ -8,7 +8,7 @@
         Helpers::deadline();
 
         $form = json_decode(file_get_contents("php://input"), TRUE);
-        if (!Helpers::validateDTO($form, FALSE)) {
+        if (!Helpers::validateRegistrationDTO($form, FALSE)) {
             http_response_code(400);
             echo "Invalid form.";
             return;

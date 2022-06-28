@@ -1,8 +1,8 @@
 <?php
-    require_once "load_env.php";
-    require_once "db_connection.php";
-    require "helpers.php";
-    require "mail_helper.php";
+    require_once "helpers/load_env.php";
+    require_once "helpers/db_connection.php";
+    require "helpers/helpers.php";
+    require "helpers/mail_helper.php";
 
     $conn = OpenCon();
 
@@ -28,7 +28,7 @@
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Validate form
         $form = json_decode(file_get_contents("php://input"), TRUE);
-        if (!Helpers::validateDTO($form, TRUE)) {
+        if (!Helpers::validateRegistrationDTO($form, TRUE)) {
             http_response_code(400);
             echo "Invalid form.";
             return;
