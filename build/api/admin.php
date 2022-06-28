@@ -1,60 +1,65 @@
 <?php
+    require "authenticate.php";
     require_once "db_connection.php";
-    require "mail.php";
+    require "mail_helper.php";
     require "helpers.php";
 
-    if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
-        return;
-    }
-
-    if (ADMIN_KEY === "" || !isset($_SERVER["PHP_AUTH_USER"]) || $_SERVER["PHP_AUTH_PW"] !== ADMIN_KEY) {
-        header('WWW-Authenticate: Basic realm="Admin area"');
-        header("HTTP/1.0 401 Unauthorized");
-        echo "You don't have permission to access this resource.";
-        return;
-    }
-
-    $conn = OpenCon();
+    $connection = OpenCon();
 
     if (isset($_POST["reg_key"])) {
         $reg_key = $_POST["reg_key"];
         // Check if key exists in registrations
-        $stmt = $conn->prepare("SELECT reg_key FROM registrations WHERE reg_key=?");
-        $stmt->bind_param("s", $reg_key);
-        $stmt->execute();
-        $result = $stmt->get_result();
+        $statement = $connection->prepare("SELECT reg_key FROM registrations WHERE reg_key=?");
+        $statement->bind_param("s", $reg_key);
+        $statement->execute();
+        $result = $statement->get_result();
 
         if ($result->num_rows) {
-            if (isset($_POST["payment"]) && Helpers::isBool($_POST["payment"])) {
-                $stmt = $conn->prepare("UPDATE registrations SET paymentConfirmed=? WHERE reg_key=?");
-                $stmt->bind_param("ss", $_POST["payment"], $reg_key);
-            } else if (isset($_POST["complete"]) && Helpers::isBool($_POST["complete"])) {
-                $stmt = $conn->prepare("UPDATE registrations SET complete=? WHERE reg_key=?");
-                $stmt->bind_param("ss", $_POST["complete"], $reg_key);
-            } else if (isset($_POST["second"]) && Helpers::isBool($_POST["second"])) {
-                $stmt = $conn->prepare("UPDATE registrations SET secondRound=? WHERE reg_key=?");
-                $stmt->bind_param("ss", $_POST["second"], $reg_key);
-            }
-            if ($stmt->affected_rows) {
-                http_response_code(400);
-                echo "Invalid request.";
-                return;
-            }
-            if (!$stmt->execute()) {
-                http_response_code(500);
-                echo "Error processing request: {$stmt->error}";
-                return;
-            } else {
-                http_response_code(200);
-                echo "Registration {$reg_key} updated successfully.";
-                return;
-            }
+            UpdateBoolean(
+                $connection,
+                $reg_key,
+                $_POST["payment"] ?? null,
+                $_POST["complete"] ?? null,
+                $_POST["second"] ?? null
+            );
         } else {
             http_response_code(404);
             echo "Registration not found.";
             return;
         }
     } else {
+        GetAllRegistrations();
+    }
+
+    function UpdateBoolean($conn, $reg_key, $payment, $complete, $second) {
+        if (!is_null($payment) && Helpers::isBool($payment)) {
+            $stmt = $conn->prepare("UPDATE registrations SET paymentConfirmed=? WHERE reg_key=?");
+            $stmt->bind_param("ss", $payment, $reg_key);
+        } else if (!is_null($complete) && Helpers::isBool($complete)) {
+            $stmt = $conn->prepare("UPDATE registrations SET complete=? WHERE reg_key=?");
+            $stmt->bind_param("ss", $complete, $reg_key);
+        } else if (!is_null($second) && Helpers::isBool($second)) {
+            $stmt = $conn->prepare("UPDATE registrations SET secondRound=? WHERE reg_key=?");
+            $stmt->bind_param("ss", $second, $reg_key);
+        }
+        if (!isset($stmt)) {
+            http_response_code(400);
+            echo "Invalid request.";
+            exit;
+        }
+        if (!$stmt->execute()) {
+            http_response_code(500);
+            echo "Error processing request: {$stmt->error}";
+            exit;
+        } else {
+            http_response_code(200);
+            echo "Registration {$reg_key} updated successfully.";
+            exit;
+        }
+    }
+
+    function GetAllRegistrations() {
+        $conn = OpenCon();
         $confirmed = $conn->query("
             SELECT
                 a.id,
@@ -104,6 +109,6 @@
         }
         header('Content-type: application/json');
         echo '{"confirmed":'.json_encode($confirmed).',"unconfirmed":'.json_encode($unconfirmed).'}';
-        return;
+        exit;
     }
 ?>
