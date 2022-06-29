@@ -2,6 +2,7 @@
     import Button from "../forms/Button.svelte"
     import Input from "../forms/Input.svelte"
     import Textarea from "../forms/Textarea.svelte"
+    import Checkbox from "../forms/Checkbox.svelte"
     import { getAuth } from '../../helpers'
     import { loading, baseURL } from '../../helpers/stores'
     import { onMount } from "svelte"
@@ -14,6 +15,7 @@
     type Criterion = { active: boolean, value: boolean }
 
     let showPreflight: boolean = false
+    let preflightConfirmation: boolean
     let recipients: string[] = []
     let subject: string
     let message: string
@@ -127,17 +129,26 @@
             disabled={!subject || !message || $loading}
             on:click={() => sendMail()}
         >
-            {$_('registration.form.submit')}
+            {$_('admin.mailer.send')}
         </Button>
     </div>
 {:else}
-    {$_('admin.mailer.sendingNMessages', { values: { number: recipients.length }})}<br><br>
+    {$_('admin.mailer.sendingNMessages', { values: { number: recipients.length }})}
+    <hr>
     {#if recipients.length}
         {$_('admin.mailer.recipients')}:<br>
         {#each recipients as recipient}
             {recipient}<br>
         {/each}
     {/if}
+    <hr>
+    <div class="confirmation">
+        <Checkbox
+            name="preflightConfirmation"
+            label={$_('admin.mailer.confirmRecipients')}
+            bind:checked={preflightConfirmation}
+        />
+    </div>
     <div class="buttons">
         <Button
             on:click={() => showPreflight = false}
@@ -146,10 +157,10 @@
         </Button>
         <Button
             type="primary"
-            disabled={$loading}
+            disabled={!preflightConfirmation || $loading}
             on:click={() => sendMail(false)}
         >
-            {$_('admin.mailer.send')}
+            {$_('admin.mailer.confirm')}
         </Button>
     </div>
 {/if}
@@ -190,6 +201,9 @@
 
         &:global( > *)
             width 150px
+
+    .confirmation
+        margin-top 15px
 
     @media screen and (max-width 900px)
         .mailer .criteria

@@ -226,7 +226,9 @@
             "unconfirmed": "unconfirmed",
             "sendingNMessages": "Sending {number} {number, plural, =1 {message} other {messages}}.",
             "recipients": "Recipients",
-            "send": "Send"
+            "confirmRecipients": "Confirm recipients",
+            "send": "Send",
+            "confirm": "Confirm"
         }
     }
 }

@@ -226,7 +226,9 @@
             "unconfirmed": "nepatvirtinta",
             "sendingNMessages": "{number, plural, =1 {Siunčiamas} other {Siunčiami}} {number} {number, plural, =1 {pranešimas} other {pranešimai}}.",
             "recipients": "Gavėjai",
-            "send": "Išsiųsti"
+            "confirmRecipients": "Patvirtinti gavėjus",
+            "send": "Išsiųsti",
+            "confirm": "Patvirtinti"
         }
     }
 }
