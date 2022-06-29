@@ -30,14 +30,16 @@
                 $mail->addAddress($address, $name);  // Add a recipient
                 $mail->addReplyTo("info@futuresymphony.lt");
 
-                $template = '<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"/><style>body {font-family:"Helvetica",sans-serif;font-size:16px;}a{text-decoration:none;border-bottom:1px solid #184C85;color:#184C85;transition:all 0.1s ease;}a:hover{border-bottom-color:transparent;}</style></head><body>{message}</body></html>';
-                
+                $template = '<!DOCTYPE html><html><head><meta charset="utf-8"/><style>body {font-family:"Helvetica",sans-serif;font-size:16px;line-height: 1.25;}a{text-decoration:none;border-bottom:1px solid #184C85;color:#184C85;transition:all 0.1s ease;}a:hover{border-bottom-color:transparent;}</style></head><body>{message}</body></html>';
+                $signature_html = '<br><br>Šilti linkėjimai | Best wishes<br><b>TEAM FUTURE SYMPHONY</b><br>El. paštas | Email: <a href="mailto:info@futuresymphony.lt">info@futuresymphony.lt</a><br><a href="https://futuresymphony.lt">www.futuresymphony.lt</a><br>Facebook: <a href="https://www.facebook.com/FScompetition">FScompetition</a>';
+                $signature = "\n\nŠilti linkėjimai | Best wishes\nTEAM FUTURE SYMPHONY\nEl. paštas | Email: info@futuresymphony.lt\nhttps://www.futuresymphony.lt\nFacebook: FScompetition";
+
                 // Set content
                 $mail->isHTML(true);                                        // Set email format to HTML
                 $mail->CharSet = "UTF-8";
                 $mail->Subject = $subject;
-                $mail->Body    = strtr($template, array("{message}" => $body_html));
-                $mail->AltBody = $body;
+                $mail->Body    = strtr($template, array("{message}" => $body_html.$signature_html));
+                $mail->AltBody = $body.$signature;
             
                 if (!$mail->send()) {
                     return FALSE;
@@ -58,10 +60,10 @@
             $subject_en = "Your registration to the 3rd Future Symphony Competition";
             $subject_lt = "Jūsų registracija į III-ąjį Future Symphony konkursą";
             $reg_link = "https://futuresymphony.lt/registration/id?".$reg_key;
-            $body_html_en = 'Dear {firstName},<br><br>thank you for registering to the 3rd Future Symphony Competition! To complete your registration, please follow this link:<br><br><a href="{reg_link}">{reg_link}</a><br><br>The submitted information can be revised during the whole registration period. Do not share this link with others.<br><br>Greetings from the FSC team!';
-            $body_en = "Dear {firstName},\n\nthank you for registering to the 3rd Future Symphony Competition! To complete your registration, please follow this link:\n\n{reg_link} \n\nThe submitted information can be revised during the whole registration period. Do not share this link with others.\n\nGreetings from the FSC team!";
-            $body_html_lt = '<!DOCTYPE html><html lang="lt"><head><meta charset="utf-8" /><style>body{font-family:"Helvetica",sans-serif;font-size:16px;}a{text-decoration:none;border-bottom:1px solid #184C85;color:#184C85;transition:all 0.1s ease;}a:hover{border-bottom-color:transparent;}</style></head>Sveiki,<br><br>Dėkojame, kad užsiregistravote į III-ąjį „Future Symphony“ konkursą. Norėdami užbaigti registraciją, spustelėkite šią nuorodą:<br><br><a href="{reg_link}">{reg_link}</a><br><br>Pateikta informacija gali būti redaguojama per visą registracijos laikotarpį. Nesidalinkite šia nuoroda su kitais.<br><br>Pagarbiai<br>FSC komanda</html>';
-            $body_lt = "Sveiki,\n\nDėkojame, kad užsiregistravote į III-ąjį „Future Symphony“ konkursą. Norėdami užbaigti registraciją, spustelėkite šią nuorodą:\n\n{reg_link}\n\nPateikta informacija gali būti redaguojama per visą registracijos laikotarpį. Nesidalinkite šia nuoroda su kitais.\n\nPagarbiai\nFSC komanda";
+            $body_html_en = 'Dear {firstName},<br><br>thank you for registering to the 3rd Future Symphony Competition! To complete your registration, please follow this link:<br><br><a href="{reg_link}">{reg_link}</a><br><br>The submitted information can be revised during the whole registration period. Do not share this link with others.';
+            $body_en = "Dear {firstName},\n\nthank you for registering to the 3rd Future Symphony Competition! To complete your registration, please follow this link:\n\n{reg_link} \n\nThe submitted information can be revised during the whole registration period. Do not share this link with others.";
+            $body_html_lt = 'Sveiki,<br><br>Dėkojame, kad užsiregistravote į III-ąjį „Future Symphony“ konkursą. Norėdami užbaigti registraciją, spustelėkite šią nuorodą:<br><br><a href="{reg_link}">{reg_link}</a><br><br>Pateikta informacija gali būti redaguojama per visą registracijos laikotarpį. Nesidalinkite šia nuoroda su kitais.';
+            $body_lt = "Sveiki,\n\nDėkojame, kad užsiregistravote į III-ąjį „Future Symphony“ konkursą. Norėdami užbaigti registraciją, spustelėkite šią nuorodą:\n\n{reg_link}\n\nPateikta informacija gali būti redaguojama per visą registracijos laikotarpį. Nesidalinkite šia nuoroda su kitais.";
             $vars = array(
                 "{firstName}" => $firstName,
                 "{reg_link}" => $reg_link,

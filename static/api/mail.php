@@ -36,7 +36,7 @@
         foreach ($registration as $key => $value)
             $message = str_replace("{".$key."}", $value, $message);
         $message_html = nl2br($message);
-        $tag_patterns = ["/<a[\s]+[^>]+>/", "/<\/a>/", "/<b>/", "/<\/b>/", "/<i>/", "/<\/i>/"];
+        $tag_patterns = ["/<a[\s]+[^>]+>/", "/<\/a>/", "/<b>/", "/<\/b>/", "/<i>/", "/<\/i>/", "/<u>/", "/<\/u>/"];
         foreach ($tag_patterns as $pattern)
             $message = preg_replace($pattern, "", $message);
 
