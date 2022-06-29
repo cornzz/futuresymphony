@@ -121,7 +121,7 @@
             type="date"
             name="dateOfBirth"
             label={'registration.form.dateOfBirth'}
-            min="1987-09-09"
+            min="1986-09-10"
             max="2004-06-30"
             bind:value={dto.dateOfBirth}
             on:input={handleInput}

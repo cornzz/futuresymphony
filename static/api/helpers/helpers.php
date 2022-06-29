@@ -11,7 +11,7 @@ class Helpers {
 
     static function validateDate($date, $format = "Y-m-d") {
         $d = DateTime::createFromFormat($format, $date);
-        $startDate = new DateTime("1987-09-09");
+        $startDate = new DateTime("1986-09-10");
         $endDate = new DateTime("2004-06-30");
         return $d && $d->format($format) === $date && $startDate <= $d && $d <= $endDate;
     }
