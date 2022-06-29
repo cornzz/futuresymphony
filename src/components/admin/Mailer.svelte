@@ -304,7 +304,7 @@
 
             div
                 display grid
-                grid-template-columns 40% 40% 10% 10%
+                grid-template-columns 4fr 4fr 1fr 1fr
                 border-radius 5px
                 padding 4px
                 border solid 1px transparent
@@ -337,4 +337,11 @@
     @media screen and (max-width 900px)
         .mailer .criteria
             grid-template-columns 1fr 1fr
+
+    @media screen and (max-width 525px)
+        .mailer .templates div
+            grid-template-columns 7fr 1.5fr 1.5fr
+        
+            .message
+                display none
 </style>
