@@ -89,6 +89,7 @@
         "yourRegistration": "Jūsų registracija",
         "editingAllowedUntil": "Paraiškas teikti ir koreguoti galima iki 2021 m. birželio 30 d. 23:59 EEST (Lietuvos laiku).",
         "confirmationAfterDeadline": "Pasibaigus šiam terminui, gausite el. laišką, patvirtinantį jūsų registraciją.",
+        "clickEdit": "Norėdami redaguoti savo registracijos duomenis, <b>spustelėkite žemiau esantį mygtuką „Redaguoti“</b>.",
         "complete": "Jūsų registracija baigta!",
         "missingForComplete": "Kad registracija būtų užbaigta, trūksta šių laukų:",
         "notfound": "Registracija nerasta.",

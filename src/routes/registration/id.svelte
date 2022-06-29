@@ -106,7 +106,9 @@
 {#if dto}
     {#if !$deadline}
         <InfoBox type="info">
-            {$_('registration.editingAllowedUntil')} {$_('registration.confirmationAfterDeadline')}
+            {$_('registration.editingAllowedUntil')}
+            {$_('registration.confirmationAfterDeadline')}
+            {@html $_('registration.clickEdit')}
         </InfoBox>
     {/if}
     {#if invalidFields.length === 0}

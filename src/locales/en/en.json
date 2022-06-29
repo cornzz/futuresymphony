@@ -89,6 +89,7 @@
         "yourRegistration": "Your registration",
         "editingAllowedUntil": "Applications can be submitted and revised until the 30th of June 2022 23:59 EEST (Lithuanian time).",
         "confirmationAfterDeadline": "You will receive an email confirming your registration after this deadline.",
+        "clickEdit": "To update your registration data, <b>click the 'Edit' button below</b>.",
         "complete": "Your registration is complete!",
         "missingForComplete": "Following fields are missing for your registration to be complete:",
         "notfound": "Registration not found.",
