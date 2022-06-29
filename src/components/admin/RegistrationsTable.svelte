@@ -5,6 +5,7 @@
     import { referrers } from "../../helpers/selectData"
     import { orchestra } from "../../helpers/orchestra"
     import { createEventDispatcher } from "svelte"
+    import { dev } from "$app/env"
 
     export let registrations: RegistrationDTO[]
     export let confirmed: boolean = true
@@ -12,7 +13,7 @@
     const dispatch = createEventDispatcher()
 
     let numRows: number
-    let showAll: boolean
+    let showAll: boolean = dev
 
     function showInstrumentation(instrumentation: boolean[][]): void {
         let text = instrumentation

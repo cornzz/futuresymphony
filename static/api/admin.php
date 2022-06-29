@@ -61,26 +61,10 @@
 
     function GetAllRegistrations() {
         $conn = OpenCon();
-        $confirmed = $conn->query("
-            SELECT
-                a.id,
-                a.reg_key,
-                a.email,
-                a.firstName,
-                a.lastName,
-                a.dateOfBirth,
-                a.country,
-                a.registrationDate,
-                b.pieceTitle,
-                b.annotation,
-                b.instrumentation,
-                b.remarks,
-                b.scoreConfirmations,
-                b.billingAddress,
-                b.referrer,
-                b.paymentConfirmed,
-                b.complete,
-                b.secondRound,
+        $confirmed = $conn->query(
+            "SELECT
+                a.*,
+                b.*,
                 c.idCopyFileName as idCopy,
                 c.pieceScoreFileName as pieceScore,
                 c.pieceDemoFileName as pieceDemo,
@@ -88,23 +72,16 @@
             FROM base_registrations AS a
             JOIN registrations AS b ON a.reg_key = b.reg_key
             JOIN user_files AS c ON b.reg_key = c.reg_key
-            ORDER BY a.id DESC
-        ")->fetch_all(MYSQLI_ASSOC);
-        $unconfirmed = $conn->query("
-            SELECT
-                a.id,
-                a.reg_key,
-                a.email,
-                a.firstName,
-                a.lastName,
-                a.dateOfBirth,
-                a.country,
-                a.registrationDate
+            ORDER BY a.id DESC"
+        )->fetch_all(MYSQLI_ASSOC);
+        $unconfirmed = $conn->query(
+            "SELECT
+                a.*
             FROM base_registrations AS a
             LEFT JOIN registrations AS b ON a.reg_key = b.reg_key
             WHERE b.reg_key IS NULL
-            ORDER BY a.id DESC
-        ")->fetch_all(MYSQLI_ASSOC);
+            ORDER BY a.id DESC"
+        )->fetch_all(MYSQLI_ASSOC);
         foreach ($confirmed as $i => $row) {
             $confirmed[$i] = Helpers::decodeRow($confirmed[$i]);
         }

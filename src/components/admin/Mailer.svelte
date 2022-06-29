@@ -74,9 +74,9 @@
         {#if statusCriterion.value}
             <div>
                 <label>
-                    <input type="checkbox" bind:checked={completeCriterion.active}/>
-                    complete
-                    <select disabled={!completeCriterion.active} bind:value={completeCriterion.value}>
+                    <input type="checkbox" bind:checked={paymentCriterion.active}/>
+                    payment
+                    <select disabled={!paymentCriterion.active} bind:value={paymentCriterion.value}>
                         <option value={true}>true</option>
                         <option value={false}>false</option>
                     </select>
@@ -84,9 +84,9 @@
             </div>
             <div>
                 <label>
-                    <input type="checkbox" bind:checked={paymentCriterion.active}/>
-                    payment
-                    <select disabled={!paymentCriterion.active} bind:value={paymentCriterion.value}>
+                    <input type="checkbox" bind:checked={completeCriterion.active}/>
+                    complete
+                    <select disabled={!completeCriterion.active} bind:value={completeCriterion.value}>
                         <option value={true}>true</option>
                         <option value={false}>false</option>
                     </select>
