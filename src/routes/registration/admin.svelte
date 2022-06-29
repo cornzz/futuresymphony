@@ -184,7 +184,7 @@
             border-radius 5px
             overflow-y auto
             max-height 85vh
-            max-width 98vw
+            max-width 75vw
 
             &.message
                 white-space pre-wrap
@@ -193,6 +193,11 @@
                 overflow-wrap break-word
 
     @media screen and (max-width 525px)
-        .admin .login
-            width 75%
+        .admin
+            .login
+                width 75%
+
+            dialog
+                max-width 90vw
+                top 55%
 </style>

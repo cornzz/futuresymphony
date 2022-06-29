@@ -100,8 +100,8 @@
             $message = preg_replace($pattern, "", $message);
 
         // Send email
-        $fullname = $registration["firstName"]." ".$registration["lastName"];
-        if (APP_ENV !== "dev" && Mail::sendMail($registration["email"], $fullName, $subject, $message_html, $message))
+        $fullName = $registration["firstName"]." ".$registration["lastName"];
+        if (APP_ENV !== "dev" && !Mail::sendMail($registration["email"], $fullName, $subject, $message_html, $message))
             $failures[] = $registration["email"];
     }
 
