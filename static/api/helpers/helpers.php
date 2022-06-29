@@ -20,6 +20,7 @@ class Helpers {
         if ($form === null)
             return FALSE;
 
+        // Keys that must exist and be non empty
         $formKeysNewRegistration = array("firstName", "lastName", "email", "dateOfBirth", "country");
         $formKeysRest = array("pieceTitle", "annotation", "instrumentation", "remarks", "scoreConfirmations", "billingAddress", "referrer");
         foreach ($formKeysNewRegistration as $key) {
@@ -27,15 +28,15 @@ class Helpers {
                 return FALSE;
         }
 
+        // Validate language
         if ($new && (!array_key_exists("lang", $form) || $form["lang"] != "en" && $form["lang"] != "lt"))
             return FALSE;
             
-        if (!filter_var($form["email"], FILTER_VALIDATE_EMAIL))
+        // Validate email and date of birth
+        if (!filter_var($form["email"], FILTER_VALIDATE_EMAIL) || !self::validateDate($form["dateOfBirth"]))
             return FALSE;
             
-        if (!self::validateDate($form["dateOfBirth"]))
-            return FALSE;
-
+        // Validate country code
         $countryCodes = array("AF","AX","AL","DZ","AS","AD","AO","AI","AQ","AG","AR","AM","AW","AU","AT","AZ","BS","BH","BD","BB","BY","BE","BZ","BJ","BM","BT","BO","BQ","BA","BW","BV","BR","IO","BN","BG","BF","BI","KH","CM","CA","CV","KY","CF","TD","CL","CN","CX","CC","CO","KM","CG","CD","CK","CR","CI","HR","CU","CW","CY","CZ","DK","DJ","DM","DO","EC","EG","SV","GQ","ER","EE","ET","FK","FO","FJ","FI","FR","GF","PF","TF","GA","GM","GE","DE","GH","GI","GR","GL","GD","GP","GU","GT","GG","GN","GW","GY","HT","HM","VA","HN","HK","HU","IS","IN","ID","IR","IQ","IE","IM","IL","IT","JM","JP","JE","JO","KZ","KE","KI","KP","KR","KW","KG","LA","LV","LB","LS","LR","LY","LI","LT","LU","MO","MK","MG","MW","MY","MV","ML","MT","MH","MQ","MR","MU","YT","MX","FM","MD","MC","MN","ME","MS","MA","MZ","MM","NA","NR","NP","NL","NC","NZ","NI","NE","NG","NU","NF","MP","NO","OM","PK","PW","PS","PA","PG","PY","PE","PH","PN","PL","PT","PR","QA","RE","RO","RU","RW","BL","SH","KN","LC","MF","PM","VC","WS","SM","ST","SA","SN","RS","SC","SL","SG","SX","SK","SI","SB","SO","ZA","GS","SS","ES","LK","SD","SR","SJ","SZ","SE","CH","SY","TW","TJ","TZ","TH","TL","TG","TK","TO","TT","TN","TR","TM","TC","TV","UG","UA","AE","GB","US","UM","UY","UZ","VU","VE","VN","VG","VI","WF","EH","YE","ZM","ZW");
         if (!in_array($form["country"], $countryCodes))
             return FALSE;
@@ -46,6 +47,7 @@ class Helpers {
                     return FALSE;
                 }
             }
+            // Validate instrumentation structure
             $instrumentation = $form["instrumentation"];
             $sampleInstrumentation = [[false],[false],[false],[false],[false],[false],[false],[false,false],[false,false],[false],[false],[false],[false,false],[false],[false],[false],[false],[false],[false],[false,false,false,false,false,false],[false,false,false,false,false],[false,false,false,false],[false,false,false],[false,false]];
             if ($instrumentation == "" || !is_array($instrumentation) || count($instrumentation) !== 24) {

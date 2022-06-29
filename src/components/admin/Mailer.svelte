@@ -200,7 +200,7 @@
             Templates:
             <div class="templates">
                 {#each templates as template}
-                    <div>
+                    <div class:loaded={currentTemplate === template.id}>
                         <span class="subject"><b>Subject:</b> {template.subject}</span>
                         <span class="message"><b>Message:</b> {template.message}</span>
                         <span class="link" on:click={() => loadTemplate(template)}>Load</span>
@@ -275,7 +275,7 @@
             grid-template-columns repeat(4, 1fr)
             align-items center
             justify-items center
-            column-gap 40px
+            column-gap 10px
             row-gap 10px
             border-radius 5px
             background-color var(--color-background)
@@ -288,7 +288,6 @@
             label
                 display block
                 font-size 14px
-                margin-left 5px
 
         .templates
             display flex
@@ -296,11 +295,18 @@
             font-size 14px
             background-color var(--color-background)
             border-radius 5px
+            max-height 130px
+            overflow auto
 
             div
                 display grid
                 grid-template-columns 40% 40% 10% 10%
+                border-radius 5px
                 padding 4px
+                border solid 1px transparent
+
+                &.loaded
+                    border-color var(--color-primary)
 
                 .subject,
                 .message
