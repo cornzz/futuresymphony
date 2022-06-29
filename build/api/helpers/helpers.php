@@ -11,19 +11,19 @@ class Helpers {
 
     static function validateDate($date, $format = "Y-m-d") {
         $d = DateTime::createFromFormat($format, $date);
-        $startDate = new DateTime("1987-09-09");
+        $startDate = new DateTime("1986-09-10");
         $endDate = new DateTime("2004-06-30");
         return $d && $d->format($format) === $date && $startDate <= $d && $d <= $endDate;
     }
 
-    static function validateRegistrationDTO($form, $new) {
-        if ($form == null)
+    static function validateRegistrationDTO($form, $new): bool {
+        if ($form === null)
             return FALSE;
 
         $formKeysNewRegistration = array("firstName", "lastName", "email", "dateOfBirth", "country");
         $formKeysRest = array("pieceTitle", "annotation", "instrumentation", "remarks", "scoreConfirmations", "billingAddress", "referrer");
         foreach ($formKeysNewRegistration as $key) {
-            if (!array_key_exists($key, $form) || $form[$key] == "")
+            if (!array_key_exists($key, $form) || $form[$key] === "")
                 return FALSE;
         }
 
@@ -66,7 +66,31 @@ class Helpers {
         return TRUE;
     }
 
-    static function validateFile($file, $max_size, $types) {
+    static function validateMailerDTO($form): bool {
+        if ($form === null)
+            return FALSE;
+
+        foreach (array("preflight", "subject", "message", "status", "complete", "payment", "second") as $key) {
+            if (!array_key_exists($key, $form) || $form[$key] === "")
+                return FALSE;
+        }
+        if (!is_bool($form["preflight"]))
+            return FALSE;
+        foreach (array("status", "complete", "payment", "second") as $key) {
+            if (
+                !is_array($form[$key]) ||
+                !array_key_exists("active", $form[$key]) ||
+                !is_bool($form[$key]["active"]) ||
+                !array_key_exists("value", $form[$key]) ||
+                !is_bool($form[$key]["value"]) && ($key !== "second" || !is_null($form[$key]["value"]))
+            )
+                return FALSE;
+        }
+
+        return TRUE;
+    }
+
+    static function validateFile($file, $max_size, $types): bool {
         if (filesize($file["tmp_name"]) > $max_size)
             return FALSE;
 
@@ -79,7 +103,7 @@ class Helpers {
         return $matchingType;
     }
 
-    static function decodeRow($row) {
+    static function decodeRow(array $row): array {
         $row["instrumentation"] = json_decode($row["instrumentation"]);
         $row["scoreConfirmations"] = json_decode($row["scoreConfirmations"]);
         $row["paymentConfirmed"] = array_key_exists("paymentConfirmed", $row) ? json_decode($row["paymentConfirmed"]) : null;
@@ -88,7 +112,7 @@ class Helpers {
         return $row;
     }
 
-    static function isBool($var) {
+    static function isBool(string $var): bool {
         return in_array($var, array("true", "false", "null"));
     }
 }

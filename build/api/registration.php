@@ -27,14 +27,14 @@
             echo "Registration not found.";
             return;
         }
-        $stmt = $conn->prepare("
-            UPDATE base_registrations
-            SET firstName=?,
-                lastName=?,
-                dateOfBirth=?,
-                country=?
-            WHERE reg_key=?
-        ");
+        $stmt = $conn->prepare(
+            "UPDATE base_registrations
+                SET firstName=?,
+                    lastName=?,
+                    dateOfBirth=?,
+                    country=?
+                WHERE reg_key=?"
+        );
         $stmt->bind_param("sssss",
             $form["firstName"],
             $form["lastName"],
@@ -47,17 +47,17 @@
             echo "Error processing request: {$stmt->error}";
             return;
         }
-        $stmt = $conn->prepare("
-            UPDATE registrations 
-            SET pieceTitle=?,
-                annotation=?,
-                instrumentation=?,
-                remarks=?,
-                scoreConfirmations=?,
-                billingAddress=?,
-                referrer=?
-            WHERE reg_key=?
-        ");
+        $stmt = $conn->prepare(
+            "UPDATE registrations 
+                SET pieceTitle=?,
+                    annotation=?,
+                    instrumentation=?,
+                    remarks=?,
+                    scoreConfirmations=?,
+                    billingAddress=?,
+                    referrer=?
+                WHERE reg_key=?"
+        );
         $instrumentation = json_encode($form["instrumentation"]);
         $scoreConfirmations = json_encode($form["scoreConfirmations"]);
         $stmt->bind_param("ssssssss",
@@ -88,8 +88,8 @@
 
         if ($result->num_rows) {
             // Prepare and return existing data
-            $result = $conn->query("
-                SELECT
+            $result = $conn->query(
+                "SELECT
                     a.id,
                     a.reg_key,
                     a.email,
@@ -97,7 +97,6 @@
                     a.lastName,
                     a.dateOfBirth,
                     a.country,
-                    a.registrationDate,
                     b.pieceTitle,
                     b.annotation,
                     b.instrumentation,
@@ -112,8 +111,8 @@
                 FROM base_registrations AS a
                 JOIN registrations AS b ON a.reg_key = b.reg_key
                 JOIN user_files AS c ON b.reg_key = c.reg_key
-                WHERE a.reg_key = '{$reg_key}'
-            ");
+                WHERE a.reg_key = '{$reg_key}'"
+            );
             echo $conn->error;
             $row = Helpers::decodeRow($result->fetch_assoc());
             header('Content-type: application/json');
