@@ -155,7 +155,7 @@
         <div class="criteria">    
             <div>
                 <label>
-                    Status
+                    {$_('admin.mailer.status')}
                     <select bind:value={statusCriterion.value}>
                         <option value={true}>{$_('admin.mailer.confirmed')}</option>
                         <option value={false}>{$_('admin.mailer.unconfirmed')}</option>
@@ -203,8 +203,12 @@
                     <div class:loaded={currentTemplate === template.id}>
                         <span class="subject"><b>Subject:</b> {template.subject}</span>
                         <span class="message"><b>Message:</b> {template.message}</span>
-                        <span class="link" on:click={() => loadTemplate(template)}>Load</span>
-                        <span class="link" on:click={() => deleteTemplate(template)}>Delete</span>
+                        <span class="link" on:click={() => loadTemplate(template)}>
+                            {$_('admin.mailer.load')}
+                        </span>
+                        <span class="link" on:click={() => deleteTemplate(template)}>
+                            {$_('admin.mailer.delete')}
+                        </span>
                     </div>
                 {/each}
             </div>

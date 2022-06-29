@@ -44,16 +44,16 @@
 </script>
 
 <div class="controls">
-    Show
+    {$_('admin.table.show')}
     <select bind:value={numRows}>
         {#each [5, 10, 25, 50, 100] as num}
             <option value={num}>{num}</option>
         {/each}
     </select>
-    rows | Total: <b>{registrations.length}</b> |
+    {$_('admin.table.rows')} | {$_('admin.table.total')}: <b>{registrations.length}</b> |
     <label>
         <input type="checkbox" bind:checked={showAll}/>
-        Show all
+        {$_('admin.table.showAll')}
     </label>
 </div>
 <div class="wrapper">

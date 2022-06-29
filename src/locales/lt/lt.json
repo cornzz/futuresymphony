@@ -218,11 +218,18 @@
         "confirmedReg": "Patvirtintos registracijos",
         "unconfirmedReg": "Nepatvirtintos registracijos",
         "noSuchReg": "Tokių registracijų nėra",
+        "table": {
+            "show": "Rodyti",
+            "rows": "eilutes",
+            "total": "Iš viso",
+            "showAll": "Rodyti visus"
+        },
         "mailer": {
             "sendMail": "Siųsti pranešimą",
             "subject": "Tema",
             "message": "Pranešimas",
             "sendingCriteria": "Siuntimo sąlygos",
+            "status": "Statusas",
             "confirmed": "patvirtinta",
             "unconfirmed": "nepatvirtinta",
             "sendingNMessages": "{number, plural, =1 {Siunčiamas} other {Siunčiami}} {number} {number, plural, =1 {pranešimas} other {pranešimai}}.",
@@ -230,7 +237,9 @@
             "confirmRecipients": "Patvirtinti gavėjus",
             "send": "Išsiųsti",
             "confirm": "Patvirtinti",
-            "saveTemplate": "Išsaugoti šabloną"
+            "saveTemplate": "Išsaugoti šabloną",
+            "load": "Įkelti",
+            "delete": "Ištrinti"
         }
     }
 }

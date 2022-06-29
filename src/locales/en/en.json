@@ -218,11 +218,18 @@
         "confirmedReg": "Confirmed registrations",
         "unconfirmedReg": "Unconfirmed registrations",
         "noSuchReg": "No such registrations",
+        "table": {
+            "show": "Show",
+            "rows": "rows",
+            "total": "Total",
+            "showAll": "Show all"
+        },
         "mailer": {
             "sendMail": "Send message",
             "subject": "Subject",
             "message": "Message",
             "sendingCriteria": "Sending criteria",
+            "status": "Status",
             "confirmed": "confirmed",
             "unconfirmed": "unconfirmed",
             "sendingNMessages": "Sending {number} {number, plural, =1 {message} other {messages}}.",
@@ -230,7 +237,9 @@
             "confirmRecipients": "Confirm recipients",
             "send": "Send",
             "confirm": "Confirm",
-            "saveTemplate": "Save template"
+            "saveTemplate": "Save template",
+            "load": "Load",
+            "delete": "Delete"
         }
     }
 }
