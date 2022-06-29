@@ -22,12 +22,15 @@
     $sql_query = BuildQuery($form["status"], $form["payment"], $form["complete"], $form["second"]);
     $result = $connection->query($sql_query);
     $registrations = $result->fetch_all(MYSQLI_ASSOC);
-    echo "Sending {$result->num_rows} message".($result->num_rows === 1 ? "" : "s")."\n\n";
-    echo $result->num_rows ? "Recipient".($result->num_rows === 1 ? "" : "s").":\n" : "";
+    // If preflight, return recipients
+    if ($form["preflight"]) {
+        $emails = array_map(fn($row) => $row["email"], $registrations);
+        echo join(",", $emails);
+        return;
+    }
 
+    $failures = [];
     foreach ($registrations as $registration) {
-        echo $registration["email"]."\n";
-
         // Prepare email template
         $message = $message_template;
         foreach ($registration as $key => $value)
@@ -37,10 +40,17 @@
         foreach ($tag_patterns as $pattern)
             $message = preg_replace($pattern, "", $message);
 
-        // Send
+        // Send email
         $fullname = $registration["firstName"]." ".$registration["lastName"];
-        if (APP_ENV !== "dev")
-            Mail::sendMail($registration["email"], $fullName, $subject, $message_html, $message);
+        if (APP_ENV !== "dev" && Mail::sendMail($registration["email"], $fullName, $subject, $message_html, $message))
+            $failures[] = $registration["email"];
+    }
+
+    if (count($failures) === 0) {
+        echo "Emails sent successfully.";
+    } else {
+        http_response_code(500);
+        echo "Error sending message to following mails: ".join(",", $failures)." Please check logs.";
     }
 
     function BuildQuery(array $status, array $payment, array $complete, array $second): string {

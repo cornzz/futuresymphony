@@ -73,7 +73,7 @@
         },
         "firstStep": "Pirmiausia pateikite šią informaciją. Iš <tt>registration@futuresymphony.lt</tt> gausite el. laišką su tolimesnėmis instrukcijomis (taip pat patikrinkite <b>šlamšto</b> aplanką).",
         "outlookBlocked": "Deja, kartais susiduriame su problemomis siunčiant registracijos patvirtinimo nuorodą Microsoft pašto paslaugų (<tt>outlook.com</tt>, <tt>live.com</tt>, <tt>hotmail.com</tt>) naudotojams. Jei registracijos metu negausite patvirtinimo el. laiško, maloniai prašome registracijai naudoti kitą el. pašto paslaugų teikėją arba, atlikę pirmąjį registracijos žingsnį, susisiekite su mumis adresu <tt>info@futuresymphony.lt</tt>. Mes atsiprašome už nepatogumus ir stengiamės išspręsti šią problemą.",
-        "regulationsAccepted": "Sutinku su <a href='/files/fsc_regulations_LT_2022-02-24.pdf' target='_blank' class='link'>Konkurso nuostatais</a> ir <a href='/privacy' target='_blank' class='link'>Privatumo politika.</a>",
+        "regulationsAccepted": "Sutinku su <a href='/files/fsc_regulations_LT_2022-02-24.pdf' target='_blank' class='link'>Konkurso nuostatais</a> ir <a href='/privacy' target='_blank' class='link'>Privatumo politika</a>.",
         "success": "Jūsų registracija pateikta. Vykdykite instrukcijas, kurios buvo išsiųstos jūsų el. pašto adresu <tt>{email}</tt>.",
         "resend": {
             "alreadyRegistered": "Jei jau užsiregistravote, bet nerandate patvirtinimo el. laiško, spustelėkite",
@@ -212,6 +212,21 @@
         "error": {
             "incorrectPass": "Įvestas slaptažodis neteisingas.",
             "unknown": "Įvyko nežinoma klaida. Pabandykite dar kartą vėliau."
+        },
+        "adminPanel": "Administracija",
+        "confirmedReg": "Patvirtintos registracijos",
+        "unconfirmedReg": "Nepatvirtintos registracijos",
+        "noSuchReg": "Tokių registracijų nėra",
+        "mailer": {
+            "sendMail": "Siųsti pranešimą",
+            "subject": "Tema",
+            "message": "Pranešimas",
+            "sendingCriteria": "Siuntimo sąlygos",
+            "confirmed": "patvirtinta",
+            "unconfirmed": "nepatvirtinta",
+            "sendingNMessages": "{number, plural, =1 {Siunčiamas} other {Siunčiami}} {number} {number, plural, =1 {pranešimas} other {pranešimai}}.",
+            "recipients": "Gavėjai",
+            "send": "Išsiųsti"
         }
     }
 }

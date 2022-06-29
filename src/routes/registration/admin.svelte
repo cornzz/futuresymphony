@@ -91,18 +91,18 @@
         </div>
     {:else if initialLoad}
         <div class="dashboard">
-            <h1>Admin panel</h1>
+            <h1>{$_('admin.adminPanel')}</h1>
             <div class="actions">
                 <Button
                     type="primary"
                     slim
                     on:click={() => showMailer = true}
                 >
-                    Send mail
+                    {$_('admin.mailer.sendMail')}
                 </Button>
             </div>
             <div class="registrations">
-                <h2>Confirmed registrations</h2>
+                <h2>{$_('admin.confirmedReg')}</h2>
                 {#if confirmed && confirmed.length}
                     <RegistrationsTable
                         registrations={confirmed}
@@ -112,11 +112,11 @@
                         }
                     />
                 {:else}
-                        No confirmed registrations
+                    {$_('admin.noSuchReg')}
                 {/if}
             </div>
             <div class="registrations">
-                <h2>Unconfirmed registrations</h2>
+                <h2>{$_('admin.unconfirmedReg')}</h2>
                 {#if unconfirmed && unconfirmed.length}
                     <RegistrationsTable
                         registrations={unconfirmed}
@@ -124,7 +124,7 @@
                         on:dialog={(e) => dialog = e.detail}
                     />
                 {:else}
-                    No unconfirmed registrations
+                    {$_('admin.noSuchReg')}
                 {/if}
             </div>
         </div>

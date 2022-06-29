@@ -5,6 +5,7 @@
     import { getAuth } from '../../helpers'
     import { loading, baseURL } from '../../helpers/stores'
     import { onMount } from "svelte"
+    import { _ } from 'svelte-i18n'
 
     export let password: string
     export let show: boolean
@@ -12,6 +13,8 @@
 
     type Criterion = { active: boolean, value: boolean }
 
+    let showPreflight: boolean = false
+    let recipients: string[] = []
     let subject: string
     let message: string
     let statusCriterion: Criterion = { active: true, value: true }
@@ -19,12 +22,13 @@
     let paymentCriterion: Criterion = { active: false, value: true }
     let secondCriterion: Criterion = { active: false, value: null }
 
-    async function sendMail(): Promise<void> {
+    async function sendMail(preflight: boolean = true): Promise<void> {
         $loading = true
         const response = await fetch(new URL('mail.php', $baseURL), {
             method: 'POST',
             headers: getAuth(password),
             body: JSON.stringify({
+                preflight,
                 subject,
                 message,
                 status: statusCriterion,
@@ -35,8 +39,13 @@
         })
         const responseText = await response.text()
         $loading = false
-        dialog = responseText
-        show = false
+        if (preflight) {
+            recipients = responseText.length ? responseText.split(',') : []
+            showPreflight = true
+        } else {
+            dialog = responseText
+            show = false
+        }
     }
 
     const closeOnEscape = (event: KeyboardEvent) => event.key === 'Escape' && (show = false)
@@ -47,79 +56,103 @@
     })
 </script>
 
-<div class="mailer">
-    <Input
-        type="text"
-        name="subject"
-        label="Subject"
-        bind:value={subject}
-    />
-    <Textarea
-        name="message"
-        label="Message"
-        rows={10}
-        bind:value={message}
-    />
-    Sending criteria:
-    <div class="criteria">    
-        <div>
-            <label>
-                Status
-                <select bind:value={statusCriterion.value}>
-                    <option value={true}>confirmed</option>
-                    <option value={false}>unconfirmed</option>
-                </select>
-            </label>
+{#if !showPreflight}
+    <div class="mailer">
+        <Input
+            type="text"
+            name="subject"
+            label="admin.mailer.subject"
+            bind:value={subject}
+        />
+        <Textarea
+            name="message"
+            label="admin.mailer.message"
+            rows={10}
+            bind:value={message}
+        />
+        {$_('admin.mailer.sendingCriteria')}:
+        <div class="criteria">    
+            <div>
+                <label>
+                    Status
+                    <select bind:value={statusCriterion.value}>
+                        <option value={true}>{$_('admin.mailer.confirmed')}</option>
+                        <option value={false}>{$_('admin.mailer.unconfirmed')}</option>
+                    </select>
+                </label>
+            </div>
+            {#if statusCriterion.value}
+                <div>
+                    <label>
+                        <input type="checkbox" bind:checked={paymentCriterion.active}/>
+                        payment
+                        <select disabled={!paymentCriterion.active} bind:value={paymentCriterion.value}>
+                            <option value={true}>true</option>
+                            <option value={false}>false</option>
+                        </select>
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        <input type="checkbox" bind:checked={completeCriterion.active}/>
+                        complete
+                        <select disabled={!completeCriterion.active} bind:value={completeCriterion.value}>
+                            <option value={true}>true</option>
+                            <option value={false}>false</option>
+                        </select>
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        <input type="checkbox" bind:checked={secondCriterion.active}/>
+                        second
+                        <select disabled={!secondCriterion.active} bind:value={secondCriterion.value}>
+                            <option value={null}>TBD</option>
+                            <option value={true}>true</option>
+                            <option value={false}>false</option>
+                        </select>
+                    </label>
+                </div>
+            {/if}
         </div>
-        {#if statusCriterion.value}
-            <div>
-                <label>
-                    <input type="checkbox" bind:checked={paymentCriterion.active}/>
-                    payment
-                    <select disabled={!paymentCriterion.active} bind:value={paymentCriterion.value}>
-                        <option value={true}>true</option>
-                        <option value={false}>false</option>
-                    </select>
-                </label>
-            </div>
-            <div>
-                <label>
-                    <input type="checkbox" bind:checked={completeCriterion.active}/>
-                    complete
-                    <select disabled={!completeCriterion.active} bind:value={completeCriterion.value}>
-                        <option value={true}>true</option>
-                        <option value={false}>false</option>
-                    </select>
-                </label>
-            </div>
-            <div>
-                <label>
-                    <input type="checkbox" bind:checked={secondCriterion.active}/>
-                    second
-                    <select disabled={!secondCriterion.active} bind:value={secondCriterion.value}>
-                        <option value={null}>TBD</option>
-                        <option value={true}>true</option>
-                        <option value={false}>false</option>
-                    </select>
-                </label>
-            </div>
-        {/if}
     </div>
-</div>
-<div class="buttons">
-    <Button
-        on:click={() => show = false}
-    >
-        Cancel
-    </Button>
-    <Button
-        type="primary"
-        disabled={!subject || !message || $loading}
-        on:click={sendMail}
-    >
-        Send
-    </Button>
-</div>
+    <div class="buttons">
+        <Button
+            on:click={() => show = false}
+        >
+            {$_('registration.form.cancel')}
+        </Button>
+        <Button
+            type="primary"
+            disabled={!subject || !message || $loading}
+            on:click={() => sendMail()}
+        >
+            {$_('registration.form.submit')}
+        </Button>
+    </div>
+{:else}
+    {$_('admin.mailer.sendingNMessages', { values: { number: recipients.length }})}<br><br>
+    {#if recipients.length}
+        {$_('admin.mailer.recipients')}:<br>
+        {#each recipients as recipient}
+            {recipient}<br>
+        {/each}
+    {/if}
+    <div class="buttons">
+        <Button
+            on:click={() => showPreflight = false}
+        >
+            {$_('error.goBack')}
+        </Button>
+        <Button
+            type="primary"
+            disabled={$loading}
+            on:click={() => sendMail(false)}
+        >
+            {$_('admin.mailer.send')}
+        </Button>
+    </div>
+{/if}
 
 <style lang="stylus">
     .mailer

@@ -23,7 +23,7 @@ class Helpers {
         $formKeysNewRegistration = array("firstName", "lastName", "email", "dateOfBirth", "country");
         $formKeysRest = array("pieceTitle", "annotation", "instrumentation", "remarks", "scoreConfirmations", "billingAddress", "referrer");
         foreach ($formKeysNewRegistration as $key) {
-            if (!array_key_exists($key, $form) || $form[$key] == "")
+            if (!array_key_exists($key, $form) || $form[$key] === "")
                 return FALSE;
         }
 
@@ -70,10 +70,12 @@ class Helpers {
         if ($form === null)
             return FALSE;
 
-        foreach (array("subject", "message", "status", "complete", "payment", "second") as $key) {
-            if (!array_key_exists($key, $form) || $form[$key] == "")
+        foreach (array("preflight", "subject", "message", "status", "complete", "payment", "second") as $key) {
+            if (!array_key_exists($key, $form) || $form[$key] === "")
                 return FALSE;
         }
+        if (!is_bool($form["preflight"]))
+            return FALSE;
         foreach (array("status", "complete", "payment", "second") as $key) {
             if (
                 !is_array($form[$key]) ||

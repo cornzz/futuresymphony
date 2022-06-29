@@ -212,6 +212,21 @@
         "error": {
             "incorrectPass": "The password you entered is incorrect.",
             "unknown": "An unknown error occurred. Please try again later."
+        },
+        "adminPanel": "Admin panel",
+        "confirmedReg": "Confirmed registrations",
+        "unconfirmedReg": "Unconfirmed registrations",
+        "noSuchReg": "No such registrations",
+        "mailer": {
+            "sendMail": "Send message",
+            "subject": "Subject",
+            "message": "Message",
+            "sendingCriteria": "Sending criteria",
+            "confirmed": "confirmed",
+            "unconfirmed": "unconfirmed",
+            "sendingNMessages": "Sending {number} {number, plural, =1 {message} other {messages}}.",
+            "recipients": "Recipients",
+            "send": "Send"
         }
     }
 }
