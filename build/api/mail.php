@@ -41,6 +41,7 @@
         }
         return;
     }
+
     // Save mail template
     if (array_key_exists("save", $form)) {
         list($status, $payment, $complete, $second) = array(

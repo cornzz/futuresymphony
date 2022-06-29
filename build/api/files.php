@@ -73,7 +73,7 @@
         if ($result->num_rows) {
             list($file_content, $file_type, $file_name) = $result->fetch_array();
             header("Content-type: {$file_type}");
-            header("Content-Disposition: attachment; filename={$file_name}");
+            header("Content-Disposition: inline; filename={$file_name}");
             echo $file_content;
         } else {
             http_response_code(400);
