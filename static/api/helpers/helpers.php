@@ -69,13 +69,30 @@ class Helpers {
     static function validateMailerDTO($form): bool {
         if ($form === null)
             return FALSE;
+        
+        // Either preflight, save or delete param must exist
+        if (
+            (!array_key_exists("preflight", $form) || !is_bool($form["preflight"])) &&
+            !array_key_exists("save", $form) &&
+            (!array_key_exists("delete", $form) || !array_key_exists("id", $form))
+        )
+            return FALSE;
+        
+        // If id exists it must be an integer
+        if (array_key_exists("id", $form) && !is_int($form["id"]))
+            return FALSE;
 
-        foreach (array("preflight", "subject", "message", "status", "complete", "payment", "second") as $key) {
+        // If delete exists return here
+        if (array_key_exists("delete", $form))
+            return TRUE;
+
+        // These parameters must exist and be non empty
+        foreach (array("subject", "message", "status", "complete", "payment", "second") as $key) {
             if (!array_key_exists($key, $form) || $form[$key] === "")
                 return FALSE;
         }
-        if (!is_bool($form["preflight"]))
-            return FALSE;
+
+        // Check criteria structure
         foreach (array("status", "complete", "payment", "second") as $key) {
             if (
                 !is_array($form[$key]) ||
@@ -109,6 +126,15 @@ class Helpers {
         $row["paymentConfirmed"] = array_key_exists("paymentConfirmed", $row) ? json_decode($row["paymentConfirmed"]) : null;
         $row["complete"] = array_key_exists("complete", $row) ? json_decode($row["complete"]) : null;
         $row["secondRound"] = array_key_exists("secondRound", $row) ? json_decode($row["secondRound"]) : null;
+        return $row;
+    }
+
+    static function decodeMailTemplate(array $row): array {
+        $row["id"] = intval($row["id"]);
+        $row["status"] = json_decode($row["status"]);
+        $row["payment"] = json_decode($row["payment"]);
+        $row["complete"] = json_decode($row["complete"]);
+        $row["second"] = json_decode($row["second"]);
         return $row;
     }
 

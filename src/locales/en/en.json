@@ -228,7 +228,8 @@
             "recipients": "Recipients",
             "confirmRecipients": "Confirm recipients",
             "send": "Send",
-            "confirm": "Confirm"
+            "confirm": "Confirm",
+            "saveTemplate": "Save template"
         }
     }
 }

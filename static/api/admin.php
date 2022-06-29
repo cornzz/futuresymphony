@@ -82,9 +82,9 @@
             WHERE b.reg_key IS NULL
             ORDER BY a.id DESC"
         )->fetch_all(MYSQLI_ASSOC);
-        foreach ($confirmed as $i => $row) {
+        foreach ($confirmed as $i => $row)
             $confirmed[$i] = Helpers::decodeRow($confirmed[$i]);
-        }
+
         header('Content-type: application/json');
         echo '{"confirmed":'.json_encode($confirmed).',"unconfirmed":'.json_encode($unconfirmed).'}';
         exit;
