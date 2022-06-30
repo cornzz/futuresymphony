@@ -2,7 +2,7 @@
     require_once "helpers/db_connection.php";
     require "helpers/helpers.php";
 
-    $conn = OpenCon();
+    $connection = OpenCon();
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         Helpers::deadline();
@@ -15,7 +15,7 @@
         $reg_key = $_POST["reg_key"];
         
         // Check if key exists in user_files
-        $stmt = $conn->prepare("SELECT reg_key FROM user_files WHERE reg_key=?");
+        $stmt = $connection->prepare("SELECT reg_key FROM user_files WHERE reg_key=?");
         $stmt->bind_param("s", $reg_key);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -42,7 +42,7 @@
                 $file_content = file_get_contents($file["tmp_name"]);
                 $file_type = mime_content_type($file["tmp_name"]);
                 $file_name = $file["name"];
-                $stmt = $conn->prepare("UPDATE user_files SET {$fv[0]}=?, {$fv[0]}Type=?, {$fv[0]}Name=? WHERE reg_key=?");
+                $stmt = $connection->prepare("UPDATE user_files SET {$fv[0]}=?, {$fv[0]}Type=?, {$fv[0]}Name=? WHERE reg_key=?");
                 $stmt->bind_param("ssss", $file_content, $file_type, $file_name, $reg_key);
                 if (!$stmt->execute()) {
                     http_response_code(500);
@@ -60,15 +60,39 @@
             return;
         }
     } else if (
-        isset($_GET["key"]) && $_GET["key"] !== "" &&
-        isset($_GET["file"]) && in_array($_GET["file"], array("idCopyFile", "pieceScoreFile", "pieceDemoFile", "proofOfPaymentFile"))
+        isset($_GET["key"]) && $_GET["key"] !== ""  &&
+        isset($_GET["file"]) && in_array($_GET["file"], array("idCopyFile", "pieceScoreFile", "pieceDemoFile", "proofOfPaymentFile")) &&
+        (
+            isset($_GET["jury"]) ? $_GET["jury"] === JURY_KEY && in_array($_GET["file"], array("pieceScoreFile", "pieceDemoFile")) : true
+        )
     ) {
-        $reg_key = $_GET["key"];
-        $file = $_GET["file"];
+        GetFile($connection, $_GET["file"], $_GET["key"], isset($_GET["jury"]));
+    } else if (isset($_GET["jury"]) && $_GET["jury"] === JURY_KEY) {
+        $result = $connection->query(
+            "SELECT
+                a.pieceTitle,
+                a.annotation,
+                b.download_key
+            FROM registrations AS a
+            JOIN user_files AS b ON a.reg_key = b.reg_key
+            WHERE a.complete = 'true'"
+        )->fetch_all(MYSQLI_ASSOC);
+        header('Content-type: application/json');
+        echo json_encode($result);
+        return;
+    } else {
+        http_response_code(400);
+        echo "Invalid request.";
+        return;
+    }
+
+    function GetFile($conn, $file, $key, $jury) {
         $type = $file."Type";
         $name = $file."Name";
 
-        $result = $conn->query("SELECT {$file}, {$type}, {$name} FROM user_files WHERE reg_key='{$reg_key}'");
+        $sql_query = "SELECT {$file}, {$type}, {$name} FROM user_files WHERE";
+        $sql_query .= !$jury ? " reg_key='{$key}'" : " download_key='{$key}'";
+        $result = $conn->query($sql_query);
 
         if ($result->num_rows) {
             list($file_content, $file_type, $file_name) = $result->fetch_array();
@@ -79,16 +103,12 @@
             } else {
                 http_response_code(400);
                 echo "File not found.";
-                return;
+                exit;
             }
         } else {
             http_response_code(400);
             echo "Key not found.";
-            return;
+            exit;
         }
-    } else {
-        http_response_code(400);
-        echo "Invalid request.";
-        return;
     }
 ?>

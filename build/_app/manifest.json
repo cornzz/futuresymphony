@@ -1,6 +1,6 @@
 {
   ".svelte-kit/build/runtime/internal/start.js": {
-    "file": "start-8fcba4ea.js",
+    "file": "start-8bf1e29f.js",
     "src": ".svelte-kit/build/runtime/internal/start.js",
     "isEntry": true,
     "imports": [
@@ -13,6 +13,7 @@
       "src/routes/registration/__layout.svelte",
       "src/routes/registration/index.svelte",
       "src/routes/registration/admin.svelte",
+      "src/routes/registration/jury.svelte",
       "src/routes/registration/id.svelte",
       "src/routes/privacy.svelte",
       "src/routes/adomas.svelte",
@@ -25,7 +26,7 @@
     ]
   },
   "src/routes/__layout.svelte": {
-    "file": "pages/__layout.svelte-3d0efa3b.js",
+    "file": "pages/__layout.svelte-85ef292c.js",
     "src": "src/routes/__layout.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
@@ -35,7 +36,7 @@
       "_index-8490d5e5.js"
     ],
     "css": [
-      "assets/pages/__layout.svelte-3e5db85e.css"
+      "assets/pages/__layout.svelte-7603a2aa.css"
     ]
   },
   "src/routes/__error.svelte": {
@@ -49,11 +50,11 @@
       "_stores-600db517.js"
     ],
     "css": [
-      "assets/pages/__error.svelte-76caa9f2.css"
+      "assets/pages/404.svelte-bfd357f2.css"
     ]
   },
   "src/routes/index.svelte": {
-    "file": "pages/index.svelte-f922629a.js",
+    "file": "pages/index.svelte-3ee4e380.js",
     "src": "src/routes/index.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
@@ -105,7 +106,7 @@
     ]
   },
   "src/routes/registration/admin.svelte": {
-    "file": "pages/registration/admin.svelte-bfaee00a.js",
+    "file": "pages/registration/admin.svelte-7db7a71d.js",
     "src": "src/routes/registration/admin.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
@@ -118,7 +119,21 @@
       "_index-8490d5e5.js"
     ],
     "css": [
-      "assets/pages/registration/admin.svelte-4699eea7.css"
+      "assets/pages/registration/admin.svelte-68d0b90f.css"
+    ]
+  },
+  "src/routes/registration/jury.svelte": {
+    "file": "pages/registration/jury.svelte-ebd9b676.js",
+    "src": "src/routes/registration/jury.svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_vendor-3b8c650a.js",
+      "_Button-17e544cc.js",
+      "_stores-600db517.js"
+    ],
+    "css": [
+      "assets/pages/registration/jury.svelte-0b2214e9.css"
     ]
   },
   "src/routes/registration/id.svelte": {
@@ -205,7 +220,7 @@
       "_stores-600db517.js"
     ],
     "css": [
-      "assets/pages/__error.svelte-76caa9f2.css"
+      "assets/pages/404.svelte-bfd357f2.css"
     ]
   },
   "_vendor-3b8c650a.js": {

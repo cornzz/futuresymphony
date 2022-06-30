@@ -49,7 +49,7 @@
         // Generate reg key
         do {
             $reg_key = join("-", str_split(strtoupper(bin2hex(random_bytes(10))), 5));
-        } while ($conn->query("SELECT * FROM base_registrations WHERE reg_key='{$reg_key}'")->num_rows);
+        } while ($conn->query("SELECT reg_key FROM base_registrations WHERE reg_key='{$reg_key}'")->num_rows);
 
         // Send confirmation email
         if (APP_ENV != "dev") {
