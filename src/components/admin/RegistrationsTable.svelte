@@ -114,14 +114,16 @@
                                 target="_blank"
                                 data-label={reg.idCopy}
                             >
-                                Open
+                                {$_('admin.table.open')}
                             </a>
                         {/if}
                     </td>
                     <td>{reg.pieceTitle ?? ''}</td>
                     <td>
                         {#if reg.annotation}
-                            <span class="link" on:click={() => showContent(reg.annotation)}>Show</span>
+                            <span class="link" on:click={() => showContent(reg.annotation)}>
+                                {$_('admin.table.show')}
+                            </span>
                         {/if}
                     </td>
                     <td>    
@@ -135,7 +137,7 @@
                                 target="_blank"
                                 data-label={reg.pieceScore}
                             >
-                                Open
+                                {$_('admin.table.open')}
                             </a>
                         {/if}
                     </td>
@@ -150,18 +152,22 @@
                                 target="_blank"
                                 data-label={reg.pieceDemo}
                             >
-                                Open
+                                {$_('admin.table.open')}
                             </a>
                         {/if}
                     </td>
                     <td>
                         {#if reg.instrumentation}
-                            <span class="link" on:click={() => showInstrumentation(reg.instrumentation)}>Show</span>
+                            <span class="link" on:click={() => showInstrumentation(reg.instrumentation)}>
+                                {$_('admin.table.show')}
+                            </span>
                         {/if}    
                     </td>
                     <td>
                         {#if reg.remarks}
-                            <span class="link" on:click={() => showContent(reg.remarks)}>Show</span>
+                            <span class="link" on:click={() => showContent(reg.remarks)}>
+                                {$_('admin.table.show')}
+                            </span>
                         {/if}
                     </td>
                     <td>{reg.scoreConfirmations ?? ''}</td>
@@ -176,13 +182,15 @@
                                 target="_blank"
                                 data-label={reg.proofOfPayment}
                             >
-                                Open
+                                {$_('admin.table.open')}
                             </a>
                         {/if}    
                     </td>
                     <td>
                         {#if reg.billingAddress}
-                            <span class="link" on:click={() => showContent(reg.billingAddress)}>Show</span>
+                            <span class="link" on:click={() => showContent(reg.billingAddress)}>
+                                {$_('admin.table.show')}
+                            </span>
                         {/if}
                     </td>
                     <td>{reg.referrer ? mapReferrer(reg.referrer) : ''}</td>
@@ -233,7 +241,7 @@
     </table>
 </div>
 {#if !showAll && numRows < registrations.length}
-    <span class="center link" on:click={() => numRows += 5}>Show more</span>
+    <span class="center link" on:click={() => numRows += 5}>{$_('admin.table.showMore')}</span>
 {/if}
 
 <style lang="stylus">

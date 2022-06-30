@@ -223,7 +223,9 @@
             "show": "Rodyti",
             "rows": "eilutes",
             "total": "Iš viso",
-            "showAll": "Rodyti visus"
+            "showAll": "Rodyti visus",
+            "open": "Peržiūrėti",
+            "showMore": "Rodyti daugiau"
         },
         "mailer": {
             "sendMail": "Siųsti pranešimą",
@@ -242,5 +244,8 @@
             "load": "Įkelti",
             "delete": "Ištrinti"
         }
+    },
+    "jury": {
+        "title": "III-ojo „Future Symphony“ konkurso kūriniai"
     }
 }

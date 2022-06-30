@@ -223,7 +223,9 @@
             "show": "Show",
             "rows": "rows",
             "total": "Total",
-            "showAll": "Show all"
+            "showAll": "Show all",
+            "open": "Open",
+            "showMore": "Show more"
         },
         "mailer": {
             "sendMail": "Send message",
@@ -242,5 +244,8 @@
             "load": "Load",
             "delete": "Delete"
         }
+    },
+    "jury": {
+        "title": "3rd Future Symphony Competition Compositions"
     }
 }

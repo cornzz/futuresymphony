@@ -30,6 +30,7 @@
 
 <div class="wrapper">
     {#if registrations.length}
+        <h1 class="cover-heading">{$_('jury.title')}</h1>
         <table>
             <tr>
                 <th class="title">{$_('registration.form.pieceTitle')}</th>
@@ -42,7 +43,7 @@
                     <td class="title">{reg.pieceTitle}</td>
                     <td>
                         <span class="link" on:click={() => dialog = reg.annotation}>
-                            Show
+                            {$_('admin.table.show')}
                         </span>
                     </td>
                     <td>
@@ -54,7 +55,7 @@
                             ).toString()}
                             target="_blank"
                         >
-                            Open
+                            {$_('admin.table.open')}
                         </a>
                     </td>
                     <td>
@@ -66,7 +67,7 @@
                             ).toString()}
                             target="_blank"
                         >
-                            Open
+                            {$_('admin.table.open')}
                         </a>
                     </td>
                 </tr>
@@ -110,4 +111,12 @@
                 
                 .title
                     text-align left
+
+    @media screen and (max-width 525px)
+        .wrapper table tr
+            th
+                padding 5px 10px 0
+            
+            td
+                padding 10px 10px
 </style>
