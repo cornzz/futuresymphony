@@ -67,6 +67,19 @@
         )
     ) {
         GetFile($connection, $_GET["file"], $_GET["key"], isset($_GET["jury"]));
+    } else if (isset($_GET["jury"]) && $_GET["jury"] === JURY_KEY) {
+        $result = $connection->query(
+            "SELECT
+                a.pieceTitle,
+                a.annotation,
+                b.download_key
+            FROM registrations AS a
+            JOIN user_files AS b ON a.reg_key = b.reg_key
+            WHERE a.complete = 'true'"
+        )->fetch_all(MYSQLI_ASSOC);
+        header('Content-type: application/json');
+        echo json_encode($result);
+        return;
     } else {
         http_response_code(400);
         echo "Invalid request.";
