@@ -36,7 +36,8 @@
     },
     "participants": {
         "title": "Dalyviams",
-        "registration": "Pradėti registraciją"
+        "registration": "Pradėti registraciją",
+        "registrationClosed": "Registracija dabar uždaryta. Dėkojame už dalyvavimą!"
     },
     "sponsors": {
         "title": "Rėmėjai ir partneriai",

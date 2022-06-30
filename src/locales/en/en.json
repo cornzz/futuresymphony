@@ -36,7 +36,8 @@
     },
     "participants": {
         "title": "For Participants",
-        "registration": "Start registration"
+        "registration": "Start registration",
+        "registrationClosed": "The registration is now closed. Thank you for your participation!"
     },
     "sponsors": {
         "title": "Sponsors and Partners",

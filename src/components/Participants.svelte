@@ -26,7 +26,7 @@
                     </Button>
                 </a>
             {:else}
-                The registration is now closed. Thank you for your participation!
+                {$_('participants.registrationClosed')}
             {/if}
         </div>
     </div>
