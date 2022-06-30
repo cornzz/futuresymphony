@@ -128,7 +128,12 @@
             if ($result->num_rows) {
                 // Insert new row into registrations and user_files
                 $conn->query("INSERT INTO registrations(reg_key) VALUES ('{$reg_key}')");
-                $conn->query("INSERT INTO user_files(reg_key) VALUES ('{$reg_key}')");
+
+                // Generate download key
+                do {
+                    $download_key = bin2hex(random_bytes(10));
+                } while ($conn->query("SELECT download_key FROM user_files WHERE download_key='{$download_key}'")->num_rows);
+                $conn->query("INSERT INTO user_files(reg_key, download_key) VALUES ('{$reg_key}', '{$download_key}')");
                 header('Content-type: application/json');
                 echo json_encode($result->fetch_assoc());
                 return;
