@@ -147,6 +147,23 @@ hr
     transition all 0.2s ease
     border-radius 3px
 
+
+dialog
+    position fixed
+    z-index 5
+    top 50%
+    transform translateY(-50%)
+    border-radius 5px
+    overflow-y auto
+    max-height 85vh
+    max-width 75vw
+
+    &.message
+        white-space pre-wrap
+
+    p
+        overflow-wrap break-word
+
 @media screen and (max-device-width: 600px)
     .cover-heading
         margin-bottom 10px

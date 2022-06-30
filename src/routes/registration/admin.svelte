@@ -63,6 +63,7 @@
         initialLoad = true
     })
 </script>
+
 <div class="admin">
     {#if initialLoad && !confirmed}
         <div class="login">
@@ -175,22 +176,6 @@
             .actions
                 display grid
                 grid-template-columns repeat(auto-fill, 150px)
-        
-        dialog
-            position fixed
-            z-index 5
-            top 50%
-            transform translateY(-50%)
-            border-radius 5px
-            overflow-y auto
-            max-height 85vh
-            max-width 75vw
-
-            &.message
-                white-space pre-wrap
-
-            p
-                overflow-wrap break-word
 
     @media screen and (max-width 525px)
         .admin

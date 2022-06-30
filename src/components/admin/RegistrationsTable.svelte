@@ -114,7 +114,7 @@
                                 target="_blank"
                                 data-label={reg.idCopy}
                             >
-                                Download
+                                Open
                             </a>
                         {/if}
                     </td>
@@ -135,7 +135,7 @@
                                 target="_blank"
                                 data-label={reg.pieceScore}
                             >
-                                Download
+                                Open
                             </a>
                         {/if}
                     </td>
@@ -150,7 +150,7 @@
                                 target="_blank"
                                 data-label={reg.pieceDemo}
                             >
-                                Download
+                                Open
                             </a>
                         {/if}
                     </td>
@@ -176,7 +176,7 @@
                                 target="_blank"
                                 data-label={reg.proofOfPayment}
                             >
-                                Download
+                                Open
                             </a>
                         {/if}    
                     </td>
