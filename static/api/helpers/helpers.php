@@ -1,7 +1,7 @@
 <?php
 class Helpers {
     static function deadline() {
-        $deadline = new DateTime("2022-06-30 23:59:59", new DateTimeZone("Europe/Vilnius"));
+        $deadline = new DateTime("2022-07-01 01:00:00", new DateTimeZone("Europe/Vilnius"));
         if ($deadline->getTimestamp() < time()) {
             http_response_code(403);
             echo "Deadline passed.";
