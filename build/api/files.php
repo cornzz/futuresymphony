@@ -72,9 +72,15 @@
 
         if ($result->num_rows) {
             list($file_content, $file_type, $file_name) = $result->fetch_array();
-            header("Content-type: {$file_type}");
-            header("Content-Disposition: inline; filename={$file_name}");
-            echo $file_content;
+            if ($file_name !== null) {
+                header("Content-type: {$file_type}");
+                header("Content-Disposition: inline; filename={$file_name}");
+                echo $file_content;
+            } else {
+                http_response_code(400);
+                echo "File not found.";
+                return;
+            }
         } else {
             http_response_code(400);
             echo "Key not found.";
