@@ -81,6 +81,7 @@
                 ...id
             })
         })
+        // TODO: return and parse template id, set currentTemplate
         const responseText = await response.text()
         if (response.ok && responseText === 'Mail template saved.') {
             await getTemplates()
