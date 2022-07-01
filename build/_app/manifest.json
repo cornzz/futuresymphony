@@ -1,6 +1,6 @@
 {
   ".svelte-kit/build/runtime/internal/start.js": {
-    "file": "start-033a8ea6.js",
+    "file": "start-2d8cbc6f.js",
     "src": ".svelte-kit/build/runtime/internal/start.js",
     "isEntry": true,
     "imports": [
@@ -88,7 +88,7 @@
     ]
   },
   "src/routes/registration/index.svelte": {
-    "file": "pages/registration/index.svelte-559ecb75.js",
+    "file": "pages/registration/index.svelte-74205122.js",
     "src": "src/routes/registration/index.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
@@ -98,15 +98,14 @@
       "_RegistrationForm-50074901.js",
       "_Button-17e544cc.js",
       "_stores-600db517.js",
-      "_index-8490d5e5.js",
-      "_env-b8be748f.js"
+      "_index-8490d5e5.js"
     ],
     "css": [
       "assets/pages/registration/index.svelte-f4a12000.css"
     ]
   },
   "src/routes/registration/admin.svelte": {
-    "file": "pages/registration/admin.svelte-cf4e99ce.js",
+    "file": "pages/registration/admin.svelte-1b36abe4.js",
     "src": "src/routes/registration/admin.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
@@ -114,12 +113,11 @@
       "_vendor-3b8c650a.js",
       "_stores-600db517.js",
       "_selectData-be498bc2.js",
-      "_env-b8be748f.js",
       "_Button-17e544cc.js",
       "_index-8490d5e5.js"
     ],
     "css": [
-      "assets/pages/registration/admin.svelte-68d0b90f.css"
+      "assets/pages/registration/admin.svelte-aa3ba42a.css"
     ]
   },
   "src/routes/registration/jury.svelte": {
@@ -310,8 +308,5 @@
     "css": [
       "assets/RegistrationForm-9a406800.css"
     ]
-  },
-  "_env-b8be748f.js": {
-    "file": "chunks/env-b8be748f.js"
   }
 }
