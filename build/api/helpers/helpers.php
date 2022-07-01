@@ -1,6 +1,8 @@
 <?php
 class Helpers {
-    static function deadline() {
+    static function deadline($key, $admin_key) {
+        if (!is_null($key) && $key === $admin_key)
+            return;
         $deadline = new DateTime("2022-07-01 01:00:00", new DateTimeZone("Europe/Vilnius"));
         if ($deadline->getTimestamp() < time()) {
             http_response_code(403);

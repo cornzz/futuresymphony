@@ -5,7 +5,8 @@
     $conn = OpenCon();
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        Helpers::deadline();
+        // TODO: check reg.seoncRound, skip deadline check if true
+        Helpers::deadline($_REQUEST["admin"] ?? null, ADMIN_KEY);
 
         $form = json_decode(file_get_contents("php://input"), TRUE);
         if (!Helpers::validateRegistrationDTO($form, FALSE)) {
@@ -88,6 +89,7 @@
 
         if ($result->num_rows) {
             // Prepare and return existing data
+            // TODO: return reg.secondRound
             $result = $conn->query(
                 "SELECT
                     a.id,

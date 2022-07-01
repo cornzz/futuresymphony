@@ -6,7 +6,7 @@
 
     $conn = OpenCon();
 
-    Helpers::deadline();
+    Helpers::deadline($_REQUEST["admin"] ?? null, ADMIN_KEY);
 
     $client_addr = $_SERVER["REMOTE_ADDR"];
     if (APP_ENV != "dev") {
