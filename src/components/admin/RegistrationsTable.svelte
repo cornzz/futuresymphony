@@ -1,11 +1,11 @@
 <script lang="ts">
     import { _ } from "svelte-i18n"
     import type { RegistrationDTO } from "../../helpers/RegistrationDTO"
+    import type { Criterion } from '../../helpers/types'
     import { baseURL } from "../../helpers/stores"
     import { referrers } from "../../helpers/selectData"
     import { orchestra } from "../../helpers/orchestra"
     import { createEventDispatcher } from "svelte"
-    import { dev } from "$app/env"
 
     export let registrations: RegistrationDTO[]
     export let confirmed: boolean = true
@@ -13,7 +13,10 @@
     const dispatch = createEventDispatcher()
 
     let numRows: number
-    let showAll: boolean = dev
+    let showAll: boolean
+    let paymentCriterion: Criterion = { active: false, value: true }
+    let completeCriterion: Criterion = { active: true, value: true }
+    let secondCriterion: Criterion = { active: false, value: null }
 
     function showInstrumentation(instrumentation: boolean[][]): void {
         let text = instrumentation
@@ -55,6 +58,35 @@
         <input type="checkbox" bind:checked={showAll}/>
         {$_('admin.table.showAll')}
     </label>
+    {#if confirmed}
+        | <span style={showAll ? 'opacity: 0.4' : ''}>
+            <label>
+                <input type="checkbox" bind:checked={paymentCriterion.active}/>
+                payment
+                <select disabled={!paymentCriterion.active} bind:value={paymentCriterion.value}>
+                    <option value={true}>true</option>
+                    <option value={false}>false</option>
+                </select>
+            </label>
+            <label>
+                <input type="checkbox" bind:checked={completeCriterion.active}/>
+                complete
+                <select disabled={!completeCriterion.active} bind:value={completeCriterion.value}>
+                    <option value={true}>true</option>
+                    <option value={false}>false</option>
+                </select>
+            </label>
+            <label>
+                <input type="checkbox" bind:checked={secondCriterion.active}/>
+                second
+                <select disabled={!secondCriterion.active} bind:value={secondCriterion.value}>
+                    <option value={null}>TBD</option>
+                    <option value={true}>true</option>
+                    <option value={false}>false</option>
+                </select>
+            </label>
+        </span>
+    {/if}
 </div>
 <div class="wrapper">
     <table>
@@ -85,158 +117,164 @@
             {/if}
         </tr>
         {#each showAll ? registrations : registrations.slice(0, numRows) as reg}
-            <tr>
-                <td>{reg.id}</td>
-                <td>
+            {#if showAll || !confirmed ||
+                (paymentCriterion.active ? reg.paymentConfirmed === paymentCriterion.value : true) &&
+                (completeCriterion.active ? reg.complete === completeCriterion.value : true) &&
+                (secondCriterion.active ? reg.secondRound === secondCriterion.value : true)
+            }
+                <tr>
+                    <td>{reg.id}</td>
+                    <td>
+                        {#if confirmed}
+                            <a class="link" href={`/registration/id?${reg.reg_key}`} target="_blank">{reg.reg_key}</a>
+                        {:else}
+                            <span>{reg.reg_key}</span>
+                        {/if}
+                    </td>
+                    <td>
+                        <a class="link" href={`mailto:${reg.email}`}>{reg.email}</a>
+                    </td>
+                    <td>{reg.firstName}</td>
+                    <td>{reg.lastName}</td>
+                    <td>{reg.dateOfBirth}</td>
+                    <td>{reg.country}</td>
+                    <td>{reg.registrationDate ?? ''}</td>
                     {#if confirmed}
-                        <a class="link" href={`/registration/id?${reg.reg_key}`} target="_blank">{reg.reg_key}</a>
-                    {:else}
-                        <span>{reg.reg_key}</span>
+                        <td>
+                            {#if reg.idCopy}
+                                <a
+                                    class="link"
+                                    href={new URL(
+                                        `/api/files.php?key=${reg.reg_key}&file=idCopyFile`,
+                                        $baseURL
+                                    ).toString()}
+                                    target="_blank"
+                                    data-label={reg.idCopy}
+                                >
+                                    {$_('admin.table.open')}
+                                </a>
+                            {/if}
+                        </td>
+                        <td>{reg.pieceTitle ?? ''}</td>
+                        <td>
+                            {#if reg.annotation}
+                                <span class="link" on:click={() => showContent(reg.annotation)}>
+                                    {$_('admin.table.show')}
+                                </span>
+                            {/if}
+                        </td>
+                        <td>    
+                            {#if reg.pieceScore}
+                                <a
+                                    class="link"
+                                    href={new URL(
+                                        `/api/files.php?key=${reg.reg_key}&file=pieceScoreFile`,
+                                        $baseURL
+                                    ).toString()}
+                                    target="_blank"
+                                    data-label={reg.pieceScore}
+                                >
+                                    {$_('admin.table.open')}
+                                </a>
+                            {/if}
+                        </td>
+                        <td>
+                            {#if reg.pieceDemo}
+                                <a
+                                    class="link"
+                                    href={new URL(
+                                        `/api/files.php?key=${reg.reg_key}&file=pieceDemoFile`,
+                                        $baseURL
+                                    ).toString()}
+                                    target="_blank"
+                                    data-label={reg.pieceDemo}
+                                >
+                                    {$_('admin.table.open')}
+                                </a>
+                            {/if}
+                        </td>
+                        <td>
+                            {#if reg.instrumentation}
+                                <span class="link" on:click={() => showInstrumentation(reg.instrumentation)}>
+                                    {$_('admin.table.show')}
+                                </span>
+                            {/if}    
+                        </td>
+                        <td>
+                            {#if reg.remarks}
+                                <span class="link" on:click={() => showContent(reg.remarks)}>
+                                    {$_('admin.table.show')}
+                                </span>
+                            {/if}
+                        </td>
+                        <td>{reg.scoreConfirmations ?? ''}</td>
+                        <td>
+                            {#if reg.proofOfPayment}
+                                <a
+                                    class="link"
+                                    href={new URL(
+                                        `/api/files.php?key=${reg.reg_key}&file=proofOfPaymentFile`,
+                                        $baseURL
+                                    ).toString()}
+                                    target="_blank"
+                                    data-label={reg.proofOfPayment}
+                                >
+                                    {$_('admin.table.open')}
+                                </a>
+                            {/if}    
+                        </td>
+                        <td>
+                            {#if reg.billingAddress}
+                                <span class="link" on:click={() => showContent(reg.billingAddress)}>
+                                    {$_('admin.table.show')}
+                                </span>
+                            {/if}
+                        </td>
+                        <td>{reg.referrer ? mapReferrer(reg.referrer) : ''}</td>
+                        <td
+                            class:success={reg.paymentConfirmed}
+                            class:error={!reg.paymentConfirmed}
+                        >
+                            <select
+                                bind:value={reg.paymentConfirmed}
+                                on:input={(e) => updateBoolean(reg.reg_key, 'payment', e.currentTarget)}
+                            >
+                                <option value={true}>true</option>
+                                <option value={false}>false</option>
+                            </select>
+                            {reg.paymentConfirmed}
+                        </td>
+                        <td
+                            class:success={reg.complete}
+                            class:error={!reg.complete}
+                        >
+                            <select
+                                bind:value={reg.complete}
+                                on:input={(e) => updateBoolean(reg.reg_key, 'complete', e.currentTarget)}
+                            >
+                                <option value={true}>true</option>
+                                <option value={false}>false</option>
+                            </select>
+                            {reg.complete}
+                        </td>
+                        <td
+                            class:success={reg.secondRound}
+                            class:error={!reg.secondRound}
+                            class:warning={reg.secondRound === null}
+                        >
+                            <select
+                                bind:value={reg.secondRound}
+                                on:input={(e) => updateBoolean(reg.reg_key, 'second', e.currentTarget)}
+                            >
+                                <option value={null}>TBD</option>
+                                <option value={true}>true</option>
+                                <option value={false}>false</option>
+                            </select>
+                            {reg.secondRound ?? 'TBD'}
+                        </td>
                     {/if}
-                </td>
-                <td>
-                    <a class="link" href={`mailto:${reg.email}`}>{reg.email}</a>
-                </td>
-                <td>{reg.firstName}</td>
-                <td>{reg.lastName}</td>
-                <td>{reg.dateOfBirth}</td>
-                <td>{reg.country}</td>
-                <td>{reg.registrationDate ?? ''}</td>
-                {#if confirmed}
-                    <td>
-                        {#if reg.idCopy}
-                            <a
-                                class="link"
-                                href={new URL(
-                                    `/api/files.php?key=${reg.reg_key}&file=idCopyFile`,
-                                    $baseURL
-                                ).toString()}
-                                target="_blank"
-                                data-label={reg.idCopy}
-                            >
-                                {$_('admin.table.open')}
-                            </a>
-                        {/if}
-                    </td>
-                    <td>{reg.pieceTitle ?? ''}</td>
-                    <td>
-                        {#if reg.annotation}
-                            <span class="link" on:click={() => showContent(reg.annotation)}>
-                                {$_('admin.table.show')}
-                            </span>
-                        {/if}
-                    </td>
-                    <td>    
-                        {#if reg.pieceScore}
-                            <a
-                                class="link"
-                                href={new URL(
-                                    `/api/files.php?key=${reg.reg_key}&file=pieceScoreFile`,
-                                    $baseURL
-                                ).toString()}
-                                target="_blank"
-                                data-label={reg.pieceScore}
-                            >
-                                {$_('admin.table.open')}
-                            </a>
-                        {/if}
-                    </td>
-                    <td>
-                        {#if reg.pieceDemo}
-                            <a
-                                class="link"
-                                href={new URL(
-                                    `/api/files.php?key=${reg.reg_key}&file=pieceDemoFile`,
-                                    $baseURL
-                                ).toString()}
-                                target="_blank"
-                                data-label={reg.pieceDemo}
-                            >
-                                {$_('admin.table.open')}
-                            </a>
-                        {/if}
-                    </td>
-                    <td>
-                        {#if reg.instrumentation}
-                            <span class="link" on:click={() => showInstrumentation(reg.instrumentation)}>
-                                {$_('admin.table.show')}
-                            </span>
-                        {/if}    
-                    </td>
-                    <td>
-                        {#if reg.remarks}
-                            <span class="link" on:click={() => showContent(reg.remarks)}>
-                                {$_('admin.table.show')}
-                            </span>
-                        {/if}
-                    </td>
-                    <td>{reg.scoreConfirmations ?? ''}</td>
-                    <td>
-                        {#if reg.proofOfPayment}
-                            <a
-                                class="link"
-                                href={new URL(
-                                    `/api/files.php?key=${reg.reg_key}&file=proofOfPaymentFile`,
-                                    $baseURL
-                                ).toString()}
-                                target="_blank"
-                                data-label={reg.proofOfPayment}
-                            >
-                                {$_('admin.table.open')}
-                            </a>
-                        {/if}    
-                    </td>
-                    <td>
-                        {#if reg.billingAddress}
-                            <span class="link" on:click={() => showContent(reg.billingAddress)}>
-                                {$_('admin.table.show')}
-                            </span>
-                        {/if}
-                    </td>
-                    <td>{reg.referrer ? mapReferrer(reg.referrer) : ''}</td>
-                    <td
-                        class:success={reg.paymentConfirmed}
-                        class:error={!reg.paymentConfirmed}
-                    >
-                        <select
-                            bind:value={reg.paymentConfirmed}
-                            on:input={(e) => updateBoolean(reg.reg_key, 'payment', e.currentTarget)}
-                        >
-                            <option value={true}>true</option>
-                            <option value={false}>false</option>
-                        </select>
-                        {reg.paymentConfirmed}
-                    </td>
-                    <td
-                        class:success={reg.complete}
-                        class:error={!reg.complete}
-                    >
-                        <select
-                            bind:value={reg.complete}
-                            on:input={(e) => updateBoolean(reg.reg_key, 'complete', e.currentTarget)}
-                        >
-                            <option value={true}>true</option>
-                            <option value={false}>false</option>
-                        </select>
-                        {reg.complete}
-                    </td>
-                    <td
-                        class:success={reg.secondRound}
-                        class:error={!reg.secondRound}
-                        class:warning={reg.secondRound === null}
-                    >
-                        <select
-                            bind:value={reg.secondRound}
-                            on:input={(e) => updateBoolean(reg.reg_key, 'second', e.currentTarget)}
-                        >
-                            <option value={null}>TBD</option>
-                            <option value={true}>true</option>
-                            <option value={false}>false</option>
-                        </select>
-                        {reg.secondRound ?? 'TBD'}
-                    </td>
-                {/if}
-            </tr>
+                </tr>
+            {/if}
         {/each}
     </table>
 </div>
@@ -247,6 +285,7 @@
 <style lang="stylus">
     .controls
         font-size 14px
+        margin-bottom 10px
 
         label
         input[type="checkbox"]

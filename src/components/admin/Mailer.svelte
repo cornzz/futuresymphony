@@ -4,6 +4,7 @@
     import Textarea from "../forms/Textarea.svelte"
     import Checkbox from "../forms/Checkbox.svelte"
     import { getAuth } from '../../helpers'
+    import type { Criterion } from '../../helpers/types'
     import { loading, baseURL } from '../../helpers/stores'
     import { onMount } from "svelte"
     import { _ } from 'svelte-i18n'
@@ -12,7 +13,6 @@
     export let show: boolean
     export let dialog: string
 
-    type Criterion = { active: boolean, value: boolean }
     type MailTemplate = {
         id?: number
         subject: string,
@@ -26,8 +26,8 @@
     let subject: string
     let message: string
     let statusCriterion: Criterion = { active: true, value: true }
-    let completeCriterion: Criterion = { active: false, value: true }
     let paymentCriterion: Criterion = { active: false, value: true }
+    let completeCriterion: Criterion = { active: false, value: true }
     let secondCriterion: Criterion = { active: false, value: null }
     let showPreflight: boolean = false
     let preflightConfirmation: boolean

@@ -38,3 +38,5 @@ export type Image = {
     bigsrc?: string,
     caption?: string
 } 
+
+export type Criterion = { active: boolean, value: boolean }
