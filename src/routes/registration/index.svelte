@@ -19,6 +19,7 @@
     let error: string = ''
     let success: boolean = false
     let resendEmail: string = ''
+    let adminKey: string
 
     $: outlookUser = [dto.email, resendEmail].some(mail => mail.match(/outlook\.|live\.|hotmail\.|msn\.|passport\./))
 
@@ -28,7 +29,8 @@
         if (form.reportValidity()) {
             $loading = true
             dto.lang = $locale
-            const response = await fetch(new URL('base_registration.php', $baseURL), {
+            const url = 'base_registration.php' + (adminKey ? `?admin=${adminKey}` : '')
+            const response = await fetch(new URL(url, $baseURL), {
                 method: 'POST',
                 body: JSON.stringify(dto)
             })
@@ -53,7 +55,10 @@
         }
     }
 
-    onMount(() => $deadline && (window.location.href = '/#participants'))
+    onMount(() => {
+        adminKey = localStorage.getItem('adminKey')
+        $deadline && !adminKey && (window.location.href = '/#participants')
+    })
 </script>
 
 <MetaTags 

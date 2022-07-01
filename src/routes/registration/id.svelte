@@ -20,6 +20,7 @@
     let error: [string, Object] = null
     let formChanged: boolean = false
     let cachedDto: RegistrationDTO = null
+    let adminKey: string
 
     async function saveForm(): Promise<boolean> {
         error = null
@@ -28,7 +29,8 @@
             console.log(`saving registration ${registrationID}`)
             $loading = true
             // Submit form data
-            let response = await fetch(new URL('registration.php', $baseURL), {
+            const url = 'registration.php' + (adminKey ? `?admin=${adminKey}` : '')
+            let response = await fetch(new URL(url, $baseURL), {
                 method: 'POST',
                 body: JSON.stringify(dto)
             })
@@ -40,7 +42,8 @@
                 for (let file of Object.entries(dto.files)) {
                     file[1] && data.append(file[0], file[1][0])
                 }
-                response = await fetch(new URL(`files.php?key=${registrationID}`, $baseURL), {
+                const url = 'files.php' + (adminKey ? `?admin=${adminKey}` : '')
+                response = await fetch(new URL(url, $baseURL), {
                     method: 'POST',
                     body: data
                 })
@@ -99,6 +102,7 @@
             invalidFields = form.getInvalid()
             disabled = true
         }
+        adminKey = localStorage.getItem('adminKey')
     })
 </script>
 
@@ -160,7 +164,7 @@
         {:else}
             <div></div>
         {/if}
-        {#if !$deadline}
+        {#if !$deadline || adminKey}
             <Button
                 type="primary"
                 on:click={async () => {

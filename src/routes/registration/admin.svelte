@@ -12,7 +12,7 @@
 
     let confirmed: RegistrationDTO[]
     let unconfirmed: RegistrationDTO[]
-    let password: string
+    let adminKey: string
     let initialLoad: boolean = false
     let error: string = ''
     let dialog: string = ''
@@ -22,11 +22,11 @@
         $loading = true
         const response = await fetch(new URL('admin.php', $baseURL), {
             method: 'POST',
-            headers: getAuth(password)
+            headers: getAuth(adminKey)
         })
         if (response.ok) {
             ({ confirmed, unconfirmed } = await response.json())
-            localStorage.setItem('adminPassword', password)
+            localStorage.setItem('adminKey', adminKey)
         } else if (response.status === 401) {
             error = 'admin.error.incorrectPass'
         } else {
@@ -45,7 +45,7 @@
         const response = await fetch(new URL('admin.php', $baseURL), {
             method: 'POST',
             headers: {
-                ...getAuth(password),
+                ...getAuth(adminKey),
                 'Content-Type': 'application/x-www-form-urlencoded'
             },
             body: new URLSearchParams({
@@ -58,8 +58,8 @@
     }
 
     onMount(async () => {
-        password = localStorage.getItem('adminPassword')
-        password && await login()
+        adminKey = localStorage.getItem('adminKey')
+        adminKey && await login()
         initialLoad = true
     })
 </script>
@@ -72,7 +72,7 @@
                     type="password"
                     name="password"
                     label={'admin.password'}
-                    bind:value={password}
+                    bind:value={adminKey}
                     on:keyup={(e) => e.key === 'Enter' && login()}
                 />
                 <Button
@@ -138,7 +138,7 @@
         {#if showMailer}
             <dialog open>
                 <Mailer
-                    {password}
+                    password={adminKey}
                     bind:show={showMailer}
                     bind:dialog
                 />
