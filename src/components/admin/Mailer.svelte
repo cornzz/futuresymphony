@@ -288,7 +288,11 @@
 
             label
             input[type="checkbox"]
+            select:enabled
                 cursor pointer
+
+            select:disabled
+                cursor initial
 
             label
                 display block
