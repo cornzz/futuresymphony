@@ -86,13 +86,14 @@
     .wrapper
         table
             width 100%
-            border-collapse collapse
+            border-collapse separate
+            border-spacing 0
             border solid 1px var(--color-border)
             background-color #fff
             border-radius 5px
 
             tr
-                &:not(:last-child)
+                &:not(:last-child) td
                     border-bottom solid 1px var(--color-border)
 
                 th
@@ -100,11 +101,6 @@
                     padding 5px 20px 0
                     border-bottom solid 1px var(--color-primary)
 
-                    &:first-child
-                        border-top-left-radius 5px
-
-                    &:last-child
-                        border-top-right-radius 5px
                 td
                     padding 15px 20px
                     text-align center
