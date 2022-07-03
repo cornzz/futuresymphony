@@ -34,6 +34,7 @@
     let recipients: string[] = []
     let templates: MailTemplate[] = []
     let currentTemplate: number
+    let initialLoad: boolean = false
 
     async function sendMail(preflight: boolean = true): Promise<void> {
         $loading = true
@@ -111,11 +112,13 @@
     }
 
     async function getTemplates(): Promise<void> {
+        $loading = true
         const response = await fetch(new URL('mail.php', $baseURL), {
             method: 'GET',
             headers: getAuth(password)
         })
         templates = await response.json()
+        $loading = false
     }
 
     function loadTemplate(template: MailTemplate): void {
@@ -133,139 +136,144 @@
     onMount(async () => {
         document.addEventListener('keydown', closeOnEscape)
         await getTemplates()
+        initialLoad = true
 
         return () => document.removeEventListener('keydown', closeOnEscape)
     })
 </script>
 
-{#if !showPreflight}
-    <div class="mailer">
-        <Input
-            type="text"
-            name="subject"
-            label="admin.mailer.subject"
-            bind:value={subject}
-        />
-        <Textarea
-            name="message"
-            label="admin.mailer.message"
-            rows={10}
-            bind:value={message}
-        />
-        {$_('admin.mailer.sendingCriteria')}:
-        <div class="criteria">    
-            <div>
-                <label>
-                    {$_('admin.mailer.status')}
-                    <select bind:value={statusCriterion.value}>
-                        <option value={true}>{$_('admin.mailer.confirmed')}</option>
-                        <option value={false}>{$_('admin.mailer.unconfirmed')}</option>
-                    </select>
-                </label>
+{#if initialLoad && !showPreflight}
+    <dialog open>
+        <div class="mailer">
+            <Input
+                type="text"
+                name="subject"
+                label="admin.mailer.subject"
+                bind:value={subject}
+            />
+            <Textarea
+                name="message"
+                label="admin.mailer.message"
+                rows={10}
+                bind:value={message}
+            />
+            {$_('admin.mailer.sendingCriteria')}:
+            <div class="criteria">    
+                <div>
+                    <label>
+                        {$_('admin.mailer.status')}
+                        <select bind:value={statusCriterion.value}>
+                            <option value={true}>{$_('admin.mailer.confirmed')}</option>
+                            <option value={false}>{$_('admin.mailer.unconfirmed')}</option>
+                        </select>
+                    </label>
+                </div>
+                {#if statusCriterion.value}
+                    <div>
+                        <label>
+                            <input type="checkbox" bind:checked={paymentCriterion.active}/>
+                            payment
+                            <select disabled={!paymentCriterion.active} bind:value={paymentCriterion.value}>
+                                <option value={true}>true</option>
+                                <option value={false}>false</option>
+                            </select>
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            <input type="checkbox" bind:checked={completeCriterion.active}/>
+                            complete
+                            <select disabled={!completeCriterion.active} bind:value={completeCriterion.value}>
+                                <option value={true}>true</option>
+                                <option value={false}>false</option>
+                            </select>
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            <input type="checkbox" bind:checked={secondCriterion.active}/>
+                            second
+                            <select disabled={!secondCriterion.active} bind:value={secondCriterion.value}>
+                                <option value={null}>TBD</option>
+                                <option value={true}>true</option>
+                                <option value={false}>false</option>
+                            </select>
+                        </label>
+                    </div>
+                {/if}
             </div>
-            {#if statusCriterion.value}
-                <div>
-                    <label>
-                        <input type="checkbox" bind:checked={paymentCriterion.active}/>
-                        payment
-                        <select disabled={!paymentCriterion.active} bind:value={paymentCriterion.value}>
-                            <option value={true}>true</option>
-                            <option value={false}>false</option>
-                        </select>
-                    </label>
-                </div>
-                <div>
-                    <label>
-                        <input type="checkbox" bind:checked={completeCriterion.active}/>
-                        complete
-                        <select disabled={!completeCriterion.active} bind:value={completeCriterion.value}>
-                            <option value={true}>true</option>
-                            <option value={false}>false</option>
-                        </select>
-                    </label>
-                </div>
-                <div>
-                    <label>
-                        <input type="checkbox" bind:checked={secondCriterion.active}/>
-                        second
-                        <select disabled={!secondCriterion.active} bind:value={secondCriterion.value}>
-                            <option value={null}>TBD</option>
-                            <option value={true}>true</option>
-                            <option value={false}>false</option>
-                        </select>
-                    </label>
+            {#if templates.length}
+                Templates:
+                <div class="templates">
+                    {#each templates as template}
+                        <div class:loaded={currentTemplate === template.id}>
+                            <span class="subject"><b>Subject:</b> {template.subject}</span>
+                            <span class="message"><b>Message:</b> {template.message}</span>
+                            <span class="link" on:click={() => loadTemplate(template)}>
+                                {$_('admin.mailer.load')}
+                            </span>
+                            <span class="link" on:click={() => deleteTemplate(template)}>
+                                {$_('admin.mailer.delete')}
+                            </span>
+                        </div>
+                    {/each}
                 </div>
             {/if}
         </div>
-        {#if templates.length}
-            Templates:
-            <div class="templates">
-                {#each templates as template}
-                    <div class:loaded={currentTemplate === template.id}>
-                        <span class="subject"><b>Subject:</b> {template.subject}</span>
-                        <span class="message"><b>Message:</b> {template.message}</span>
-                        <span class="link" on:click={() => loadTemplate(template)}>
-                            {$_('admin.mailer.load')}
-                        </span>
-                        <span class="link" on:click={() => deleteTemplate(template)}>
-                            {$_('admin.mailer.delete')}
-                        </span>
-                    </div>
-                {/each}
-            </div>
+        <div class="buttons">
+            <Button
+                on:click={() => show = false}
+            >
+                {$_('registration.form.cancel')}
+            </Button>
+            <Button
+                disabled={!subject || !message || $loading}
+                on:click={saveTemplate}
+            >
+                {$_('admin.mailer.saveTemplate')}
+            </Button>
+            <Button
+                type="primary"
+                disabled={!subject || !message || $loading}
+                on:click={() => sendMail()}
+            >
+                {$_('admin.mailer.send')}
+            </Button>
+        </div>
+    </dialog>
+{:else if initialLoad}
+    <dialog open>
+        {$_('admin.mailer.sendingNMessages', { values: { number: recipients.length }})}
+        <hr>
+        {#if recipients.length}
+            {$_('admin.mailer.recipients')}:<br>
+            {#each recipients as recipient}
+                {recipient}<br>
+            {/each}
         {/if}
-    </div>
-    <div class="buttons">
-        <Button
-            on:click={() => show = false}
-        >
-            {$_('registration.form.cancel')}
-        </Button>
-        <Button
-            disabled={!subject || !message || $loading}
-            on:click={saveTemplate}
-        >
-            {$_('admin.mailer.saveTemplate')}
-        </Button>
-        <Button
-            type="primary"
-            disabled={!subject || !message || $loading}
-            on:click={() => sendMail()}
-        >
-            {$_('admin.mailer.send')}
-        </Button>
-    </div>
-{:else}
-    {$_('admin.mailer.sendingNMessages', { values: { number: recipients.length }})}
-    <hr>
-    {#if recipients.length}
-        {$_('admin.mailer.recipients')}:<br>
-        {#each recipients as recipient}
-            {recipient}<br>
-        {/each}
-    {/if}
-    <hr>
-    <div class="confirmation">
-        <Checkbox
-            name="preflightConfirmation"
-            label={$_('admin.mailer.confirmRecipients')}
-            bind:checked={preflightConfirmation}
-        />
-    </div>
-    <div class="buttons">
-        <Button
-            on:click={() => showPreflight = false}
-        >
-            {$_('error.goBack')}
-        </Button>
-        <Button
-            type="primary"
-            disabled={!preflightConfirmation || $loading}
-            on:click={() => sendMail(false)}
-        >
-            {$_('admin.mailer.confirm')}
-        </Button>
-    </div>
+        <hr>
+        <div class="confirmation">
+            <Checkbox
+                name="preflightConfirmation"
+                label={$_('admin.mailer.confirmRecipients')}
+                bind:checked={preflightConfirmation}
+            />
+        </div>
+        <div class="buttons">
+            <Button
+                on:click={() => showPreflight = false}
+            >
+                {$_('error.goBack')}
+            </Button>
+            <Button
+                type="primary"
+                disabled={!preflightConfirmation || $loading}
+                on:click={() => sendMail(false)}
+            >
+                {$_('admin.mailer.confirm')}
+            </Button>
+        </div>
+    </dialog>
 {/if}
 
 <style lang="stylus">

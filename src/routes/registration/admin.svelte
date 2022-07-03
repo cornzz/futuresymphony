@@ -141,13 +141,11 @@
             </dialog>
         {/if}
         {#if showMailer}
-            <dialog open>
-                <Mailer
-                    password={adminKey}
-                    bind:show={showMailer}
-                    bind:dialog
-                />
-            </dialog>
+            <Mailer
+                password={adminKey}
+                bind:show={showMailer}
+                bind:dialog
+            />
         {/if}
     {/if}
 </div>
@@ -186,8 +184,4 @@
         .admin
             .login
                 width 75%
-
-            dialog
-                max-width 90vw
-                top 55%
 </style>
