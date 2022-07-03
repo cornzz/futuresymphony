@@ -23,7 +23,7 @@
         }
     },
     "images": {
-        "regular": "news_corona.png",
-        "small": "news_corona_small.png"
+        "regular": "corona.png",
+        "small": "corona_small.png"
     }
 }

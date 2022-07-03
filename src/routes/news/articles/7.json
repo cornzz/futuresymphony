@@ -23,7 +23,7 @@
         }
     },
     "images": {
-        "regular": "news_first_round.jpg",
-        "small": "news_first_round_small.jpg"
+        "regular": "first_round.jpg",
+        "small": "first_round_small.jpg"
     }
 }

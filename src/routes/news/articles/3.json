@@ -1,5 +1,5 @@
 {
-    "slug": "registration-open",
+    "slug": "registration_open",
     "meta": {
         "en": "Registration starts now, final instrumentation is announced!",
         "lt": "Skelbiama registracijos pradžia ir galutinė instrumentuotė!"
@@ -23,7 +23,7 @@
         }
     },
     "images": {
-        "regular": "news_registration.jpg",
-        "small": "news_registration_small.jpg"
+        "regular": "registration.jpg",
+        "small": "registration_small.jpg"
     }
 }
