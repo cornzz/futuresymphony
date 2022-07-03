@@ -57,10 +57,15 @@
         $loading = false
     }
 
+    const closeOnEscape = (event: KeyboardEvent) => event.key === 'Escape' && (dialog = '')
+
     onMount(async () => {
         adminKey = localStorage.getItem('adminKey')
         adminKey && await login()
         initialLoad = true
+        window.addEventListener('keydown', closeOnEscape)
+
+        return () => window.removeEventListener('keydown', closeOnEscape)
     })
 </script>
 

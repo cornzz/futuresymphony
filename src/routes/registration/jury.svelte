@@ -13,6 +13,8 @@
         download_key: string
     }[] = []
 
+    const closeOnEscape = (event: KeyboardEvent) => event.key === 'Escape' && (dialog = '')
+
     onMount(async () => {
         $loading = true
         juryKey = window.location.search.substring(1)
@@ -25,6 +27,10 @@
             dialog = 'Invalid access key.'
         }
         $loading = false
+
+        window.addEventListener('keydown', closeOnEscape)
+
+        return () => window.removeEventListener('keydown', closeOnEscape)
     })
 </script>
 
