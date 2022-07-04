@@ -112,7 +112,7 @@
         grid-template-columns repeat(5, 20%)
         grid-template-rows repeat(3, 1fr)
         grid-template-areas "a a a b b" "c c d d d" "e e f f f"
-        height 90%
+        height 95%
 
         .flex-column
             display flex
@@ -173,7 +173,7 @@
         .content
             grid-template-rows repeat(5, 1fr)
             grid-template-areas "a a a a a" "b b c c c" "d d d d d" "e e e e e" "f f f f f"
-            height 100%
+            height 90%
 
             .flex-column
                 .sponsor-title

@@ -54,7 +54,7 @@
 </div>
 
 <div bind:this={sponsors} id="sponsors">
-    <Tab>
+    <Tab justify={false}>
         <h1 class="cover-heading">{$_('sponsors.title')}</h1>
         <Sponsors/>
     </Tab>
