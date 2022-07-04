@@ -34,19 +34,21 @@
             </div>
         </div>
     </div>
-    <div class="flex-row" >
+    <div class="flex-row break">
         <div class="flex-column">
             <h2 class="sponsor-title">{$_('sponsors.infSponsor')}:</h2>
             <div class="flex-row">
                 <a class="sponsor" href="https://www.lrt.lt/" target="blank"><img src="/images/sponsors/logo_lrt.png" alt="logo_lrt.png" loading="lazy"></a>
+                <a class="sponsor" href="https://iq.lt/" target="blank"><img src="/images/sponsors/logo_iq.png" alt="logo_iq.png" loading="lazy"></a>
             </div>
         </div>
-        <div class="flex-column" style="flex-grow: 2">
+        <div class="flex-column">
             <h2 class="sponsor-title">{$_('sponsors.partners')}:</h2>
             <div class="flex-row">
                 <a class="sponsor" href="https://www.jmr.lt/" target="blank"><img src="/images/sponsors/logo_pk.png" alt="logo_pk.png" loading="lazy"></a>
                 <a class="sponsor undersize" href="https://www.legrande.de/" target="blank"><img src="/images/sponsors/logo_cg.png" alt="logo_cg.png" loading="lazy"></a>
                 <a class="sponsor undersize" href="https://domusmaria.com/" target="blank"><img src="/images/sponsors/logo_dm.png" alt="logo_dm.png" loading="lazy"></a>
+                <a class="sponsor" href="https://domusmaria.com/" target="blank"><img src="/images/sponsors/logo_cf.png" alt="logo_cf.png" loading="lazy"></a>
             </div>
         </div>
     </div>
@@ -123,7 +125,9 @@
 
                 &.break
                     flex-wrap wrap
-                    flex-grow 2
+
+                    .flex-column
+                        width 100%
 
             .flex-column
                 .sponsor-title
