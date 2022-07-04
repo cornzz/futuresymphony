@@ -35,7 +35,7 @@
         },
         lrt: {
             href: { en: 'https://www.lrt.lt/en/', lt: 'https://www.lrt.lt/' },
-            src: { lt: 'logo_lrt.png' }
+            src: { lt: 'logo_lrt_new.png' }
         },
         iq: {
             href: { lt: 'https://iq.lt/' },
