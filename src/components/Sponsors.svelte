@@ -45,6 +45,7 @@
             <h2 class="sponsor-title">{$_('sponsors.partners')}:</h2>
             <div class="flex-row">
                 <a class="sponsor" href="https://www.jmr.lt/" target="blank"><img src="/images/sponsors/logo_pk.png" alt="logo_pk.png" loading="lazy"></a>
+                <a class="sponsor undersize" href="https://domusmaria.com/" target="blank"><img src="/images/sponsors/logo_cg.png" alt="logo_cg.png" loading="lazy"></a>
                 <a class="sponsor undersize" href="https://domusmaria.com/" target="blank"><img src="/images/sponsors/logo_dm.png" alt="logo_dm.png" loading="lazy"></a>
             </div>
         </div>
