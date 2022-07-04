@@ -1,20 +1,62 @@
 <script lang="ts">
     import { _, locale } from 'svelte-i18n'
 
-    const path = (img: string) => `/images/sponsors/${img}`
-    const links = {
-        lkt: { en: 'https://www.ltkt.lt/en/', lt: 'https://www.ltkt.lt/', src: 'logo_lkt.png' },
-        latga: { en: 'https://www.latga.lt/en/about-us/', lt: 'https://www.latga.lt/', src: 'logo_latga.png' },
-        vln: { en: 'https://vilnius.lt/en/', lt: 'https://vilnius.lt/', src: 'logo_vln.png' },
-        lnf: { en: 'https://www.filharmonija.lt/en/', lt: 'https://www.filharmonija.lt/', src: 'logo_lnf.png' },
-        kf: { en: 'http://skfoundation.com/', lt: 'http://skfoundation.com/', src: 'logo_kf.png' },
-        tn: { en: 'https://www.triplenode.com/', lt: 'https://www.triplenode.com/', src: 'logo_tn.png' },
-        lrt: { en: 'https://www.lrt.lt/en/', lt: 'https://www.lrt.lt/', src: 'logo_lrt.png' },
-        iq: { en: 'https://iq.lt/', lt: 'https://iq.lt/', src: 'logo_iq.png' },
-        pk: { en: 'http://www.jmr.lt/?lang=en', lt: 'http://www.jmr.lt/', src: 'logo_pk.png' },
-        cg: { en: 'https://www.legrande.de/', lt: 'https://www.legrande.de/', src: 'logo_cg.png' },
-        dm: { en: 'https://domusmaria.com/', lt: 'https://domusmaria.com/lt/', src: 'logo_dm.png' },
-        cf: { en: 'https://caffeine.lt/', lt: 'https://caffeine.lt/', src: 'logo_cf.png' }
+    type Sponsors = {
+        [key: string]: {
+            href: { en?: string, lt: string },
+            src: { en?: string, lt: string }
+        }
+    }
+
+    const links: Sponsors = {
+        lkt: {
+            href: { en: 'https://www.ltkt.lt/en/', lt: 'https://www.ltkt.lt/' },
+            src: { en: 'logo_lkt_en.png', lt: 'logo_lkt.png' }
+        },
+        latga: {
+            href: { en: 'https://www.latga.lt/en/about-us/', lt: 'https://www.latga.lt/' },
+            src: { lt: 'logo_latga.png' }
+        },
+        vln: {
+            href: { en: 'https://vilnius.lt/en/', lt: 'https://vilnius.lt/' },
+            src: { lt: 'logo_vln.png' }
+        },
+        lnf: {
+            href: { en: 'https://www.filharmonija.lt/en/', lt: 'https://www.filharmonija.lt/' },
+            src: { en: 'logo_lnf_en.png', lt: 'logo_lnf.png' }
+        },
+        kf: {
+            href: { lt: 'http://skfoundation.com/' },
+            src: { lt: 'logo_kf.png' }
+        },
+        tn: {
+            href: { lt: 'https://www.triplenode.com/' },
+            src: { lt: 'logo_tn.png' }
+        },
+        lrt: {
+            href: { en: 'https://www.lrt.lt/en/', lt: 'https://www.lrt.lt/' },
+            src: { lt: 'logo_lrt.png' }
+        },
+        iq: {
+            href: { lt: 'https://iq.lt/' },
+            src: { lt: 'logo_iq.png' }
+        },
+        pk: {
+            href: { en: 'http://www.jmr.lt/?lang=en', lt: 'http://www.jmr.lt/' },
+            src: { lt: 'logo_pk.png' }
+        },
+        cg: {
+            href: { lt: 'https://www.legrande.de/' },
+            src: { lt: 'logo_cg.png' }
+        },
+        dm: {
+            href: { en: 'https://domusmaria.com/', lt: 'https://domusmaria.com/lt/' },
+            src: { lt: 'logo_dm.png' }
+        },
+        cf: {
+            href: { lt: 'https://caffeine.lt/' },
+            src: { lt: 'logo_cf.png' }
+        }
     }
 </script>
 
@@ -22,8 +64,8 @@
     <div class="flex-column" style="grid-area: a">
         <h2 class="sponsor-title">{$_('sponsors.financedBy')}:</h2>
         <div class="flex-row">
-            <a class="sponsor" href={links.lkt[$locale]} target="blank"><img src={path(links.lkt.src)} alt={links.lkt.src} loading="lazy"></a>
-            <a class="sponsor" href={links.latga[$locale]} target="blank"><img src={path(links.latga.src)} alt={links.latga.src} loading="lazy"></a>
+            <a class="sponsor" href={links.lkt.href[$locale] ?? links.lkt.href.lt} target="blank"><img src={`/images/sponsors/${links.lkt.src[$locale] ?? links.lkt.src.lt}`} alt={links.lkt.src[$locale] ?? links.lkt.src.lt} loading="lazy"></a>
+            <a class="sponsor" href={links.latga.href[$locale] ?? links.latga.href.lt} target="blank"><img src={`/images/sponsors/${links.latga.src[$locale] ?? links.latga.src.lt}`} alt={links.latga.src[$locale] ?? links.latga.src.lt} loading="lazy"></a>
         </div>
     </div>
     <div class="flex-column" style="grid-area: b">
@@ -35,31 +77,31 @@
     <div class="flex-column" style="grid-area: c">
         <h2 class="sponsor-title">{$_('sponsors.mainSponsors')}:</h2>
         <div class="flex-row">
-            <a class="sponsor" href={links.vln[$locale]} target="blank"><img src={path(links.vln.src)} alt={links.vln.src} loading="lazy"></a>
-            <a class="sponsor" href={links.lnf[$locale]} target="blank"><img src={path(links.lnf.src)} alt={links.lnf.src} loading="lazy"></a>
+            <a class="sponsor" href={links.vln.href[$locale] ?? links.vln.href.lt} target="blank"><img src={`/images/sponsors/${links.vln.src[$locale] ?? links.vln.src.lt}`} alt={links.vln.src[$locale] ?? links.vln.src.lt} loading="lazy"></a>
+            <a class="sponsor" href={links.lnf.href[$locale] ?? links.lnf.href.lt} target="blank"><img src={`/images/sponsors/${links.lnf.src[$locale] ?? links.lnf.src.lt}`} alt={links.lnf.src[$locale] ?? links.lnf.src.lt} loading="lazy"></a>
         </div>
     </div>
     <div class="flex-column" style="grid-area: d">
         <h2 class="sponsor-title">{$_('sponsors.sponsors')}:</h2>
         <div class="flex-row">
-            <a class="sponsor" href={links.kf[$locale]} target="blank"><img src={path(links.kf.src)} alt={links.kf.src} loading="lazy"></a>
-            <a class="sponsor" href={links.tn[$locale]} target="blank"><img src={path(links.tn.src)} alt={links.tn.src} loading="lazy" class="oversize"></a>
+            <a class="sponsor" href={links.kf.href[$locale] ?? links.kf.href.lt} target="blank"><img src={`/images/sponsors/${links.kf.src[$locale] ?? links.kf.src.lt}`} alt={links.kf.src[$locale] ?? links.kf.src.lt} loading="lazy"></a>
+            <a class="sponsor" href={links.tn.href[$locale] ?? links.tn.href.lt} target="blank"><img src={`/images/sponsors/${links.tn.src[$locale] ?? links.tn.src.lt}`} alt={links.tn.src[$locale] ?? links.tn.src.lt} loading="lazy" class="oversize"></a>
         </div>
     </div>
     <div class="flex-column" style="grid-area: e">
         <h2 class="sponsor-title">{$_('sponsors.infSponsor')}:</h2>
         <div class="flex-row">
-            <a class="sponsor" href={links.lrt[$locale]} target="blank"><img src={path(links.lrt.src)} alt={links.lrt.src} loading="lazy"></a>
-            <a class="sponsor" href={links.iq[$locale]} target="blank"><img src={path(links.iq.src)} alt={links.iq.src} loading="lazy"></a>
+            <a class="sponsor" href={links.lrt.href[$locale] ?? links.lrt.href.lt} target="blank"><img src={`/images/sponsors/${links.lrt.src[$locale] ?? links.lrt.src.lt}`} alt={links.lrt.src[$locale] ?? links.lrt.src.lt} loading="lazy"></a>
+            <a class="sponsor" href={links.iq.href[$locale] ?? links.iq.href.lt} target="blank"><img src={`/images/sponsors/${links.iq.src[$locale] ?? links.iq.src.lt}`} alt={links.iq.src[$locale] ?? links.iq.src.lt} loading="lazy"></a>
         </div>
     </div>
     <div class="flex-column" style="grid-area: f">
         <h2 class="sponsor-title">{$_('sponsors.partners')}:</h2>
         <div class="flex-row">
-            <a class="sponsor" href={links.pk[$locale]} target="blank"><img src={path(links.pk.src)} alt={links.pk.src} loading="lazy"></a>
-            <a class="sponsor undersize" href={links.cg[$locale]} target="blank"><img src={path(links.cg.src)} alt={links.cg.src} loading="lazy"></a>
-            <a class="sponsor undersize" href={links.dm[$locale]} target="blank"><img src={path(links.dm.src)} alt={links.dm.src} loading="lazy"></a>
-            <a class="sponsor" href={links.cf[$locale]} target="blank"><img src={path(links.cf.src)} alt={links.cf.src} loading="lazy"></a>
+            <a class="sponsor" href={links.pk.href[$locale] ?? links.pk.href.lt} target="blank"><img src={`/images/sponsors/${links.pk.src[$locale] ?? links.pk.src.lt}`} alt={links.pk.src[$locale] ?? links.pk.src.lt} loading="lazy"></a>
+            <a class="sponsor undersize" href={links.cg.href[$locale] ?? links.cg.href.lt} target="blank"><img src={`/images/sponsors/${links.cg.src[$locale] ?? links.cg.src.lt}`} alt={links.cg.src[$locale] ?? links.cg.src.lt} loading="lazy"></a>
+            <a class="sponsor undersize" href={links.dm.href[$locale] ?? links.dm.href.lt} target="blank"><img src={`/images/sponsors/${links.dm.src[$locale] ?? links.dm.src.lt}`} alt={links.dm.src[$locale] ?? links.dm.src.lt} loading="lazy"></a>
+            <a class="sponsor" href={links.cf.href[$locale] ?? links.cf.href.lt} target="blank"><img src={`/images/sponsors/${links.cf.src[$locale] ?? links.cf.src.lt}`} alt={links.cf.src[$locale] ?? links.cf.src.lt} loading="lazy"></a>
         </div>
     </div>
 </div>
