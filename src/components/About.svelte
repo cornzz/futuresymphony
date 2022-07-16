@@ -74,13 +74,40 @@
     </div>
 
     <p>
-        {$_('sections.jury.title')}<br>
-        <a href="https://www.lmic.lv/en/composers/martins-vilums-488#work" class="link" target="_blank">Mārtiņš Viļums</a> ({$_('sections.jury.lvlt')})<br>
-        <a href="https://www.kyriakides.com/" class="link" target="_blank">Yannis Kyriakides</a> ({$_('sections.jury.cynl')})<br>
-        <a href="https://www.justejanulyte.com/en/about/" class="link" target="_blank">Justė Janulytė</a> ({$_('sections.jury.lt')})<br>
-        <a href="https://www.filharmonija.lt/en/performers/modestas-pitrenas-artistic-director-and-principal-conductor-of-the-lnso18.html" class="link" target="_blank">Modestas Pitrėnas</a> ({$_('sections.jury.lt')})<br>
-        <a href="http://www.gediminasgelgotas.com/" class="link" target="_blank">Gediminas Gelgotas</a> ({$_('sections.jury.lt')})<br>
-        <a href="https://ayaladler.com/" class="link" target="_blank">Ayal Adler</a> ({$_('sections.jury.il')})<br>
+        {$_('sections.jury.first_title')}:<br>
+        <a href="http://www.baltakas.net/" class="link" target="_blank">
+            Vykintas Baltakas
+        </a> ({$_('sections.jury.chairman')}, {$_('sections.jury.lt')})<br>
+        <a href="http://janispetraskevics.com/" class="link" target="_blank">
+            Jānis Petraškevičs
+        </a> ({$_('sections.jury.lv')})<br>
+        <a href="https://www.mic.lt/lt/baze/klasikine-siuolaikine/kompozitoriai/maciliunaite/" class="link" target="_blank">
+            Rita Mačiliūnaitė
+        </a> ({$_('sections.jury.lt')})<br>
+        <a href="https://www.kristoforas.lt/apie-mus/orkestro-vadovai/" class="link" target="_blank">
+            Modestas Barkauskas
+        </a> ({$_('sections.jury.lt')})
+    </p>
+    <p>
+        {$_('sections.jury.second_title')}:<br>
+        <a href="https://www.lmic.lv/en/composers/martins-vilums-488#work" class="link" target="_blank">
+            Mārtiņš Viļums
+        </a> ({$_('sections.jury.lvlt')})<br>
+        <a href="https://www.kyriakides.com/" class="link" target="_blank">
+            Yannis Kyriakides
+        </a> ({$_('sections.jury.cynl')})<br>
+        <a href="https://www.justejanulyte.com/en/about/" class="link" target="_blank">
+            Justė Janulytė
+        </a> ({$_('sections.jury.lt')})<br>
+        <a href="https://www.filharmonija.lt/en/performers/modestas-pitrenas-artistic-director-and-principal-conductor-of-the-lnso18.html" class="link" target="_blank">
+            Modestas Pitrėnas
+        </a> ({$_('sections.jury.lt')})<br>
+        <a href="http://www.gediminasgelgotas.com/" class="link" target="_blank">
+            Gediminas Gelgotas
+        </a> ({$_('sections.jury.lt')})<br>
+        <a href="https://ayaladler.com/" class="link" target="_blank">
+            Ayal Adler
+        </a> ({$_('sections.jury.il')})<br>
     </p>
     <p>{@html $_('sections.prize')}</p>
 </div>
