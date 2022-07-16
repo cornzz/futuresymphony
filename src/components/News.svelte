@@ -5,12 +5,15 @@
     export let latest = false
 
     const imports = import.meta.globEager('../routes/news/articles/*.json') as { [path: string]: NewsArticle }
-    let articles: { id: string, article: NewsArticle}[] = Object.entries(imports).map(([path, article]) => ({ id: path.match(/\d+/)[0], article }))
+
+    let articlesShown: number = 10
+    let articles: { id: string, article: NewsArticle }[] = Object.entries(imports).map(([path, article]) => ({ id: path.match(/\d+/)[0], article }))
+
     articles.sort((a, b) => Number(b.id) - Number(a.id))
     articles = latest ? articles.slice(0, 3) : articles
 </script>
 
-{#each articles as { article }}
+{#each articles.slice(0, articlesShown) as { article }}
     <a href={`/news/${article.slug}`} class="news-link" class:fixed={!latest}>
         <div class="news-item dropshadow" data-readmore={$_('news.readmore')}>
             <img
@@ -33,6 +36,8 @@
 {/each}
 {#if latest}
     <div class="center"><a href="/news" class="link">{$_('news.older')}</a></div>
+{:else if articlesShown < articles.length}
+    <span class="center link older" on:click={() => articlesShown += 5}>{$_('news.showOlder')}</span>
 {/if}
 
 <style lang="stylus">
@@ -159,6 +164,9 @@
     .center
         width 100%
         text-align center
+    
+    .older
+        margin-top 15px
 
     @media screen and (max-device-width: 600px)
         .news-link

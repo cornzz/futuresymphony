@@ -20,6 +20,7 @@
     "news": {
         "title": "News",
         "older": "Older news",
+        "showOlder": "Show older news",
         "readmore": "Read more",
         "slug": {
             "meta": {
