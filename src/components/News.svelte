@@ -25,7 +25,7 @@
                 <div class="date"><i>{@html article.date[$locale]}</i></div>
                 <span class="title"><b>{@html article.title[$locale]}</b></span>
                 <div class="text">
-                    {@html article.content.full[$locale]}
+                    {@html article.content.short ? article.content.short[$locale] : article.content.full[$locale]}
                 </div>
             </div>
         </div>
