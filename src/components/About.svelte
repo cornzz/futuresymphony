@@ -74,7 +74,7 @@
     </div>
 
     <p>
-        {$_('sections.jury.first_title')}:<br>
+        {@html $_('sections.jury.first_title')}:<br>
         <a href="http://www.baltakas.net/" class="link" target="_blank">
             Vykintas Baltakas
         </a> ({$_('sections.jury.chairman')}, {$_('sections.jury.lt')})<br>
@@ -89,7 +89,7 @@
         </a> ({$_('sections.jury.lt')})
     </p>
     <p>
-        {$_('sections.jury.second_title')}:<br>
+        {@html $_('sections.jury.second_title')}:<br>
         <a href="https://www.lmic.lv/en/composers/martins-vilums-488#work" class="link" target="_blank">
             Mārtiņš Viļums
         </a> ({$_('sections.jury.lvlt')})<br>
@@ -107,7 +107,7 @@
         </a> ({$_('sections.jury.lt')})<br>
         <a href="https://ayaladler.com/" class="link" target="_blank">
             Ayal Adler
-        </a> ({$_('sections.jury.il')})<br>
+        </a> ({$_('sections.jury.il')})
     </p>
     <p>{@html $_('sections.prize')}</p>
 </div>
