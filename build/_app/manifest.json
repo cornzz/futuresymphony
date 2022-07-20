@@ -1,6 +1,6 @@
 {
   ".svelte-kit/build/runtime/internal/start.js": {
-    "file": "start-03726f3f.js",
+    "file": "start-690d120c.js",
     "src": ".svelte-kit/build/runtime/internal/start.js",
     "isEntry": true,
     "imports": [
@@ -54,7 +54,7 @@
     ]
   },
   "src/routes/index.svelte": {
-    "file": "pages/index.svelte-4520107e.js",
+    "file": "pages/index.svelte-edf10c69.js",
     "src": "src/routes/index.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
@@ -64,10 +64,10 @@
       "_Quote-e66dbf13.js",
       "_Image-24d5c65a.js",
       "_index-8490d5e5.js",
-      "_News-92a9666c.js",
+      "_News-5f63a8ec.js",
       "_Button-17e544cc.js",
       "_stores-600db517.js",
-      "_9-20492057.js"
+      "_9-7c3da7ec.js"
     ],
     "css": [
       "assets/pages/index.svelte-d3e4304b.css"
@@ -179,25 +179,25 @@
     ]
   },
   "src/routes/news/index.svelte": {
-    "file": "pages/news/index.svelte-e841fc94.js",
+    "file": "pages/news/index.svelte-6d3ae308.js",
     "src": "src/routes/news/index.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
       "_vendor-3b8c650a.js",
       "_Tab-fe19bf4c.js",
-      "_News-92a9666c.js",
+      "_News-5f63a8ec.js",
       "_stores-600db517.js",
-      "_9-20492057.js"
+      "_9-7c3da7ec.js"
     ]
   },
   "src/routes/news/[slug].svelte": {
-    "file": "pages/news/_slug_.svelte-bb961be0.js",
+    "file": "pages/news/_slug_.svelte-e078b6b4.js",
     "src": "src/routes/news/[slug].svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_9-20492057.js",
+      "_9-7c3da7ec.js",
       "_vendor-3b8c650a.js",
       "_Tab-fe19bf4c.js",
       "_Image-24d5c65a.js",
@@ -248,10 +248,10 @@
       "assets/Tab-2d18c60d.css"
     ]
   },
-  "_News-92a9666c.js": {
-    "file": "chunks/News-92a9666c.js",
+  "_News-5f63a8ec.js": {
+    "file": "chunks/News-5f63a8ec.js",
     "imports": [
-      "_9-20492057.js",
+      "_9-7c3da7ec.js",
       "_vendor-3b8c650a.js"
     ],
     "css": [
@@ -277,8 +277,8 @@
       "assets/Image-ed208c95.css"
     ]
   },
-  "_9-20492057.js": {
-    "file": "chunks/9-20492057.js"
+  "_9-7c3da7ec.js": {
+    "file": "chunks/9-7c3da7ec.js"
   },
   "_Button-17e544cc.js": {
     "file": "chunks/Button-17e544cc.js",
