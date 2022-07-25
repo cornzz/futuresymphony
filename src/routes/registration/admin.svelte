@@ -17,6 +17,7 @@
     let error: string = ''
     let dialog: string = ''
     let showMailer: boolean = false
+    let recipient: string = ''
 
     async function login(): Promise<boolean> {
         $loading = true
@@ -57,7 +58,7 @@
         $loading = false
     }
 
-    const closeOnEscape = (event: KeyboardEvent) => event.key === 'Escape' && (dialog = '')
+    const closeOnEscape = (event: KeyboardEvent) => event.key === 'Escape' && ((dialog = '') || (showMailer = false))
 
     onMount(async () => {
         adminKey = localStorage.getItem('adminKey')
@@ -102,7 +103,7 @@
                 <Button
                     type="primary"
                     slim
-                    on:click={() => showMailer = true}
+                    on:click={() => {recipient = ''; showMailer = true}}
                 >
                     {$_('admin.mailer.sendMail')}
                 </Button>
@@ -112,6 +113,7 @@
                 {#if confirmed && confirmed.length}
                     <RegistrationsTable
                         registrations={confirmed}
+                        on:sendMail={(e) => { recipient = e.detail; showMailer = true }}
                         on:dialog={(e) => dialog = e.detail}
                         on:updateBoolean={(e) =>
                             updateBoolean(e.detail.reg_key, e.detail.column, e.detail.value)
@@ -143,6 +145,7 @@
         {#if showMailer}
             <Mailer
                 password={adminKey}
+                bind:singleRecipient={recipient}
                 bind:show={showMailer}
                 bind:dialog
             />

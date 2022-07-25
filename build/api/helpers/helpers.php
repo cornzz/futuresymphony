@@ -96,6 +96,10 @@ class Helpers {
                 return FALSE;
         }
 
+        // Recipient parameter must exist but can be empty
+        if (!array_key_exists("recipient", $form))
+            return FALSE;
+
         // Check criteria structure
         foreach (array("status", "complete", "payment", "second") as $key) {
             if (

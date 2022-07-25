@@ -10,6 +10,7 @@
     import { _ } from 'svelte-i18n'
 
     export let password: string
+    export let singleRecipient: string
     export let show: boolean
     export let dialog: string
 
@@ -45,6 +46,7 @@
                 preflight,
                 subject,
                 message,
+                recipient: singleRecipient,
                 status: statusCriterion,
                 complete: completeCriterion,
                 payment: paymentCriterion,
@@ -131,14 +133,9 @@
         currentTemplate = template.id
     }
 
-    const closeOnEscape = (event: KeyboardEvent) => event.key === 'Escape' && (show = false)
-
     onMount(async () => {
-        document.addEventListener('keydown', closeOnEscape)
         await getTemplates()
         initialLoad = true
-
-        return () => document.removeEventListener('keydown', closeOnEscape)
     })
 </script>
 
@@ -158,48 +155,54 @@
                 bind:value={message}
             />
             {$_('admin.mailer.sendingCriteria')}:
-            <div class="criteria">    
-                <div>
-                    <label>
-                        {$_('admin.mailer.status')}
-                        <select bind:value={statusCriterion.value}>
-                            <option value={true}>{$_('admin.mailer.confirmed')}</option>
-                            <option value={false}>{$_('admin.mailer.unconfirmed')}</option>
-                        </select>
-                    </label>
-                </div>
-                {#if statusCriterion.value}
+            <div class="criteria" class:singleRecipient>   
+                {#if singleRecipient}
+                    <span>
+                        <b>{$_('admin.mailer.recipient', { values: { number: 1 }})}:</b> {singleRecipient}
+                    </span>
+                {:else} 
                     <div>
                         <label>
-                            <input type="checkbox" bind:checked={paymentCriterion.active}/>
-                            payment
-                            <select disabled={!paymentCriterion.active} bind:value={paymentCriterion.value}>
-                                <option value={true}>true</option>
-                                <option value={false}>false</option>
+                            {$_('admin.mailer.status')}
+                            <select bind:value={statusCriterion.value}>
+                                <option value={true}>{$_('admin.mailer.confirmed')}</option>
+                                <option value={false}>{$_('admin.mailer.unconfirmed')}</option>
                             </select>
                         </label>
                     </div>
-                    <div>
-                        <label>
-                            <input type="checkbox" bind:checked={completeCriterion.active}/>
-                            complete
-                            <select disabled={!completeCriterion.active} bind:value={completeCriterion.value}>
-                                <option value={true}>true</option>
-                                <option value={false}>false</option>
-                            </select>
-                        </label>
-                    </div>
-                    <div>
-                        <label>
-                            <input type="checkbox" bind:checked={secondCriterion.active}/>
-                            second
-                            <select disabled={!secondCriterion.active} bind:value={secondCriterion.value}>
-                                <option value={null}>TBD</option>
-                                <option value={true}>true</option>
-                                <option value={false}>false</option>
-                            </select>
-                        </label>
-                    </div>
+                    {#if statusCriterion.value}
+                        <div>
+                            <label>
+                                <input type="checkbox" bind:checked={paymentCriterion.active}/>
+                                payment
+                                <select disabled={!paymentCriterion.active} bind:value={paymentCriterion.value}>
+                                    <option value={true}>true</option>
+                                    <option value={false}>false</option>
+                                </select>
+                            </label>
+                        </div>
+                        <div>
+                            <label>
+                                <input type="checkbox" bind:checked={completeCriterion.active}/>
+                                complete
+                                <select disabled={!completeCriterion.active} bind:value={completeCriterion.value}>
+                                    <option value={true}>true</option>
+                                    <option value={false}>false</option>
+                                </select>
+                            </label>
+                        </div>
+                        <div>
+                            <label>
+                                <input type="checkbox" bind:checked={secondCriterion.active}/>
+                                second
+                                <select disabled={!secondCriterion.active} bind:value={secondCriterion.value}>
+                                    <option value={null}>TBD</option>
+                                    <option value={true}>true</option>
+                                    <option value={false}>false</option>
+                                </select>
+                            </label>
+                        </div>
+                    {/if}
                 {/if}
             </div>
             {#if templates.length}
@@ -246,7 +249,7 @@
         {$_('admin.mailer.sendingNMessages', { values: { number: recipients.length }})}
         <hr>
         {#if recipients.length}
-            {$_('admin.mailer.recipients')}:<br>
+            {$_('admin.mailer.recipient', { values: { number: recipients.length }})}:<br>
             {#each recipients as recipient}
                 {recipient}<br>
             {/each}
@@ -255,7 +258,7 @@
         <div class="confirmation">
             <Checkbox
                 name="preflightConfirmation"
-                label={$_('admin.mailer.confirmRecipients')}
+                label={$_('admin.mailer.confirmRecipients', { values: { number: recipients.length }})}
                 bind:checked={preflightConfirmation}
             />
         </div>
@@ -290,9 +293,13 @@
             justify-items center
             column-gap 10px
             row-gap 10px
+            font-size 14px
             border-radius 5px
             background-color var(--color-background)
             padding 4px
+
+            &.singleRecipient
+                grid-template-columns 1fr
 
             label
             input[type="checkbox"]
@@ -304,7 +311,6 @@
 
             label
                 display block
-                font-size 14px
 
         .templates
             display flex

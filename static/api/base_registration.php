@@ -33,17 +33,15 @@
             echo "Invalid form.";
             return;
         }
-            
-        if (APP_ENV != "dev") {
-            // Check if email in use
-            $stmt = $conn->prepare("SELECT * FROM base_registrations WHERE email=?");
-            $stmt->bind_param("s", $form["email"]);
-            $stmt->execute();
-            if ($stmt->get_result()->num_rows) {
-                http_response_code(400);
-                echo "Email already in use.";
-                return;
-            }
+
+        // Check if email in use
+        $stmt = $conn->prepare("SELECT * FROM base_registrations WHERE email=?");
+        $stmt->bind_param("s", $form["email"]);
+        $stmt->execute();
+        if ($stmt->get_result()->num_rows) {
+            http_response_code(400);
+            echo "Email already in use.";
+            return;
         }
 
         // Generate reg key

@@ -32,6 +32,8 @@
         showContent(text)
     }
 
+    const sendMail = (recipient: string): void => dispatch('sendMail', recipient)
+
     const showContent = (content: string): void => dispatch('dialog', content)
 
     function mapReferrer(referrer: string): string {
@@ -133,7 +135,9 @@
                     {/if}
                 </td>
                 <td>
-                    <a class="link" href={`mailto:${reg.email}`}>{reg.email}</a>
+                    <span class="link" on:click={() => sendMail(reg.email)}>
+                        {reg.email}
+                    </span>
                 </td>
                 <td>{reg.firstName}</td>
                 <td>{reg.lastName}</td>

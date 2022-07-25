@@ -75,11 +75,8 @@
         return;
     }
 
-    $subject = $form["subject"];
-    $message_template = $form["message"];
-    
     // Get email addresses
-    $sql_query = BuildQuery($form["status"], $form["payment"], $form["complete"], $form["second"]);
+    $sql_query = BuildQuery($form["recipient"], $form["status"], $form["payment"], $form["complete"], $form["second"]);
     $result = $connection->query($sql_query);
     $registrations = $result->fetch_all(MYSQLI_ASSOC);
     // If preflight, return recipients
@@ -89,6 +86,8 @@
         return;
     }
 
+    $subject = $form["subject"];
+    $message_template = $form["message"];
     $failures = [];
     foreach ($registrations as $registration) {
         // Prepare email template
@@ -113,8 +112,20 @@
         echo "Error sending message to following mails: ".join(",", $failures)." Please check logs.";
     }
 
-    function BuildQuery(array $status, array $payment, array $complete, array $second): string {
-        if (!$status["value"]) {
+    function BuildQuery(string $recipient, array $status, array $payment, array $complete, array $second): string {
+        if ($recipient !== "") {
+            return "SELECT
+                        a.*,
+                        b.*,
+                        c.idCopyFileName as idCopy,
+                        c.pieceScoreFileName as pieceScore,
+                        c.pieceDemoFileName as pieceDemo,
+                        c.proofOfPaymentFileName as proofOfPayment
+                    FROM base_registrations AS a
+                    JOIN registrations AS b ON a.reg_key=b.reg_key
+                    JOIN user_files AS c ON b.reg_key=c.reg_key
+                    WHERE a.email='{$recipient}'";
+        } elseif (!$status["value"]) {
             return "SELECT * FROM base_registrations AS a LEFT JOIN registrations AS b ON a.reg_key = b.reg_key WHERE b.reg_key IS NULL";
         } else {
             $query =
@@ -126,18 +137,18 @@
                     c.pieceDemoFileName as pieceDemo,
                     c.proofOfPaymentFileName as proofOfPayment
                 FROM base_registrations AS a
-                JOIN registrations AS b ON a.reg_key = b.reg_key
-                JOIN user_files AS c ON b.reg_key = c.reg_key";
+                JOIN registrations AS b ON a.reg_key=b.reg_key
+                JOIN user_files AS c ON b.reg_key=c.reg_key";
             if ($payment["active"]) {
-                $query .= " WHERE b.paymentConfirmed = ".($payment["value"] ? "'true'" : "'false'");
+                $query .= " WHERE b.paymentConfirmed=".($payment["value"] ? "'true'" : "'false'");
             }
             if ($complete["active"]) {
                 $query .= !str_contains($query, "WHERE") ? " WHERE" : " AND";
-                $query .= " b.complete = ".($complete["value"] ? "'true'" : "'false'");
+                $query .= " b.complete=".($complete["value"] ? "'true'" : "'false'");
             }
             if ($second["active"]) {
                 $query .= !str_contains($query, "WHERE") ? " WHERE" : " AND";
-                $query .= " b.secondRound = ".(is_null($second["value"]) ? "NULL" : ($second["value"] ? "'true'" : "'false'"));
+                $query .= " b.secondRound=".(is_null($second["value"]) ? "NULL" : ($second["value"] ? "'true'" : "'false'"));
             }
         }
         return $query;
