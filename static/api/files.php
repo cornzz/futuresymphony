@@ -5,7 +5,6 @@
     $connection = OpenCon();
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        // TODO: check reg.secondRound, skip deadline check if true
         Helpers::deadline($_REQUEST["admin"] ?? null, ADMIN_KEY);
 
         if (!isset($_POST["reg_key"])) {

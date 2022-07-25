@@ -195,7 +195,7 @@
                         {/if}
                     </td>
                     <td>
-                        {#if reg.instrumentation}
+                        {#if reg.instrumentation && reg.instrumentation.flat().some(v => v)}
                             <span class="link" on:click={() => showInstrumentation(reg.instrumentation)}>
                                 {$_('admin.table.show')}
                             </span>
