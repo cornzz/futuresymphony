@@ -16,7 +16,7 @@
     let showAll: boolean
     let paymentCriterion: Criterion = { active: false, value: true }
     let completeCriterion: Criterion = { active: true, value: true }
-    let secondCriterion: Criterion = { active: false, value: null }
+    let secondCriterion: Criterion = { active: true, value: true }
     let filteredRegistrations: RegistrationDTO[]
 
     $: filteredRegistrations = !confirmed ? registrations : registrations.filter(reg =>
