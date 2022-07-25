@@ -1,6 +1,6 @@
 {
   ".svelte-kit/build/runtime/internal/start.js": {
-    "file": "start-10e0bb12.js",
+    "file": "start-6ac583a5.js",
     "src": ".svelte-kit/build/runtime/internal/start.js",
     "isEntry": true,
     "imports": [
@@ -50,11 +50,11 @@
       "_stores-600db517.js"
     ],
     "css": [
-      "assets/pages/__error.svelte-76caa9f2.css"
+      "assets/pages/404.svelte-bfd357f2.css"
     ]
   },
   "src/routes/index.svelte": {
-    "file": "pages/index.svelte-7ecc780e.js",
+    "file": "pages/index.svelte-35fe9c28.js",
     "src": "src/routes/index.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
@@ -64,10 +64,10 @@
       "_Quote-e66dbf13.js",
       "_Image-24d5c65a.js",
       "_index-8490d5e5.js",
-      "_News-b56f9c4f.js",
+      "_News-40accab4.js",
       "_Button-17e544cc.js",
       "_stores-600db517.js",
-      "_9-b690d474.js"
+      "_9-9547351d.js"
     ],
     "css": [
       "assets/pages/index.svelte-d3e4304b.css"
@@ -179,25 +179,25 @@
     ]
   },
   "src/routes/news/index.svelte": {
-    "file": "pages/news/index.svelte-0a9d458e.js",
+    "file": "pages/news/index.svelte-721b0c09.js",
     "src": "src/routes/news/index.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
       "_vendor-3b8c650a.js",
       "_Tab-fe19bf4c.js",
-      "_News-b56f9c4f.js",
+      "_News-40accab4.js",
       "_stores-600db517.js",
-      "_9-b690d474.js"
+      "_9-9547351d.js"
     ]
   },
   "src/routes/news/[slug].svelte": {
-    "file": "pages/news/_slug_.svelte-5f17860c.js",
+    "file": "pages/news/_slug_.svelte-376debfe.js",
     "src": "src/routes/news/[slug].svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_9-b690d474.js",
+      "_9-9547351d.js",
       "_vendor-3b8c650a.js",
       "_Tab-fe19bf4c.js",
       "_Image-24d5c65a.js",
@@ -218,7 +218,7 @@
       "_stores-600db517.js"
     ],
     "css": [
-      "assets/pages/__error.svelte-76caa9f2.css"
+      "assets/pages/404.svelte-bfd357f2.css"
     ]
   },
   "_vendor-3b8c650a.js": {
@@ -248,10 +248,10 @@
       "assets/Tab-2d18c60d.css"
     ]
   },
-  "_News-b56f9c4f.js": {
-    "file": "chunks/News-b56f9c4f.js",
+  "_News-40accab4.js": {
+    "file": "chunks/News-40accab4.js",
     "imports": [
-      "_9-b690d474.js",
+      "_9-9547351d.js",
       "_vendor-3b8c650a.js"
     ],
     "css": [
@@ -277,8 +277,8 @@
       "assets/Image-ed208c95.css"
     ]
   },
-  "_9-b690d474.js": {
-    "file": "chunks/9-b690d474.js"
+  "_9-9547351d.js": {
+    "file": "chunks/9-9547351d.js"
   },
   "_Button-17e544cc.js": {
     "file": "chunks/Button-17e544cc.js",
