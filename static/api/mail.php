@@ -148,7 +148,7 @@
             }
             if ($second["active"]) {
                 $query .= !str_contains($query, "WHERE") ? " WHERE" : " AND";
-                $query .= " b.secondRound=".(is_null($second["value"]) ? "NULL" : ($second["value"] ? "'true'" : "'false'"));
+                $query .= " b.secondRound".(is_null($second["value"]) ? " IS NULL" : ($second["value"] ? "='true'" : "='false'"));
             }
         }
         return $query;
