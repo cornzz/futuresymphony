@@ -110,31 +110,23 @@
             </div>
             <div class="registrations">
                 <h2>{$_('admin.confirmedReg')}</h2>
-                {#if confirmed && confirmed.length}
-                    <RegistrationsTable
-                        registrations={confirmed}
-                        on:sendMail={(e) => { recipient = e.detail; showMailer = true }}
-                        on:dialog={(e) => dialog = e.detail}
-                        on:updateBoolean={(e) =>
-                            updateBoolean(e.detail.reg_key, e.detail.column, e.detail.value)
-                        }
-                    />
-                {:else}
-                    {$_('admin.noSuchReg')}
-                {/if}
+                <RegistrationsTable
+                    registrations={confirmed}
+                    on:sendMail={(e) => { recipient = e.detail; showMailer = true }}
+                    on:dialog={(e) => dialog = e.detail}
+                    on:updateBoolean={(e) =>
+                        updateBoolean(e.detail.reg_key, e.detail.column, e.detail.value)
+                    }
+                />
             </div>
             <div class="registrations">
                 <h2>{$_('admin.unconfirmedReg')}</h2>
-                {#if unconfirmed && unconfirmed.length}
-                    <RegistrationsTable
-                        registrations={unconfirmed}
-                        confirmed={false}
-                        on:sendMail={(e) => { recipient = e.detail; showMailer = true }}
-                        on:dialog={(e) => dialog = e.detail}
-                    />
-                {:else}
-                    {$_('admin.noSuchReg')}
-                {/if}
+                <RegistrationsTable
+                    registrations={unconfirmed}
+                    confirmed={false}
+                    on:sendMail={(e) => { recipient = e.detail; showMailer = true }}
+                    on:dialog={(e) => dialog = e.detail}
+                />
             </div>
         </div>
         {#if dialog}

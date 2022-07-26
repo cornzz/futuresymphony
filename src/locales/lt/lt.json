@@ -219,12 +219,12 @@
         "adminPanel": "Administracija",
         "confirmedReg": "Patvirtintos registracijos",
         "unconfirmedReg": "Nepatvirtintos registracijos",
-        "noSuchReg": "Tokių registracijų nėra",
         "table": {
+            "noSuchReg": "Tokių registracijų nėra",
             "show": "Rodyti",
             "rows": "eilutes",
             "total": "Iš viso",
-            "showAll": "Rodyti visus",
+            "showAll": "Rodyti viską",
             "open": "Peržiūrėti",
             "showMore": "Rodyti daugiau"
         },

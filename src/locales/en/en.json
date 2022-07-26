@@ -219,8 +219,8 @@
         "adminPanel": "Admin panel",
         "confirmedReg": "Confirmed registrations",
         "unconfirmedReg": "Unconfirmed registrations",
-        "noSuchReg": "No such registrations",
         "table": {
+            "noSuchReg": "No such registrations",
             "show": "Show",
             "rows": "rows",
             "total": "Total",

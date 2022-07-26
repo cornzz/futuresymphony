@@ -281,6 +281,9 @@
             </tr>
         {/each}
     </table>
+    {#if !filteredRegistrations.length}
+        {$_('admin.table.noSuchReg')}
+    {/if}
 </div>
 {#if !showAll && numRows < filteredRegistrations.length}
     <span class="center link" on:click={() => numRows += 5}>{$_('admin.table.showMore')}</span>
@@ -301,6 +304,7 @@
     .wrapper
         overflow-x scroll
         font-size 14px
+        border-bottom solid 0.5px var(--color-primary)
 
         table
             width 100%
