@@ -129,6 +129,7 @@
                     <RegistrationsTable
                         registrations={unconfirmed}
                         confirmed={false}
+                        on:sendMail={(e) => { recipient = e.detail; showMailer = true }}
                         on:dialog={(e) => dialog = e.detail}
                     />
                 {:else}
