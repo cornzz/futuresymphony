@@ -236,6 +236,7 @@
             "status": "Statusas",
             "confirmed": "patvirtinta",
             "unconfirmed": "nepatvirtinta",
+            "templates": "Šablonai",
             "sendingNMessages": "{number, plural, =1 {Siunčiamas} other {Siunčiami}} {number} {number, plural, =1 {pranešimas} other {pranešimai}}.",
             "recipient": "{number, plural, =1 {Gavėjas} other {Gavėjai}}",
             "confirmRecipients": "Patvirtinti {number, plural, =1 {gavėją} other {gavėjus}}",

@@ -206,12 +206,12 @@
                 {/if}
             </div>
             {#if templates.length}
-                Templates:
+                {$_('admin.mailer.templates')}:
                 <div class="templates">
                     {#each templates as template}
                         <div class:loaded={currentTemplate === template.id}>
-                            <span class="subject"><b>Subject:</b> {template.subject}</span>
-                            <span class="message"><b>Message:</b> {template.message}</span>
+                            <span class="subject"><b>{$_('admin.mailer.subject')}:</b> {template.subject}</span>
+                            <span class="message"><b>{$_('admin.mailer.message')}:</b> {template.message}</span>
                             <span class="link" on:click={() => loadTemplate(template)}>
                                 {$_('admin.mailer.load')}
                             </span>

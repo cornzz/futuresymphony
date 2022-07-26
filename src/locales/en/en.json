@@ -236,6 +236,7 @@
             "status": "Status",
             "confirmed": "confirmed",
             "unconfirmed": "unconfirmed",
+            "templates": "Templates",
             "sendingNMessages": "Sending {number} {number, plural, =1 {message} other {messages}}.",
             "recipient": "{number, plural, =1 {Recipient} other {Recipients}}",
             "confirmRecipients": "Confirm {number, plural, =1 {recipient} other {recipients}}",
