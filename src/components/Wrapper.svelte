@@ -9,22 +9,23 @@
     let landing: HTMLElement, header: HTMLElement, content: HTMLElement, back: HTMLElement, footer: HTMLElement
     let aboutlink: HTMLElement, newslink: HTMLElement, participantslink: HTMLElement, sponsorslink: HTMLElement, contactslink: HTMLElement
     let aboutpos: number, newspos: number, participantspos: number, sponsorspos: number, contactspos: number
-    let landingBottom: number = 0, windowWidth: number
+    let landingBottom: number = 0
     let navOpen: boolean = false
     let showMobile: boolean = false
+    let windowWidth: number
+    let innerWidth: number = 1000
+    let scrollY: number = 0
 
     const ARROW_ICON = "data:image/svg+xml,%3Csvg viewBox='0 0 2048 2048' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1523 1212q0 13-10 23l-50 50q-10 10-23 10t-23-10l-393-393-393 393q-10 10-23 10t-23-10l-50-50q-10-10-10-23t10-23l466-466q10-10 23-10t23 10l466 466q10 10 10 23z' fill='%23EEEEEE'/%3E%3C/svg%3E"
-    // const FB_ICON = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 9.95 20'%3E%3Cpath d='M8.09 3.81c-1.4 0-1.58.84-1.58 1.67v1.3h3.35L9.49 11h-3v9H2.33v-9H0V6.88h2.42V3.81C2.42 1.3 3.81 0 6.6 0H10v3.81z'%3E%3C/path%3E%3C/svg%3E"
-    const windowPos: () => number = () => window.scrollY
 
     // Change Header appearance according to position
     function setHeader(): void {
-        if (windowPos() >= landingBottom - 1) {
+        if (scrollY >= landingBottom - 1) {
             header.classList.add('active')
             setTimeout(() => header.classList.add('open'), 10)
             footer.classList.add('active')
             back?.classList.add('active')
-        } else if (windowPos() < landingBottom - header.clientHeight) {
+        } else if (scrollY < landingBottom - header.clientHeight) {
             header.classList.remove('active', 'open')
             footer.classList.remove('active')
             back?.classList.remove('active')
@@ -40,15 +41,15 @@
     // Add .active to the correct nav link and set language link
     function setActive(): void {
         removeActive()
-        if (aboutpos <= windowPos() && windowPos() < newspos) {
+        if (aboutpos <= scrollY && scrollY < newspos) {
             aboutlink.classList.add('active')
-        } else if (newspos <= windowPos() && windowPos() < participantspos) {
+        } else if (newspos <= scrollY && scrollY < participantspos) {
             newslink.classList.add('active')
-        } else if (participantspos <= windowPos() && windowPos() < sponsorspos) {
+        } else if (participantspos <= scrollY && scrollY < sponsorspos) {
             participantslink.classList.add('active')
-        } else if (sponsorspos <= windowPos() && windowPos() < contactspos) {
+        } else if (sponsorspos <= scrollY && scrollY < contactspos) {
             sponsorslink.classList.add('active')
-        } else if (contactspos <= windowPos()) {
+        } else if (contactspos <= scrollY) {
             contactslink.classList.add('active')
         }
     }
@@ -78,14 +79,14 @@
             setPositions()
         }
         content.style['margin-top'] = header.offsetHeight - 1 + 'px'
-        if (windowWidth !== window.innerWidth) {
+        if (windowWidth !== innerWidth) {
             jumpToHash()
-            windowWidth = window.innerWidth
+            windowWidth = innerWidth
         }
         setHeader()
     }
 
-    $: showMobile = (typeof window !== 'undefined' && window.innerWidth <= 700)
+    $: showMobile = innerWidth <= 700
     
     onMount(() => {
         init()
@@ -111,6 +112,8 @@
         } 
     })
 </script>
+
+<svelte:window bind:innerWidth bind:scrollY />
 
 {#if $showLanding}
     <div class="landing" bind:this={landing}>
