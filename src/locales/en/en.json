@@ -58,7 +58,8 @@
         "communicationAssistance": "Communication assistance",
         "email": "E-mail",
         "socialMedia": "Social Media",
-        "webdesign": "Web design & administration"
+        "webdesign": "Web design & administration",
+        "sendEmail": "Send email"
     },
     "regulations": {
         "title": "Competition regulations",

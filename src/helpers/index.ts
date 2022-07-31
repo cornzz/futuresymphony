@@ -1,9 +1,5 @@
 import { cubicOut } from 'svelte/easing'
 
-export function mail(): void {
-    window.location.href = `mailto:${this.dataset.user}@futuresymphony.lt`
-}
-
 export function fadeHeight(node, {
     delay = 0
 }) {

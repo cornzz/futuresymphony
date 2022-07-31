@@ -75,7 +75,7 @@
         return;
     }
 
-    // Get email addresses
+    // Get email addresses - TODO: do this client side...
     $sql_query = BuildQuery($form["recipient"], $form["status"], $form["payment"], $form["complete"], $form["second"]);
     $result = $connection->query($sql_query);
     $registrations = $result->fetch_all(MYSQLI_ASSOC);

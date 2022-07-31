@@ -58,7 +58,8 @@
         "communicationAssistance": "Komunikacijos asistentė",
         "email": "El. paštas",
         "socialMedia": "Socialiniai tinklai",
-        "webdesign": "Interneto svetainės dizainas ir administravimas"
+        "webdesign": "Svetainės dizainas ir administracija",
+        "sendEmail": "Siųsti laišką"
     },
     "regulations": {
         "title": "Konkurso nuostatai",
