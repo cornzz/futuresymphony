@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { _ } from "svelte-i18n"
+    import { _, locale } from "svelte-i18n"
     import type { RegistrationDTO } from "../../helpers/RegistrationDTO"
     import type { Criterion } from '../../helpers/types'
     import { baseURL } from "../../helpers/stores"
@@ -235,7 +235,7 @@
                             </span>
                         {/if}
                     </td>
-                    <td>{reg.referrer ? mapReferrer(reg.referrer) : ''}</td>
+                    <td>{reg.referrer && $locale ? mapReferrer(reg.referrer) : ''}</td>
                     <td
                         class:success={reg.paymentConfirmed}
                         class:error={!reg.paymentConfirmed}
