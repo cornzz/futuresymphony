@@ -20,24 +20,28 @@ export function highlightElement(element: HTMLElement): void {
 }
 
 export function initSmoothScrolling(): void {
-    document.querySelectorAll('a[href*="#"]')
-        .forEach(el => el.addEventListener('click', (event: MouseEvent) => {
-            let anchor = event.target as HTMLAnchorElement
-            if (
-                location.pathname.replace(/^\//, '') == anchor.pathname.replace(/^\//, '') && 
-                location.hostname == anchor.hostname
-            ) {
-                let target = document.querySelector(anchor.hash) as HTMLElement
-                event.preventDefault()
-                anchor.parentElement.classList.add('clicked')
-                let scroll = target.offsetTop - document.querySelector('.masthead').clientHeight + 1
-                scrollToY(scroll, 1000)
-                window.setTimeout(function () {
-                    anchor.parentElement.classList.remove('clicked')
-                }, 1000)
-                history.pushState(null, null, anchor.hash == '#start' ? ' ' : anchor.hash)
-            }
-        }))
+    document.querySelectorAll('a[href*="#"]').forEach(el => {
+        el.removeEventListener('click', handleClick)
+        el.addEventListener('click', handleClick)
+    })
+}
+
+function handleClick(event: MouseEvent) {
+    let anchor = event.target as HTMLAnchorElement
+    if (
+        location.pathname.replace(/^\//, '') == anchor.pathname.replace(/^\//, '') && 
+        location.hostname == anchor.hostname
+    ) {
+        let target = document.querySelector(anchor.hash) as HTMLElement
+        event.preventDefault()
+        anchor.parentElement.classList.add('clicked')
+        let scroll = target.offsetTop - document.querySelector('.masthead').clientHeight + 1
+        scrollToY(scroll, 1000)
+        window.setTimeout(function () {
+            anchor.parentElement.classList.remove('clicked')
+        }, 1000)
+        history.pushState(null, null, anchor.hash == '#start' ? ' ' : anchor.hash)
+    }
 }
 
 // Scroll function from https://github.com/Robbendebiene/Sliding-Scroll

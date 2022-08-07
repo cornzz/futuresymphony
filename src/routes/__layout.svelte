@@ -3,7 +3,6 @@
     import ImageFrame from '../components/ImageFrame.svelte'
     import { onMount } from 'svelte'
     import { addMessages, init as init_i18n, _, locale } from 'svelte-i18n'
-    import { initSmoothScrolling } from '../helpers'
     import { imageFrame } from '../helpers/stores'
     import en from '../locales/en/en.json'
     import lt from '../locales/lt/lt.json'
@@ -25,7 +24,6 @@
 
         /* TODO: timeout needed? */
         setTimeout(() => document.body.classList.remove('preload'), 150)
-        initSmoothScrolling()
     })
 </script>
 

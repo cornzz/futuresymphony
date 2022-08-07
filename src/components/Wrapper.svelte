@@ -5,6 +5,7 @@
     import { onMount, tick } from 'svelte'
     import { _, locale } from 'svelte-i18n'
     import { showLanding, showBack, sections, ticketsAvailable } from '../helpers/stores'
+    import { initSmoothScrolling } from '../helpers'
 
     let landing: HTMLElement, header: HTMLElement, content: HTMLElement, back: HTMLElement, footer: HTMLElement
     let aboutlink: HTMLElement, newslink: HTMLElement, participantslink: HTMLElement, sponsorslink: HTMLElement, contactslink: HTMLElement
@@ -13,7 +14,7 @@
     let navOpen: boolean = false
     let showMobile: boolean = false
     let windowWidth: number
-    let innerWidth: number = 1000
+    let innerWidth: number = 0
     let scrollY: number = 0
 
     const ARROW_ICON = "data:image/svg+xml,%3Csvg viewBox='0 0 2048 2048' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1523 1212q0 13-10 23l-50 50q-10 10-23 10t-23-10l-393-393-393 393q-10 10-23 10t-23-10l-50-50q-10-10-10-23t10-23l466-466q10-10 23-10t23 10l466 466q10 10 10 23z' fill='%23EEEEEE'/%3E%3C/svg%3E"
@@ -70,7 +71,10 @@
     }
 
     // Set height of landing cover, push header up and set variables for relevant element positions
-    function init(): void {
+    async function init(): Promise<void> {
+        showMobile = innerWidth <= 700
+        await tick()
+
         if ($showLanding) {
             landing.style.height = window.innerHeight + 'px'
             landing.style['margin-bottom'] = -header.clientHeight - 1 + 'px'
@@ -81,12 +85,11 @@
         content.style['margin-top'] = header.offsetHeight - 1 + 'px'
         if (windowWidth !== innerWidth) {
             jumpToHash()
+            initSmoothScrolling() // fix?
             windowWidth = innerWidth
         }
         setHeader()
     }
-
-    $: showMobile = innerWidth <= 700
     
     onMount(() => {
         init()
