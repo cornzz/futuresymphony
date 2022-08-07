@@ -1,6 +1,6 @@
 {
   ".svelte-kit/build/runtime/internal/start.js": {
-    "file": "start-e73dadb9.js",
+    "file": "start-da357c59.js",
     "src": ".svelte-kit/build/runtime/internal/start.js",
     "isEntry": true,
     "imports": [
@@ -26,7 +26,7 @@
     ]
   },
   "src/routes/__layout.svelte": {
-    "file": "pages/__layout.svelte-4bdc1dae.js",
+    "file": "pages/__layout.svelte-5c6e46d2.js",
     "src": "src/routes/__layout.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
@@ -36,7 +36,7 @@
       "_index-72e02192.js"
     ],
     "css": [
-      "assets/pages/__layout.svelte-9374152f.css"
+      "assets/pages/__layout.svelte-f40c32a2.css"
     ]
   },
   "src/routes/__error.svelte": {
@@ -54,7 +54,7 @@
     ]
   },
   "src/routes/index.svelte": {
-    "file": "pages/index.svelte-8b7e833f.js",
+    "file": "pages/index.svelte-8c9a927a.js",
     "src": "src/routes/index.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
@@ -62,7 +62,7 @@
       "_vendor-439b2472.js",
       "_Tab-740ebb1c.js",
       "_Button-9dc98eb4.js",
-      "_Quote-b828add8.js",
+      "_Quote-89de72f9.js",
       "_Image-e9186d10.js",
       "_index-72e02192.js",
       "_News-a08f3cb5.js",
@@ -70,7 +70,7 @@
       "_9-9547351d.js"
     ],
     "css": [
-      "assets/pages/index.svelte-24a681d7.css"
+      "assets/pages/index.svelte-17ee84de.css"
     ]
   },
   "src/routes/registration/__layout.svelte": {
@@ -163,7 +163,7 @@
     ]
   },
   "src/routes/adomas.svelte": {
-    "file": "pages/adomas.svelte-eec3be2a.js",
+    "file": "pages/adomas.svelte-8d99668a.js",
     "src": "src/routes/adomas.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
@@ -171,7 +171,7 @@
       "_vendor-439b2472.js",
       "_Tab-740ebb1c.js",
       "_Image-e9186d10.js",
-      "_Quote-b828add8.js",
+      "_Quote-89de72f9.js",
       "_stores-5298db85.js"
     ],
     "css": [
@@ -267,13 +267,13 @@
       "assets/Button-32015f0d.css"
     ]
   },
-  "_Quote-b828add8.js": {
-    "file": "chunks/Quote-b828add8.js",
+  "_Quote-89de72f9.js": {
+    "file": "chunks/Quote-89de72f9.js",
     "imports": [
       "_vendor-439b2472.js"
     ],
     "css": [
-      "assets/Quote-6b5f1f6b.css"
+      "assets/Quote-b7309fab.css"
     ]
   },
   "_Image-e9186d10.js": {
