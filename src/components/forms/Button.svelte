@@ -69,4 +69,5 @@
     @media screen and (max-width 600px)
         button
             height 40px
+            font-size 14px
 </style>

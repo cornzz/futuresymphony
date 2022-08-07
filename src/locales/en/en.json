@@ -4,15 +4,22 @@
             "title": "Future Symphony Competition",
             "description": "3rd \"Future Symphony\" international composition competition for symphony orchestra"
         },
-        "headline2": "3<sup>RD</sup> INTERNATIONAL MUSIC COMPOSITION COMPETITION<br>FOR SYMPHONY ORCHESTRA"
+        "headline2": "3<sup>RD</sup> INTERNATIONAL MUSIC COMPOSITION COMPETITION<br>FOR SYMPHONY ORCHESTRA",
+        "tickets": "Tickets available now!"
     },
     "nav": {
+        "ticketsAndAbout": "tickets & about",
         "about": "about",
         "news": "news",
         "participants": "for participants",
         "sponsors": "sponsors & partners",
         "contacts": "contacts",
         "back": "Back to top"
+    },
+    "tickets": {
+        "title": "Tickets to Future Symphony 2022",
+        "caption": "Tickets are available right now! Click the link below to be redirected to the ticketing platform and register for your free ticket:",
+        "button": "To the ticketing platform"
     },
     "about": {
         "title": "Welcome!"

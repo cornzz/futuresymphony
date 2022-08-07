@@ -4,15 +4,22 @@
             "title": "Future Symphony Konkursas",
             "description": "III „Future Symphony“ tarptautinis kompozicijų simfoniniam orkestrui konkursas"
         },
-        "headline2": "III TARPTAUTINIS KOMPOZICIJŲ SIMFONINIAM<br>ORKESTRUI KONKURSAS"
+        "headline2": "III TARPTAUTINIS KOMPOZICIJŲ SIMFONINIAM<br>ORKESTRUI KONKURSAS",
+        "tickets": "Tickets available now!"
     },
     "nav": {
+        "ticketsAndAbout": "bilietai & apie",
         "about": "apie",
         "news": "naujienos",
         "participants": "dalyviams",
         "sponsors": "rėmėjai & partneriai",
         "contacts": "kontaktai",
         "back": "Į pradžią"
+    },
+    "tickets": {
+        "title": "Bilietai į Future Symphony 2022",
+        "caption": "Bilietus galima įsigyti jau dabar! Spustelėkite toliau pateiktą nuorodą, kad būtumėte nukreipti į bilietų pardavimo platformą ir užsiregistruokite gauti nemokamą bilietą:",
+        "button": "Į bilietų platformą"
     },
     "about": {
         "title": "Sveiki atvykę!"

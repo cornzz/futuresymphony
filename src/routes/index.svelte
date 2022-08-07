@@ -1,5 +1,6 @@
 <script lang="ts">
     import Tab from '../components/Tab.svelte'
+    import Tickets from '../components/Tickets.svelte'
     import About from '../components/About.svelte'
     import News from '../components/News.svelte'
     import Participants from '../components/Participants.svelte'
@@ -34,6 +35,7 @@
 <div id="about"></div>
 <div bind:this={about}>
     <Tab oversize style="padding-top: calc(2% + 45px);">
+        <Tickets/>
         <h1 class="cover-heading">{$_('about.title')}</h1>
         <About/>
     </Tab>

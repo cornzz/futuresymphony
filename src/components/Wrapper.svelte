@@ -127,7 +127,7 @@
             </span>
         </div>
         {#if $ticketsAvailable}
-            <span class="tickets">Tickets available now!</span>
+            <a class="tickets" href="/#about">{$_('index.tickets')}</a>
         {/if}
     </div>
 {/if}
@@ -149,7 +149,7 @@
                     if (e.target instanceof HTMLAnchorElement && location.pathname !== e.target.pathname) return
                     navOpen = !navOpen
                 }}>
-                    <a bind:this={aboutlink} style="--n: 3" href="/#about">{$_('nav.about')}</a>
+                    <a bind:this={aboutlink} style="--n: 3" href="/#about">{$_($ticketsAvailable ? 'nav.ticketsAndAbout' : 'nav.about')}</a>
                     <a bind:this={newslink} style="--n: 2.5" href="/#news">{$_('nav.news')}</a>
                     <a bind:this={participantslink} style="--n: 2" href="/#participants">{$_('nav.participants')}</a>
                     <a bind:this={sponsorslink} style="--n: 1.5" href="/#sponsors">{$_('nav.sponsors')}</a>
@@ -165,7 +165,7 @@
         <div class="desktop-nav">
             <nav>
                 <ul class="nav masthead-nav">
-                    <li bind:this={aboutlink}><a href="/#about">{$_('nav.about')}</a></li>
+                    <li bind:this={aboutlink}><a href="/#about">{$_($ticketsAvailable ? 'nav.ticketsAndAbout' : 'nav.about')}</a></li>
                     <li bind:this={newslink}><a href="/#news">{$_('nav.news')}</a></li>
                     <li bind:this={participantslink}><a href="/#participants">{$_('nav.participants')}</a></li>
                     <li bind:this={sponsorslink}><a href="/#sponsors">{$_('nav.sponsors')}</a></li>
@@ -240,13 +240,21 @@
         .tickets
             position absolute
             top 75%
+            color inherit
+            text-decoration none
             font-size .3em
+            transition filter 0.15s ease
+
+            &:hover
+                filter drop-shadow(0 0 20px #ddd6)
+                cursor pointer
 
     .content
         margin-top 43px
 
-    @media screen and (max-width 525px)
+    @media screen and (max-width 600px)
         .landing
             .tickets
                 font-size 0.4em
+                filter drop-shadow(0 0 20px #ddd6)
 </style>
