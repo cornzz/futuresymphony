@@ -27,6 +27,7 @@
         <Quote
             quotee="Ayal Adler"
             role={$_('quotes.2.role')}
+            mobileRight
         >
             {$_('quotes.2.quote')}
         </Quote>
@@ -124,7 +125,7 @@
             display grid
             grid-template-columns 1.11fr 1fr
             column-gap 25px
-            row-gap 22px
+            row-gap 25px
 
             :global(div:last-child)
                 grid-column span 2
@@ -167,7 +168,7 @@
 
     @media screen and (max-device-width: 750px)
         .content .quotes
-            row-gap 15px
+            row-gap 18px
 
             :global(div)
                 grid-column span 2
