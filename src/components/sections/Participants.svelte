@@ -1,8 +1,8 @@
 <script lang="ts">
-    import Button from './forms/Button.svelte'
-    import Gallery from './Gallery.svelte'
+    import Button from '../forms/Button.svelte'
+    import Gallery from '../Gallery.svelte'
     import { locale, _ } from 'svelte-i18n'
-    import { deadline } from '../helpers/stores'
+    import { deadline } from '../../helpers/stores'
 </script>
 
 <div class="content">

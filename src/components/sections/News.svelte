@@ -1,10 +1,10 @@
 <script lang="ts">
-    import type { NewsArticle } from '../helpers/types';
+    import type { NewsArticle } from '../../helpers/types'
     import { _, locale } from 'svelte-i18n'
 
     export let latest = false
 
-    const imports = import.meta.globEager('../routes/news/articles/*.json') as { [path: string]: NewsArticle }
+    const imports = import.meta.globEager('../../routes/news/articles/*.json') as { [path: string]: NewsArticle }
 
     let articlesShown: number = 10
     let articles: { id: string, article: NewsArticle }[] = Object.entries(imports).map(([path, article]) => ({ id: path.match(/\d+/)[0], article }))

@@ -1,5 +1,5 @@
 <script lang="ts">
-    import Button from './forms/Button.svelte'
+    import Button from '../forms/Button.svelte'
     import { _ } from 'svelte-i18n'
 </script>
 

@@ -1,6 +1,6 @@
 <script lang="ts">
     import Tab from '../../components/Tab.svelte'
-    import News from '../../components/News.svelte'
+    import News from '../../components/sections/News.svelte'
     import { MetaTags } from 'svelte-meta-tags'
     import { showLanding, showBack } from '../../helpers/stores'
     import { _ } from 'svelte-i18n';

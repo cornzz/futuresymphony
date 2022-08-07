@@ -1,10 +1,10 @@
 <script lang="ts">
-    import Quote from './Quote.svelte'
-    import Image from './Image.svelte'
+    import Quote from '../Quote.svelte'
+    import Image from '../Image.svelte'
     import { _, addMessages } from 'svelte-i18n'
-    import { fadeHeight } from '../helpers'
-    import about_en from '../locales/en/about.json'
-    import about_lt from '../locales/lt/about.json'
+    import { fadeHeight } from '../../helpers'
+    import about_en from '../../locales/en/about.json'
+    import about_lt from '../../locales/lt/about.json'
     import { onMount } from 'svelte'
 
     addMessages('en', about_en)
