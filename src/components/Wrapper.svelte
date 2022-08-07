@@ -4,7 +4,7 @@
     import LanguageSelector from './LanguageSelector.svelte'
     import { onMount, tick } from 'svelte'
     import { _, locale } from 'svelte-i18n'
-    import { showLanding, showBack, sections } from '../helpers/stores'
+    import { showLanding, showBack, sections, ticketsAvailable } from '../helpers/stores'
 
     let landing: HTMLElement, header: HTMLElement, content: HTMLElement, back: HTMLElement, footer: HTMLElement
     let aboutlink: HTMLElement, newslink: HTMLElement, participantslink: HTMLElement, sponsorslink: HTMLElement, contactslink: HTMLElement
@@ -117,10 +117,15 @@
 
 {#if $showLanding}
     <div class="landing" bind:this={landing}>
-        <span>FUTURE<br>SYMPHONY</span>
-        <span class="sub">
-            {@html $_('index.headline2')}
-        </span>
+        <div>
+            <span>FUTURE<br>SYMPHONY</span>
+            <span class="sub">
+                {@html $_('index.headline2')}
+            </span>
+        </div>
+        {#if $ticketsAvailable}
+            <span class="tickets">Tickets available now!</span>
+        {/if}
     </div>
 {/if}
 
@@ -202,6 +207,43 @@
     @require '../styles/header.styl'
     @require '../styles/footer.styl'
 
+    .landing
+        height 100vh
+        background-color rgba(0, 0, 0, 0.7)
+        outline none
+        display flex
+        flex-direction column
+        align-items center
+        justify-content center
+        font-family 'Audiowide', 'Courier New'
+        color #fafafa
+        text-shadow 2px 2px 14px #444444
+        text-align center
+        font-size 11vmin
+        line-height 1.1
+        text-decoration none    
+        -webkit-user-select none
+        -ms-user-select none
+        user-select none
+
+        div
+            display flex
+            flex-direction column
+
+            .sub
+                font-size 0.2em
+                letter-spacing 0.05em
+
+        .tickets
+            position absolute
+            top 75%
+            font-size .3em
+
     .content
         margin-top 43px
+
+    @media screen and (max-width 525px)
+        .landing
+            .tickets
+                font-size 0.4em
 </style>
