@@ -8,7 +8,7 @@
     import Contacts from '../components/sections/Contacts.svelte'
     import { MetaTags } from 'svelte-meta-tags'
     import { onMount } from 'svelte'
-    import { showLanding, showBack, sections } from '../helpers/stores'
+    import { showLanding, showBack, sections, ticketsAvailable } from '../helpers/stores'
     import { _ } from 'svelte-i18n'
 
     let about, news, participants, sponsors, contacts
@@ -35,7 +35,9 @@
 <div id="about"></div>
 <div bind:this={about}>
     <Tab oversize style="padding-top: calc(2% + 45px);">
-        <Tickets/>
+        {#if $ticketsAvailable}
+            <Tickets/>
+        {/if}
         <h1 class="cover-heading">{$_('about.title')}</h1>
         <About/>
     </Tab>
