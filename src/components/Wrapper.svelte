@@ -82,7 +82,7 @@
 
             setPositions()
         }
-        content.style['margin-top'] = header.offsetHeight - 1 + 'px'
+        content.style['margin-top'] = header.offsetHeight + 'px'
         if (windowWidth !== innerWidth) {
             jumpToHash()
             initSmoothScrolling() // fix?
