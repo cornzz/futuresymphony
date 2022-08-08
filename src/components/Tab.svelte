@@ -50,14 +50,6 @@
         .tab
             padding 2% 200px 3%
 
-    @media (min-width: 1400px) 
-        .tab
-            padding 2% 200px 3%
-
-    @media (min-width: 1400px) and (max-height: 900px)
-        .tab
-            padding 2% 200px 3%
-
     @media (min-width: 1500px) and (max-height: 890px) 
         .tab
             padding 2% 240px 3%
