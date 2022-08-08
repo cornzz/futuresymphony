@@ -128,16 +128,18 @@
         .image
             display inline-block
             position relative
+            opacity 1
+            transition opacity 0.3s ease
 
             &.loading
-                display none
+                opacity 0
 
             img
                 border 3px solid #fff
                 border-radius 3px
                 box-shadow 0 0 20px rgba(0, 0, 0, .7)
-                max-height 100vh
-                max-width 100vw
+                max-width 90vw
+                max-height 90vh
                 text-align center
                 line-height 6500%
                 -ms-user-select none
@@ -226,7 +228,12 @@
                     height 25px
                     left 22px
 
-            .image .caption
-                padding 0 3px
-                font-size 10px
+            .image
+                img
+                    max-width 98vw
+                    max-height 98vh
+
+                .caption
+                    padding 0 3px
+                    font-size 10px
 </style>
