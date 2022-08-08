@@ -109,7 +109,7 @@
 <style lang="stylus">
     .content
         display grid
-        grid-template-columns repeat(5, 20%)
+        grid-template-columns repeat(5, 1fr)
         grid-template-rows repeat(3, 1fr)
         grid-template-areas "a a a b b" "c c d d d" "e e f f f"
         height 95%
