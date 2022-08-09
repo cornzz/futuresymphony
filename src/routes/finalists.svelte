@@ -120,9 +120,10 @@
             width 290px
             height 290px
             overflow hidden
+            isolation isolate
             margin 10px 30px 5px 0
             float left
-            border-radius 100%
+            border-radius 290px
             shape-outside circle()
 
             &.right
