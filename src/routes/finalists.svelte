@@ -90,7 +90,7 @@
 
 <style lang="stylus">
     hr
-        margin 20px 30%
+        margin 0 30%
 
         &:before,
         &:after
@@ -112,7 +112,7 @@
             border-bottom solid 1px var(--color-primary)
     .bio
         width 100%
-        padding 20px 0
+        padding 40px 0
 
         .bio-image
             width 290px
@@ -147,13 +147,10 @@
 
     @media screen and (max-device-width: 900px)
         hr
-            margin 40px 20%
+            margin 0 20%
 
         .bio .bio-image
             width 145px
             height 145px
             margin 5px 10px 5px 0
-
-            // :global(img)
-            //     height 35vh
 </style>
