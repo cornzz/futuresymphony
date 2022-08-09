@@ -7,6 +7,7 @@
     import { highlightElement } from '../../helpers'
     import { _ } from 'svelte-i18n'
     import { onMount, tick } from 'svelte'
+    import { MetaTags } from 'svelte-meta-tags'
 
     export let dto: RegistrationDTO = null
 
@@ -105,6 +106,11 @@
         adminKey = localStorage.getItem('adminKey')
     })
 </script>
+
+<MetaTags 
+    title={$_('registration.meta.yourRegistrationTitle')}
+    description={$_('registration.meta.description')}
+/>
 
 <h1 class="cover-heading">{$_('registration.yourRegistration')}</h1>
 {#if dto}
