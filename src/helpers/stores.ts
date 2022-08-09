@@ -9,5 +9,5 @@ export let baseURL: Writable<string> = writable(dev ? 'http://localhost:8080/api
 export let loading: Writable<boolean> = writable(false)
 export let imageFrame: Writable<ImageFrame> = writable(null)
 export let deadline: Writable<boolean> = writable(new Date() > new Date('Jul 01 2022 01:00:00 GMT+0300'))
-// export let ticketsAvailable: Writable<boolean> = writable(false)
-export let ticketsAvailable: Writable<boolean> = writable(new Date() > new Date('Aug 08 2022 01:00:00 GMT+0300') && new Date() < new Date('Sep 09 2022 18:30:00 GMT+0300'))
+export let ticketsAvailable: Writable<boolean> = writable(false)
+// export let ticketsAvailable: Writable<boolean> = writable(new Date() > new Date('Aug 08 2022 01:00:00 GMT+0300') && new Date() < new Date('Sep 09 2022 18:30:00 GMT+0300'))

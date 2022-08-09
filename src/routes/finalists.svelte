@@ -124,10 +124,6 @@
             float left
             border-radius 100%
             shape-outside circle()
-            transition transform 0.3s ease
-
-            &:hover
-                transform scale(1.02)
 
             &.right
                 margin 10px 0 5px 25px
@@ -136,7 +132,10 @@
             :global(img)
                 height 100%
                 width 100%
-        
+                transition transform 0.3s ease
+
+            &:hover :global(img)
+                transform scale(1.02)
         & > p
             text-align justify
             margin 0
