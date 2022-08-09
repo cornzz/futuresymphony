@@ -17,7 +17,7 @@
 
 <Tab oversize justify={false}>
     <h1 class="cover-heading">{$_('title')}</h1>
-    <div class="bio">
+    <div class="bio" id="de_bock">
         <div class="bio-image">
             <Image
                 src="/images/finalists/jasper_de_bock_small.jpg"
@@ -31,7 +31,7 @@
         <p>{@html $_('bio.deBock')}</p>
     </div>
     <hr>
-    <div class="bio">
+    <div class="bio" id="butkus">
         <div class="bio-image right">
             <Image
                 src="/images/finalists/lukas_butkus_small.jpg"
@@ -45,7 +45,7 @@
         <p>{@html $_('bio.butkus')}</p>
     </div>
     <hr>
-    <div class="bio">
+    <div class="bio" id="czura">
         <div class="bio-image">
             <Image
                 src="/images/finalists/roman_czura_small.jpg"
@@ -59,7 +59,7 @@
         <p>{@html $_('bio.czura')}</p>
     </div>
     <hr>
-    <div class="bio">
+    <div class="bio" id="roche">
         <div class="bio-image right">
             <Image
                 src="/images/finalists/david_roche_small.jpg"
@@ -73,7 +73,7 @@
         <p>{@html $_('bio.roche')}</p>
     </div>
     <hr>
-    <div class="bio">
+    <div class="bio" id="scheller">
         <div class="bio-image">
             <Image
                 src="/images/finalists/przemyslaw_scheller_small.jpg"
@@ -90,7 +90,7 @@
 
 <style lang="stylus">
     hr
-        margin 40px 30%
+        margin 20px 30%
 
         &:before,
         &:after
@@ -112,9 +112,7 @@
             border-bottom solid 1px var(--color-primary)
     .bio
         width 100%
-
-        &:first-of-type
-            margin-top 20px
+        padding 20px 0
 
         .bio-image
             width 290px
@@ -142,7 +140,7 @@
             margin 0
 
             :global(b)
-                font-size 1.1em
+                font-size 1.15em
 
             :global(p:last-child)
                 margin 0
