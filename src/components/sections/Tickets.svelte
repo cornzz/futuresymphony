@@ -12,6 +12,7 @@
                 {$_('tickets.button')}
             </Button>
         </a>
+        <span class="distributor">{$_('tickets.distributor')}</span>
     </div>
 </div>
 
@@ -27,8 +28,15 @@
 
         .center
             display flex
-            margin 20px 0 25px
+            flex-direction column
+            margin 25px 0
+            align-items center
             justify-content center
+
+            .distributor
+                margin-top 3px
+                color var(--color-light-gray)
+                font-size 0.65em
 
     @media screen and (max-device-width: 600px)
         .content
@@ -40,5 +48,5 @@
                 margin-top 15px
 
             .center
-                margin 15px 0 20px
+                margin 20px 0
 </style>

@@ -20,7 +20,8 @@
         "title": "Bilietai į Future Symphony 2022",
         "caption": "<p>Baigiamasis „Future Symphony“ konkurso koncertas – jau rugsėjo 9 d. 18:30 val. Lietuvos nacionalinėje filharmonijoje Vilniuje.</p><p>RENGINYS NEMOKAMAS!</p>",
         "button": "Registracija į renginį",
-        "href": "https://tickets.paysera.com/lt/event/konkursas-future-symphony-baigiamasis-koncertas"
+        "href": "https://tickets.paysera.com/lt/event/konkursas-future-symphony-baigiamasis-koncertas",
+        "distributor": "Kvietimus platina tickets.paysera.com"
     },
     "about": {
         "title": "Sveiki atvykę!"

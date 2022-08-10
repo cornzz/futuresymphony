@@ -20,7 +20,8 @@
         "title": "Tickets to Future Symphony 2022",
         "caption": "<p>The final concert of FSC'22 is on September 9<sup>th</sup>, 6:30 p.m. at the Lithuanian National Philharmonic Hall in Vilnius.</p><p>ADDMISSION IS FREE!</p>",
         "button": "Registration to the event",
-        "href": "https://tickets.paysera.com/en/event/konkursas-future-symphony-baigiamasis-koncertas"
+        "href": "https://tickets.paysera.com/en/event/konkursas-future-symphony-baigiamasis-koncertas",
+        "distributor": "Invitations are distributed by tickets.paysera.com"
     },
     "about": {
         "title": "Welcome!"
