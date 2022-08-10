@@ -49,4 +49,7 @@
 
             .center
                 margin 20px 0
+
+                .distributor
+                    font-size 0.7em
 </style>
