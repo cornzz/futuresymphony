@@ -219,7 +219,7 @@
         align-items center
         justify-content center
         font-family 'Audiowide', 'Courier New'
-        color #fafafa
+        color #FAFAFA
         text-shadow 2px 2px 14px #444444
         text-align center
         font-size 11vmin
@@ -246,7 +246,7 @@
             transition filter 0.15s ease
 
             &:hover
-                filter drop-shadow(0 0 20px #ddd6)
+                filter drop-shadow(0 0 20px #DDD6)
                 cursor pointer
 
     .content
@@ -256,5 +256,5 @@
         .landing
             .tickets
                 font-size 0.4em
-                filter drop-shadow(0 0 20px #ddd6)
+                filter drop-shadow(0 0 20px #DDDDDDA5)
 </style>

@@ -27,18 +27,18 @@
 
     .primary
         background-color var(--color-primary)
-        color #fff
+        color #FFF
         border none
         
         &:hover:enabled
             background-color var(--color-primary-hover)
 
     .outline
-        background-color #fff
+        background-color #FFF
         border solid 1px var(--color-border)
 
         &:hover:enabled
-            background-color #fafafa
+            background-color #FAFAFA
 
     .special
         box-sizing border-box
@@ -49,7 +49,7 @@
         background-color var(--color-primary)
         border-radius var(--border-radius)
         border 2px solid var(--color-primary)
-        color #fff
+        color #FFF
         cursor pointer
         display inline-block
         padding 5px 20px
@@ -59,7 +59,7 @@
         &:hover
         &:global(.focus)
             transform translate(-2px,-2px)
-            background-color #fff
+            background-color #FFF
             box-shadow 4px 4px 0 0 var(--color-primary)
             color var(--color-primary)
 

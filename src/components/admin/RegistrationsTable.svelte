@@ -316,7 +316,7 @@
                     box-shadow inset 0 0 0 9999px rgba(0, 0, 0, .035)
 
                 &:nth-child(even)
-                    background-color #e5e5e5
+                    background-color #E5E5E5
 
                 th
                     position relative
@@ -330,7 +330,7 @@
 
                     &.success
                         background-color var(--color-success)
-                        color #fff
+                        color #FFF
                     
                     &.error
                         background-color var(--color-error)
@@ -360,7 +360,7 @@
                     left 50%
                     border-radius 2px
                     padding 2px
-                    background-color #ccc
+                    background-color #CCC
                     font-weight 300
                     z-index 50
                     white-space nowrap

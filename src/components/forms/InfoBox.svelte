@@ -11,7 +11,7 @@
         font-size 16px
         border solid 1px var(--color-border)
         border-radius var(--border-radius)
-        background-color #fff
+        background-color #FFF
         padding 5px 15px
 
         :global(tt)

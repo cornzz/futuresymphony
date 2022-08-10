@@ -157,7 +157,7 @@
             background var(--color-primary)
 
         :global(.splide__arrow)
-            background #fff
+            background #FFF
             opacity 0.7
             transition all 0.15s ease
             height 25px

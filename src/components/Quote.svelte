@@ -12,7 +12,7 @@
 <style lang="stylus">
     .quote
         position relative
-        background-color #e9e9e9
+        background-color #E9E9E9
         padding 10px 20px
         border-radius 3px
         font-size 0.95em

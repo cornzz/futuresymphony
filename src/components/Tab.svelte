@@ -64,11 +64,11 @@
 
     @media screen and (max-device-width: 600px)
         .tab
-            height 93vh
+            height 92vh
             font-size: 3.4vmin
 
             &.oversize
-                min-height 93vh
+                min-height 92vh
                 height auto
 
     @media screen and (max-device-width: 640px) and (orientation:landscape)

@@ -123,7 +123,7 @@
             position absolute
             border-radius 40px
             z-index 99
-            box-shadow inset 0px 0px 0px 8px #ffffff99
+            box-shadow inset 0px 0px 0px 8px #FFFFFF99
 
         .image
             display inline-block
@@ -135,7 +135,7 @@
                 opacity 0
 
             img
-                border 3px solid #fff
+                border 3px solid #FFF
                 border-radius 3px
                 box-shadow 0 0 20px rgba(0, 0, 0, .7)
                 max-width 90vw
@@ -190,7 +190,7 @@
             width 50px
             height 50px
             box-sizing border-box
-            background #fff
+            background #FFF
             color #000
             position absolute
             top 0

@@ -149,8 +149,15 @@
         hr
             margin 0 20%
 
-        .bio .bio-image
-            width 145px
-            height 145px
-            margin 5px 10px 5px 0
+        .bio
+            &:first-of-type
+                padding-top 25px
+
+            &:last-child
+                padding-bottom 25px
+
+            .bio-image
+                width 145px
+                height 145px
+                margin 5px 10px 5px 0
 </style>

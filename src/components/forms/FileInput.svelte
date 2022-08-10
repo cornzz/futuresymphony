@@ -119,7 +119,7 @@
             background-color var(--color-primary)
             border-radius var(--border-radius)
             transition all 0.05s ease
-            color #fff
+            color #FFF
         
         &[disabled="false"]:hover:before
             background-color var(--color-primary-hover)

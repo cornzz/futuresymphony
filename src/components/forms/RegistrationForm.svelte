@@ -204,7 +204,7 @@
 
     .form
         position relative
-        background-color #fff
+        background-color #FFF
         border solid 1px var(--color-border)
         border-radius var(--border-radius)
         padding 30px 45px
