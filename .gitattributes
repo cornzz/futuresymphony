@@ -10,4 +10,7 @@
 /build/images/**/*.png filter=lfs diff=lfs merge=lfs -text
 /db/fixtures/*.sql filter=lfs diff=lfs merge=lfs -text
 
-build/** linguist-generated=true
+build linguist-generated
+build/* linguist-generated
+build/** linguist-generated
+static/api/PHPMailer/* linguist-vendored
