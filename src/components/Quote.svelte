@@ -29,7 +29,7 @@
             background url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='24px' viewBox='0 0 24 24' width='24px' fill='%23F5F5F5'%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3Cpath d='M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z'/%3E%3C/svg%3E") no-repeat center
             background-color var(--color-primary)
             border-radius 32px
-            outline solid 4px var(--color-background)
+            border solid 4px var(--color-background)
             transform translate(-50%, -50%)
 
         span:first-child
@@ -52,7 +52,7 @@
                 width 24px
                 height 24px
                 background-size 18px 18px
-                outline-width 3px
+                border-width 3px
 
             &.mobileRight
                 border-left none
