@@ -97,16 +97,15 @@
             content ''
             display block
             position absolute
+            width 25px
             left 50%
             transform translate(-50%, -50%) rotate(45deg)
 
         &:before
-            width 25px
             height 20px
             background var(--color-background)
 
         &:after
-            width 25px
             height 3px
             border-top solid 1px var(--color-primary)
             border-bottom solid 1px var(--color-primary)
@@ -148,6 +147,10 @@
     @media screen and (max-device-width: 900px)
         hr
             margin 0 20%
+
+            &:before,
+            &:after
+                width 20px
 
         .bio
             &:first-of-type

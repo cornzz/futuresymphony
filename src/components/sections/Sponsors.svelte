@@ -149,7 +149,7 @@
 
                     img
                         max-height 100%
-                        opacity 0.7
+                        opacity 0.75
                         transition transform 0.15s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s
 
                         &:hover
