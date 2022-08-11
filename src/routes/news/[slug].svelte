@@ -54,7 +54,7 @@
         :global(img)
             height 40vh
 
-   @media screen and (max-device-width: 600px)
+   @media (max-width: 600px)
         .date
             line-height 2
             font-size 1.3vh

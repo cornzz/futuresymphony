@@ -176,8 +176,7 @@
                 display grid
                 grid-template-columns repeat(auto-fill, 150px)
 
-    @media screen and (max-width 525px)
-        .admin
-            .login
-                width 75%
+    @media (max-width 525px)
+        .admin .login
+            width 75%
 </style>

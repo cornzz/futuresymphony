@@ -104,7 +104,7 @@
     .success
         display block
 
-    @media screen and (max-width 600px)
+    @media (max-width 600px)
         .resend
             grid-template-columns 3fr 1fr
 

@@ -43,7 +43,7 @@
     .fullwidth
         width 100%
 
-    @media screen and (max-width 525px)
+    @media (max-width 525px)
         input
             top 0
 

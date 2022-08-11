@@ -62,7 +62,7 @@
         .tab
             padding 2% 320px 3%
 
-    @media screen and (max-device-width: 600px)
+    @media (max-width: 600px)
         .tab
             height 92vh
             font-size: 3.4vmin

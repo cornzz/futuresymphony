@@ -43,7 +43,7 @@
             margin 60px 0 100px 0
             justify-content center
 
-    @media screen and (max-device-width: 600px)
+    @media (max-width: 600px)
         .content .center
             margin 40px 0 80px 0
 </style>

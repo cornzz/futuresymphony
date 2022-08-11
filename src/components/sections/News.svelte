@@ -166,7 +166,7 @@
     .older
         margin-top 15px
 
-    @media screen and (max-device-width: 600px)
+    @media (max-width: 600px)
         .news-link
             margin-bottom 13px
             height 27%

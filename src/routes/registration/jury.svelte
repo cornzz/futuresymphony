@@ -114,7 +114,7 @@
                 .title
                     text-align left
 
-    @media screen and (max-width 525px)
+    @media (max-width 525px)
         .wrapper table tr
             th
                 padding 5px 10px 0

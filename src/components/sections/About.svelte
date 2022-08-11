@@ -153,7 +153,7 @@
                 transition all 0.2s ease-in
                 transform scale(101%)
 
-    @media screen and (max-device-width: 900px)
+    @media (max-width: 900px)
         .content
             & > p
                 text-align start
@@ -167,7 +167,7 @@
                 &.left
                     margin 15px 25px 10px 0
 
-    @media screen and (max-device-width: 750px)
+    @media (max-width: 750px)
         .content .quotes
             row-gap 18px
 

@@ -66,7 +66,7 @@
     .slim
         height 40px
 
-    @media screen and (max-width 600px)
+    @media (max-width 600px)
         button
             height 40px
             font-size 14px

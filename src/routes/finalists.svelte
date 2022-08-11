@@ -144,7 +144,7 @@
             :global(p:last-child)
                 margin 0
 
-    @media screen and (max-device-width: 900px)
+    @media (max-width: 900px)
         hr
             margin 0 20%
 

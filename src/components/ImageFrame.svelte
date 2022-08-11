@@ -218,7 +218,7 @@
             &:after
                 transform rotate(-45deg)
 
-    @media screen and (max-device-width: 600px)
+    @media (max-width: 600px)
         .image-frame
             .image-frame-close
                 width 45px

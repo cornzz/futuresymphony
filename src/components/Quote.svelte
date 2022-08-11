@@ -43,7 +43,7 @@
             display inline-block
             line-height 1.45
 
-    @media screen and (max-device-width: 750px)
+    @media (max-width: 750px)
         .quote
             padding 5px 15px
 

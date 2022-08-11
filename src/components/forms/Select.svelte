@@ -106,7 +106,7 @@
             &[disabled="true"]:after
                 opacity 0.5
     
-    @media screen and (max-width 525px)
+    @media (max-width 525px)
         .container
             grid-auto-flow initial
             row-gap 5px

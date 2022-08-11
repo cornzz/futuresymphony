@@ -56,7 +56,7 @@
             height 50vh
             width auto
 
-    @media screen and (max-device-width: 900px)
+    @media (max-width: 900px)
         .bio-image
             margin 5px 10px 5px 0
 

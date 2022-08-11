@@ -180,13 +180,16 @@
             grid-template-columns repeat(9, 1fr)
             grid-template-areas "a a a a a a b b b" "c c c c e e e e e" "d d d d d d d d d" "f f f f f f f f f"
             height 90%
+            margin-top 0
+            
+            .flex-column
+                margin-top 20px
 
-    @media (max-width: 600px)
+    @media (max-width: 500px)
         .content
             grid-template-rows repeat(6, 1fr)
             grid-template-columns 1fr 1fr
             grid-template-areas "a a" "b c" "d d" "e e" "f f" "f f"
-            margin-top 0
 
             .flex-column
                 &:not(:first-child)

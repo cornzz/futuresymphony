@@ -353,11 +353,11 @@
     .confirmation
         margin-top 15px
 
-    @media screen and (max-width 900px)
+    @media (max-width 900px)
         .mailer .criteria
             grid-template-columns 1fr 1fr
 
-    @media screen and (max-width 525px)
+    @media (max-width 525px)
         .mailer .templates div
             grid-template-columns 7fr 1.5fr 1.5fr
         

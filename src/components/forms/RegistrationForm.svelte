@@ -270,7 +270,7 @@
         margin 15px 0
         margin-left 50%
 
-    @media screen and (max-width 525px)
+    @media (max-width 525px)
         .form
             padding 20px
             font-size 14px

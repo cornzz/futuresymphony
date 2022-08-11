@@ -41,7 +41,7 @@
     .error
         border-color var(--color-error)
 
-    @media screen and (max-width 525px)
+    @media (max-width 525px)
         div
             font-size 14px
             padding 5px 10px

@@ -252,7 +252,7 @@
     .content
         margin-top 43px
 
-    @media screen and (max-width 600px)
+    @media (max-width 600px)
         .landing
             .tickets
                 font-size 0.4em

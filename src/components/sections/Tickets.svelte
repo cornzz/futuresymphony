@@ -38,7 +38,7 @@
                 color var(--color-light-gray)
                 font-size 0.65em
 
-    @media screen and (max-device-width: 600px)
+    @media (max-width: 600px)
         .content
             width 100%
             margin-bottom 5px
