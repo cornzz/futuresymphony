@@ -192,8 +192,10 @@
             grid-template-areas "a a" "b c" "d d" "e e" "f f" "f f"
 
             .flex-column
-                &:not(:first-child)
-                    margin-top 10px
+                margin-top 10px
+
+                &:first-child
+                    margin-top 0
 
                 .sponsor-title
                     font-size 2.9vmin
@@ -214,5 +216,9 @@
         .breaker
             display block
             width 100%
+    
+    @media (max-width: 340px)
+        .content .flex-column
+            margin-top 0
 </style>
 
