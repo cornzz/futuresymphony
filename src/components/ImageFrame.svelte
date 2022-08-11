@@ -1,9 +1,9 @@
 <script lang="ts">
-    import { Moon } from 'svelte-loading-spinners'
+    import { BarLoader } from 'svelte-loading-spinners'
+    import type { Image } from '../helpers/types'
     import { _ } from 'svelte-i18n'
     import { fade, slide } from 'svelte/transition'
     import { linear } from 'svelte/easing'
-    import type { Image } from '../helpers/types'
     import { tick } from 'svelte'
 
     let show: boolean = false
@@ -85,7 +85,7 @@
     >
         {#if loading}
             <div class="spinner" transition:fade={{ duration: 100 }}>
-                <Moon color="var(--color-primary)" />
+                <BarLoader color="var(--color-primary)" />
             </div>
         {/if}
         <div class="image" class:loading>
@@ -121,9 +121,10 @@
 
         .spinner
             position absolute
-            border-radius 40px
+            border-radius 2px
+            overflow hidden
             z-index 99
-            box-shadow inset 0px 0px 0px 8px #FFFFFF99
+            background #FFFFFF99
 
         .image
             display inline-block
@@ -136,7 +137,7 @@
 
             img
                 border 3px solid #FFF
-                border-radius 3px
+                border-radius var(--border-radius)
                 box-shadow 0 0 20px rgba(0, 0, 0, .7)
                 max-width 90vw
                 max-height 90vh

@@ -29,7 +29,6 @@
         margin-right 10px
         vertical-align text-bottom
         accent-color var(--color-primary)
-        border-radius 3px
     
     label
         font-size 14px

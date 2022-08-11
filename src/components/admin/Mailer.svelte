@@ -294,7 +294,7 @@
             column-gap 10px
             row-gap 10px
             font-size 14px
-            border-radius 5px
+            border-radius var(--border-radius)
             background-color var(--color-background)
             padding 4px
 
@@ -317,14 +317,14 @@
             flex-direction column
             font-size 14px
             background-color var(--color-background)
-            border-radius 5px
+            border-radius var(--border-radius)
             max-height 130px
             overflow auto
 
             div
                 display grid
                 grid-template-columns 4fr 4fr 1fr 1fr
-                border-radius 5px
+                border-radius var(--border-radius)
                 padding 4px
                 border solid 1px transparent
 

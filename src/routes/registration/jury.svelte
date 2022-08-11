@@ -96,7 +96,7 @@
             border-spacing 0
             border solid 1px var(--color-border)
             background-color #fff
-            border-radius 5px
+            border-radius var(--border-radius)
 
             tr
                 &:not(:last-child) td

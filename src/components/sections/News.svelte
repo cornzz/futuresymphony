@@ -51,15 +51,15 @@
             display flex
             position relative
             height 100%
-            border-radius 2px
+            border-radius var(--border-radius)
             background #ececec
 
             img
                 height 100%
                 width auto
                 transition all 0.1s ease-in-out
-                border-top-left-radius 1px
-                border-bottom-left-radius 1px
+                border-top-left-radius 4px
+                border-bottom-left-radius 4px
 
             .news-content
                 position relative
@@ -120,7 +120,7 @@
                 right -1px
                 opacity 0
                 background-color #F5F5F5D8
-                border-radius 2px
+                border-radius var(--border-radius)
                 transition all 0.2s ease-in-out
                 z-index 5
             
@@ -141,8 +141,6 @@
 
                 img
                     transform scaleY(101%) translateX(-1px)
-                    border-top-left-radius 2px
-                    border-bottom-left-radius 2px
 
                 &:before
                 &:after

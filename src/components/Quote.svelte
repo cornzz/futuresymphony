@@ -14,7 +14,8 @@
         position relative
         background-color #E9E9E9
         padding 10px 20px
-        border-radius 3px
+        border-radius var(--border-radius)
+        border-bottom-left-radius 3px 4px
         font-size 0.95em
         border-left solid 3px var(--color-primary)
 
@@ -45,8 +46,6 @@
     @media screen and (max-device-width: 750px)
         .quote
             padding 5px 15px
-            border-radius 2px
-            border-width 2px
 
             &:after
                 width 24px
@@ -56,7 +55,8 @@
 
             &.mobileRight
                 border-left none
-                border-right solid 2px var(--color-primary)
+                border-right solid 3px var(--color-primary)
+                border-bottom-right-radius 3px 4px
 
                 &:after
                     left unset
