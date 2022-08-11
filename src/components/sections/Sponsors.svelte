@@ -78,7 +78,6 @@
         <h2 class="sponsor-title">{$_('sponsors.mainSponsors')}:</h2>
         <div class="flex-row">
             <a class="sponsor" href={links.vln.href[$locale] ?? links.vln.href.lt} target="blank"><img src={`/images/sponsors/${links.vln.src[$locale] ?? links.vln.src.lt}`} alt={links.vln.src[$locale] ?? links.vln.src.lt} loading="lazy"></a>
-            <a class="sponsor" href={links.lnf.href[$locale] ?? links.lnf.href.lt} target="blank"><img src={`/images/sponsors/${links.lnf.src[$locale] ?? links.lnf.src.lt}`} alt={links.lnf.src[$locale] ?? links.lnf.src.lt} loading="lazy"></a>
         </div>
     </div>
     <div class="flex-column" style="grid-area: d">
@@ -98,7 +97,9 @@
     <div class="flex-column" style="grid-area: f">
         <h2 class="sponsor-title">{$_('sponsors.partners')}:</h2>
         <div class="flex-row">
+            <a class="sponsor" href={links.lnf.href[$locale] ?? links.lnf.href.lt} target="blank"><img src={`/images/sponsors/${links.lnf.src[$locale] ?? links.lnf.src.lt}`} alt={links.lnf.src[$locale] ?? links.lnf.src.lt} loading="lazy"></a>
             <a class="sponsor" href={links.pk.href[$locale] ?? links.pk.href.lt} target="blank"><img src={`/images/sponsors/${links.pk.src[$locale] ?? links.pk.src.lt}`} alt={links.pk.src[$locale] ?? links.pk.src.lt} loading="lazy"></a>
+            <div class="breaker"></div>
             <a class="sponsor undersize" href={links.cg.href[$locale] ?? links.cg.href.lt} target="blank"><img src={`/images/sponsors/${links.cg.src[$locale] ?? links.cg.src.lt}`} alt={links.cg.src[$locale] ?? links.cg.src.lt} loading="lazy"></a>
             <a class="sponsor undersize" href={links.dm.href[$locale] ?? links.dm.href.lt} target="blank"><img src={`/images/sponsors/${links.dm.src[$locale] ?? links.dm.src.lt}`} alt={links.dm.src[$locale] ?? links.dm.src.lt} loading="lazy"></a>
             <a class="sponsor" href={links.cf.href[$locale] ?? links.cf.href.lt} target="blank"><img src={`/images/sponsors/${links.cf.src[$locale] ?? links.cf.src.lt}`} alt={links.cf.src[$locale] ?? links.cf.src.lt} loading="lazy"></a>
@@ -109,10 +110,11 @@
 <style lang="stylus">
     .content
         display grid
-        grid-template-columns repeat(5, 1fr)
+        grid-template-columns repeat(9, 1fr)
         grid-template-rows repeat(3, 1fr)
-        grid-template-areas "a a a b b" "c c d d d" "e e f f f"
+        grid-template-areas "a a a a a b b c c" "d d d d d e e e e" "f f f f f f f f f"
         height 95%
+        margin-top 10px
 
         .flex-column
             display flex
@@ -169,18 +171,33 @@
                         cursor default
                         transform scale(103%)
 
-    @media screen and (max-device-width: 600px)
+    .breaker
+        display none
+    
+    @media (max-width: 1200px)
         .content
-            grid-template-rows repeat(5, 1fr)
-            grid-template-areas "a a a a a" "b b c c c" "d d d d d" "e e e e e" "f f f f f"
+            grid-template-rows repeat(4, 1fr)
+            grid-template-columns repeat(9, 1fr)
+            grid-template-areas "a a a a a a b b b" "c c c c e e e e e" "d d d d d d d d d" "f f f f f f f f f"
             height 90%
 
+    @media (max-width: 600px)
+        .content
+            grid-template-rows repeat(6, 1fr)
+            grid-template-columns 1fr 1fr
+            grid-template-areas "a a" "b c" "d d" "e e" "f f" "f f"
+            margin-top 0
+
             .flex-column
+                &:not(:first-child)
+                    margin-top 10px
+
                 .sponsor-title
-                    font-size 2.5vmin
+                    font-size 2.9vmin
 
                 .flex-row
                     justify-content space-around
+                    flex-wrap wrap
 
                     .sponsor
                         height 11.5vmin
@@ -190,5 +207,9 @@
             
                     .text
                         font-size 3.5vmin
+        
+        .breaker
+            display block
+            width 100%
 </style>
 

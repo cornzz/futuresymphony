@@ -44,11 +44,11 @@
 
     @media (min-width: 1200px) and (min-height: 800px)
         .tab
-            padding 2% 160px 3%
+            padding 2% 150px 3%
 
     @media (min-width: 1300px)
         .tab
-            padding 2% 200px 3%
+            padding 2% 180px 3%
 
     @media (min-width: 1500px) and (max-height: 890px) 
         .tab
