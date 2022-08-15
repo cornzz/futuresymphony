@@ -16,7 +16,7 @@
 
 <Tab oversize>
     <h1 class="cover-heading">{$_('news.archive.title')}</h1>
-    <News/>
+    <News />
     <br>
 </Tab>
 

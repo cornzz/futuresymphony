@@ -4,17 +4,26 @@
 
     export let latest = false
 
-    const imports = import.meta.globEager('../../routes/news/articles/*.json') as { [path: string]: NewsArticle }
+    const imports = import.meta.globEager(
+        '../../routes/news/articles/*.json'
+    ) as { [path: string]: NewsArticle }
 
     let articlesShown: number = 10
-    let articles: { id: string, article: NewsArticle }[] = Object.entries(imports).map(([path, article]) => ({ id: path.match(/\d+/)[0], article }))
+    let articles: { id: string, article: NewsArticle }[] =
+        Object.entries(imports)
+            .map(([path, article]) => ({ id: path.match(/\d+/)[0], article }))
 
     articles.sort((a, b) => Number(b.id) - Number(a.id))
     articles = latest ? articles.slice(0, 3) : articles
 </script>
 
-{#each articles.slice(0, articlesShown) as { article }}
-    <a href={`/news/${article.slug}`} class="news-link" class:fixed={!latest}>
+{#each articles as { article }, i}
+    <a
+        href={`/news/${article.slug}`}
+        class="news-link"
+        class:fixed={!latest}
+        class:hidden={i >= articlesShown}
+    >
         <div class="news-item dropshadow" data-readmore={$_('news.readmore')}>
             <img
                 src={`/images/news/${article.images.small}`}
@@ -28,7 +37,11 @@
                 <div class="date"><i>{@html article.date[$locale]}</i></div>
                 <span class="title"><b>{@html article.title[$locale]}</b></span>
                 <div class="text">
-                    {@html article.content.short ? article.content.short[$locale] : article.content.full[$locale]}
+                    {@html
+                        article.content.short ?
+                            article.content.short[$locale] :
+                            article.content.full[$locale]
+                    }
                 </div>
             </div>
         </div>
@@ -46,6 +59,12 @@
         color inherit
         height 27%
         margin-bottom 1.3%
+
+        &.fixed
+            height 25vh !important
+
+        &.hidden
+            display none
 
         .news-item
             display flex
@@ -155,9 +174,6 @@
         &:hover
             cursor pointer
             box-shadow 0 1px 3px 0 rgba(60, 64, 67, .3), 0 4px 8px 3px rgba(60, 64, 67, .15)
-    
-    .fixed
-        height 25vh !important
 
     .center
         width 100%
