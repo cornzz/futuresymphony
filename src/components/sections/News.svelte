@@ -110,6 +110,7 @@
                     right 0
                     bottom 0
                     height 30%
+                    border-bottom-right-radius var(--border-radius)
                     background linear-gradient(
                         to bottom,
                         rgba(236, 236, 236, 0) 0%,
