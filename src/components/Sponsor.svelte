@@ -33,7 +33,6 @@
         flex-direction column
         justify-content center
 
-
         &.text
             font-family 'Audiowide', "Courier New"
             font-size 3vmin

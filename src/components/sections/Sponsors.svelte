@@ -170,6 +170,7 @@
             grid-template-rows repeat(6, 1fr)
             grid-template-columns 1fr 1fr
             grid-template-areas "a a" "b c" "d d" "e e" "f f" "f f"
+            height 87%
 
             .flex-column
                 margin-top 10px
