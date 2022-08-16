@@ -1,8 +1,9 @@
 <script lang="ts">
+    import '@splidejs/svelte-splide/css'
     import { Splide, SplideSlide } from '@splidejs/svelte-splide'
     import { Intersection } from '@splidejs/splide-extension-intersection'
-    import '@splidejs/svelte-splide/css'
     import { onMount } from 'svelte'
+    import { _ } from 'svelte-i18n'
     import { imageFrame } from '../helpers/stores'
     import type { Image } from '../helpers/types'
 
@@ -115,6 +116,7 @@
                         <img
                             src="data:image/png;base64,AAA"
                             alt={image.alt}
+                            title={image.caption ? $_(image.caption) : ''}
                             width="750"
                             height="500"
                             data-splide-lazy={image.src}
