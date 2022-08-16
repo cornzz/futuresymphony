@@ -32,6 +32,14 @@ export type NewsArticle = {
     }
 }
 
+export type SponsorData = {
+    href: { en: string, lt: string },
+    src: { en?: string, lt: string },
+    alt: { en: string, lt: string },
+    undersize?: boolean,
+    oversize?: boolean
+}
+
 export type Image = {
     src: string,
     alt: string,
