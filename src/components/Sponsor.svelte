@@ -63,6 +63,10 @@
                 opacity 1
                 transform scale(104%)
 
+    @media (hover: none)
+        .sponsor img
+            opacity 1
+
     @media (max-width: 500px)
         .sponsor
             height 11.5vmin

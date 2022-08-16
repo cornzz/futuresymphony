@@ -111,6 +111,7 @@
             <ul class="splide__list">
                 {#each images as image, index}
                     <SplideSlide>
+                        <!-- TODO: add caption title -->
                         <img
                             src="data:image/png;base64,AAA"
                             alt={image.alt}
