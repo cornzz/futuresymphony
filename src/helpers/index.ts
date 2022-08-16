@@ -30,7 +30,8 @@ function handleClick(event: MouseEvent) {
     let anchor = event.target as HTMLAnchorElement
     if (
         location.pathname.replace(/^\//, '') == anchor.pathname.replace(/^\//, '') && 
-        location.hostname == anchor.hostname
+        location.hostname == anchor.hostname &&
+        !event.ctrlKey && !event.metaKey
     ) {
         let target = document.querySelector(anchor.hash) as HTMLElement
         event.preventDefault()
