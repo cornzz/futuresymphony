@@ -93,7 +93,9 @@
     
     onMount(() => {
         init()
-        window.addEventListener('resize', init)
+        if (!['iPad', 'iPhone', 'iPod'].includes(navigator.platform)) {
+            window.addEventListener('resize', init)
+        }
         
         if ($showLanding) {      
             window.addEventListener('scroll', setHeader)
