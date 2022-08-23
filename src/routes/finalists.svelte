@@ -21,11 +21,11 @@
         <div class="bio-image">
             <Image
                 src="/images/finalists/jasper_de_bock_small.jpg"
-                alt="Adomas Morkunas Budrys"
+                alt="Jasper De Bock"
                 width="400"
                 height="400"
                 bigsrc="/images/finalists/jasper_de_bock.jpg"
-                caption="Jasper De Bock - Personal archive photo"
+                caption={$_('caption.deBock')}
             />
         </div>
         <p>{@html $_('bio.deBock')}</p>
@@ -35,11 +35,11 @@
         <div class="bio-image right">
             <Image
                 src="/images/finalists/lukas_butkus_small.jpg"
-                alt="Adomas Morkunas Budrys"
+                alt="Lukas Butkus"
                 width="400"
                 height="400"
                 bigsrc="/images/finalists/lukas_butkus.jpg"
-                caption="Lukas Butkus - Photo by Tomas Terekas"
+                caption={$_('caption.butkus')}
             />
         </div>
         <p>{@html $_('bio.butkus')}</p>
@@ -49,11 +49,11 @@
         <div class="bio-image">
             <Image
                 src="/images/finalists/roman_czura_small.jpg"
-                alt="Adomas Morkunas Budrys"
+                alt="Roman Czura"
                 width="400"
                 height="400"
                 bigsrc="/images/finalists/roman_czura.jpg"
-                caption="Roman Czura - Personal archive photo"
+                caption={$_('caption.czura')}
             />
         </div>
         <p>{@html $_('bio.czura')}</p>
@@ -63,11 +63,11 @@
         <div class="bio-image right">
             <Image
                 src="/images/finalists/david_roche_small.jpg"
-                alt="Adomas Morkunas Budrys"
+                alt="David Roche"
                 width="400"
                 height="400"
                 bigsrc="/images/finalists/david_roche.jpg"
-                caption="David Roche - Personal archive photo"
+                caption={$_('caption.roche')}
             />
         </div>
         <p>{@html $_('bio.roche')}</p>
@@ -77,11 +77,11 @@
         <div class="bio-image">
             <Image
                 src="/images/finalists/przemyslaw_scheller_small.jpg"
-                alt="Adomas Morkunas Budrys"
+                alt="Przemysław Scheller"
                 width="400"
                 height="400"
                 bigsrc="/images/finalists/przemyslaw_scheller.jpg"
-                caption="Przemysław Scheller - Personal archive photo"
+                caption={$_('caption.scheller')}
             />
         </div>
         <p>{@html $_('bio.scheller')}</p>
