@@ -13,7 +13,10 @@
     let showFSO = false
     const toggleFSO = () => showFSO = !showFSO
 
-    onMount(() => window.addEventListener('toggleFSO', toggleFSO))
+    onMount(() => {
+        window.addEventListener('toggleFSO', toggleFSO)
+        showFSO = window.location.hash === '#FSO'
+    })
 </script>
 
 <div class="content">
@@ -54,7 +57,7 @@
     <p>
         {@html $_('sections.fso.teaser', { values: { span: '<span class="link" onclick="window.dispatchEvent(new Event(\'toggleFSO\'))">Future Symphony Orchestra</span>' } })}
         {#if showFSO}
-            <div transition:fadeHeight style="overflow: hidden">
+            <div transition:fadeHeight style="overflow: hidden" id="FSO">
                 <hr>
                     <b>Future Symphony Orchestra (FSO)</b> {@html $_('sections.fso.about')}
                 <hr>
