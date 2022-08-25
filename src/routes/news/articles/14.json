@@ -1,0 +1,25 @@
+{
+    "slug": "finalists_22",
+    "meta": {
+        "en": "Meet the finalists of Future Symphony Competition 2022!",
+        "lt": "Susipažinkite su 2022 m. „Future Symphony“ konkurso finalininkais!"
+    },
+    "date": {
+        "en": "August 23<sup>rd</sup>, 2022 - 8:00 pm",
+        "lt": "2022 m. rugpjūčio 23 d. 20:00"
+    },
+    "title": {
+        "en": "Meet the finalists of FSC'22!",
+        "lt": "Susipažinkite su FSC'22 finalininkais!"
+    },
+    "content": {
+        "full": {
+            "en": "<p>This years final concert on the 9<sup>th</sup> of September will see the premieres of five pieces whose authors hail from five european countries:</p><p>The Netherlands 🇳🇱 &ndash; Lithuania 🇱🇹 &ndash; Poland 🇵🇱 &ndash; Germany 🇩🇪 &ndash; Great Britain 🇬🇧</p><p>You can now read their biographies at <a href='/finalists' class='link'>www.futuresymphony.lt/finalists</a>.</p>",
+            "lt": "<p>Šių metų baigiamajame koncerte rugsėjo 9 d. įvyks penkių kūrinių, kurių autoriai kilę iš penkių Europos šalių, premjeros:</p><p>Nyderlandai 🇳🇱 – Lietuva 🇱🇹 – Lenkija 🇵🇱 – Vokietija 🇩🇪 – Didžioji Britanija 🇬🇧</p><p>Dabar jų biografijas galite skaityti <a href='/finalists' class='link'>www.futuresymphony.lt/finalistai</a>.</p>"
+        }
+    },
+    "images": {
+        "regular": "meet_the_finalists.jpg",
+        "small": "meet_the_finalists_small.jpg"
+    }
+}

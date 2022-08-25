@@ -50,6 +50,9 @@
     .news-image
         float right
         margin 5px 0 5px 20px
+        border-radius var(--border-radius)
+        box-shadow 0 10px 16px 0 rgba(0, 0, 0, .14), 0 6px 20px 0 rgba(0, 0, 0, .13)
+        overflow hidden
 
         :global(img)
             height 40vh
