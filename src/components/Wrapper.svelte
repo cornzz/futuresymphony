@@ -4,10 +4,10 @@
     import LanguageSelector from './LanguageSelector.svelte'
     import { onMount, tick } from 'svelte'
     import { _, locale } from 'svelte-i18n'
-    import { showLanding, showBack, sections, ticketsAvailable } from '../helpers/stores'
+    import { showLanding, showBack, sections, ticketsAvailable, streamActive } from '../helpers/stores'
     import { initSmoothScrolling } from '../helpers'
 
-    let landing: HTMLElement, header: HTMLElement, content: HTMLElement, back: HTMLElement, footer: HTMLElement
+    let landing: HTMLElement, stream: HTMLElement, header: HTMLElement, content: HTMLElement, back: HTMLElement, footer: HTMLElement
     let aboutlink: HTMLElement, newslink: HTMLElement, participantslink: HTMLElement, sponsorslink: HTMLElement, contactslink: HTMLElement
     let aboutpos: number, newspos: number, participantspos: number, sponsorspos: number, contactspos: number
     let landingBottom: number = 0
@@ -122,7 +122,7 @@
 
 {#if $showLanding}
     <div class="landing" bind:this={landing}>
-        <div>
+        <div class="headline">
             <span>FUTURE<br>SYMPHONY</span>
             <span class="sub">
                 {@html $_('index.headline2')}
@@ -130,6 +130,21 @@
         </div>
         {#if $ticketsAvailable}
             <a class="tickets" href="/#about">{$_('index.tickets')}</a>
+        {/if}
+        {#if $streamActive}
+            <div class="stream" bind:this={stream}>
+                <iframe
+                    src="https://www.youtube-nocookie.com/embed/ugiRLAoBI7g?autoplay=1"
+                    title="Future Symphony Competition Live Stream"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                    on:load={() => {
+                        stream.style.marginTop = -header.clientHeight + 'px'
+                        landing.classList.add('streamLoaded')
+                    }}
+                />
+            </div>
         {/if}
     </div>
 {/if}
@@ -213,6 +228,7 @@
     @require '../styles/footer.styl'
 
     .landing
+        position relative
         height 100vh
         background-color rgba(0, 0, 0, 0.7)
         outline none
@@ -231,9 +247,18 @@
         -ms-user-select none
         user-select none
 
-        div
+        &:global(.streamLoaded)
+            .headline,
+            .tickets
+                opacity 0
+            
+            .stream
+                opacity 1
+
+        .headline
             display flex
             flex-direction column
+            transition opacity 1s ease
 
             .sub
                 font-size 0.2em
@@ -245,11 +270,24 @@
             color inherit
             text-decoration none
             font-size .3em
-            transition filter 0.15s ease
+            transition filter 0.15s ease, opacity 1s ease
 
             &:hover
                 filter drop-shadow(0 0 20px #DDD6)
                 cursor pointer
+
+        .stream
+            position absolute
+            width 75%
+            aspect-ratio 1.77777
+            border-radius var(--border-radius)
+            overflow hidden
+            opacity 0
+            transition opacity 1s ease 1.2s
+
+            iframe
+                width 100%
+                height 100%
 
     .content
         margin-top 43px
@@ -259,4 +297,7 @@
             .tickets
                 font-size 0.4em
                 filter drop-shadow(0 0 20px #DDDDDDA5)
+
+            .stream
+                width 90%
 </style>
