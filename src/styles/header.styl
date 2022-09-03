@@ -229,8 +229,10 @@
                 margin-left 20px
 
 .back
+    display flex
     opacity 0
     pointer-events none
+    text-decoration none
     background-color rgba(0, 0, 0, 0.35)
     transition all 0.1s
     border-radius var(--border-radius)
@@ -245,10 +247,24 @@
         filter brightness(150%)
         background-color rgba(0, 0, 0, 0.55)
 
-    img
+        span
+            max-width 100px
+
+    img,
+    span
         pointer-events none
+
+    img
         width 35px
         height 35px
+
+    span
+        line-height 35px
+        color #EEE
+        max-width 0
+        overflow hidden
+        white-space nowrap
+        transition max-width 0.4s cubic-bezier(0.33, 1, 0.68, 1)
 
     &:global(.active)
         opacity 1
@@ -335,6 +351,14 @@
         margin-bottom -7px
 
 @media (max-width: 350px)
-    .back img
-        width 30px
-        height 30px
+    .back
+        img
+            width 30px
+            height 30px
+        
+        span
+            line-height 30px
+
+@media (hover: none)
+    .back span
+        display none
