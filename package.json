@@ -25,7 +25,7 @@
     "prettier": "^2.4.1",
     "prettier-plugin-svelte": "^2.4.0",
     "stylus": "^0.56.0",
-    "svelte": "^3.44.0",
+    "svelte": "^3.49.0",
     "svelte-check": "^2.2.6",
     "svelte-preprocess": "^4.9.4",
     "svelte-sitemap": "^2.5.1",
