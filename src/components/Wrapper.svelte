@@ -7,7 +7,7 @@
     import { showLanding, showBack, sections, ticketsAvailable, streamActive } from '../helpers/stores'
     import { initSmoothScrolling } from '../helpers'
 
-    let landing: HTMLElement, stream: HTMLElement, header: HTMLElement, content: HTMLElement, back: HTMLElement, footer: HTMLElement
+    let landing: HTMLElement, stream: HTMLIFrameElement, header: HTMLElement, content: HTMLElement, back: HTMLElement, footer: HTMLElement
     let aboutlink: HTMLElement, newslink: HTMLElement, participantslink: HTMLElement, sponsorslink: HTMLElement, contactslink: HTMLElement
     let aboutpos: number, newspos: number, participantspos: number, sponsorspos: number, contactspos: number
     let landingBottom: number = 0
@@ -120,6 +120,7 @@
 
 <svelte:window bind:innerWidth bind:scrollY />
 
+<!-- Landing -->
 {#if $showLanding}
     <div class="landing" bind:this={landing}>
         <div class="headline">
@@ -132,23 +133,32 @@
             <a class="tickets" href="/#about">{$_('index.tickets')}</a>
         {/if}
         {#if $streamActive}
-            <div class="stream" bind:this={stream}>
-                <iframe
-                    src="https://www.youtube-nocookie.com/embed/ugiRLAoBI7g?autoplay=1"
-                    title="Future Symphony Competition Live Stream"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen
-                    on:load={() => {
+            <iframe
+                class="stream"
+                src="https://www.youtube-nocookie.com/embed/TP9kELkMV7c?enablejsapi=1&mute=1"
+                title="Future Symphony Competition Live Stream"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+                bind:this={stream}
+                on:load={() => {
+                    setTimeout(() => {
                         stream.style.marginTop = -header.clientHeight + 'px'
                         landing.classList.add('streamLoaded')
-                    }}
-                />
-            </div>
+                    }, 200)
+                    setTimeout(() => {
+                        stream.contentWindow.postMessage(JSON.stringify({
+                            event: 'command',
+                            func: 'playVideo'
+                        }), 'https://www.youtube-nocookie.com')
+                    }, 2200)
+                }}
+            />
         {/if}
     </div>
 {/if}
 
+<!-- Header -->
 <div class="masthead" bind:this={header}>
     {#if showMobile}
         <div class="mobile-nav">
@@ -199,11 +209,15 @@
     <slot></slot>
 </div>
 
+<!-- Back button -->
 {#if $showBack}
-    <a id="back" href="#start" class="back" title="{$_('nav.back')}" bind:this={back}>
+    <a id="back" href="#start" class="back" bind:this={back}>
         <img src={ARROW_ICON} width="150" height="150" alt="arr.svg">
+        <span>{$_('nav.back')}&nbsp;&nbsp;</span>
     </a>
 {/if}
+
+<!-- Footer -->
 <div class="mastfoot" bind:this={footer}>
     <a href="/privacy">
         {$_('privacy.link')}
@@ -284,10 +298,6 @@
             overflow hidden
             opacity 0
             transition opacity 1s ease 1.2s
-
-            iframe
-                width 100%
-                height 100%
 
     .content
         margin-top 43px
