@@ -1,7 +1,7 @@
 <script lang="ts">
     import Sponsor from '../Sponsor.svelte'
     import type { SponsorData } from '../../helpers/types'
-    import { _, locale } from 'svelte-i18n'
+    import { _ } from 'svelte-i18n'
 
     type Sponsors = {
         [key: string]: SponsorData

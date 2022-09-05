@@ -5,7 +5,8 @@
             "description": "3rd \"Future Symphony\" international composition competition for symphony orchestra"
         },
         "headline2": "3<sup>RD</sup> INTERNATIONAL MUSIC COMPOSITION COMPETITION<br>FOR SYMPHONY ORCHESTRA",
-        "tickets": "Tickets available now!"
+        "tickets": "Tickets available now!",
+        "streamConsent": "This content is hosted by a third party (www.youtube.com). By clicking here you accept the <a class='link' href='https://policies.google.com/privacy?hl=en' target='_blank'>privacy policy</a> of www.youtube.com."
     },
     "nav": {
         "ticketsAndAbout": "tickets & about",
