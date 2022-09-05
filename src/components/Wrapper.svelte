@@ -1,13 +1,14 @@
 <script lang="ts">
     // Disclaimer: this code was written with static site generation in mind, therefore is error prone when running as a SPA.
     
+    import Stream from './Stream.svelte'
     import LanguageSelector from './LanguageSelector.svelte'
     import { onMount, tick } from 'svelte'
     import { _, locale } from 'svelte-i18n'
     import { showLanding, showBack, sections, ticketsAvailable, streamActive } from '../helpers/stores'
     import { initSmoothScrolling } from '../helpers'
 
-    let landing: HTMLElement, stream: HTMLIFrameElement, header: HTMLElement, content: HTMLElement, back: HTMLElement, footer: HTMLElement
+    let landing: HTMLElement, header: HTMLElement, content: HTMLElement, back: HTMLElement, footer: HTMLElement
     let aboutlink: HTMLElement, newslink: HTMLElement, participantslink: HTMLElement, sponsorslink: HTMLElement, contactslink: HTMLElement
     let aboutpos: number, newspos: number, participantspos: number, sponsorspos: number, contactspos: number
     let landingBottom: number = 0
@@ -16,6 +17,8 @@
     let windowWidth: number
     let innerWidth: number = 0
     let scrollY: number = 0
+    let ready: boolean = false
+    let streamLoaded: boolean
 
     const ARROW_ICON = "data:image/svg+xml,%3Csvg viewBox='0 0 2048 2048' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1523 1212q0 13-10 23l-50 50q-10 10-23 10t-23-10l-393-393-393 393q-10 10-23 10t-23-10l-50-50q-10-10-10-23t10-23l466-466q10-10 23-10t23 10l466 466q10 10 10 23z' fill='%23EEEEEE'/%3E%3C/svg%3E"
 
@@ -110,6 +113,8 @@
             }
         }
 
+        ready = true
+
         return () => {
             window.removeEventListener('resize', init)
             window.removeEventListener('scroll', setHeader)
@@ -122,7 +127,7 @@
 
 <!-- Landing -->
 {#if $showLanding}
-    <div class="landing" bind:this={landing}>
+    <div class="landing" class:streamLoaded bind:this={landing}>
         <div class="headline">
             <span>FUTURE<br>SYMPHONY</span>
             <span class="sub">
@@ -132,26 +137,12 @@
         {#if $ticketsAvailable}
             <a class="tickets" href="/#about">{$_('index.tickets')}</a>
         {/if}
-        {#if $streamActive}
-            <iframe
-                class="stream"
-                src="https://www.youtube-nocookie.com/embed/TP9kELkMV7c?enablejsapi=1&mute=1"
-                title="Future Symphony Competition Live Stream"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen
-                bind:this={stream}
+        {#if $streamActive && ready}
+            <Stream
+                headerHeight={header?.clientHeight}
+                bind:loaded={streamLoaded}
                 on:load={() => {
-                    setTimeout(() => {
-                        stream.style.marginTop = -header.clientHeight + 'px'
-                        landing.classList.add('streamLoaded')
-                    }, 200)
-                    setTimeout(() => {
-                        stream.contentWindow.postMessage(JSON.stringify({
-                            event: 'command',
-                            func: 'playVideo'
-                        }), 'https://www.youtube-nocookie.com')
-                    }, 2200)
+                    setTimeout(() => { landing.classList.add('streamLoaded') }, 200)
                 }}
             />
         {/if}
@@ -170,7 +161,7 @@
                 <div class="icon left"></div>
                 <div class="icon right"></div>
             </div>
-            <div class="menu" class:active={navOpen} on:touchmove={(e) => e.preventDefault()}>
+            <div class="menu" class:active={navOpen} on:touchmove|preventDefault>
                 <!-- svelte-ignore missing-declaration -->
                 <div class="links" on:click={(e) => {
                     if (e.target instanceof HTMLAnchorElement && location.pathname !== e.target.pathname) return
@@ -261,13 +252,10 @@
         -ms-user-select none
         user-select none
 
-        &:global(.streamLoaded)
+        &.streamLoaded
             .headline,
             .tickets
                 opacity 0
-            
-            .stream
-                opacity 1
 
         .headline
             display flex
@@ -290,14 +278,6 @@
                 filter drop-shadow(0 0 20px #DDD6)
                 cursor pointer
 
-        .stream
-            position absolute
-            width 75%
-            aspect-ratio 1.77777
-            border-radius var(--border-radius)
-            overflow hidden
-            opacity 0
-            transition opacity 1s ease 1.2s
 
     .content
         margin-top 43px
@@ -307,7 +287,4 @@
             .tickets
                 font-size 0.4em
                 filter drop-shadow(0 0 20px #DDDDDDA5)
-
-            .stream
-                width 90%
 </style>
