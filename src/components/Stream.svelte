@@ -17,7 +17,7 @@
 
     onMount(() => {
         YTconsent = !!localStorage.getItem('YTconsent')
-        setTimeout(() => loaded = !YTconsent ? true : false, 200)
+        setTimeout(() => loaded = !YTconsent, 200)
     })
 </script>
 
@@ -42,7 +42,7 @@
         </div>
     {:else}
         <iframe
-            src="https://www.youtube.com/embed/{videoId}?rel=0{clicked ? '&autoplay=1' : '&enablejsapi=1&mute=1'}"
+            src="https://www.youtube.com/embed/{videoId}?rel=0&autoplay=1{!clicked ? '&enablejsapi=1&mute=1' : ''}"
             title="Future Symphony Competition Live Stream"
             frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -50,14 +50,8 @@
             bind:this={stream}
             on:load={() => {
                 if (!clicked) {
+                    muted = true
                     setTimeout(() => loaded = true, 200)
-                    setTimeout(() => {
-                        stream.contentWindow.postMessage(JSON.stringify({
-                            event: 'command',
-                            func: 'playVideo'
-                        }), 'https://www.youtube.com')
-                        muted = true
-                    }, 2000)
                 }
             }}
         />
