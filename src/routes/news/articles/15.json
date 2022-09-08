@@ -1,0 +1,25 @@
+{
+    "slug": "sold_out",
+    "meta": {
+        "en": "",
+        "lt": ""
+    },
+    "date": {
+        "en": "September 8<sup>th</sup>, 2022 - 6:00 pm",
+        "lt": "2022 m. rugsėjo 8 d. 18:00"
+    },
+    "title": {
+        "en": "Live Stream of the FSC'22 Final Concert",
+        "lt": "Tiesioginė FSC'22 finalinio koncerto transliacija"
+    },
+    "content": {
+        "full": {
+            "en": "<p>Tickets to the final concert of the Competition are sold out! The premiere evening is tomorrow, September 9<sup>th</sup>, the concert will start at 6:30 p.m.</p><p>For those who did not manage to register for tickets, we will organize a live broadcast &ndash; starting tomorrow at 5:30 p.m. you will find it at the top of our page at <div style='text-align: center; margin: 20px 0'><b><a href='/' class='link'>www.futuresymphony.lt</a></b></div> Later, a recording of the concert will be played on the air of the official broadcaster of the competition, <a class='link' href='https://www.lrt.lt/mediateka/tiesiogiai/lrt-klasika' target='_blank'>LRT KLASIKA</a>. We look forward to meeting you live or on the airwaves!</p><hr><p><b>This project is financed by</b> the Lithuanian Council for Culture, Association LATGA and Vilnius City Municipality. <b>Founding sponsor:</b> Mr. Gediminas Kuprevičius.</p>",
+            "lt": "<p>Visi bilietai į „Future Symphony“ finalinį koncertą išparduoti! Premjerinis vakaras jau rytoj, rugsėjo 9 d. &ndash; koncertas prasideda 18:30 val.</p><p>Nespėjusiems įsigyti bilietų, rengsime tiesioginę  transliaciją – nuo rytojaus 17:30 val. ją rasite puslapyje <div style='text-align: center; margin: 20px 0'><b><a href='/' class='link'>www.futuresymphony.lt</a></b></div> Vėliau koncerto įrašas skambės ir oficialaus konkurso transliuotojo <a class='link' href='https://www.lrt.lt/mediateka/tiesiogiai/lrt-klasika' target='_blank'>LRT KLASIKA</a> eteryje. Nekantriai laukiame susitikimo su Jumis gyvai ar eterio bangomis!</p><hr><p><b>Projektą finansuoja</b> Lietuvos kultūros taryba, asociacija LATGA, Vilniaus miesto savivaldybė. <b>Konkurso mecenatas:</b> Gediminas Kuprevičius.</p>"
+        }
+    },
+    "images": {
+        "regular": "sold_out.jpg",
+        "small": "sold_out_small.jpg"
+    }
+}
