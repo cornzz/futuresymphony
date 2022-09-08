@@ -8,7 +8,7 @@
 
     const MUTED_ICON = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='48' width='48'%3E%3Cpath fill='white' d='m40.65 45.2-6.6-6.6q-1.4 1-3.025 1.725-1.625.725-3.375 1.125v-3.1q1.15-.35 2.225-.775 1.075-.425 2.025-1.125l-8.25-8.3V40l-10-10h-8V18h7.8l-11-11L4.6 4.85 42.8 43Zm-1.8-11.6-2.15-2.15q1-1.7 1.475-3.6.475-1.9.475-3.9 0-5.15-3-9.225-3-4.075-8-5.175v-3.1q6.2 1.4 10.1 6.275 3.9 4.875 3.9 11.225 0 2.55-.7 5t-2.1 4.65Zm-6.7-6.7-4.5-4.5v-6.5Q30 17 31.325 19.2q1.325 2.2 1.325 4.8 0 .75-.125 1.475-.125.725-.375 1.425Zm-8.5-8.5-5.2-5.2 5.2-5.2Zm-3 14.3v-7.5l-4.2-4.2h-7.8v6h6.3Zm-2.1-9.6Z'/%3E%3C/svg%3E"
     const PLAY_ICON = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='48' width='48'%3E%3Cpath fill='white' d='M16 37.85v-28l22 14Zm3-14Zm0 8.55 13.45-8.55L19 15.3Z'/%3E%3C/svg%3E"
-    const videoId = 'FMrtjHDx9Bk'
+    const videoId = '26FCkA2liTU'
 
     let stream: HTMLIFrameElement
     let muted: boolean = false
@@ -35,6 +35,7 @@
                 localStorage.setItem('YTconsent', `${new Date()}`)
             }}
         >
+            <div class="live">Live</div>
             <img src={PLAY_ICON} alt="play.svg" title="Start livestream">
             <div class="text" on:click|stopPropagation>
                 {@html $_('index.streamConsent')}
@@ -86,14 +87,12 @@
         &.loaded
             opacity 1
 
-        .thumbnail
-            background url("/images/stream/cover_web.jpg") center/cover
-
         .overlay
             position relative
             width 100%
             height 100%
             cursor pointer
+            background linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4))
 
             img
                 position absolute
@@ -105,10 +104,58 @@
                 filter drop-shadow(0px 0px 2px #0009)
                 transition all 0.2s ease
 
+            &:hover img
+                transform translate(-50%, -50%) scale(1.04)
+
+        
+        .thumbnail
+            background linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("/images/stream/cover_web.jpg") center/cover
+
+            .live
+                display flex
+                align-items center
+                position absolute
+                left 5px
+                top 5px
+                color #fe4f02
+                background rgba(75, 75, 75, .4)
+                font-size 20px
+                padding 3px 8px
+                border-radius var(--border-radius)
+
+                &:before
+                    content ''
+                    width 8px
+                    height 8px
+                    display block
+                    background #fe4f02
+                    border-radius 8px
+                    margin-right 6px
+                    transform scale(1)
+                    box-shadow 0 0 0 0 rgba(0, 0, 0, 1)
+                    animation pulse-dot 2s infinite
+
+                @keyframes pulse-dot {
+                    0% {
+                        transform scale(0.95)
+                        box-shadow 0 0 0 0 rgba(254, 79, 2, .8)
+                    }
+                    
+                    75% {
+                        transform scale(1)
+                        box-shadow 0 0 0 6px rgba(254, 79, 2, 0)
+                    }
+                    
+                    100% {
+                        transform scale(0.95)
+                        box-shadow 0 0 0 0 rgba(254, 79, 2, 0)
+                    }
+                }
+
             .text
                 position absolute
                 width fit-content
-                top 75%
+                top 70%
                 left 0
                 right 0
                 margin 0 auto
@@ -117,9 +164,6 @@
                 padding 4px
                 background var(--color-primary)
                 border-radius var(--border-radius)
-
-            &:hover img
-                transform translate(-50%, -50%) scale(1.04)
 
         iframe
             position absolute
