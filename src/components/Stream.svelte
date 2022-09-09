@@ -38,7 +38,7 @@
             <div class="live">Live</div>
             <img src={PLAY_ICON} alt="play.svg" title="Start livestream">
             <div class="text" on:click|stopPropagation>
-                {@html $_('index.streamConsent')}
+                {@html $_('stream.consent')}
             </div>
         </div>
     {:else}
@@ -72,6 +72,7 @@
             <img src={MUTED_ICON} alt="muted.svg">
         </div>
     {/if}
+    <a class="programme" href="/files/{$_('stream.programmeFile')}" target="_blank">{$_('stream.programme')}</a>
 </div>
 
 <style lang="stylus">
@@ -79,13 +80,14 @@
         position absolute
         width 75%
         aspect-ratio 1.77777
-        border-radius var(--border-radius)
-        overflow hidden
         opacity 0
         transition opacity 1s ease 1.2s
 
         &.loaded
             opacity 1
+        
+        > *
+            border-radius var(--border-radius)
 
         .overlay
             position relative
@@ -107,7 +109,6 @@
             &:hover img
                 transform translate(-50%, -50%) scale(1.04)
 
-        
         .thumbnail
             background linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("/images/stream/cover_web.jpg") center/cover
 
@@ -155,7 +156,7 @@
             .text
                 position absolute
                 width fit-content
-                top 70%
+                bottom 5%
                 left 0
                 right 0
                 margin 0 auto
@@ -172,7 +173,34 @@
             width 100%
             height 100%
 
+        
+        .programme
+            position absolute
+            bottom -50px
+            left 0
+            right 0
+            color inherit
+            text-decoration none
+            font-size .3em
+            transition filter 0.15s ease, opacity 1s ease
+
+            &:hover
+                filter drop-shadow(0 0 20px #DDD6)
+                cursor pointer
+
     @media (max-width 600px)
         .stream
             width 90%
+
+            .thumbnail
+                .live
+                    font-size 14px
+
+                .text
+                    font-size 8px
+                    padding 2px
+
+            .programme
+                font-size 0.4em
+                filter drop-shadow(0 0 20px #DDDDDDA5)
 </style>

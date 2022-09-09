@@ -5,8 +5,7 @@
             "description": "3rd \"Future Symphony\" international composition competition for symphony orchestra"
         },
         "headline2": "3<sup>RD</sup> INTERNATIONAL MUSIC COMPOSITION COMPETITION<br>FOR SYMPHONY ORCHESTRA",
-        "tickets": "Tickets available now!",
-        "streamConsent": "This content is hosted by a third party (www.youtube.com).<br>By clicking here you accept the <a class='link' style='color: #56a1f2' href='https://policies.google.com/privacy?hl=en' target='_blank'>privacy policy</a> of www.youtube.com."
+        "tickets": "Tickets available now!"
     },
     "nav": {
         "ticketsAndAbout": "tickets & about",
@@ -261,5 +260,10 @@
     },
     "jury": {
         "title": "3rd Future Symphony Competition Compositions"
+    },
+    "stream": {
+        "consent": "This content is hosted by a third party (www.youtube.com).<br>By clicking here you accept the <a class='link' style='color: #56a1f2' href='https://policies.google.com/privacy?hl=en' target='_blank'>privacy policy</a> of www.youtube.com.",
+        "programme": "Download programme",
+        "programmeFile": "FSC'22_Programme_EN.pdf"
     }
 }

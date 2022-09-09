@@ -5,8 +5,7 @@
             "description": "III „Future Symphony“ tarptautinis kompozicijų simfoniniam orkestrui konkursas"
         },
         "headline2": "III TARPTAUTINIS KOMPOZICIJŲ SIMFONINIAM<br>ORKESTRUI KONKURSAS",
-        "tickets": "Tickets available now!",
-        "streamConsent": "Šį turinį talpina trečioji šalis (www.youtube.com).<br>Spustelėję čia sutinkate su www.youtube.com <a class='link' style='color: #56a1f2' href='https://policies.google.com/privacy?hl=lt' target='_blank'>privatumo politika</a>."
+        "tickets": "Tickets available now!"
     },
     "nav": {
         "ticketsAndAbout": "bilietai & apie",
@@ -261,5 +260,10 @@
     },
     "jury": {
         "title": "III-ojo „Future Symphony“ konkurso kūriniai"
+    },
+    "stream": {
+        "consent": "Šį turinį talpina trečioji šalis (www.youtube.com).<br>Spustelėję čia sutinkate su www.youtube.com <a class='link' style='color: #56a1f2' href='https://policies.google.com/privacy?hl=lt' target='_blank'>privatumo politika</a>.",
+        "programme": "Atsisiųsti programėlė",
+        "programmeFile": "FSC'22_Programėlė_LT.pdf"
     }
 }
