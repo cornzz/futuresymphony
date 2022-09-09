@@ -36,7 +36,7 @@
             }}
         >
             <div class="live">Live</div>
-            <img src={PLAY_ICON} alt="play.svg" title="Start livestream">
+            <img src={PLAY_ICON} alt="play.svg" title="{$_('stream.title')}">
             <div class="text" on:click|stopPropagation>
                 {@html $_('stream.consent')}
             </div>
@@ -69,7 +69,7 @@
                 }), 'https://www.youtube.com')
             }}
         >
-            <img src={MUTED_ICON} alt="muted.svg">
+            <img src={MUTED_ICON} alt="muted.svg" title="{$_('stream.unmute')}">
         </div>
     {/if}
     <a class="programme" href="/files/{$_('stream.programmeFile')}" target="_blank">{$_('stream.programme')}</a>
