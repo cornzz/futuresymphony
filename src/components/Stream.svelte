@@ -202,6 +202,7 @@
     @media (max-width 600px)
         .stream
             width 90%
+            height 300px
 
             .thumbnail
                 .live
