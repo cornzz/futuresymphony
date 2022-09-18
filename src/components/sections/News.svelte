@@ -34,8 +34,8 @@
                 loading="lazy"
             >
             <div class="news-content">
-                <div class="date"><i>{@html article.date[$locale]}</i></div>
                 <span class="title"><b>{@html article.title[$locale]}</b></span>
+                <div class="date"><i>{@html article.date[$locale]}</i></div>
                 <div class="text">
                     {@html
                         article.content.short ?
@@ -85,23 +85,24 @@
                 font-size 0.9em
                 display grid
                 width 100%
-                grid-template-rows 1fr 1fr 5fr
-                padding 5px 10px 0
+                padding 8px 10px 0
                 
                 & > *
                     overflow hidden
                     text-overflow ellipsis
 
+                .title
+                    font-size 1.111em
+                    white-space nowrap
+                    overflow hidden
+
                 .date
                     font-size 0.85em
                     color var(--color-light-gray)
 
-                .title
-                    white-space nowrap
-                    overflow hidden
-
                 .text
                     line-height: 1.55
+                    margin-top 3px
 
                 &:after
                     content ''
@@ -139,7 +140,7 @@
                 left -1px
                 right -1px
                 opacity 0
-                background-color #F5F5F5D8
+                background-color #F5F5F5E6
                 border-radius var(--border-radius)
                 transition all 0.2s ease-in-out
                 z-index 5
