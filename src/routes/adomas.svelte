@@ -49,8 +49,10 @@
         margin 15px 0 25px
 
     .bio-image
-        margin 10px 15px 5px 0
+        margin 10px 20px 5px 0
         float left
+        border-radius var(--border-radius)
+        overflow hidden
         
         :global(img)
             height 50vh
