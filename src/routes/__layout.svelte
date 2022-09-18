@@ -22,6 +22,11 @@
             history.scrollRestoration = 'manual'
         }
 
+        // Load flag emoji font on windows
+        if (/windows.*chrome/i.test(navigator.userAgent)) {
+            document.body.classList.add('win')
+        }
+
         /* TODO: timeout needed? */
         setTimeout(() => document.body.classList.remove('preload'), 150)
     })
