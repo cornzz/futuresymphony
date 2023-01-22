@@ -17,22 +17,24 @@
     </div>
     <b>{$_('contacts.projectManagement')}:</b>
     <div class="contacts">
-        Adomas Morkūnas-Budrys &ndash;
-        <span on:click={mail} class="contactlink mail" title={$_('contacts.sendEmail')} data-user="adomas"></span><br>
-        Danielius Tuita &ndash;
-        <span on:click={mail} class="contactlink mail" title={$_('contacts.sendEmail')}  data-user="danielius"></span><br>
-        Jurgis Kubilius &ndash;
-        <span on:click={mail} class="contactlink mail" title={$_('contacts.sendEmail')}  data-user="jurgis"></span>
+        Adomas Morkūnas-Budrys
+        <!-- &ndash; <span on:click={mail} class="contactlink mail" title={$_('contacts.sendEmail')} data-user="adomas"></span> -->
+        <br>
+        Danielius Tuita
+        <!-- &ndash; <span on:click={mail} class="contactlink mail" title={$_('contacts.sendEmail')}  data-user="danielius"></span> -->
+        <br>
+        Jurgis Kubilius
+        <!-- &ndash; <span on:click={mail} class="contactlink mail" title={$_('contacts.sendEmail')}  data-user="jurgis"></span> -->
     </div>						
     <b>{$_('contacts.orchestraManagement')}:</b>
     <div class="contacts">
-        Džiugas Daugirda &ndash;
-        <span on:click={mail} title={$_('contacts.sendEmail')}  class="contactlink mail" data-user="dziugas"></span>
+        Džiugas Daugirda
+        <!-- &ndash; <span on:click={mail} title={$_('contacts.sendEmail')}  class="contactlink mail" data-user="dziugas"></span> -->
     </div>
     <b>{$_('contacts.communicationAssistance')}:</b>
     <div class="contacts">
-        Salomėja Petronytė &ndash;
-        <span on:click={mail} title={$_('contacts.sendEmail')}  class="contactlink mail" data-user="salomeja"></span>
+        Salomėja Petronytė
+        <!-- &ndash; <span on:click={mail} title={$_('contacts.sendEmail')}  class="contactlink mail" data-user="salomeja"></span> -->
     </div>
     <b>{$_('contacts.socialMedia')}:</b>
     <div class="contacts">
@@ -42,7 +44,7 @@
     <b>{$_('contacts.webdesign')}:</b>
     <div class="contacts">
         Cornelius Kummer &ndash;
-        <span on:click={mail} title={$_('contacts.sendEmail')}  class="contactlink mail" data-user="cornelius"></span><br>
+        <!-- <span on:click={mail} title={$_('contacts.sendEmail')}  class="contactlink mail" data-user="cornelius"></span><br> -->
         <a href="https://corny.me" class="link" target="_blank">www.corny.me</a>
     </div>
 </div> 
