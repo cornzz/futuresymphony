@@ -210,8 +210,9 @@
     },
     "error": {
         "title": "Error - Future Symphony Competition",
-        "pageNotFound": "Page not found",
-        "goBack": "Go back"
+        "pageNotFound": "Page not found:",
+        "notFoundText": "Unfortunately, this page does not exist.<br>If it existed it might have been deleted.",
+        "goBack": "Back to index"
     },
     "gallery": {
         "about2": "Future Symphony Orchestra at the final concert of the first Future Symphony Competition in 2018",

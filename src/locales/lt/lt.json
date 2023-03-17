@@ -210,8 +210,9 @@
     },
     "error": {
         "title": "Klaida - Future Symphony Konkursas",
-        "pageNotFound": "Puslapis nerastas",
-        "goBack": "Grįžti"
+        "pageNotFound": "Puslapis nerastas:",
+        "notFoundText": "Deja, šio puslapio nėra.<br>Jei jis egzistavo, jis galėjo būti ištrintas.",
+        "goBack": "Grįžti į pradžią"
     },
     "gallery": {
         "about2": "Future Symphony Orchestra baigiamajame I-ojo Future Symphony konkurso koncerte 2018 metais",

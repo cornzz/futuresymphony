@@ -12,7 +12,8 @@
 
 <Tab>
     <div class="error">
-        {$_('error.pageNotFound')}.
+        <b>{$_('error.pageNotFound')}</b>
+        {@html $_('error.notFoundText')}
         <a href="/" class="link">{$_('error.goBack')}</a>
     </div>
 </Tab>
@@ -24,5 +25,6 @@
         gap 10px
         flex-direction column
         align-items center
+        text-align center
         justify-content center
 </style>
