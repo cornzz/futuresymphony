@@ -22,8 +22,8 @@
         <br>
         Danielius Tuita
         <!-- &ndash; <span on:click={mail} class="contactlink mail" title={$_('contacts.sendEmail')}  data-user="danielius"></span> -->
-        <br>
-        Jurgis Kubilius
+        <!-- <br> -->
+        <!-- Jurgis Kubilius -->
         <!-- &ndash; <span on:click={mail} class="contactlink mail" title={$_('contacts.sendEmail')}  data-user="jurgis"></span> -->
     </div>						
     <b>{$_('contacts.orchestraManagement')}:</b>
