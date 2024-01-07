@@ -1,4 +1,0 @@
-user-agent: *
-disallow: /registration
-
-sitemap: https://www.futuresymphony.lt/sitemap.xml
